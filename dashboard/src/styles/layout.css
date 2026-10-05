@@ -16,7 +16,7 @@ body {
   overscroll-behavior: none;
   /* Override index.html boot gray (#f7f8fa) so iOS PWA letterboxing
      below 100dvh is not a stray gray strip. */
-  background: var(--fn-bg-layout, #f5f6f8);
+  background: var(--fn-bg-layout, #F9FAFB);
 }
 
 html {

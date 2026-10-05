@@ -13,12 +13,12 @@ html[data-theme="light"] {
   --fn-bg-secondary: #f7f8fa;
   --fn-bg-tertiary: #f0f1f3;
   --fn-bg-elevated: #ffffff;
-  --fn-bg-layout: #f5f6f8;
+  --fn-bg-layout: #F9FAFB;
   --fn-bg-container: #ffffff;
   --fn-bg-hover: rgba(249,42,48, 0.04);
   --fn-bg-active: rgba(249,42,48, 0.08);
   --fn-bg-selected: rgba(249,42,48, 0.06);
-  --fn-bg-code: #f5f6f8;
+  --fn-bg-code: #F9FAFB;
   --fn-bg-toolbar: #fafbfc;
   --fn-bg-toolbar-hover: #f0f1f3;
   --fn-bg-input-label: #f7f8fa;
@@ -29,7 +29,7 @@ html[data-theme="light"] {
   --fn-bg-glass: rgba(255, 255, 255, 0.8);
   --fn-bg-sidebar: #ffffff;
   --fn-bg-base: #ffffff;
-  --fn-bg-page: #f5f6f8;
+  --fn-bg-page: #F9FAFB;
   --fn-bg-quaternary: rgba(0, 0, 0, 0.03);
   --fn-bg-subtle: #f3f4f6;
   --fn-bg-secondary-hover: #f0f1f3;
