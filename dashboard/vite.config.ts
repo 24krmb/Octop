@@ -314,7 +314,9 @@ export default defineConfig(({ mode }) => {
       },
       proxy: {
         "/api": {
-          target: `http://127.0.0.1:${apiPort}`,
+          target: process.env.VITE_API_HOST
+            ? `${process.env.VITE_API_HOST}:${apiPort}`
+            : `http://127.0.0.1:${apiPort}`,
           changeOrigin: true,
           // Preserve the browser-facing origin so OAuth callbacks do not point
           // at the proxy target (127.0.0.1:8088).

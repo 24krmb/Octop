@@ -1,0 +1,46 @@
+# Octop 本地开发后端（Linux 容器，避免 Intel Mac 编译 cryptography 失败）
+#
+# 用法：
+#   docker compose -f docker-compose.dev.yml up -d        # 启动（首次自动装依赖）
+#   docker compose -f docker-compose.dev.yml logs -f      # 看日志
+#   docker compose -f docker-compose.dev.yml down         # 停止
+#
+# 后端: http://localhost:8088
+# 前端热更新（可选）: 另开终端跑
+#   cd dashboard && VITE_API_HOST=http://127.0.0.1 npm run dev
+#   → http://localhost:5173
+
+services:
+  octop-dev-backend:
+    image: python:3.12-slim
+    container_name: octop-dev-backend
+    working_dir: /app
+    volumes:
+      - .:/app
+      - octop-dev-venv:/app/.venv
+      - octop-dev-data:/data/.octop
+    environment:
+      HOME: /data
+      OCTOP_HOME: /data/.octop
+      OCTOP_BIND_HOST: 0.0.0.0
+      OCTOP_PORT: "8088"
+      UV_INDEX_URL: https://mirrors.cloud.tencent.com/pypi/simple
+      UV_LINK_MODE: copy
+      UV_PYTHON_DOWNLOADS: never
+    ports:
+      - "8088:8088"
+    command: >
+      bash -c "
+        sed -i 's|deb.debian.org|mirrors.cloud.tencent.com|g' /etc/apt/sources.list.d/debian.sources 2>/dev/null;
+        apt-get update -qq;
+        apt-get install -y -qq --no-install-recommends pkgconf build-essential libffi-dev curl git >/dev/null 2>&1;
+        pip install -q -i https://mirrors.cloud.tencent.com/pypi/simple uv;
+        echo '--- [1/2] uv sync（Linux 预编译包，无需编译）---';
+        uv sync --frozen --no-dev;
+        echo '--- [2/2] 启动 octop 后端 ---';
+        exec uv run octop run --host 0.0.0.0 --port 8088
+      "
+
+volumes:
+  octop-dev-venv:
+  octop-dev-data:
