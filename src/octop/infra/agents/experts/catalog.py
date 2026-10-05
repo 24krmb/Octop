@@ -57,7 +57,6 @@ _FALLBACK_BUNDLED_AVATAR_IDS = frozenset(
         "parenting-companion",
         "stock-assistant",
         "superpowers-methodology",
-        "tencentcloud-api",
         "wechat-ops",
         "scene-academic",
         "scene-content-creation",
