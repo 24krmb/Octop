@@ -22,17 +22,17 @@
       "color": "#22C55E"
     },
     "game-development": {
-      "label": "游戏开发",
+      "label": "游戏",
       "icon": "Gamepad2",
       "color": "#A855F7"
     },
     "gis": {
-      "label": "地理信息",
+      "label": "地理",
       "icon": "Map",
       "color": "#14B8A6"
     },
     "marketing": {
-      "label": "市场营销",
+      "label": "营销",
       "icon": "Megaphone",
       "color": "#F97316"
     },
@@ -72,7 +72,7 @@
       "color": "#6366F1"
     },
     "support": {
-      "label": "技术支持",
+      "label": "技术",
       "icon": "LifeBuoy",
       "color": "#84CC16"
     },
@@ -82,7 +82,7 @@
       "color": "#F59E0B"
     },
     "hr": {
-      "label": "人力资源",
+      "label": "HR",
       "icon": "Users",
       "color": "#F472B6"
     },

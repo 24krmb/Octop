@@ -857,13 +857,20 @@ export default function ExpertsPage() {
             ),
             children: libraryContent,
           },
-          {
-            key: "market",
-            label: (
-              <TabLabel icon={Store}>{t("experts.expertMarket")}</TabLabel>
-            ),
-            children: marketContent,
-          },
+          // 助理市场仅管理员可见（用户角色隐藏此 tab）
+          ...(currentUser?.role === "admin"
+            ? [
+                {
+                  key: "market" as TabKey,
+                  label: (
+                    <TabLabel icon={Store}>
+                      {t("experts.expertMarket")}
+                    </TabLabel>
+                  ),
+                  children: marketContent,
+                },
+              ]
+            : []),
         ]}
       />
 
