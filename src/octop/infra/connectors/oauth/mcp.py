@@ -86,7 +86,7 @@ async def register_dynamic_client(
     *,
     issuer: str,
     redirect_uri: str,
-    client_name: str = "Cyanea Connector",
+    client_name: str = "24K-Claw Connector",
 ) -> dict[str, Any]:
     reg_url = metadata.get("registration_endpoint")
     if not reg_url:
