@@ -3,8 +3,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import type { TFunction } from "i18next";
 import AvatarDropdown from "../components/AvatarDropdown";
-import AppVersionBadge from "../components/AppVersionBadge";
-import CurrentVersionBadge from "../components/CurrentVersionBadge";
 import { ArrowRightLeft, ChevronDown, X } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 import { useLayoutMode } from "../context/LayoutModeContext";
@@ -495,7 +493,7 @@ export default function Sidebar({
         src={isRailCollapsed ? "/pwa-192.png" : wordmarkSrc}
         alt="Octop"
         style={{
-          height: isRailCollapsed ? 32 : isMobile ? 38 : 36,
+          height: isRailCollapsed ? 32 : isMobile ? 38 : 40,
           width: isRailCollapsed ? 32 : "auto",
           maxWidth: isRailCollapsed ? 32 : isMobile ? 190 : 160,
           objectFit: "contain",
@@ -504,12 +502,6 @@ export default function Sidebar({
           borderRadius: isRailCollapsed ? 8 : undefined,
         }}
       />
-      {!isRailCollapsed && !isMobile && (
-        <>
-          <CurrentVersionBadge isMobile={isMobile} />
-          <AppVersionBadge isMobile={isMobile} />
-        </>
-      )}
     </>
   );
 
@@ -711,6 +703,7 @@ export default function Sidebar({
             style={{
               display: "flex",
               alignItems: "center",
+              justifyContent: "center",
               gap: 6,
               minWidth: 0,
               flex: 1,
@@ -792,7 +785,7 @@ export default function Sidebar({
           gap: 6,
           minWidth: 0,
           padding: isRailCollapsed ? "12px 0" : "14px 14px 10px",
-          justifyContent: isRailCollapsed ? "center" : "flex-start",
+          justifyContent: "center",
           flexShrink: 0,
         }}
       >
