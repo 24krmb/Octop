@@ -77,6 +77,7 @@ import {
 } from "../Experts/components/iconForName";
 import { showConfirmModal } from "../../utils/confirmModal";
 import { createDetailRequestGate } from "../../utils/detailRequestGate";
+import { useCurrentUser } from "../../hooks/useCurrentUser";
 import { PackageIcon } from "./PackageIcon";
 import { PackageSkillCard } from "./PackageSkillCard";
 import PackageSkillsTable from "./PackageSkillsTable";
@@ -166,6 +167,9 @@ export default function SkillPackagesPage() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [mobilePane, setMobilePane] = useState<"list" | "detail">("list");
   const [user, setUser] = useState<OctopUser | null>(null);
+  const currentUser = useCurrentUser();
+  // 「从技能市场导入」仅管理员可见。
+  const isAdmin = currentUser?.role === "admin";
   const [loading, setLoading] = useState(true);
   const [detailLoading, setDetailLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
@@ -619,12 +623,16 @@ export default function SkillPackagesPage() {
               onClick: openCreatePackage,
               icon: <Plus size={14} />,
             }}
-            secondaryAction={{
-              label: t("skillPackages.fromSkillHub"),
-              onClick: () => setSkillsetHubOpen(true),
-              icon: <Store size={14} />,
-              type: "default",
-            }}
+            secondaryAction={
+              isAdmin
+                ? {
+                    label: t("skillPackages.fromSkillHub"),
+                    onClick: () => setSkillsetHubOpen(true),
+                    icon: <Store size={14} />,
+                    type: "default",
+                  }
+                : undefined
+            }
           />
         </div>
       ) : (
@@ -665,13 +673,15 @@ export default function SkillPackagesPage() {
                 >
                   {t("skillPackages.createPackage")}
                 </Button>
-                <Tooltip title={t("skillPackages.fromSkillHub")}>
-                  <Button
-                    icon={<Store size={15} />}
-                    aria-label={t("skillPackages.fromSkillHub")}
-                    onClick={() => setSkillsetHubOpen(true)}
-                  />
-                </Tooltip>
+                {isAdmin ? (
+                  <Tooltip title={t("skillPackages.fromSkillHub")}>
+                    <Button
+                      icon={<Store size={15} />}
+                      aria-label={t("skillPackages.fromSkillHub")}
+                      onClick={() => setSkillsetHubOpen(true)}
+                    />
+                  </Tooltip>
+                ) : null}
               </div>
               {loading && packages.length === 0 ? (
                 <div className={styles.centered}>

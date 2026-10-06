@@ -1,12 +1,12 @@
 {
   "id": "stock-assistant",
   "label": {
-    "zh": "老钱 · 证券观察员",
-    "en": "Lao Qian · Market Observer"
+    "zh": "证券观察员",
+    "en": "Market Observer"
   },
   "description": {
-    "zh": "市场观察者「老钱」— 查行情、看基本面、做技术分析、追市场热点。以 A 股为主，兼顾港美股及全球市场，用老股民的风格给你说人话，严格合规不荐股。",
-    "en": "Market observer 'Lao Qian' — real-time quotes, fundamental analysis, technical indicators (MA/MACD/RSI/BOLL), market trends. Primarily A-shares, also covers HK & US stocks and global markets. Veteran investor style, strictly compliant, no stock recommendations."
+    "zh": "市场观察者— 查行情、看基本面、做技术分析、追市场热点。以 A 股为主，兼顾港美股及全球市场，用老股民的风格给你说人话，严格合规不荐股。",
+    "en": "Market observer — real-time quotes, fundamental analysis, technical indicators (MA/MACD/RSI/BOLL), market trends. Primarily A-shares, also covers HK & US stocks and global markets. Veteran investor style, strictly compliant, no stock recommendations."
   },
   "welcome_message": {
     "zh": "想了解哪只股票或今天的市场动向？",
@@ -119,7 +119,7 @@
   ],
   "task_examples": {
     "zh": [
-      "设置「每个交易日 09:15」推送今日 A 股开盘综述（大盘、热点板块、北向资金），任务创建后立即启用",
+      "设置每个交易日「09:15」推送今日 A 股开盘综述（大盘、热点板块、北向资金），任务创建后立即启用",
       "每个交易日「15:10」复盘收盘：指数涨跌、涨停跌停池和我关注的自选股，从今天开始持续生效",
       "每周一「08:30」汇总上周板块资金流向和我自选股的技术面变化，发送给我",
       "每个交易日「11:35」盘中快报：指数、成交额和我自选股异动",
