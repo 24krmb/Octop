@@ -312,13 +312,13 @@
     "addAsPackage": "添加为技能包",
     "empty": "暂无技能包",
     "emptyGuideTitle": "技能包是空的",
-    "emptyGuideDesc": "技能包把一组可复用的技能收在一起，挂到助理后即可在对话中使用。",
+    "emptyGuideDesc": "把一组可复用的技能装在包内，助理背着包帮你做事",
     "emptyGuideStepWhat": "技能包是啥？",
-    "emptyGuideStepWhatDetail": "技能是给助理的操作说明书，这个包内包含各种技能。",
+    "emptyGuideStepWhatDetail": "技能是给助理的操作说明书，这个包内包含各种技能",
     "emptyGuideStepHow": "怎么用技能包呀",
-    "emptyGuideStepHowDetail": "创建技能包，添加一些技能；再到「助理」中挂载该包，之后背着包跟你对话啦。",
+    "emptyGuideStepHowDetail": "创建技能包，添加一些技能；到「助理」中挂载包，之后背着包跟你对话啦",
     "emptyGuideStepShare": "共享有什么作用",
-    "emptyGuideStepShareDetail": "技能包对本实例的登录用户可见。其他人可以挂载使用，只有创建者可以编辑或删除。",
+    "emptyGuideStepShareDetail": "技能包对本实例的登录用户可见。其他人可以挂载使用，只有创建者可以编辑或删除",
     "selectPackage": "选择一个技能包以查看其中的技能",
     "backToList": "返回列表",
     "noDescription": "暂无描述",
@@ -356,7 +356,7 @@
   },
   "knowledgeBases": {
     "title": "知识库",
-    "subtitle": "上传文档建立索引，在对话中检索引用；可按需共享给同实例用户。",
+    "subtitle": "建立知识库体系；可共享、可私有。",
     "featureTitle": "启用知识库",
     "settingsTitle": "知识库设置",
     "settingsLead": "实例级开关。启用后需配置向量模型；关闭后全实例不可使用知识库。",
@@ -2166,7 +2166,7 @@
     "totalItems": "共 {{count}} 项",
     "loadingJobs": "正在加载当前助理的任务…",
     "syncing": "正在同步…",
-    "noJobs": "开启你的第一个定时任务吧",
+    "noJobs": "安排第一个 7X24小时 任务吧",
     "noJobsDesc": "选择下方示例，或点击「创建定时任务」从头开始",
     "viewTable": "表格",
     "viewCard": "卡片",
@@ -6186,23 +6186,23 @@
   "pageShell": {
     "experts": {
       "title": "助理",
-      "subtitle": "创建与管理你的 AI 助理，也可从模板库挑选场景一键新建。"
+      "subtitle": "创建与管理你的 AI 助理，也可从内置的助理中挑选一个一键新建。"
     },
     "tasks": {
       "title": "自动化",
-      "subtitle": "配置助理定期执行的计划任务"
+      "subtitle": "让 Agent 7X24 小时帮你定期执行计划任务"
     },
     "connectors": {
       "title": "连接器",
-      "subtitle": "账户级连接文档、网盘与邮箱；对话时按需勾选"
+      "subtitle": "账户级连接；对话时按需勾选"
     },
     "acp": {
       "title": "ACP",
-      "subtitle": "配置外部编程助理 Runner（OpenCode、Claude Code 等）"
+      "subtitle": "配置编程助理 Runner（OpenCode、Claude Code 等）"
     },
     "skills": {
       "title": "技能",
-      "subtitle": "管理已安装技能，也可从技能市场安装新技能"
+      "subtitle": "管理已安装技能，也可安装新技能"
     },
     "tools": {
       "title": "工具",
@@ -6218,7 +6218,7 @@
     },
     "mbti": {
       "title": "MBTI 人格",
-      "subtitle": "选一个 MBTI 人格类型，或花 3 分钟做个测试，让 TA 拥有独一无二的性格！"
+      "subtitle": "选一个 MBTI 人格类型，或花 3 分钟做个测试，让 TA 拥有专业的人格！"
     },
     "subagents": {
       "title": "子智能体",
