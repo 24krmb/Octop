@@ -150,6 +150,36 @@ def _build_remote_spec(entry: ConnectorCatalogEntry, creds: dict[str, Any]) -> d
         if entry.allowed_tools is not None:
             spec["allowed_tools"] = list(entry.allowed_tools)
         return spec
+    if entry.kind in (
+        "wind-stock-data",
+        "wind-index-data",
+        "wind-fund-data",
+        "wind-economic-data",
+        "wind-bond-data",
+        "wind-analytics-data",
+        "wind-financial-docs",
+    ):
+        token = str(creds.get("token") or "").strip()
+        if token.startswith("Bearer "):
+            token = token[7:].strip()
+        _WIND_URLS = {
+            "wind-stock-data": "https://mcp.wind.com.cn/vserver_stock_data/mcp/",
+            "wind-index-data": "https://mcp.wind.com.cn/vserver_index_data/mcp/",
+            "wind-fund-data": "https://mcp.wind.com.cn/vserver_fund_data/mcp/",
+            "wind-economic-data": "https://mcp.wind.com.cn/vserver_economic_data/mcp/",
+            "wind-bond-data": "https://mcp.wind.com.cn/vserver_bond_data/mcp/",
+            "wind-analytics-data": "https://mcp.wind.com.cn/vserver_analytics_data/mcp/",
+            "wind-financial-docs": "https://mcp.wind.com.cn/vserver_financial_docs/mcp/",
+        }
+        url = _WIND_URLS[entry.kind]
+        return {
+            "transport": "http",
+            "url": url,
+            "headers": {
+                **_mcp_http_headers(),
+                "Authorization": f"Bearer {token}",
+            },
+        }
     if entry.kind == "tencent-meeting":
         token = str(creds.get("token") or "")
         return {

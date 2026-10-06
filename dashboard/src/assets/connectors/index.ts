@@ -24,6 +24,7 @@ import wecomCli from "./wecom-cli.png";
 import weknora from "./weknora.svg";
 import youdaoNote from "./youdao-note.png";
 import yuandian from "./yuandian.png";
+import windStockData from "./wind-stock-data.png";
 
 export const CONNECTOR_LOGOS: Record<string, string> = {
   "tencent-ardot": tencentArdot,
@@ -52,6 +53,13 @@ export const CONNECTOR_LOGOS: Record<string, string> = {
   "youdao-note": youdaoNote,
   "tencent-weiyun": tencentWeiyun,
   weknora,
+  "wind-stock-data": windStockData,
+  "wind-index-data": windStockData,
+  "wind-fund-data": windStockData,
+  "wind-economic-data": windStockData,
+  "wind-bond-data": windStockData,
+  "wind-analytics-data": windStockData,
+  "wind-financial-docs": windStockData,
 };
 
 export function getConnectorLogo(kind: string): string | undefined {
