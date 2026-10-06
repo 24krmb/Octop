@@ -1,5 +1,6 @@
 import type { NavItem, NavSection } from "./sidebarNav";
 import {
+  BUILTIN_NAV_GROUP_IDS,
   SIDEBAR_NAV_KEYS,
   builtinNavGroupLabelKey,
   isBuiltinNavGroupId,
@@ -100,6 +101,29 @@ export function editorFromCatalog(
   const ungrouped: string[] = [];
   const hidden: string[] = [];
   const seen = new Set<string>();
+  // New built-in groups that ship after the user saved a layout (e.g. a
+  // freshly introduced "personalization" group) must be spliced back in —
+  // ahead of the first existing built-in group — or their items would have
+  // no parent group and end up hidden forever.
+  const missingBuiltinGroups = BUILTIN_NAV_GROUP_IDS.filter(
+    (id) => !groupIds.has(id),
+  );
+  if (missingBuiltinGroups.length > 0) {
+    const firstBuiltinIdx = groups.findIndex((g) => isBuiltinNavGroupId(g.id));
+    const inserted = missingBuiltinGroups.map((id) => ({
+      id,
+      name: null as string | null,
+    }));
+    if (firstBuiltinIdx === -1) {
+      groups.push(...inserted);
+    } else {
+      groups.splice(firstBuiltinIdx, 0, ...inserted);
+    }
+    for (const g of inserted) {
+      groupIds.add(g.id);
+      itemsByGroup[g.id] = [];
+    }
+  }
   for (const item of layout.items) {
     if (!catalogKeys.has(item.key) || seen.has(item.key)) continue;
     seen.add(item.key);
@@ -113,8 +137,28 @@ export function editorFromCatalog(
       ungrouped.push(item.key);
     }
   }
+  // New built-in nav keys that ship after the user saved a layout would
+  // otherwise be hidden forever. Append them to their default built-in
+  // group (when that group still exists) instead of the hidden list.
+  const defaultGroupIdByKey = new Map<string, string>();
+  for (const group of base.groups) {
+    for (const key of base.itemsByGroup[group.id] ?? []) {
+      defaultGroupIdByKey.set(key, group.id);
+    }
+  }
   for (const key of defaultKeyOrder(base)) {
-    if (!seen.has(key)) hidden.push(key);
+    if (seen.has(key)) continue;
+    const defaultGroup = defaultGroupIdByKey.get(key);
+    if (
+      defaultGroup &&
+      isBuiltinNavGroupId(defaultGroup) &&
+      groupIds.has(defaultGroup)
+    ) {
+      seen.add(key);
+      itemsByGroup[defaultGroup].push(key);
+      continue;
+    }
+    hidden.push(key);
   }
   return { groups, ungrouped, itemsByGroup, hidden };
 }

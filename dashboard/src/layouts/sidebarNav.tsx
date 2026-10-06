@@ -12,13 +12,17 @@ import {
   Activity,
   Share2,
   Cloudy,
-  Sparkles,
   Puzzle,
   Package,
   HardDrive,
   GraduationCap,
   Shield,
   PanelsTopLeft,
+  Bot,
+  Plug,
+  Wrench,
+  Brain,
+  Fingerprint,
 } from "lucide-react";
 import type { OctopUser } from "../api/modules/auth";
 import { navAllowed, userCan } from "../utils/permissions";
@@ -53,7 +57,12 @@ export const SIDEBAR_NAV_KEYS = [
   "experts",
   "tasks",
   "token-usage",
-  "personalization",
+  "personalization-subagents",
+  "personalization-skills",
+  "personalization-plugins",
+  "personalization-tools",
+  "personalization-memory",
+  "personalization-mbti",
   "channels",
   "connectors",
   "skill-packages",
@@ -70,12 +79,18 @@ export const SIDEBAR_NAV_KEYS = [
   "admin-advanced",
 ] as const;
 
-export const BUILTIN_NAV_GROUP_IDS = ["settings", "control", "admin"] as const;
+export const BUILTIN_NAV_GROUP_IDS = [
+  "personalization",
+  "settings",
+  "control",
+  "admin",
+] as const;
 
 const BUILTIN_NAV_GROUP_LABEL_KEYS: Record<
   (typeof BUILTIN_NAV_GROUP_IDS)[number],
   string
 > = {
+  personalization: "nav.personalization",
   settings: "nav.settings",
   control: "nav.control",
   admin: "nav.admin",
@@ -107,7 +122,12 @@ export function navSectionLabel(
  * comes from {@link buildNavSections}.
  */
 export const SIDEBAR_GROUPED_NAV_KEYS = [
-  "personalization",
+  "personalization-subagents",
+  "personalization-skills",
+  "personalization-plugins",
+  "personalization-tools",
+  "personalization-memory",
+  "personalization-mbti",
   "channels",
   "connectors",
   "skill-packages",
@@ -166,14 +186,53 @@ export function buildNavSections(
     },
   ];
 
-  const settingsItems: NavItem[] = [
+  const personalizationItems: NavItem[] = [
     {
-      key: "personalization",
+      key: "personalization-subagents",
+      path: "/personalization/subagents",
+      icon: <Bot size={iconSize} strokeWidth={iconStroke} />,
+      labelKey: "nav.subagents",
+    },
+    {
+      key: "personalization-skills",
       path: "/personalization/skills",
-      icon: <Sparkles size={iconSize} strokeWidth={iconStroke} />,
-      labelKey: "nav.personalization",
+      icon: <Puzzle size={iconSize} strokeWidth={iconStroke} />,
+      labelKey: "nav.skills",
+    },
+    {
+      key: "personalization-plugins",
+      path: "/personalization/plugins",
+      icon: <Plug size={iconSize} strokeWidth={iconStroke} />,
+      labelKey: "nav.plugins",
+    },
+    {
+      key: "personalization-tools",
+      path: "/personalization/tools",
+      icon: <Wrench size={iconSize} strokeWidth={iconStroke} />,
+      labelKey: "nav.tools",
+    },
+    {
+      key: "personalization-memory",
+      path: "/personalization/memory",
+      icon: <Brain size={iconSize} strokeWidth={iconStroke} />,
+      labelKey: "nav.memory",
+    },
+    {
+      key: "personalization-mbti",
+      path: "/personalization/mbti",
+      icon: <Fingerprint size={iconSize} strokeWidth={iconStroke} />,
+      labelKey: "nav.mbti",
     },
   ];
+  if (personalizationItems.length > 0) {
+    sections.push({
+      id: "personalization",
+      groupKey: "nav.personalization",
+      items: personalizationItems,
+    });
+  }
+
+  const settingsItems: NavItem[] = [];
   if (navAllowed(user, "channels")) {
     settingsItems.push({
       key: "channels",

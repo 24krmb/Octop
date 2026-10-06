@@ -246,7 +246,7 @@
     "memory": "Memory",
     "personalization": "Personalization",
     "subagents": "Subagents",
-    "mbti": "MBTI Personality",
+    "mbti": "MBTI",
     "heartbeat": "Heartbeat",
     "user": "User Settings",
     "advancedSettings": "Advanced Settings",
@@ -288,7 +288,9 @@
     "groupNameRequired": "Enter a group name",
     "saveFailed": "Could not save the navigation layout",
     "dragToReorder": "Drag to reorder",
-    "chatHistory": "Session list"
+    "chatHistory": "Session list",
+    "plugins": "Plugins",
+    "tools": "Tools"
   },
   "skillPackages": {
     "title": "Skill Packages",

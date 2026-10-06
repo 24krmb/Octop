@@ -244,7 +244,7 @@
     "language": "语言",
     "theme": "主题",
     "memory": "记忆",
-    "subagents": "子智能体",
+    "subagents": "子Agent",
     "personalization": "个性化",
     "mbti": "MBTI 人格",
     "heartbeat": "心跳",
@@ -288,7 +288,9 @@
     "groupNameRequired": "请填写分组名称",
     "saveFailed": "没能保存导航布局",
     "dragToReorder": "拖动排序",
-    "chatHistory": "会话列表"
+    "chatHistory": "会话列表",
+    "plugins": "插件",
+    "tools": "工具"
   },
   "skillPackages": {
     "title": "技能包",
