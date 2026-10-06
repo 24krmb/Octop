@@ -171,16 +171,16 @@ export function buildNavSections(
           labelKey: "nav.experts",
         },
         {
+          key: "personalization-subagents",
+          path: "/personalization/subagents",
+          icon: <Bot size={iconSize} strokeWidth={iconStroke} />,
+          labelKey: "nav.subagents",
+        },
+        {
           key: "tasks",
           path: "/tasks",
           icon: <Timer size={iconSize} strokeWidth={iconStroke} />,
           labelKey: "nav.tasks",
-        },
-        {
-          key: "token-usage",
-          path: "/token-usage",
-          icon: <Activity size={iconSize} strokeWidth={iconStroke} />,
-          labelKey: "nav.tokenUsage",
         },
       ],
     },
@@ -188,22 +188,10 @@ export function buildNavSections(
 
   const personalizationItems: NavItem[] = [
     {
-      key: "personalization-subagents",
-      path: "/personalization/subagents",
-      icon: <Bot size={iconSize} strokeWidth={iconStroke} />,
-      labelKey: "nav.subagents",
-    },
-    {
-      key: "personalization-skills",
-      path: "/personalization/skills",
-      icon: <Puzzle size={iconSize} strokeWidth={iconStroke} />,
-      labelKey: "nav.skills",
-    },
-    {
-      key: "personalization-plugins",
-      path: "/personalization/plugins",
-      icon: <Plug size={iconSize} strokeWidth={iconStroke} />,
-      labelKey: "nav.plugins",
+      key: "personalization-memory",
+      path: "/personalization/memory",
+      icon: <Brain size={iconSize} strokeWidth={iconStroke} />,
+      labelKey: "nav.memory",
     },
     {
       key: "personalization-tools",
@@ -212,16 +200,28 @@ export function buildNavSections(
       labelKey: "nav.tools",
     },
     {
+      key: "personalization-plugins",
+      path: "/personalization/plugins",
+      icon: <Plug size={iconSize} strokeWidth={iconStroke} />,
+      labelKey: "nav.plugins",
+    },
+    {
+      key: "personalization-skills",
+      path: "/personalization/skills",
+      icon: <Puzzle size={iconSize} strokeWidth={iconStroke} />,
+      labelKey: "nav.skills",
+    },
+    {
+      key: "skill-packages",
+      path: "/skill-packages",
+      icon: <Package size={iconSize} strokeWidth={iconStroke} />,
+      labelKey: "nav.skillPackages",
+    },
+    {
       key: "knowledge-bases",
       path: "/knowledge-bases",
       icon: <Database size={iconSize} strokeWidth={iconStroke} />,
       labelKey: "nav.knowledgeBases",
-    },
-    {
-      key: "personalization-memory",
-      path: "/personalization/memory",
-      icon: <Brain size={iconSize} strokeWidth={iconStroke} />,
-      labelKey: "nav.memory",
     },
     {
       key: "personalization-mbti",
@@ -253,14 +253,6 @@ export function buildNavSections(
       path: "/connectors",
       icon: <Link2 size={iconSize} strokeWidth={iconStroke} />,
       labelKey: "nav.connectors",
-    });
-  }
-  if (navAllowed(user, "skill-packages")) {
-    settingsItems.push({
-      key: "skill-packages",
-      path: "/skill-packages",
-      icon: <Package size={iconSize} strokeWidth={iconStroke} />,
-      labelKey: "nav.skillPackages",
     });
   }
   // User-scoped remote Octop links — always available (like personalization).
@@ -333,6 +325,12 @@ export function buildNavSections(
       labelKey: "nav.models",
     });
   }
+  adminItems.push({
+    key: "token-usage",
+    path: "/token-usage",
+    icon: <Activity size={iconSize} strokeWidth={iconStroke} />,
+    labelKey: "nav.tokenUsage",
+  });
   if (navAllowed(user, "admin-storage")) {
     adminItems.push({
       key: "admin-storage",

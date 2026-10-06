@@ -163,28 +163,56 @@ export function editorFromCatalog(
   // Keys whose default built-in group changed (e.g. knowledge-bases moved
   // from "settings" to "personalization"): relocate saved-layout placements
   // into the new default group, keeping the base ordering inside it.
-  // Keys the user manually hidden stay hidden.
+  // Keys the user manually hidden stay hidden. Keys that became ungrouped
+  // (e.g. personalization-subagents moved to the top block) relocate into
+  // the ungrouped list the same way.
   const layoutGroupByKey = new Map<string, string | null | undefined>();
   for (const item of layout.items) layoutGroupByKey.set(item.key, item.group);
   for (const key of defaultKeyOrder(base)) {
     if (!seen.has(key) || hidden.includes(key)) continue;
     const newDefault = defaultGroupIdByKey.get(key);
+    const nowUngrouped = !newDefault;
+    const savedGroup = layoutGroupByKey.get(key);
+    const inUngroupedNow = ungrouped.includes(key);
+    if (nowUngrouped) {
+      if (!inUngroupedNow) {
+        if (savedGroup && groupIds.has(savedGroup)) {
+          itemsByGroup[savedGroup] = itemsByGroup[savedGroup].filter(
+            (k) => k !== key,
+          );
+        }
+        const baseOrder = defaultKeyOrder(base).filter((k) =>
+          ungrouped.includes(k),
+        );
+        const baseIdx = baseOrder.indexOf(key);
+        let insertAt = ungrouped.length;
+        if (baseIdx !== -1) {
+          for (let i = baseIdx + 1; i < baseOrder.length; i++) {
+            const pos = ungrouped.indexOf(baseOrder[i]);
+            if (pos !== -1) {
+              insertAt = pos;
+              break;
+            }
+          }
+        }
+        ungrouped.splice(insertAt, 0, key);
+      }
+      continue;
+    }
     if (
-      !newDefault ||
       !isBuiltinNavGroupId(newDefault) ||
       !groupIds.has(newDefault)
     ) {
       continue;
     }
-    const savedGroup = layoutGroupByKey.get(key);
-    const currentGroup = ungrouped.includes(key)
+    const currentGroup = inUngroupedNow
       ? null
       : savedGroup && groupIds.has(savedGroup)
         ? savedGroup
         : undefined;
     if (currentGroup === newDefault) continue;
     // Remove from the old location (ungrouped or old group).
-    if (inUngrouped(ungrouped, key)) {
+    if (inUngroupedNow) {
       ungrouped.splice(ungrouped.indexOf(key), 1);
     } else if (currentGroup) {
       itemsByGroup[currentGroup] = itemsByGroup[currentGroup].filter(
@@ -208,10 +236,6 @@ export function editorFromCatalog(
     itemsByGroup[newDefault].splice(insertAt, 0, key);
   }
   return { groups, ungrouped, itemsByGroup, hidden };
-}
-
-function inUngrouped(list: string[], key: string): boolean {
-  return list.includes(key);
 }
 
 /**
