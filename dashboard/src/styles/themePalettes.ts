@@ -1,4 +1,4 @@
-/** Brand palettes — orthogonal to light/dark mode (`data-theme`). */
+/** 品牌色板 — 与明暗模式（`data-theme`）相互独立。 */
 
 export type ThemePalette =
   | "rose"
@@ -22,27 +22,27 @@ export const VALID_PALETTES: ThemePalette[] = [
   "slate",
 ];
 
-/** Curated palettes only — "custom" is handled separately via a hex value. */
+/** 仅内置精选色板 — "custom" 通过十六进制色值单独处理。 */
 export const CURATED_PALETTES: ThemePalette[] = [...VALID_PALETTES];
 
 export const DEFAULT_PALETTE: ThemePalette = "custom";
-export const DEFAULT_CUSTOM_COLOR = "#f92a30";
+export const DEFAULT_CUSTOM_COLOR = "#ff3366";
 
-/** True when the value is one of the curated palette keys (not "custom"/hex). */
+/** 当值为精选色板键之一时为真（不含 "custom"/十六进制色值）。 */
 export function isCuratedPalette(value: string): value is ThemePalette {
   return (VALID_PALETTES as string[]).includes(value);
 }
 
-/** Shared localStorage key for light/dark preference + brand palette. */
+/** 明暗偏好与品牌色板共用的 localStorage 键。 */
 export const THEME_STORAGE_KEY = "theme";
 
-/** Legacy palette-only key; migrated into {@link THEME_STORAGE_KEY}.palette. */
+/** 旧版仅存色板的键；已迁移至 {@link THEME_STORAGE_KEY}.palette。 */
 export const LEGACY_PALETTE_STORAGE_KEY = "octop:ui-palette";
 
-/** @deprecated Use {@link LEGACY_PALETTE_STORAGE_KEY}; kept for import compatibility. */
+/** @deprecated 请改用 {@link LEGACY_PALETTE_STORAGE_KEY}；保留仅为兼容旧导入。 */
 export const PALETTE_STORAGE_KEY = LEGACY_PALETTE_STORAGE_KEY;
 
-/** Swatch color shown in the palette picker (light brand). */
+/** 色板选择器中展示的色块颜色（浅色品牌色）。 */
 export const PALETTE_SWATCH: Record<ThemePalette, string> = {
   rose: "#E85D75",
   tech: "#4B74FA",
@@ -52,7 +52,7 @@ export const PALETTE_SWATCH: Record<ThemePalette, string> = {
   emerald: "#10B981",
   amber: "#F59E0B",
   slate: "#64748B",
-  custom: DEFAULT_CUSTOM_COLOR, // live swatch is provided by the picker UI
+  custom: DEFAULT_CUSTOM_COLOR, // 实时色块由选择器 UI 提供
 };
 
 type AntdBrandTokens = {
@@ -69,7 +69,7 @@ type AntdBrandTokens = {
   colorPrimaryTextActive?: string;
 };
 
-/** Ant Design primary tokens per curated palette × mode ("custom" derives at runtime). */
+/** 各精选色板 × 模式对应的 Ant Design 主色 token（"custom" 在运行时派生）。 */
 export const ANTD_BRAND_TOKENS: Record<
   Exclude<ThemePalette, "custom">,
   { light: AntdBrandTokens; dark: AntdBrandTokens }
@@ -244,7 +244,7 @@ export const ANTD_BRAND_TOKENS: Record<
   },
 };
 
-/** Resolved Ant Design / chart primary for the active palette × mode. */
+/** 当前色板 × 模式下解析后的 Ant Design / 图表主色。 */
 export function brandPrimary(
   palette: ThemePalette,
   isDark: boolean,
@@ -255,10 +255,10 @@ export function brandPrimary(
 }
 
 // ---------------------------------------------------------------------------
-// Custom brand color — derive the full token/CSS-variable set from one hex
+// 自定义品牌色 — 由一个十六进制色值派生完整的 token / CSS 变量集合
 // ---------------------------------------------------------------------------
 
-/** Normalize user input (#abc / abc / #aabbcc / rgb-free hex) to #rrggbb. */
+/** 将用户输入（#abc / abc / #aabbcc / 不带 rgb 前缀的十六进制）规范化为 #rrggbb。 */
 export function normalizeHexColor(
   input: string | null | undefined,
 ): string | null {
@@ -288,7 +288,7 @@ function rgbToHex(r: number, g: number, b: number): string {
     .padStart(6, "0")}`;
 }
 
-/** Linear interpolation between two hex colors (t in [0,1]). */
+/** 两个十六进制颜色之间的线性插值（t 取值范围 [0,1]）。 */
 export function mixHex(a: string, b: string, t: number): string {
   const [r1, g1, b1] = hexToRgb(a);
   const [r2, g2, b2] = hexToRgb(b);
@@ -303,7 +303,7 @@ function relativeLuminance(hex: string): number {
   return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 }
 
-/** WCAG contrast ratio between two hex colors (1..21). */
+/** 两个十六进制颜色之间的 WCAG 对比度（1..21）。 */
 export function contrastRatio(a: string, b: string): number {
   const la = relativeLuminance(a);
   const lb = relativeLuminance(b);
@@ -312,16 +312,7 @@ export function contrastRatio(a: string, b: string): number {
   return (lighter + 0.05) / (darker + 0.05);
 }
 
-/** Darken until white text reaches ≥4.5:1 (WCAG AA); never below 12% lightness. */
-function ensureSolidOnWhite(hex: string): string {
-  let color = hex;
-  for (let i = 0; i < 10 && contrastRatio(color, "#FFFFFF") < 4.5; i++) {
-    color = mixHex(color, "#000000", 0.08);
-  }
-  return color;
-}
-
-/** Lighten until readable on dark surfaces (≥3:1 against #0f1117). */
+/** 持续提亮直到在深色背景上可读（与 #0f1117 对比度 ≥3:1）。 */
 function ensureTextOnDark(hex: string): string {
   let color = hex;
   for (let i = 0; i < 12 && contrastRatio(color, "#0f1117") < 3; i++) {
@@ -331,23 +322,23 @@ function ensureTextOnDark(hex: string): string {
 }
 
 export interface CustomBrandColors {
-  /** Darkened solid primary, readable with white text (light mode). */
+  /** 加深后的实色主色，搭配白色文字保持可读（浅色模式）。 */
   solid: string;
-  /** Brightened text/link variant for dark mode. */
+  /** 提亮后的文字/链接变体，用于深色模式。 */
   onDark: string;
-  /** Accent variant for badges/tags (original hue, mid luminance). */
+  /** 徽章/标签用的强调色变体（保留原始色相，中等亮度）。 */
   accent: string;
 }
 
 export function deriveCustomBrandColors(hex: string): CustomBrandColors {
   return {
-    solid: ensureSolidOnWhite(hex),
+    solid: hex,
     onDark: ensureTextOnDark(hex),
     accent: ensureTextOnDark(mixHex(hex, "#FFFFFF", 0.12)),
   };
 }
 
-/** Ant Design brand tokens for the custom palette, derived from one hex. */
+/** 自定义色板对应的 Ant Design 品牌 token，由一个十六进制色值派生。 */
 export function customBrandTokens(hex: string): {
   light: AntdBrandTokens;
   dark: AntdBrandTokens;
@@ -378,7 +369,7 @@ export function customBrandTokens(hex: string): {
   };
 }
 
-/** Resolve Ant tokens for any palette — "custom" derives from the stored hex. */
+/** 为任意色板解析 Ant token — "custom" 从存储的十六进制色值派生。 */
 export function brandTokensFor(
   palette: ThemePalette,
   isDark: boolean,
@@ -393,8 +384,8 @@ export function brandTokensFor(
 }
 
 /**
- * CSS custom-property overrides for `html[data-palette="custom"]`.
- * Mirrors the curated palette blocks in theme-vars.css but derived at runtime.
+ * `html[data-palette="custom"]` 的 CSS 自定义属性覆盖。
+ * 与 theme-vars.css 中的精选色板代码块保持一致，但在运行时派生。
  */
 export function customPaletteCssVars(hex: string, isDark: boolean): string {
   const { solid, onDark, accent } = deriveCustomBrandColors(hex);
