@@ -160,7 +160,58 @@ export function editorFromCatalog(
     }
     hidden.push(key);
   }
+  // Keys whose default built-in group changed (e.g. knowledge-bases moved
+  // from "settings" to "personalization"): relocate saved-layout placements
+  // into the new default group, keeping the base ordering inside it.
+  // Keys the user manually hidden stay hidden.
+  const layoutGroupByKey = new Map<string, string | null | undefined>();
+  for (const item of layout.items) layoutGroupByKey.set(item.key, item.group);
+  for (const key of defaultKeyOrder(base)) {
+    if (!seen.has(key) || hidden.includes(key)) continue;
+    const newDefault = defaultGroupIdByKey.get(key);
+    if (
+      !newDefault ||
+      !isBuiltinNavGroupId(newDefault) ||
+      !groupIds.has(newDefault)
+    ) {
+      continue;
+    }
+    const savedGroup = layoutGroupByKey.get(key);
+    const currentGroup = ungrouped.includes(key)
+      ? null
+      : savedGroup && groupIds.has(savedGroup)
+        ? savedGroup
+        : undefined;
+    if (currentGroup === newDefault) continue;
+    // Remove from the old location (ungrouped or old group).
+    if (inUngrouped(ungrouped, key)) {
+      ungrouped.splice(ungrouped.indexOf(key), 1);
+    } else if (currentGroup) {
+      itemsByGroup[currentGroup] = itemsByGroup[currentGroup].filter(
+        (k) => k !== key,
+      );
+    }
+    // Insert before the first base-order sibling that follows it in the
+    // new group; fall back to appending at the group tail.
+    const baseOrder = base.itemsByGroup[newDefault] ?? [];
+    const baseIdx = baseOrder.indexOf(key);
+    let insertAt = itemsByGroup[newDefault].length;
+    if (baseIdx !== -1) {
+      for (let i = baseIdx + 1; i < baseOrder.length; i++) {
+        const pos = itemsByGroup[newDefault].indexOf(baseOrder[i]);
+        if (pos !== -1) {
+          insertAt = pos;
+          break;
+        }
+      }
+    }
+    itemsByGroup[newDefault].splice(insertAt, 0, key);
+  }
   return { groups, ungrouped, itemsByGroup, hidden };
+}
+
+function inUngrouped(list: string[], key: string): boolean {
+  return list.includes(key);
 }
 
 /**

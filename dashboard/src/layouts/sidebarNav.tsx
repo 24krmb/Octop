@@ -212,6 +212,12 @@ export function buildNavSections(
       labelKey: "nav.tools",
     },
     {
+      key: "knowledge-bases",
+      path: "/knowledge-bases",
+      icon: <Database size={iconSize} strokeWidth={iconStroke} />,
+      labelKey: "nav.knowledgeBases",
+    },
+    {
       key: "personalization-memory",
       path: "/personalization/memory",
       icon: <Brain size={iconSize} strokeWidth={iconStroke} />,
@@ -255,14 +261,6 @@ export function buildNavSections(
       path: "/skill-packages",
       icon: <Package size={iconSize} strokeWidth={iconStroke} />,
       labelKey: "nav.skillPackages",
-    });
-  }
-  if (navAllowed(user, "knowledge-bases")) {
-    settingsItems.push({
-      key: "knowledge-bases",
-      path: "/knowledge-bases",
-      icon: <Database size={iconSize} strokeWidth={iconStroke} />,
-      labelKey: "nav.knowledgeBases",
     });
   }
   // User-scoped remote Octop links — always available (like personalization).
