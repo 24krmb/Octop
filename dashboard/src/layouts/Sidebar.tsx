@@ -784,7 +784,7 @@ export default function Sidebar({
           alignItems: "center",
           gap: 6,
           minWidth: 0,
-          padding: isRailCollapsed ? "12px 0" : "14px 14px 10px",
+          padding: isRailCollapsed ? "12px 0" : "14px 14px 0",
           justifyContent: "center",
           flexShrink: 0,
         }}
