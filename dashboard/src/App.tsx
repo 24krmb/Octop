@@ -102,6 +102,9 @@ function ThemedApp() {
               "0px 12px 24px -16px rgba(0, 0, 0, 0.2), 0px 8px 40px 0px rgba(0, 0, 0, 0.3)",
           }
         : {
+            colorText: "rgba(24, 49, 83, 0.9)",
+            colorTextBase: "rgba(24, 49, 83, 1)",
+            colorTextDescription: "rgba(24, 49, 83, 1)",
             ...brandTokens,
           }),
     },
