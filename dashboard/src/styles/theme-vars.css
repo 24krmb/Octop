@@ -1,6 +1,6 @@
 /* ===================================================================
    Octop Design System v3 – CSS Custom Properties
-   Default brand: Elegant Rose #ff3366
+   Default brand: Elegant Rose #1d4ed8
    Palettes via html[data-palette="rose|tech|indigo|teal|violet|emerald|amber|slate"]
    Mode via html[data-theme="light|dark"]
    =================================================================== */
@@ -8,69 +8,69 @@
 /* ---------- LIGHT THEME ---------- */
 :root,
 html[data-theme="light"] {
-  /* ---- Backgrounds ---- */
+  /* ---- Backgrounds (globals.css: zinc scale) ---- */
   --fn-bg-primary: #ffffff;
-  --fn-bg-secondary: #f7f8fa;
-  --fn-bg-tertiary: #f0f1f3;
+  --fn-bg-secondary: #f4f4f5;
+  --fn-bg-tertiary: #e4e4e7;
   --fn-bg-elevated: #ffffff;
-  --fn-bg-layout: #F9FAFB;
+  --fn-bg-layout: #fafafa;
   --fn-bg-container: #ffffff;
-  --fn-bg-hover: rgba(249,42,48, 0.04);
-  --fn-bg-active: rgba(249,42,48, 0.08);
-  --fn-bg-selected: rgba(249,42,48, 0.06);
-  --fn-bg-code: #F9FAFB;
-  --fn-bg-toolbar: #fafbfc;
-  --fn-bg-toolbar-hover: #f0f1f3;
-  --fn-bg-input-label: #f7f8fa;
+  --fn-bg-hover: rgba(29,78,216, 0.04);
+  --fn-bg-active: rgba(29,78,216, 0.08);
+  --fn-bg-selected: rgba(29,78,216, 0.06);
+  --fn-bg-code: #fafafa;
+  --fn-bg-toolbar: #fafafa;
+  --fn-bg-toolbar-hover: #f4f4f5;
+  --fn-bg-input-label: #fafafa;
   --fn-bg-success-light: #ecfdf5;
   --fn-bg-danger-light: #fef2f2;
   --fn-bg-warning-light: #fffbeb;
   --fn-bg-info-light: #eff6ff;
   --fn-bg-glass: rgba(255, 255, 255, 0.8);
-  --fn-bg-sidebar: #ffffff;
+  --fn-bg-sidebar: #fafafa;
   --fn-bg-base: #ffffff;
-  --fn-bg-page: #F9FAFB;
+  --fn-bg-page: #fafafa;
   --fn-bg-quaternary: rgba(0, 0, 0, 0.03);
-  --fn-bg-subtle: #f3f4f6;
-  --fn-bg-secondary-hover: #f0f1f3;
-  --fn-bg-secondary-active: #e8eaed;
+  --fn-bg-subtle: #f4f4f5;
+  --fn-bg-secondary-hover: #e4e4e7;
+  --fn-bg-secondary-active: #d4d4d8;
   --fn-surface: #ffffff;
-  --fn-surface-sunken: #f7f8fa;
+  --fn-surface-sunken: #f4f4f5;
   --fn-fill-hover: rgba(0, 0, 0, 0.04);
-  --fn-fill-tertiary: #f2f3f5;
+  --fn-fill-tertiary: #f4f4f5;
 
   /* ---- Text ---- */
-  --fn-text-primary: #111827;
-  --fn-text-secondary: #290504;
-  --fn-text-tertiary: #183153;
-  --fn-text-quaternary: #d1d5db;
-  --fn-text-placeholder: #c0c5ce;
-  --fn-text-disabled: #d1d5db;
+  --fn-text-primary: #09090b;
+  --fn-text-secondary: #52525b;
+  --fn-text-tertiary: #71717a;
+  --fn-text-quaternary: #a1a1aa;
+  --fn-text-placeholder: #a1a1aa;
+  --fn-text-disabled: #d4d4d8;
   --fn-text-inverse: #ffffff;
-  --fn-text-brand: #ff3366;
-  --fn-text-danger: #ef4444;
+  --fn-text-brand: #1d4ed8;
+  --fn-text-danger: #dc2626;
   --fn-text-link: var(--fn-text-brand);
-  --fn-logo-color: #e05040;
+  --fn-logo-color: #1d4ed8;
   --fn-logo-filter: none;
   --fn-font-mono: ui-monospace, "SFMono-Regular", Consolas, monospace;
 
   /* ---- Borders ---- */
-  --fn-border-primary: #e5e7eb;
-  --fn-border-secondary: #f3f4f6;
-  --fn-border-tertiary: #f9fafb;
-  --fn-border-input: #d1d5db;
-  --fn-border-input-alt: #e5e7eb;
-  --fn-border-focus: #ff3366;
-  --fn-border: #e5e7eb;
-  --fn-border-color: #e5e7eb;
-  --fn-border-strong: #d1d5db;
+  --fn-border-primary: #e4e4e7;
+  --fn-border-secondary: #ececee;
+  --fn-border-tertiary: #f4f4f5;
+  --fn-border-input: #d4d4d8;
+  --fn-border-input-alt: #e4e4e7;
+  --fn-border-focus: #1d4ed8;
+  --fn-border: #e4e4e7;
+  --fn-border-color: #e4e4e7;
+  --fn-border-strong: #d4d4d8;
   --fn-border-subtle: rgba(0, 0, 0, 0.06);
   --fn-border-success: #6ee7b7;
 
   /* ---- Brand (rose) ---- */
-  --fn-color-brand: #ff3366;
-  --fn-color-brand-hover: #d14a62;
-  --fn-color-brand-soft: #d14a62;
+  --fn-color-brand: #1d4ed8;
+  --fn-color-brand-hover: #1e40af;
+  --fn-color-brand-soft: #1e40af;
   --fn-accent: var(--fn-color-brand);
   --fn-primary: var(--fn-color-brand);
   --fn-primary-bg: color-mix(in srgb, var(--fn-color-brand) 12%, transparent);
@@ -81,44 +81,44 @@ html[data-theme="light"] {
     transparent
   );
   --fn-color-on-brand: #ffffff;
-  --fn-color-brand-bg: rgba(249,42,48, 0.06);
-  --fn-color-brand-light: #fde8ec;
-  --fn-color-brand-shadow: rgba(249,42,48, 0.15);
-  --fn-color-brand-glow: rgba(249,42,48, 0.08);
+  --fn-color-brand-bg: rgba(29,78,216, 0.06);
+  --fn-color-brand-light: #eff6ff;
+  --fn-color-brand-shadow: rgba(29,78,216, 0.15);
+  --fn-color-brand-glow: rgba(29,78,216, 0.08);
 
   /* ---- AI message bubble (frosted glass) ---- */
   --fn-assistant-bubble-bg: rgba(255, 255, 255, 0.45);
   --fn-assistant-bubble-bg-gradient: linear-gradient(
     135deg,
-    rgba(255, 240, 243, 0.6) 0%,
+    rgba(239, 246, 255, 0.6) 0%,
     rgba(255, 255, 255, 0.35) 50%,
-    rgba(255, 243, 245, 0.5) 100%
+    rgba(219, 234, 254, 0.5) 100%
   );
-  --fn-assistant-bubble-border: rgba(249,42,48, 0.12);
-  --fn-assistant-glow-color: 249,42,48;
+  --fn-assistant-bubble-border: rgba(29,78,216, 0.12);
+  --fn-assistant-glow-color: 29,78,216;
 
   /* ---- Semantic ---- */
   --fn-color-success: #10b981;
   --fn-color-success-border: #6ee7b7;
   --fn-color-success-glow: rgba(16, 185, 129, 0.2);
-  --fn-color-danger: #ef4444;
+  --fn-color-danger: #dc2626;
   --fn-color-danger-border: #fca5a5;
   --fn-color-warning: #f59e0b;
   --fn-color-warning-border: #fcd34d;
   --fn-color-warning-text: #d97706;
   --fn-color-info: #3b82f6;
   --fn-color-info-border: #93c5fd;
-  --fn-color-error: #ef4444;
+  --fn-color-error: #dc2626;
   --fn-color-error-bg: #fef2f2;
   --fn-color-error-border: #fca5a5;
   --fn-success: #10b981;
   --fn-success-bg: #ecfdf5;
   --fn-success-border: #6ee7b7;
-  --fn-danger: #ef4444;
+  --fn-danger: #dc2626;
   --fn-warning-color: #d97706;
   --fn-color-file-zip: #f59e0b;
   --fn-color-file-word: #3b82f6;
-  --fn-color-file-ppt: #ef4444;
+  --fn-color-file-ppt: #dc2626;
   --fn-color-file-image: #ec4899;
 
   /* ---- Tags ---- */
@@ -128,7 +128,7 @@ html[data-theme="light"] {
   --fn-tag-remote-bg: #fff7ed;
   --fn-tag-remote-text: #f97316;
   --fn-tag-remote-border: #fed7aa;
-  --fn-tag-channel-text: #ff3366;
+  --fn-tag-channel-text: #1d4ed8;
 
   /* ---- Shadows ---- */
   --fn-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
@@ -139,30 +139,30 @@ html[data-theme="light"] {
     0 4px 6px -4px rgba(0, 0, 0, 0.04);
   --fn-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.07),
     0 8px 10px -6px rgba(0, 0, 0, 0.04);
-  --fn-shadow-brand: 0 4px 14px rgba(249,42,48, 0.18);
-  --fn-shadow-brand-lg: 0 8px 24px rgba(249,42,48, 0.24);
+  --fn-shadow-brand: 0 4px 14px rgba(29,78,216, 0.18);
+  --fn-shadow-brand-lg: 0 8px 24px rgba(29,78,216, 0.24);
 
   /* ---- Selected row ---- */
-  --fn-row-selected-bg: rgba(249,42,48, 0.05);
-  --fn-row-selected-hover: rgba(249,42,48, 0.09);
-  --fn-row-selected-alt-bg: rgba(249,42,48, 0.04);
-  --fn-row-selected-alt-hover: rgba(249,42,48, 0.08);
-  --fn-row-selected-border: #ff3366;
+  --fn-row-selected-bg: rgba(29,78,216, 0.05);
+  --fn-row-selected-hover: rgba(29,78,216, 0.09);
+  --fn-row-selected-alt-bg: rgba(29,78,216, 0.04);
+  --fn-row-selected-alt-hover: rgba(29,78,216, 0.08);
+  --fn-row-selected-border: #1d4ed8;
 
   /* ---- Cards ---- */
-  --fn-card-border-normal: #e5e7eb;
+  --fn-card-border-normal: #e4e4e7;
   --fn-card-shadow-normal: 0 1px 3px rgba(0, 0, 0, 0.04);
   --fn-card-radius: 12px;
 
   /* ---- Sidebar ---- */
   --fn-sidebar-width: 240px;
-  --fn-sidebar-bg: #fffaf7;
-  --fn-sidebar-border: #ebebeb;
-  --fn-sidebar-item-hover: #f5f5f5;
-  --fn-sidebar-item-active-bg: #fde8ec;
-  --fn-sidebar-item-active: rgba(249,42,48, 0.08);
-  --fn-sidebar-item-active-text: #ff3366;
-  --fn-sidebar-group-text: #b0b5be;
+  --fn-sidebar-bg: #fafafa;
+  --fn-sidebar-border: #e4e4e7;
+  --fn-sidebar-item-hover: #f4f4f5;
+  --fn-sidebar-item-active-bg: #eff6ff;
+  --fn-sidebar-item-active: rgba(29,78,216, 0.08);
+  --fn-sidebar-item-active-text: #1d4ed8;
+  --fn-sidebar-group-text: #a1a1aa;
 
   /* ---- Header ---- */
   --fn-header-height: 56px;
@@ -192,69 +192,69 @@ html[data-theme="light"] {
 
 /* ---------- DARK THEME ---------- */
 html[data-theme="dark"] {
-  /* ---- Backgrounds ---- */
-  --fn-bg-primary: #141414;
-  --fn-bg-secondary: #1a1a1a;
-  --fn-bg-tertiary: #222222;
-  --fn-bg-elevated: #1e1e1e;
-  --fn-bg-layout: #0e0e0e;
-  --fn-bg-container: #141414;
-  --fn-bg-hover: rgba(249,42,48, 0.08);
-  --fn-bg-active: rgba(249,42,48, 0.14);
-  --fn-bg-selected: rgba(249,42,48, 0.1);
-  --fn-bg-code: #1e1e1e;
-  --fn-bg-toolbar: #161616;
-  --fn-bg-toolbar-hover: #222222;
-  --fn-bg-input-label: #1a1a1a;
+  /* ---- Backgrounds (globals.css: zinc scale) ---- */
+  --fn-bg-primary: #18181b;
+  --fn-bg-secondary: #1f1f23;
+  --fn-bg-tertiary: #27272a;
+  --fn-bg-elevated: #18181b;
+  --fn-bg-layout: #09090b;
+  --fn-bg-container: #09090b;
+  --fn-bg-hover: rgba(29,78,216, 0.08);
+  --fn-bg-active: rgba(29,78,216, 0.14);
+  --fn-bg-selected: rgba(29,78,216, 0.1);
+  --fn-bg-code: #18181b;
+  --fn-bg-toolbar: #131316;
+  --fn-bg-toolbar-hover: #1f1f23;
+  --fn-bg-input-label: #18181b;
   --fn-bg-success-light: rgba(16, 185, 129, 0.08);
   --fn-bg-danger-light: rgba(239, 68, 68, 0.08);
   --fn-bg-warning-light: rgba(245, 158, 11, 0.08);
   --fn-bg-info-light: rgba(59, 130, 246, 0.08);
-  --fn-bg-glass: rgba(14, 14, 14, 0.8);
-  --fn-bg-sidebar: #141414;
-  --fn-bg-base: #141414;
-  --fn-bg-page: #0e0e0e;
+  --fn-bg-glass: rgba(9, 9, 11, 0.8);
+  --fn-bg-sidebar: #18181b;
+  --fn-bg-base: #09090b;
+  --fn-bg-page: #09090b;
   --fn-bg-quaternary: rgba(255, 255, 255, 0.04);
-  --fn-bg-subtle: #1e1e1e;
-  --fn-bg-secondary-hover: #222222;
-  --fn-bg-secondary-active: #2a2a2a;
-  --fn-surface: #1e1e1e;
-  --fn-surface-sunken: #1a1a1a;
+  --fn-bg-subtle: #18181b;
+  --fn-bg-secondary-hover: #27272a;
+  --fn-bg-secondary-active: #3f3f46;
+  --fn-surface: #18181b;
+  --fn-surface-sunken: #09090b;
   --fn-fill-hover: rgba(255, 255, 255, 0.08);
   --fn-fill-tertiary: rgba(255, 255, 255, 0.06);
 
   /* ---- Text ---- */
-  --fn-text-primary: rgba(255, 255, 255, 0.9);
-  --fn-text-secondary: rgba(255, 255, 255, 0.6);
-  --fn-text-tertiary: rgba(255, 255, 255, 0.35);
-  --fn-text-quaternary: rgba(255, 255, 255, 0.2);
-  --fn-text-placeholder: rgba(255, 255, 255, 0.16);
-  --fn-text-disabled: rgba(255, 255, 255, 0.16);
-  --fn-text-inverse: #0e0e0e;
-  --fn-text-brand: #f08b9a;
-  --fn-text-danger: #f87171;
+  --fn-text-primary: #fafafa;
+  --fn-text-secondary: #a1a1aa;
+  --fn-text-tertiary: rgba(255, 255, 255, 0.45);
+  --fn-text-quaternary: rgba(255, 255, 255, 0.25);
+  --fn-text-placeholder: rgba(255, 255, 255, 0.2);
+  --fn-text-disabled: rgba(255, 255, 255, 0.2);
+  --fn-text-inverse: #09090b;
+  --fn-text-brand: #60a5fa;
+  --fn-text-danger: #ef4444;
   --fn-text-link: var(--fn-text-brand);
-  --fn-logo-color: #f08b9a;
+  --fn-logo-color: #60a5fa;
   --fn-logo-filter: brightness(1.15) saturate(0.9);
   --fn-font-mono: ui-monospace, "SFMono-Regular", Consolas, monospace;
 
   /* ---- Borders ---- */
-  --fn-border-primary: rgba(255, 255, 255, 0.08);
-  --fn-border-secondary: rgba(255, 255, 255, 0.05);
-  --fn-border-tertiary: rgba(255, 255, 255, 0.03);
-  --fn-border-input: rgba(255, 255, 255, 0.12);
-  --fn-border-input-alt: rgba(255, 255, 255, 0.09);
-  --fn-border-focus: #f08b9a;
-  --fn-border: rgba(255, 255, 255, 0.08);
-  --fn-border-color: rgba(255, 255, 255, 0.08);
-  --fn-border-strong: rgba(255, 255, 255, 0.16);
+  --fn-border-primary: rgba(255, 255, 255, 0.1);
+  --fn-border-secondary: rgba(255, 255, 255, 0.08);
+  --fn-border-tertiary: rgba(255, 255, 255, 0.05);
+  --fn-border-input: rgba(255, 255, 255, 0.15);
+  --fn-border-input-alt: rgba(255, 255, 255, 0.1);
+  --fn-border-focus: #60a5fa;
+  --fn-border: rgba(255, 255, 255, 0.1);
+  --fn-border-color: rgba(255, 255, 255, 0.1);
+  --fn-border-strong: rgba(255, 255, 255, 0.2);
   --fn-border-subtle: rgba(255, 255, 255, 0.05);
   --fn-border-success: rgba(52, 211, 153, 0.25);
 
   /* ---- Brand (rose, lightened for dark bg) ---- */
-  --fn-color-brand: #f08b9a;
-  --fn-color-brand-hover: #ff3366;
-  --fn-color-brand-soft: #ff3366;
+  --fn-color-brand: #60a5fa;
+  --fn-color-brand-hover: #1d4ed8;
+  --fn-color-brand-soft: #1d4ed8;
   --fn-accent: var(--fn-color-brand);
   --fn-primary: var(--fn-color-brand);
   --fn-primary-bg: color-mix(in srgb, var(--fn-color-brand) 16%, transparent);
@@ -265,44 +265,44 @@ html[data-theme="dark"] {
     transparent
   );
   --fn-color-on-brand: #ffffff;
-  --fn-color-brand-bg: rgba(249,42,48, 0.12);
-  --fn-color-brand-light: rgba(249,42,48, 0.16);
-  --fn-color-brand-shadow: rgba(249,42,48, 0.25);
-  --fn-color-brand-glow: rgba(249,42,48, 0.08);
+  --fn-color-brand-bg: rgba(29,78,216, 0.12);
+  --fn-color-brand-light: rgba(29,78,216, 0.16);
+  --fn-color-brand-shadow: rgba(29,78,216, 0.25);
+  --fn-color-brand-glow: rgba(29,78,216, 0.08);
 
   /* ---- AI message bubble (frosted glass) ---- */
   --fn-assistant-bubble-bg: rgba(255, 255, 255, 0.06);
   --fn-assistant-bubble-bg-gradient: linear-gradient(
     135deg,
-    rgba(240, 139, 154, 0.1) 0%,
+    rgba(96, 165, 250, 0.1) 0%,
     rgba(255, 255, 255, 0.04) 50%,
-    rgba(240, 139, 154, 0.08) 100%
+    rgba(96, 165, 250, 0.08) 100%
   );
-  --fn-assistant-bubble-border: rgba(240, 139, 154, 0.14);
-  --fn-assistant-glow-color: 240, 139, 154;
+  --fn-assistant-bubble-border: rgba(96, 165, 250, 0.14);
+  --fn-assistant-glow-color: 96, 165, 250;
 
   /* ---- Semantic ---- */
   --fn-color-success: #34d399;
   --fn-color-success-border: rgba(52, 211, 153, 0.25);
   --fn-color-success-glow: rgba(52, 211, 153, 0.2);
-  --fn-color-danger: #f87171;
+  --fn-color-danger: #ef4444;
   --fn-color-danger-border: rgba(248, 113, 113, 0.25);
   --fn-color-warning: #fbbf24;
   --fn-color-warning-border: rgba(251, 191, 36, 0.25);
   --fn-color-warning-text: #fbbf24;
   --fn-color-info: #60a5fa;
   --fn-color-info-border: rgba(96, 165, 250, 0.25);
-  --fn-color-error: #f87171;
+  --fn-color-error: #ef4444;
   --fn-color-error-bg: rgba(239, 68, 68, 0.08);
   --fn-color-error-border: rgba(248, 113, 113, 0.25);
   --fn-success: #34d399;
   --fn-success-bg: rgba(16, 185, 129, 0.08);
   --fn-success-border: rgba(52, 211, 153, 0.25);
-  --fn-danger: #f87171;
+  --fn-danger: #ef4444;
   --fn-warning-color: #fbbf24;
   --fn-color-file-zip: #fbbf24;
   --fn-color-file-word: #60a5fa;
-  --fn-color-file-ppt: #f87171;
+  --fn-color-file-ppt: #ef4444;
   --fn-color-file-image: #f472b6;
 
   /* ---- Tags ---- */
@@ -312,7 +312,7 @@ html[data-theme="dark"] {
   --fn-tag-remote-bg: rgba(249, 115, 22, 0.1);
   --fn-tag-remote-text: #fb923c;
   --fn-tag-remote-border: rgba(249, 115, 22, 0.2);
-  --fn-tag-channel-text: #f08b9a;
+  --fn-tag-channel-text: #60a5fa;
 
   /* ---- Shadows ---- */
   --fn-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.25);
@@ -320,15 +320,15 @@ html[data-theme="dark"] {
   --fn-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.35), 0 2px 4px rgba(0, 0, 0, 0.22);
   --fn-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.35), 0 4px 6px rgba(0, 0, 0, 0.22);
   --fn-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.4), 0 8px 10px rgba(0, 0, 0, 0.25);
-  --fn-shadow-brand: 0 4px 14px rgba(249,42,48, 0.22);
-  --fn-shadow-brand-lg: 0 8px 24px rgba(249,42,48, 0.3);
+  --fn-shadow-brand: 0 4px 14px rgba(29,78,216, 0.22);
+  --fn-shadow-brand-lg: 0 8px 24px rgba(29,78,216, 0.3);
 
   /* ---- Selected row ---- */
-  --fn-row-selected-bg: rgba(249,42,48, 0.1);
-  --fn-row-selected-hover: rgba(249,42,48, 0.16);
-  --fn-row-selected-alt-bg: rgba(249,42,48, 0.08);
-  --fn-row-selected-alt-hover: rgba(249,42,48, 0.13);
-  --fn-row-selected-border: #f08b9a;
+  --fn-row-selected-bg: rgba(29,78,216, 0.1);
+  --fn-row-selected-hover: rgba(29,78,216, 0.16);
+  --fn-row-selected-alt-bg: rgba(29,78,216, 0.08);
+  --fn-row-selected-alt-hover: rgba(29,78,216, 0.13);
+  --fn-row-selected-border: #60a5fa;
 
   /* ---- Cards ---- */
   --fn-card-border-normal: rgba(255, 255, 255, 0.07);
@@ -337,17 +337,17 @@ html[data-theme="dark"] {
 
   /* ---- Sidebar ---- */
   --fn-sidebar-width: 240px;
-  --fn-sidebar-bg: #141414;
+  --fn-sidebar-bg: #18181b;
   --fn-sidebar-border: rgba(255, 255, 255, 0.06);
   --fn-sidebar-item-hover: rgba(255, 255, 255, 0.05);
-  --fn-sidebar-item-active-bg: rgba(249,42,48, 0.14);
-  --fn-sidebar-item-active: rgba(249,42,48, 0.14);
-  --fn-sidebar-item-active-text: #f08b9a;
+  --fn-sidebar-item-active-bg: rgba(29,78,216, 0.14);
+  --fn-sidebar-item-active: rgba(29,78,216, 0.14);
+  --fn-sidebar-item-active-text: #60a5fa;
   --fn-sidebar-group-text: rgba(255, 255, 255, 0.28);
 
   /* ---- Header ---- */
   --fn-header-height: 56px;
-  --fn-header-bg: #0e0e0e;
+  --fn-header-bg: #09090b;
   --fn-header-blur: 0px;
   --fn-chat-chrome-height: 57px;
   --fn-chat-divider: var(--fn-border-primary);

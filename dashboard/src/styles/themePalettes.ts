@@ -26,7 +26,7 @@ export const VALID_PALETTES: ThemePalette[] = [
 export const CURATED_PALETTES: ThemePalette[] = [...VALID_PALETTES];
 
 export const DEFAULT_PALETTE: ThemePalette = "custom";
-export const DEFAULT_CUSTOM_COLOR = "#ff3366";
+export const DEFAULT_CUSTOM_COLOR = "#1d4ed8";
 
 /** 当值为精选色板键之一时为真（不含 "custom"/十六进制色值）。 */
 export function isCuratedPalette(value: string): value is ThemePalette {
