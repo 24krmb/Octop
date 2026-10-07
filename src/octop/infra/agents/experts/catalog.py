@@ -43,7 +43,6 @@ _FALLBACK_BUNDLED_AVATAR_IDS = frozenset(
     {
         "ai-coding-coach",
         "ai-safety-guardian",
-        "clinical-learning-subscription",
         "cvm-ai-doctor",
         "cvm-cluster-doctor",
         "default",
@@ -54,7 +53,6 @@ _FALLBACK_BUNDLED_AVATAR_IDS = frozenset(
         "news-trend",
         "office-automation",
         "ops-engineer",
-        "parenting-companion",
         "stock-assistant",
         "superpowers-methodology",
         "wechat-ops",
