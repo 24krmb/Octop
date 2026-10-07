@@ -194,8 +194,12 @@ function PageShell({
           flex: 1,
           background: "var(--fn-bg-container, var(--fn-bg-elevated))",
           borderRadius: 8,
-          padding: contentPad,
-          paddingBottom: pinBody
+          // FillTabs (fill) mode: no padding at all — the tab bar sits right
+          // below the page title row, flush with the container edges.
+          padding: fill ? 0 : contentPad,
+          paddingBottom: fill
+            ? 0
+            : pinBody
             ? contentPad
             : `calc(${contentPad}px + ${safeBottom})`,
           // Mobile: never create a page-level horizontal scrollbar; wide
