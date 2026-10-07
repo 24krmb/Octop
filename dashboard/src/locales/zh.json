@@ -221,7 +221,7 @@
     "agents": "智能体",
     "providers": "Providers",
     "models": "模型",
-    "channels": "通道",
+    "channels": "IM 频道",
     "sessions": "会话",
     "cronJobs": "定时任务",
     "terminal": "终端 AI+",
@@ -2327,7 +2327,7 @@
       "runtimeTimeoutSeconds": "超时时间 (秒)",
       "runtimeMisfireGrace": "错过容忍 (秒)"
     },
-    "noAgentSelected": "请先在右上角选择一个助理来管理它的定时任务",
+    "noAgentSelected": "请先选择一个助理来管理它的定时任务",
     "deleteFailed": "删除失败",
     "goToChat": "发送到聊天"
   },
