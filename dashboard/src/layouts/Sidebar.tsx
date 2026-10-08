@@ -170,7 +170,7 @@ function NavItemButton({
             ? "var(--fn-sidebar-item-active-text)"
             : "var(--fn-text-secondary)",
           fontSize: typeSize(14, isMobile),
-          fontWeight: active ? 500 : 400,
+          fontWeight: 500,
           paddingRight: showExpand ? 4 : 12,
         }}
       >
