@@ -109,8 +109,16 @@ function ThemedApp() {
             ...brandTokens,
           }),
     },
-    components: isDark
-      ? {
+    components: {
+      // Tabs 激活/悬停色直接接管（组件 token 是叶子，原样输出变量字符串；
+      // 否则暗色算法会把 itemSelectedColor 绑到 colorPrimaryActive 深变体）。
+      Tabs: {
+        itemSelectedColor: "var(--fn-color-brand)",
+        itemHoverColor: "var(--fn-color-brand)",
+        inkBarColor: "var(--fn-color-brand)",
+      },
+      ...(isDark
+        ? {
           Modal: { headerBg: "#1a1c28", contentBg: "#1a1c28" },
           Input: { colorBgBase: "#0f1117" },
           InputNumber: { colorBgBase: "#0f1117" },
@@ -120,7 +128,8 @@ function ThemedApp() {
           Card: { colorBgContainer: "var(--fn-bg-primary)" },
           Tooltip: { colorBgSpotlight: "#424242" },
         }
-      : {},
+        : {}),
+    },
   };
 
   return (

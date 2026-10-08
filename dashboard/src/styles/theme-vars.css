@@ -400,15 +400,3 @@ html[data-theme="dark"] body {background-color: var(--fn-bg-layout);color: var(-
 
 /* ---- 平滑的文本选区 ---- */
 ::selection {background: var(--fn-color-brand);color:var(var(--fn-text-inverse))}
-
-/* ---- antd Tabs 激活/悬停态跟随品牌变量 ----
-   !important 压过 antd 运行时注入的算法色（其选择器为 4 类叠加）。 */
-html .octop-tabs .octop-tabs-tab-active .octop-tabs-tab-btn,
-html .octop-tabs .octop-tabs-tab-active .octop-tabs-tab-btn:hover,
-html .octop-tabs .octop-tabs-tab-active .octop-tabs-tab-btn:focus,
-html .octop-tabs .octop-tabs-tab-active .octop-tabs-tab-btn:active,
-html .octop-tabs .octop-tabs-tab:hover .octop-tabs-tab-btn,
-html .octop-tabs .octop-tabs-tab:hover > .octop-tabs-tab-btn,
-html .octop-tabs .octop-tabs-tab:hover {
-  color: var(--fn-color-brand) !important;
-}
