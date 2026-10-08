@@ -67,9 +67,8 @@ export default function WorkbenchPage({
 
   const browserVisible = isVisible && activeTab === "browser";
   const terminalVisible = isVisible && activeTab === "terminal";
-  const pageTitle = `${t("workbench.title")} / ${t(
-    `workbench.tabs.${activeTab}`,
-  )}`;
+  // 面包屑式 h4 标题已移除，仅展示副标题。
+  const pageTitle = undefined;
 
   return (
     <PageShell

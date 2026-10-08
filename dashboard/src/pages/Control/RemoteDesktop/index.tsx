@@ -67,9 +67,8 @@ export default function RemoteDesktopPage() {
 
   const desktopVisible = activeTab === "desktop";
   const phoneVisible = activeTab === "phone";
-  const pageTitle = `${t("remoteDesktopHub.title")} / ${t(
-    `remoteDesktopHub.tabs.${activeTab}`,
-  )}`;
+  // 面包屑式 h4 标题已移除，仅展示副标题。
+  const pageTitle = undefined;
 
   return (
     <PageShell
