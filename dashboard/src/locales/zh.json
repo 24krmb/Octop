@@ -4932,7 +4932,7 @@
   },
   "storage": {
     "pageTitle": "存储管理",
-    "pageSubtitle": "保护隐私，你的 Agent 相关文件，挂载到云存储，建议优先选择跟我们服务器一致的阿里云OSS，地域选择杭州，则实现：0 费用！",
+    "pageSubtitle": "挂载到云存储，建议优先选择跟服务器一致的运营商和地域",
     "myStorage": "我的存储",
     "supportedTypes": "支持类型",
     "addBackend": "添加存储后端",
