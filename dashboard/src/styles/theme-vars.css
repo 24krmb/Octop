@@ -258,8 +258,8 @@ html[data-theme="dark"] {
 
   /* ---- 品牌色（rose，深色背景下提亮） ---- */
   --fn-color-brand: #F4D1B4; /* 品牌主色 */
-  --fn-color-brand-hover: #1d4ed8; /* 品牌色悬停态 */
-  --fn-color-brand-soft: #1d4ed8; /* 品牌色柔和变体 */
+  --fn-color-brand-hover: #F4D1B4; /* 品牌色悬停态 */
+  --fn-color-brand-soft: #F4D1B4; /* 品牌色柔和变体 */
   --fn-accent: var(--fn-color-brand); /* 强调色（跟随品牌色） */
   --fn-primary: var(--fn-color-brand); /* 主色调（跟随品牌色） */
   --fn-primary-bg: color-mix(
@@ -389,21 +389,26 @@ html[data-theme="dark"] {
 
 
 /* ---------- 全局重置与过渡动画 ---------- */
-html,
-body,
+html,body,
 #root {
   transition:
     background-color var(--fn-transition),
     color var(--fn-transition);
 }
 
-html[data-theme="dark"] body {
-  background-color: var(--fn-bg-layout);
-  color: var(--fn-text-primary);
-}
+html[data-theme="dark"] body {background-color: var(--fn-bg-layout);color: var(--fn-text-primary)}
 
 /* ---- 平滑的文本选区 ---- */
-::selection {
-  background: var(--fn-color-brand);
-  color: #ffffff;
+::selection {background: var(--fn-color-brand);color:var(var(--fn-text-inverse))}
+
+/* ---- antd Tabs 激活/悬停态跟随品牌变量 ----
+   !important 压过 antd 运行时注入的算法色（其选择器为 4 类叠加）。 */
+html .octop-tabs .octop-tabs-tab-active .octop-tabs-tab-btn,
+html .octop-tabs .octop-tabs-tab-active .octop-tabs-tab-btn:hover,
+html .octop-tabs .octop-tabs-tab-active .octop-tabs-tab-btn:focus,
+html .octop-tabs .octop-tabs-tab-active .octop-tabs-tab-btn:active,
+html .octop-tabs .octop-tabs-tab:hover .octop-tabs-tab-btn,
+html .octop-tabs .octop-tabs-tab:hover > .octop-tabs-tab-btn,
+html .octop-tabs .octop-tabs-tab:hover {
+  color: var(--fn-color-brand) !important;
 }
