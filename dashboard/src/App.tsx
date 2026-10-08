@@ -116,7 +116,7 @@ function ThemedApp() {
           Select: { colorBgBase: "#0f1117", selectorBg: "#0f1117" },
           DatePicker: { colorBgBase: "#0f1117" },
           Segmented: { itemSelectedBg: "#1a1c28" },
-          Card: { colorBgContainer: "#161822" },
+          Card: { colorBgContainer: "var(--fn-bg-primary)" },
           Tooltip: { colorBgSpotlight: "#424242" },
         }
       : {},
