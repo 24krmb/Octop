@@ -348,7 +348,7 @@ html[data-theme="dark"] {
     216,
     0.13
   ); /* 交替选中行悬停背景色 */
-  --fn-row-selected-border: #60a5fa; /* 选中行边框色 */
+  --fn-row-selected-border: #F4D1B4; /* 选中行边框色 */
 
   /* ---- 卡片 ---- */
   --fn-card-border-normal: rgba(255, 255, 255, 0.07); /* 卡片默认边框色 */
@@ -357,12 +357,12 @@ html[data-theme="dark"] {
 
   /* ---- 侧边栏 ---- */
   --fn-sidebar-width: 240px; /* 侧边栏宽度 */
-  --fn-sidebar-bg: #18181b; /* 侧边栏背景色 */
+  --fn-sidebar-bg: #232323; /* 侧边栏背景色 */
   --fn-sidebar-border: rgba(255, 255, 255, 0.06); /* 侧边栏边框色 */
   --fn-sidebar-item-hover: rgba(255, 255, 255, 0.05); /* 侧边栏项悬停背景色 */
   --fn-sidebar-item-active-bg: rgba(29, 78, 216, 0.14); /* 侧边栏激活项背景色 */
   --fn-sidebar-item-active: rgba(29, 78, 216, 0.14); /* 侧边栏激活项高亮色 */
-  --fn-sidebar-item-active-text: #60a5fa; /* 侧边栏激活项文本色 */
+  --fn-sidebar-item-active-text: #F4D1B4; /* 侧边栏激活项文本色 */
   --fn-sidebar-group-text: rgba(255, 255, 255, 0.28); /* 侧边栏分组标题文本色 */
 
   /* ---- 顶部栏 ---- */
