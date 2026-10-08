@@ -249,7 +249,7 @@ function CronJobsPage() {
   if (!activeAgentId || !canManageJobs) {
     return (
       <PageShell
-        title={t("pageShell.tasks.title")}
+        title={undefined}
         subtitle={t("pageShell.tasks.subtitle")}
         agentScoped
       >
@@ -270,7 +270,7 @@ function CronJobsPage() {
 
   return (
     <PageShell
-      title={t("pageShell.tasks.title")}
+      title={undefined}
       subtitle={t("pageShell.tasks.subtitle")}
       agentScoped
     >

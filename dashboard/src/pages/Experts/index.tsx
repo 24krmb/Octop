@@ -824,7 +824,7 @@ export default function ExpertsPage() {
 
   return (
     <PageShell.FillTabs
-      title={t("pageShell.experts.title")}
+      title={undefined}
       subtitle={t("pageShell.experts.subtitle")}
     >
       <Tabs

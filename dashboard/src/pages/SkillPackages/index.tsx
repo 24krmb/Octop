@@ -585,7 +585,7 @@ export default function SkillPackagesPage() {
 
   return (
     <PageShell
-      title={t("skillPackages.title")}
+      title={undefined}
       subtitle={isMobile ? undefined : t("skillPackages.subtitle")}
       fill
     >

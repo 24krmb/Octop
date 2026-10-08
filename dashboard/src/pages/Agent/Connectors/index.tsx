@@ -2329,7 +2329,7 @@ export default function ConnectorsPage() {
 
   return (
     <PageShell.Tabbed
-      title={t("pageShell.connectors.title")}
+      title={undefined}
       subtitle={t("pageShell.connectors.subtitle")}
       tabBar={
         <TabBar

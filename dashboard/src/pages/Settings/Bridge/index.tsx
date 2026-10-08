@@ -7,7 +7,7 @@ export default function BridgePage() {
   const { t } = useTranslation();
   return (
     <PageShell
-      title={t("pageShell.bridge.title")}
+      title={undefined}
       subtitle={t("pageShell.bridge.subtitle")}
     >
       <BridgeSettingsPanel asPage />

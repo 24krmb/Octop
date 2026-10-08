@@ -1866,7 +1866,7 @@ export default function KnowledgeBasesPage() {
 
   return (
     <PageShell
-      title={t("knowledgeBases.title")}
+      title={undefined}
       subtitle={t("knowledgeBases.subtitle")}
       fill
       actions={
