@@ -13,7 +13,7 @@ html[data-theme="light"] {
   --fn-bg-secondary: #f4f4f5;
   --fn-bg-tertiary: #e4e4e7;
   --fn-bg-elevated: #ffffff;
-  --fn-bg-layout: #f4f4f4;
+  --fn-bg-layout: #e8edfe;
   --fn-bg-container: #ffffff;
   --fn-bg-hover: rgba(29,78,216, 0.04);
   --fn-bg-active: rgba(29,78,216, 0.08);
