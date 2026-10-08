@@ -170,7 +170,7 @@ function PageShell({
           {subtitle && (
             <Text
               type="secondary"
-              style={{ fontSize: 13, marginTop: 4, display: "block" }}
+              style={{ fontSize: 14, marginTop: 4, display: "block" }}
             >
               {subtitle}
             </Text>
