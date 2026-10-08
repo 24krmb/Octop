@@ -4296,7 +4296,7 @@
   },
   "personalization": {
     "title": "个性化",
-    "description": "配置当前智能体的技能、工具、插件、子智能体、通道、人格与记忆。",
+    "description": "配置当前智能体",
     "tabs": {
       "skills": "技能",
       "tools": "工具",

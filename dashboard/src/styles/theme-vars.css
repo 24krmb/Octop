@@ -13,7 +13,7 @@ html[data-theme="light"] {
   --fn-bg-secondary: #f4f4f5;
   --fn-bg-tertiary: #e4e4e7;
   --fn-bg-elevated: #ffffff;
-  --fn-bg-layout: #fafafa;
+  --fn-bg-layout: #f4f4f4;
   --fn-bg-container: #ffffff;
   --fn-bg-hover: rgba(29,78,216, 0.04);
   --fn-bg-active: rgba(29,78,216, 0.08);
@@ -42,7 +42,7 @@ html[data-theme="light"] {
   /* ---- Text ---- */
   --fn-text-primary: #09090b;
   --fn-text-secondary: #52525b;
-  --fn-text-tertiary: #71717a;
+  --fn-text-tertiary: #183153;
   --fn-text-quaternary: #a1a1aa;
   --fn-text-placeholder: #a1a1aa;
   --fn-text-disabled: #d4d4d8;
