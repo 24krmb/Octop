@@ -203,7 +203,7 @@ html[data-theme="dark"] {
   --fn-bg-secondary: #1f1f23; /* 次级背景色 */
   --fn-bg-tertiary: #27272a; /* 三级背景色 */
   --fn-bg-elevated: #232323; /* 悬浮层（Elevated）背景色 */
-  --fn-bg-layout: #09090b; /* 页面布局背景色 */
+  --fn-bg-layout: #181818; /* 页面布局背景色 */
   --fn-bg-container: #09090b; /* 容器背景色 */
   --fn-bg-hover: rgba(29, 78, 216, 0.08); /* 悬停态背景色 */
   --fn-bg-active: rgba(29, 78, 216, 0.14); /* 激活（按下）态背景色 */
@@ -218,14 +218,14 @@ html[data-theme="dark"] {
   --fn-bg-info-light: rgba(59, 130, 246, 0.08); /* 信息状态浅背景色 */
   --fn-bg-glass: rgba(9, 9, 11, 0.8); /* 毛玻璃背景色 */
   --fn-bg-sidebar: #232323; /* 侧边栏背景色 */
-  --fn-bg-base: #09090b; /* 基础背景色 */
-  --fn-bg-page: #09090b; /* 页面背景色 */
+  --fn-bg-base: #181818; /* 基础背景色 */
+  --fn-bg-page: #181818; /* 页面背景色 */
   --fn-bg-quaternary: rgba(255, 255, 255, 0.04); /* 四级背景色 */
   --fn-bg-subtle: #232323; /* 弱化背景色 */
   --fn-bg-secondary-hover: #27272a; /* 次级背景悬停色 */
   --fn-bg-secondary-active: #3f3f46; /* 次级背景激活色 */
   --fn-surface: #232323; /* 表面（卡片类）背景色 */
-  --fn-surface-sunken: #09090b; /* 下沉表面背景色 */
+  --fn-surface-sunken: #181818; /* 下沉表面背景色 */
   --fn-fill-hover: rgba(255, 255, 255, 0.08); /* 悬停填充色 */
   --fn-fill-tertiary: rgba(255, 255, 255, 0.06); /* 三级填充色 */
 
@@ -236,7 +236,7 @@ html[data-theme="dark"] {
   --fn-text-quaternary: rgba(255, 255, 255, 0.45); /* 四级文本色 */
   --fn-text-placeholder: rgba(255, 255, 255, 0.2); /* 占位符文本色 */
   --fn-text-disabled: rgba(255, 255, 255, 0.2); /* 禁用态文本色 */
-  --fn-text-inverse: #09090b; /* 反色文本（用于深色背景上） */
+  --fn-text-inverse: #181818; /* 反色文本（用于深色背景上） */
   --fn-text-brand: #F4D1B4; /* 品牌色文本 */
   --fn-text-danger: #ff3366; /* 危险色文本 */
   --fn-text-link: var(--fn-text-brand); /* 链接文本色 */
