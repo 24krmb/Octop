@@ -205,9 +205,9 @@ html[data-theme="dark"] {
   --fn-bg-elevated: #232323; /* 悬浮层（Elevated）背景色 */
   --fn-bg-layout: #181818; /* 页面布局背景色 */
   --fn-bg-container: #09090b; /* 容器背景色 */
-  --fn-bg-hover: rgba(29, 78, 216, 0.08); /* 悬停态背景色 */
-  --fn-bg-active: rgba(29, 78, 216, 0.14); /* 激活（按下）态背景色 */
-  --fn-bg-selected: rgba(29, 78, 216, 0.1); /* 选中态背景色 */
+  --fn-bg-hover: rgba(244, 209, 180, 0.08); /* 悬停态背景色 */
+  --fn-bg-active: rgba(244, 209, 180, 0.14); /* 激活（按下）态背景色 */
+  --fn-bg-selected: rgba(244, 209, 180, 0.1); /* 选中态背景色 */
   --fn-bg-code: #232323; /* 代码块背景色 */
   --fn-bg-toolbar: #131316; /* 工具栏背景色 */
   --fn-bg-toolbar-hover: #1f1f23; /* 工具栏悬停背景色 */
@@ -275,10 +275,10 @@ html[data-theme="dark"] {
     transparent
   );
   --fn-color-on-brand: #000; /* 品牌色之上的前景色 */
-  --fn-color-brand-bg: rgba(29, 78, 216, 0.12); /* 品牌色浅背景 */
-  --fn-color-brand-light: rgba(29, 78, 216, 0.16); /* 品牌色浅色变体 */
-  --fn-color-brand-shadow: rgba(29, 78, 216, 0.25); /* 品牌色阴影 */
-  --fn-color-brand-glow: rgba(29, 78, 216, 0.08); /* 品牌色光晕 */
+  --fn-color-brand-bg: rgba(244, 209, 180, 0.12); /* 品牌色浅背景 */
+  --fn-color-brand-light: rgba(244, 209, 180, 0.16); /* 品牌色浅色变体 */
+  --fn-color-brand-shadow: rgba(244, 209, 180, 0.25); /* 品牌色阴影 */
+  --fn-color-brand-glow: rgba(244, 209, 180, 0.08); /* 品牌色光晕 */
 
   /* ---- AI 消息气泡（毛玻璃效果） ---- */
   --fn-assistant-bubble-bg: rgba(255, 255, 255, 0.06); /* AI 消息气泡背景色 */
@@ -335,13 +335,13 @@ html[data-theme="dark"] {
   --fn-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.35), 0 2px 4px rgba(0, 0, 0, 0.22); /* 中号阴影 */
   --fn-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.35), 0 4px 6px rgba(0, 0, 0, 0.22); /* 大号阴影 */
   --fn-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.4), 0 8px 10px rgba(0, 0, 0, 0.25); /* 特大号阴影 */
-  --fn-shadow-brand: 0 4px 14px rgba(29, 78, 216, 0.22); /* 品牌色阴影 */
-  --fn-shadow-brand-lg: 0 8px 24px rgba(29, 78, 216, 0.3); /* 大号品牌色阴影 */
+  --fn-shadow-brand: 0 4px 14px rgba(244, 209, 180, 0.22); /* 品牌色阴影 */
+  --fn-shadow-brand-lg: 0 8px 24px rgba(244, 209, 180, 0.3); /* 大号品牌色阴影 */
 
   /* ---- 选中行 ---- */
-  --fn-row-selected-bg: rgba(29, 78, 216, 0.1); /* 选中行背景色 */
-  --fn-row-selected-hover: rgba(29, 78, 216, 0.16); /* 选中行悬停背景色 */
-  --fn-row-selected-alt-bg: rgba(29, 78, 216, 0.08); /* 交替选中行背景色 */
+  --fn-row-selected-bg: rgba(244, 209, 180, 0.1); /* 选中行背景色 */
+  --fn-row-selected-hover: rgba(244, 209, 180, 0.16); /* 选中行悬停背景色 */
+  --fn-row-selected-alt-bg: rgba(244, 209, 180, 0.08); /* 交替选中行背景色 */
   --fn-row-selected-alt-hover: rgba(
     29,
     78,
@@ -360,8 +360,8 @@ html[data-theme="dark"] {
   --fn-sidebar-bg: #232323; /* 侧边栏背景色 */
   --fn-sidebar-border: rgba(255, 255, 255, 0.06); /* 侧边栏边框色 */
   --fn-sidebar-item-hover: rgba(255, 255, 255, 0.05); /* 侧边栏项悬停背景色 */
-  --fn-sidebar-item-active-bg: rgba(29, 78, 216, 0.14); /* 侧边栏激活项背景色 */
-  --fn-sidebar-item-active: rgba(29, 78, 216, 0.14); /* 侧边栏激活项高亮色 */
+  --fn-sidebar-item-active-bg: rgba(244, 209, 180, 0.08); /* 侧边栏激活项背景色 */
+  --fn-sidebar-item-active: rgba(244, 209, 180, 0.14); /* 侧边栏激活项高亮色 */
   --fn-sidebar-item-active-text: #F4D1B4; /* 侧边栏激活项文本色 */
   --fn-sidebar-group-text: rgba(255, 255, 255, 0.28); /* 侧边栏分组标题文本色 */
 
@@ -392,7 +392,6 @@ html[data-theme="dark"] {
    品牌配色方案 —— 仅覆盖与品牌色相关的令牌
    默认 / data-palette="rose" 使用上方的浅色/深色主题块。
    =================================================================== */
-
 /* ---------- TECH 配色（#4B74FA） ---------- */
 html[data-palette="tech"]:not([data-theme="dark"]) {
   --fn-bg-hover: rgba(75, 116, 250, 0.04); /* 悬停态背景色 */
