@@ -149,7 +149,7 @@ function PageShell({
           justifyContent: "space-between",
           gap: 12,
           flexShrink: 0,
-          marginBottom: agentScoped ? 12 : 24,
+          marginBottom: 12,
           paddingRight: titleRowEndPadding(outerPad),
         }}
       >
