@@ -42,11 +42,12 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function ThemedApp() {
-  const { isDark, palette, customColor } = useTheme();
+  const { isDark } = useTheme();
   const { t, i18n } = useTranslation();
   const isMobile = useIsMobile();
   const desktopChrome = useDesktopChrome();
-  const brandTokens = brandTokensFor(palette, isDark, customColor);
+  // 品牌色固定为主题蓝（palette 体系已移除）。
+  const brandTokens = brandTokensFor("custom", isDark, "#1d4ed8");
   // Make antd built-ins (Popconfirm OK/Cancel, Modal default footer, Empty,
   // Pagination, DatePicker, Table… ) follow the current UI language.
   // DatePicker month/weekday labels come from dayjs — keep it in sync too.

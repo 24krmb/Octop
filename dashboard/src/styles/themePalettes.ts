@@ -1,4 +1,4 @@
-/** 品牌色板 — 与明暗模式（`data-theme`）相互独立。 */
+/** 品牌色板 — 仅保留专家图标取色用的精选色板与品牌色工具。 */
 
 export type ThemePalette =
   | "rose"
@@ -28,19 +28,12 @@ export const CURATED_PALETTES: ThemePalette[] = [...VALID_PALETTES];
 export const DEFAULT_PALETTE: ThemePalette = "custom";
 export const DEFAULT_CUSTOM_COLOR = "#1d4ed8";
 
-/** 当值为精选色板键之一时为真（不含 "custom"/十六进制色值）。 */
 export function isCuratedPalette(value: string): value is ThemePalette {
   return (VALID_PALETTES as string[]).includes(value);
 }
 
-/** 明暗偏好与品牌色板共用的 localStorage 键。 */
+/** 明暗偏好共用的 localStorage 键。 */
 export const THEME_STORAGE_KEY = "theme";
-
-/** 旧版仅存色板的键；已迁移至 {@link THEME_STORAGE_KEY}.palette。 */
-export const LEGACY_PALETTE_STORAGE_KEY = "octop:ui-palette";
-
-/** @deprecated 请改用 {@link LEGACY_PALETTE_STORAGE_KEY}；保留仅为兼容旧导入。 */
-export const PALETTE_STORAGE_KEY = LEGACY_PALETTE_STORAGE_KEY;
 
 /** 色板选择器中展示的色块颜色（浅色品牌色）。 */
 export const PALETTE_SWATCH: Record<ThemePalette, string> = {
@@ -69,181 +62,6 @@ type AntdBrandTokens = {
   colorPrimaryTextActive?: string;
 };
 
-/** 各精选色板 × 模式对应的 Ant Design 主色 token（"custom" 在运行时派生）。 */
-export const ANTD_BRAND_TOKENS: Record<
-  Exclude<ThemePalette, "custom">,
-  { light: AntdBrandTokens; dark: AntdBrandTokens }
-> = {
-  rose: {
-    light: {
-      colorPrimary: "#E85D75",
-      colorPrimaryHover: "#D14A62",
-      colorPrimaryActive: "#B83A50",
-      colorLink: "#E85D75",
-    },
-    dark: {
-      colorPrimary: "#F08B9A",
-      colorPrimaryBg: "rgba(232, 93, 117, 0.12)",
-      colorPrimaryBgHover: "rgba(232, 93, 117, 0.16)",
-      colorPrimaryBorder: "rgba(232, 93, 117, 0.25)",
-      colorPrimaryBorderHover: "rgba(232, 93, 117, 0.35)",
-      colorPrimaryHover: "#F5A8B4",
-      colorPrimaryActive: "#E85D75",
-      colorPrimaryText: "#F08B9A",
-      colorPrimaryTextHover: "#F5A8B4",
-      colorPrimaryTextActive: "#E85D75",
-      colorLink: "#F08B9A",
-    },
-  },
-  tech: {
-    light: {
-      colorPrimary: "#3A5FE0",
-      colorPrimaryHover: "#2E4FD4",
-      colorPrimaryActive: "#233FB8",
-      colorLink: "#3A5FE0",
-    },
-    dark: {
-      colorPrimary: "#3A5FE0",
-      colorPrimaryBg: "rgba(75, 116, 250, 0.14)",
-      colorPrimaryBgHover: "rgba(75, 116, 250, 0.2)",
-      colorPrimaryBorder: "rgba(75, 116, 250, 0.3)",
-      colorPrimaryBorderHover: "rgba(75, 116, 250, 0.4)",
-      colorPrimaryHover: "#2E4FD4",
-      colorPrimaryActive: "#233FB8",
-      colorPrimaryText: "#7B9BFC",
-      colorPrimaryTextHover: "#9BB4FD",
-      colorPrimaryTextActive: "#4B74FA",
-      colorLink: "#7B9BFC",
-    },
-  },
-  indigo: {
-    light: {
-      colorPrimary: "#4F46E5",
-      colorPrimaryHover: "#4338CA",
-      colorPrimaryActive: "#3730A3",
-      colorLink: "#4F46E5",
-    },
-    dark: {
-      colorPrimary: "#4F46E5",
-      colorPrimaryBg: "rgba(99, 102, 241, 0.14)",
-      colorPrimaryBgHover: "rgba(99, 102, 241, 0.2)",
-      colorPrimaryBorder: "rgba(99, 102, 241, 0.3)",
-      colorPrimaryBorderHover: "rgba(99, 102, 241, 0.4)",
-      colorPrimaryHover: "#4338CA",
-      colorPrimaryActive: "#3730A3",
-      colorPrimaryText: "#818CF8",
-      colorPrimaryTextHover: "#A5B4FC",
-      colorPrimaryTextActive: "#6366F1",
-      colorLink: "#818CF8",
-    },
-  },
-  teal: {
-    light: {
-      colorPrimary: "#0F766E",
-      colorPrimaryHover: "#115E59",
-      colorPrimaryActive: "#134E4A",
-      colorLink: "#0F766E",
-    },
-    dark: {
-      colorPrimary: "#0F766E",
-      colorPrimaryBg: "rgba(13, 148, 136, 0.14)",
-      colorPrimaryBgHover: "rgba(13, 148, 136, 0.2)",
-      colorPrimaryBorder: "rgba(13, 148, 136, 0.3)",
-      colorPrimaryBorderHover: "rgba(13, 148, 136, 0.4)",
-      colorPrimaryHover: "#115E59",
-      colorPrimaryActive: "#134E4A",
-      colorPrimaryText: "#2DD4BF",
-      colorPrimaryTextHover: "#5EEAD4",
-      colorPrimaryTextActive: "#0D9488",
-      colorLink: "#2DD4BF",
-    },
-  },
-  violet: {
-    light: {
-      colorPrimary: "#7C3AED",
-      colorPrimaryHover: "#6D28D9",
-      colorPrimaryActive: "#5B21B6",
-      colorLink: "#7C3AED",
-    },
-    dark: {
-      colorPrimary: "#7C3AED",
-      colorPrimaryBg: "rgba(124, 58, 237, 0.14)",
-      colorPrimaryBgHover: "rgba(124, 58, 237, 0.2)",
-      colorPrimaryBorder: "rgba(124, 58, 237, 0.3)",
-      colorPrimaryBorderHover: "rgba(124, 58, 237, 0.4)",
-      colorPrimaryHover: "#6D28D9",
-      colorPrimaryActive: "#5B21B6",
-      colorPrimaryText: "#A78BFA",
-      colorPrimaryTextHover: "#C4B5FD",
-      colorPrimaryTextActive: "#7C3AED",
-      colorLink: "#A78BFA",
-    },
-  },
-  emerald: {
-    light: {
-      colorPrimary: "#047857",
-      colorPrimaryHover: "#065F46",
-      colorPrimaryActive: "#064E3B",
-      colorLink: "#047857",
-    },
-    dark: {
-      colorPrimary: "#047857",
-      colorPrimaryBg: "rgba(16, 185, 129, 0.14)",
-      colorPrimaryBgHover: "rgba(16, 185, 129, 0.2)",
-      colorPrimaryBorder: "rgba(16, 185, 129, 0.3)",
-      colorPrimaryBorderHover: "rgba(16, 185, 129, 0.4)",
-      colorPrimaryHover: "#065F46",
-      colorPrimaryActive: "#064E3B",
-      colorPrimaryText: "#34D399",
-      colorPrimaryTextHover: "#6EE7B7",
-      colorPrimaryTextActive: "#10B981",
-      colorLink: "#34D399",
-    },
-  },
-  amber: {
-    light: {
-      colorPrimary: "#B45309",
-      colorPrimaryHover: "#92400E",
-      colorPrimaryActive: "#78350F",
-      colorLink: "#B45309",
-    },
-    dark: {
-      colorPrimary: "#B45309",
-      colorPrimaryBg: "rgba(245, 158, 11, 0.14)",
-      colorPrimaryBgHover: "rgba(245, 158, 11, 0.2)",
-      colorPrimaryBorder: "rgba(245, 158, 11, 0.3)",
-      colorPrimaryBorderHover: "rgba(245, 158, 11, 0.4)",
-      colorPrimaryHover: "#92400E",
-      colorPrimaryActive: "#78350F",
-      colorPrimaryText: "#FBBF24",
-      colorPrimaryTextHover: "#FCD34D",
-      colorPrimaryTextActive: "#F59E0B",
-      colorLink: "#FBBF24",
-    },
-  },
-  slate: {
-    light: {
-      colorPrimary: "#475569",
-      colorPrimaryHover: "#334155",
-      colorPrimaryActive: "#1E293B",
-      colorLink: "#475569",
-    },
-    dark: {
-      colorPrimary: "#475569",
-      colorPrimaryBg: "rgba(100, 116, 139, 0.18)",
-      colorPrimaryBgHover: "rgba(100, 116, 139, 0.24)",
-      colorPrimaryBorder: "rgba(148, 163, 184, 0.3)",
-      colorPrimaryBorderHover: "rgba(148, 163, 184, 0.4)",
-      colorPrimaryHover: "#334155",
-      colorPrimaryActive: "#1E293B",
-      colorPrimaryText: "#94A3B8",
-      colorPrimaryTextHover: "#CBD5E1",
-      colorPrimaryTextActive: "#64748B",
-      colorLink: "#94A3B8",
-    },
-  },
-};
-
 /** 当前色板 × 模式下解析后的 Ant Design / 图表主色。 */
 export function brandPrimary(
   palette: ThemePalette,
@@ -255,10 +73,10 @@ export function brandPrimary(
 }
 
 // ---------------------------------------------------------------------------
-// 自定义品牌色 — 由一个十六进制色值派生完整的 token / CSS 变量集合
+// 自定义品牌色 — 由一个十六进制色值派生完整的 token 集合
 // ---------------------------------------------------------------------------
 
-/** 将用户输入（#abc / abc / #aabbcc / 不带 rgb 前缀的十六进制）规范化为 #rrggbb。 */
+/** 将用户输入规范化为 #rrggbb。 */
 export function normalizeHexColor(
   input: string | null | undefined,
 ): string | null {
@@ -369,90 +187,13 @@ export function customBrandTokens(hex: string): {
   };
 }
 
-/** 为任意色板解析 Ant token — "custom" 从存储的十六进制色值派生。 */
+/** 固定品牌色的 Ant token — 品牌色已在 theme-vars.css 定死，仅 custom 路径派生。 */
 export function brandTokensFor(
-  palette: ThemePalette,
+  _palette: ThemePalette,
   isDark: boolean,
   customColor?: string | null,
 ): AntdBrandTokens {
-  if (palette === "custom") {
-    return customBrandTokens(customColor || DEFAULT_CUSTOM_COLOR)[
-      isDark ? "dark" : "light"
-    ];
-  }
-  return ANTD_BRAND_TOKENS[palette][isDark ? "dark" : "light"];
-}
-
-/**
- * `html[data-palette="custom"]` 的 CSS 自定义属性覆盖。
- * 与 theme-vars.css 中的精选色板代码块保持一致，但在运行时派生。
- */
-export function customPaletteCssVars(hex: string, isDark: boolean): string {
-  const { solid, onDark, accent } = deriveCustomBrandColors(hex);
-  const rgb = hexToRgb(solid).join(", ");
-  const rgbOnDark = hexToRgb(onDark).join(", ");
-  if (isDark) {
-    return `html[data-palette="custom"][data-theme="dark"]{
---fn-bg-hover: rgba(${rgb}, 0.1);
---fn-bg-active: rgba(${rgb}, 0.16);
---fn-bg-selected: rgba(${rgb}, 0.12);
---fn-text-brand: ${onDark};
---fn-logo-color: ${onDark};
---fn-border-focus: ${onDark};
---fn-color-brand: ${solid};
---fn-color-brand-hover: ${mixHex(solid, "#000000", 0.1)};
---fn-color-brand-soft: ${mixHex(solid, "#000000", 0.1)};
---fn-color-brand-bg: rgba(${rgb}, 0.14);
---fn-color-brand-light: rgba(${rgb}, 0.18);
---fn-color-brand-shadow: rgba(${rgb}, 0.28);
---fn-color-brand-glow: rgba(${rgb}, 0.1);
---fn-assistant-bubble-bg-gradient: linear-gradient(135deg, rgba(${rgbOnDark}, 0.12) 0%, rgba(255, 255, 255, 0.04) 50%, rgba(${rgbOnDark}, 0.08) 100%);
---fn-assistant-bubble-border: rgba(${rgbOnDark}, 0.16);
---fn-assistant-glow-color: ${rgbOnDark};
---fn-tag-channel-text: ${onDark};
---fn-shadow-brand: 0 4px 14px rgba(${rgb}, 0.24);
---fn-shadow-brand-lg: 0 8px 24px rgba(${rgb}, 0.32);
---fn-row-selected-bg: rgba(${rgb}, 0.12);
---fn-row-selected-hover: rgba(${rgb}, 0.18);
---fn-row-selected-alt-bg: rgba(${rgb}, 0.1);
---fn-row-selected-alt-hover: rgba(${rgb}, 0.15);
---fn-row-selected-border: ${onDark};
---fn-sidebar-item-active-bg: rgba(${rgb}, 0.16);
---fn-sidebar-item-active: rgba(${rgb}, 0.16);
---fn-sidebar-item-active-text: ${onDark};
-}`;
-  }
-  return `html[data-palette="custom"]:not([data-theme="dark"]){
---fn-bg-hover: rgba(${rgb}, 0.04);
---fn-bg-active: rgba(${rgb}, 0.08);
---fn-bg-selected: rgba(${rgb}, 0.06);
---fn-text-brand: ${solid};
---fn-logo-color: ${solid};
---fn-border-focus: ${solid};
---fn-color-brand: ${solid};
---fn-color-brand-hover: ${mixHex(solid, "#000000", 0.1)};
---fn-color-brand-soft: ${mixHex(solid, "#000000", 0.1)};
---fn-color-brand-bg: rgba(${rgb}, 0.06);
---fn-color-brand-light: ${mixHex(solid, "#FFFFFF", 0.88)};
---fn-color-brand-shadow: rgba(${rgb}, 0.15);
---fn-color-brand-glow: rgba(${rgb}, 0.08);
---fn-assistant-bubble-bg-gradient: linear-gradient(135deg, ${mixHex(
-    solid,
-    "#FFFFFF",
-    0.9,
-  )} 0%, rgba(255, 255, 255, 0.35) 50%, ${mixHex(solid, "#FFFFFF", 0.82)} 100%);
---fn-assistant-bubble-border: rgba(${rgb}, 0.12);
---fn-assistant-glow-color: ${rgb};
---fn-tag-channel-text: ${accent};
---fn-shadow-brand: 0 4px 14px rgba(${rgb}, 0.18);
---fn-shadow-brand-lg: 0 8px 24px rgba(${rgb}, 0.24);
---fn-row-selected-bg: rgba(${rgb}, 0.05);
---fn-row-selected-hover: rgba(${rgb}, 0.09);
---fn-row-selected-alt-bg: rgba(${rgb}, 0.04);
---fn-row-selected-alt-hover: rgba(${rgb}, 0.08);
---fn-row-selected-border: ${solid};
---fn-sidebar-item-active-bg: ${mixHex(solid, "#FFFFFF", 0.92)};
---fn-sidebar-item-active: rgba(${rgb}, 0.08);
---fn-sidebar-item-active-text: ${solid};
-}`;
+  return customBrandTokens(customColor || DEFAULT_CUSTOM_COLOR)[
+    isDark ? "dark" : "light"
+  ];
 }

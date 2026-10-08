@@ -11,18 +11,10 @@ import {
   writeStoredAppearance,
   type ThemePreference,
 } from "../styles/appearanceStorage";
-import {
-  DEFAULT_PALETTE,
-  customPaletteCssVars,
-  normalizeHexColor,
-  type ThemePalette,
-} from "../styles/themePalettes";
 
 export type { ThemePreference };
 
 export type ThemeMode = "light" | "dark";
-
-export type { ThemePalette };
 
 interface ThemeContextValue {
   /** The resolved mode applied to the UI */
@@ -31,14 +23,6 @@ interface ThemeContextValue {
   preference: ThemePreference;
   /** Set preference */
   setPreference: (p: ThemePreference) => void;
-  /** Brand color palette (orthogonal to light/dark) */
-  palette: ThemePalette;
-  /** Set brand palette */
-  setPalette: (p: ThemePalette) => void;
-  /** Brand hex for the "custom" palette */
-  customColor: string;
-  /** Set the custom brand hex (also switches palette to "custom") */
-  setCustomColor: (hex: string) => void;
   /** Legacy toggle kept for backward compat (cycles light/dark) */
   toggle: () => void;
   /** Whether the current mode is considered "dark" for Ant Design */
@@ -49,10 +33,6 @@ const ThemeContext = createContext<ThemeContextValue>({
   mode: "light",
   preference: "system",
   setPreference: () => {},
-  palette: DEFAULT_PALETTE,
-  setPalette: () => {},
-  customColor: "",
-  setCustomColor: () => {},
   toggle: () => {},
   isDark: false,
 });
@@ -73,22 +53,12 @@ export function isDarkMode(mode: ThemeMode): boolean {
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [preference, setPreferenceState] = useState<ThemePreference>(() => {
     const stored = loadAppearanceOnBoot();
-    document.documentElement.setAttribute("data-palette", stored.palette);
     document.documentElement.setAttribute(
       "data-theme",
       resolveMode(stored.preference),
     );
     return stored.preference;
   });
-
-  const [palette, setPaletteState] = useState<ThemePalette>(() => {
-    // loadAppearanceOnBoot is idempotent for the migrated JSON shape.
-    return loadAppearanceOnBoot().palette;
-  });
-
-  const [customColor, setCustomColorState] = useState<string>(
-    () => loadAppearanceOnBoot().customColor ?? "",
-  );
 
   const [mode, setMode] = useState<ThemeMode>(() => resolveMode(preference));
 
@@ -109,32 +79,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     setMode(resolveMode(preference));
   }, [preference]);
 
-  // Persist preference + palette together (mode is derived, not stored)
+  // Persist preference (mode is derived, not stored)
   useEffect(() => {
-    writeStoredAppearance({ preference, palette, customColor });
-    document.documentElement.setAttribute("data-palette", palette);
-  }, [preference, palette, customColor]);
-
-  // Inject the runtime-derived CSS variables for the custom palette. The
-  // style element is reused across renders; content updates on change.
-  useEffect(() => {
-    if (palette !== "custom") return;
-    const el =
-      document.getElementById("octop-custom-palette") ??
-      (() => {
-        const node = document.createElement("style");
-        node.id = "octop-custom-palette";
-        document.head.appendChild(node);
-        return node;
-      })();
-    const normalized = normalizeHexColor(customColor);
-    if (normalized) {
-      el.textContent = `${customPaletteCssVars(
-        normalized,
-        mode === "dark",
-      )}\n${customPaletteCssVars(normalized, mode !== "dark")}`;
-    }
-  }, [palette, customColor, mode]);
+    writeStoredAppearance({ preference });
+  }, [preference]);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", mode);
@@ -153,18 +101,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     setPreferenceState(p);
   }, []);
 
-  const setPalette = useCallback((p: ThemePalette) => {
-    setPaletteState(p);
-  }, []);
-
-  const setCustomColor = useCallback((hex: string) => {
-    const normalized = normalizeHexColor(hex);
-    if (normalized) {
-      setCustomColorState(normalized);
-      setPaletteState("custom");
-    }
-  }, []);
-
   const toggle = useCallback(() => {
     setPreferenceState((prev) => {
       if (prev === "light") return "dark";
@@ -179,10 +115,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         mode,
         preference,
         setPreference,
-        palette,
-        setPalette,
-        customColor,
-        setCustomColor,
         toggle,
         isDark: isDarkMode(mode),
       }}

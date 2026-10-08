@@ -79,8 +79,8 @@ export default function Overview({
   onOpenSettings,
 }: Props) {
   const { t } = useTranslation();
-  const { palette, isDark } = useTheme();
-  const brand = brandPrimary(palette, isDark);
+  const { isDark } = useTheme();
+  const brand = brandPrimary("custom", isDark, "#1d4ed8");
   const kindColor: Record<string, string> = useMemo(
     () => ({ ...KIND_COLOR_BASE, Preference: brand }),
     [brand],

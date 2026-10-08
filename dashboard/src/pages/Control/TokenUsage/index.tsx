@@ -313,8 +313,8 @@ function DailyTrendCharts({
   outputLabel: string;
   turnsLabel: string;
 }) {
-  const { palette, isDark, customColor } = useTheme();
-  const turnsColor = brandPrimary(palette, isDark, customColor);
+  const { isDark } = useTheme();
+  const turnsColor = brandPrimary("custom", isDark, "#1d4ed8");
   const empty = data.length === 0;
 
   return (
