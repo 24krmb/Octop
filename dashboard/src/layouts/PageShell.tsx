@@ -27,7 +27,7 @@ export interface PathTabsConfig {
 }
 
 interface PageShellProps {
-  title: string;
+  title?: string;
   subtitle?: string;
   /** Right-aligned action buttons shown alongside the title. */
   actions?: React.ReactNode;
@@ -154,17 +154,19 @@ function PageShell({
         }}
       >
         <div>
-          <Title
-            level={4}
-            style={{
-              margin: 0,
-              lineHeight: "28px",
-              fontSize: 20,
-              fontWeight: 600,
-            }}
-          >
-            {title}
-          </Title>
+          {title && (
+            <Title
+              level={4}
+              style={{
+                margin: 0,
+                lineHeight: "28px",
+                fontSize: 20,
+                fontWeight: 600,
+              }}
+            >
+              {title}
+            </Title>
+          )}
           {subtitle && (
             <Text
               type="secondary"

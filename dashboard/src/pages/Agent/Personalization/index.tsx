@@ -95,9 +95,8 @@ export default function PersonalizationPage() {
     [activeTab, handleTabChange, isAllowed, t],
   );
 
-  const pageTitle = `${t("personalization.title")} / ${t(
-    `personalization.tabs.${activeTab}`,
-  )}`;
+  // 面包屑式 h4 标题已移除，仅展示副标题。
+  const pageTitle = undefined;
   const showTeams = activeTab === "memory" || activeTab === "channels";
   const expertOnlyBlocked = isTeamAgent(activeAgent) && !showTeams;
   const teamNeedsExpert = t("agentSelector.teamNeedsExpert", {
