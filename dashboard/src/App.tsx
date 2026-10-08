@@ -28,7 +28,6 @@ import { VoiceOutputProvider } from "./context/VoiceOutputContext";
 import { useIsMobile } from "./hooks/useIsMobile";
 import { useUnauthorizedRedirect } from "./hooks/useUnauthorizedRedirect";
 import { installDesktopExternalLinks } from "./utils/desktopExternalLinks";
-import { brandTokensFor } from "./styles/themePalettes";
 import "./styles/theme-vars.css";
 import "./styles/layout.css";
 import "./styles/form-override.css";
@@ -47,7 +46,21 @@ function ThemedApp() {
   const isMobile = useIsMobile();
   const desktopChrome = useDesktopChrome();
   // 品牌色固定为主题蓝（palette 体系已移除）。
-  const brandTokens = brandTokensFor("custom", isDark, "#1d4ed8");
+  // 品牌色唯一真相来源 = theme-vars.css 的 --fn-* 变量（亮暗自动切换）。
+  // antd 派生 token 全部显式映射到变量族，绕开算法对变量字符串的运算。
+  const brandTokens = {
+    colorPrimary: "var(--fn-color-brand)",
+    colorPrimaryHover: "var(--fn-color-brand-hover)",
+    colorPrimaryActive: "var(--fn-color-brand-hover)",
+    colorLink: "var(--fn-color-brand)",
+    colorPrimaryBg: "var(--fn-color-brand-bg)",
+    colorPrimaryBgHover: "var(--fn-color-brand-bg)",
+    colorPrimaryBorder: "var(--fn-color-brand-border)",
+    colorPrimaryBorderHover: "var(--fn-color-brand-border)",
+    colorPrimaryText: "var(--fn-text-brand)",
+    colorPrimaryTextHover: "var(--fn-text-brand)",
+    colorPrimaryTextActive: "var(--fn-text-brand)",
+  };
   // Make antd built-ins (Popconfirm OK/Cancel, Modal default footer, Empty,
   // Pagination, DatePicker, Table… ) follow the current UI language.
   // DatePicker month/weekday labels come from dayjs — keep it in sync too.
@@ -112,6 +125,7 @@ function ThemedApp() {
     components: {
       // Tabs 激活/悬停色直接接管（组件 token 是叶子，原样输出变量字符串；
       // 否则暗色算法会把 itemSelectedColor 绑到 colorPrimaryActive 深变体）。
+      Switch: { colorPrimary: "#52c41a" },
       Tabs: {
         itemSelectedColor: "var(--fn-color-brand)",
         itemHoverColor: "var(--fn-color-brand)",
