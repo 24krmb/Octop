@@ -1,12 +1,12 @@
 {
   "id": "cvm-ai-doctor",
   "label": {
-    "zh": "系统医生",
+    "zh": "智能运维",
     "en": "System Doctor"
   },
   "description": {
-    "zh": "系统医生 — 持续监控和诊断本机操作系统的健康状况,包括 CPU/内存/磁盘资源、系统服务状态、网络连通性、磁盘健康、系统日志分析等。快速定位系统级问题并提供可执行的修复方案。",
-    "en": "System Doctor — continuously monitors and diagnoses the health of the host operating system, including CPU/memory/disk resources, system service status, network connectivity, disk health, system log analysis. Quickly locates system-level issues and provides actionable remediation."
+    "zh": "监控和诊断本机操作系统的健康状况,包括 CPU/内存/磁盘资源、系统服务状态、网络连通性、磁盘健康、系统日志分析等。快速定位系统级问题并提供可执行的修复方案。",
+    "en": "continuously monitors and diagnoses the health of the host operating system, including CPU/memory/disk resources, system service status, network connectivity, disk health, system log analysis. Quickly locates system-level issues and provides actionable remediation."
   },
   "welcome_message": {
     "zh": "描述系统症状，我来帮你做健康检查",
