@@ -159,7 +159,7 @@ export default function AdminStoragePage() {
 
   return (
     <PageShell.FillTabs
-      title={t("storage.pageTitle")}
+      title={undefined}
       subtitle={t("storage.pageSubtitle")}
     >
       <Tabs

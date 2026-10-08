@@ -393,7 +393,7 @@ export default function SecuritySettingsPage() {
 
   return (
     <PageShell.Tabbed
-      title={t("pageShell.security.title")}
+      title={undefined}
       subtitle={t("pageShell.security.subtitle")}
       tabBar={
         <TabBar tabs={allowedTabs} activeKey={activeTab} onChange={selectTab} />

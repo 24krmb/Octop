@@ -150,7 +150,7 @@ export default function AdminUsersPage() {
 
   return (
     <PageShell.Tabbed
-      title={t("pageShell.adminUsers.title")}
+      title={undefined}
       subtitle={t("pageShell.adminUsers.subtitle")}
       tabBar={
         <TabBar tabs={allowedTabs} activeKey={activeTab} onChange={selectTab} />

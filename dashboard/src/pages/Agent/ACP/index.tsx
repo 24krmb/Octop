@@ -370,7 +370,7 @@ export default function ACPPage() {
   const { t } = useTranslation();
   return (
     <PageShell
-      title={t("pageShell.acp.title")}
+      title={undefined}
       subtitle={t("pageShell.acp.subtitle")}
       agentScoped
     >

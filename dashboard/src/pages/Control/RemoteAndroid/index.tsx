@@ -1548,7 +1548,7 @@ export default function RemoteAndroidPage({
 
   return (
     <PageShell
-      title={t("pageShell.mobile.title", "Remote Phone")}
+      title={undefined}
       subtitle={t(
         "pageShell.mobile.subtitle",
         "View and control a connected phone or emulator",

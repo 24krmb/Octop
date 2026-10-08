@@ -238,7 +238,7 @@ export default function ModelsPage() {
 
   return (
     <PageShell
-      title={t("pageShell.models.title")}
+      title={undefined}
       subtitle={t("pageShell.models.subtitle")}
       actions={
         modelCategory === "chat" ? (

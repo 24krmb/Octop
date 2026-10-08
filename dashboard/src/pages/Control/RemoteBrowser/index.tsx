@@ -1605,7 +1605,7 @@ export default function RemoteBrowserPage({
 
   return (
     <PageShell
-      title={t("pageShell.browser.title", "浏览器 AI+")}
+      title={undefined}
       subtitle={t(
         "pageShell.browser.subtitle",
         "基于 Chromium 的无头浏览器会话",

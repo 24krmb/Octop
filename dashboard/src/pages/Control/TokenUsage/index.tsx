@@ -1020,7 +1020,7 @@ export default function TokenUsagePage() {
 
   return (
     <PageShell
-      title={t("pageShell.tokenUsage.title")}
+      title={undefined}
       subtitle={t("pageShell.tokenUsage.subtitle")}
       fill
     >

@@ -40,7 +40,7 @@ export default function AdminPluginsPage() {
 
   return (
     <PageShell.FillTabs
-      title={t("pageShell.adminPlugins.title")}
+      title={undefined}
       subtitle={t("pageShell.adminPlugins.subtitle")}
     >
       <Tabs

@@ -90,7 +90,7 @@ export default function AdvancedSettingsPage() {
 
   return (
     <PageShell.Tabbed
-      title={t("pageShell.adminAdvanced.title")}
+      title={undefined}
       subtitle={t("pageShell.adminAdvanced.subtitle")}
       tabBar={
         <TabBar tabs={allowedTabs} activeKey={activeTab} onChange={selectTab} />
