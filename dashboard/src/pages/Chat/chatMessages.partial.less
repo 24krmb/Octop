@@ -1450,13 +1450,9 @@
   flex-wrap: wrap;
   margin-top: 6px;
   padding: 0 4px;
-  opacity: 0.5;
+  opacity: 1;
   font-size: 10px;
   transition: opacity 0.2s;
-
-  .messageBubble:hover & {
-    opacity: 0.9;
-  }
 }
 
 .msgMetaRowRight {
@@ -1524,7 +1520,7 @@
     height: 22px;
     margin-left: 0;
     /* Invisible until hover/focus, but still receive clicks if aimed. */
-    opacity: 0;
+    opacity: 1;
     pointer-events: auto;
   }
 
@@ -1570,7 +1566,7 @@
   background: var(--fn-bg-primary);
   color: var(--fn-text-tertiary);
   cursor: pointer;
-  opacity: 0;
+  opacity: 1;
   transition:
     opacity var(--fn-transition-fast),
     color var(--fn-transition-fast),
