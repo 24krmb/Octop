@@ -356,7 +356,13 @@ export default function LoginPage() {
           loading={loading}
           onClick={handleLogin}
           disabled={!username || !password || !captchaReady}
-          style={{ borderRadius: 10, height: 44, fontWeight: 500 }}
+          style={{
+            borderRadius: 10,
+            height: 44,
+            fontWeight: 500,
+            color: "var(--fn-sidebar-item-active-text)",
+            background: "var(--fn-sidebar-item-active-bg)",
+          }}
         >
           {t("login.submit")}
         </Button>
@@ -450,7 +456,13 @@ export default function LoginPage() {
                 icon={providerIcon(provider)}
                 loading={ssoLoadingKind === provider.kind}
                 onClick={() => void onSso(provider.kind)}
-                style={{ borderRadius: 10, height: 44, fontWeight: 500 }}
+                style={{
+            borderRadius: 10,
+            height: 44,
+            fontWeight: 500,
+            color: "var(--fn-sidebar-item-active-text)",
+            background: "var(--fn-sidebar-item-active-bg)",
+          }}
               >
                 {t("login.oidcWith", { name: providerLabel(provider, t) })}
               </Button>

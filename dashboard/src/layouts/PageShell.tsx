@@ -204,7 +204,7 @@ function PageShell({
           // FillTabs (fill) mode: transparent — tabs sit directly on the page.
           background: fill
             ? "transparent"
-            : "var(--fn-bg-container, var(--fn-bg-elevated))",
+            : "var(--fn-bg-primary)",
           borderRadius: fill ? 0 : 8,
           // FillTabs (fill) mode: no padding at all — the tab bar sits right
           // below the page title row, flush with the container edges.

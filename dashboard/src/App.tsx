@@ -125,6 +125,7 @@ function ThemedApp() {
     components: {
       // Tabs 激活/悬停色直接接管（组件 token 是叶子，原样输出变量字符串；
       // 否则暗色算法会把 itemSelectedColor 绑到 colorPrimaryActive 深变体）。
+      Button: { primaryShadow: "var(--fn-shadow-soft-brand)" },
       Switch: { colorPrimary: "#00cc99" },
       Segmented: {
         itemColor: "var(--fn-text-primary)",
