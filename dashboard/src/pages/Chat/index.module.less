@@ -49,6 +49,10 @@
   min-width: 320px;
   height: 100%;
   overflow: hidden;
+  position: relative;
+  /* Reserve the title-bar row; the bar itself floats above so messages
+     scroll underneath its frosted-glass backdrop. */
+  padding-top: var(--fn-chat-chrome-height, 57px);
   background: var(--fn-bg-layout);
 
   @media (max-width: 767px) {
@@ -99,18 +103,22 @@
   align-items: center;
   gap: 8px;
   box-sizing: border-box;
-  position: relative;
-  flex: 0 0 var(--fn-chat-chrome-height, 57px);
+  /* Float over chatMain so list content passes behind the blur. */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   height: var(--fn-chat-chrome-height, 57px);
-  min-height: var(--fn-chat-chrome-height, 57px);
-  max-height: var(--fn-chat-chrome-height, 57px);
+  z-index: 2;
   /* Match .chatInput gutters on the left; on desktop grow the right pad so
      long titles do not sit under the frameless window controls. */
   --chat-title-pad-x: var(--chat-column-pad-x);
   padding: 0 max(var(--chat-title-pad-x), var(--window-controls-inset-end, 0px))
     0 var(--chat-title-pad-x);
   border-bottom: none;
-  background: var(--fn-bg-primary);
+  background: transparent;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: var(--fn-text-primary);
   /* Visible so the hover edit control can sit just past the title. */
   overflow: visible;

@@ -4296,7 +4296,7 @@
   },
   "personalization": {
     "title": "个性化",
-    "description": "配置当前智能体",
+    "description": "配置智能体",
     "tabs": {
       "skills": "技能",
       "tools": "工具",

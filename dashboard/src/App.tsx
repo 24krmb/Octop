@@ -126,6 +126,12 @@ function ThemedApp() {
       // Tabs 激活/悬停色直接接管（组件 token 是叶子，原样输出变量字符串；
       // 否则暗色算法会把 itemSelectedColor 绑到 colorPrimaryActive 深变体）。
       Switch: { colorPrimary: "#00cc99" },
+      Segmented: {
+        itemColor: "var(--fn-text-primary)",
+        trackBg: "var(--fn-bg-primary)",
+        itemSelectedBg: "var(--fn-sidebar-item-active-bg)",
+        itemSelectedColor: "var(--fn-sidebar-item-active-text)",
+      },
       Tabs: {
         itemSelectedColor: "var(--fn-color-brand)",
         itemHoverColor: "var(--fn-color-brand)",
@@ -138,7 +144,6 @@ function ThemedApp() {
           InputNumber: { colorBgBase: "#0f1117" },
           Select: { colorBgBase: "#0f1117", selectorBg: "#0f1117" },
           DatePicker: { colorBgBase: "#0f1117" },
-          Segmented: { itemSelectedBg: "#1a1c28" },
           Card: { colorBgContainer: "var(--fn-bg-primary)" },
           Tooltip: { colorBgSpotlight: "#424242" },
         }

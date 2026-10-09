@@ -146,7 +146,7 @@ function PageShell({
       <div
         style={{
           display: "flex",
-          alignItems: "flex-start",
+          alignItems: "center",
           justifyContent: "space-between",
           gap: 12,
           flexShrink: 0,
@@ -172,8 +172,9 @@ function PageShell({
             <Text
               style={{
                 margin: 0,
+                minHeight: 28,
                 lineHeight: "28px",
-                fontSize: 18,
+                fontSize: 14,
                 fontWeight: 600,
                 color: "var(--fn-text-primary)",
                 display: "block",
@@ -183,9 +184,7 @@ function PageShell({
             </Text>
           )}
         </div>
-        {titleActions && (
-          <div style={{ flexShrink: 0, paddingTop: 2 }}>{titleActions}</div>
-        )}
+        {titleActions && <div style={{ flexShrink: 0 }}>{titleActions}</div>}
       </div>
       )}
 

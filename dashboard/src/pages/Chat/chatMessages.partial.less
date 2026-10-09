@@ -432,12 +432,8 @@
 }
 
 .userText {
-  background: linear-gradient(
-    135deg,
-    var(--fn-color-brand) 0%,
-    var(--fn-color-brand-soft) 100%
-  );
-  color: #fff;
+  background: transparent;
+  color: var(--fn-text-primary);
   padding: 10px 14px;
   border-radius: 16px 16px 6px 16px;
   font-size: 14px;
@@ -1518,7 +1514,7 @@
   .msgActionBtn {
     width: 22px;
     height: 22px;
-    margin-left: 0;
+    margin-left: 8px;
     /* Invisible until hover/focus, but still receive clicks if aimed. */
     opacity: 1;
     pointer-events: auto;
@@ -1561,9 +1557,9 @@
   justify-content: center;
   width: 22px;
   height: 22px;
-  border: 1px solid var(--fn-border-secondary);
+  border: none;
   border-radius: var(--fn-radius-sm);
-  background: var(--fn-bg-primary);
+  background: transparent;
   color: var(--fn-text-tertiary);
   cursor: pointer;
   opacity: 1;
