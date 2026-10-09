@@ -337,7 +337,7 @@ html[data-theme="dark"] {
   --fn-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.4), 0 8px 10px rgba(0, 0, 0, 0.25); /* 特大号阴影 */
   --fn-shadow-brand: 0 4px 14px rgba(244, 209, 180, 0.22); /* 品牌色阴影 */
   --fn-shadow-brand-lg: 0 8px 24px rgba(244, 209, 180, 0.3);
-  --fn-shadow-soft-brand: 0 2px 8px rgba(118, 94, 252, 0.1); /* 大号品牌色阴影 */
+  --fn-shadow-soft-brand: 0 2px 8px rgba(0, 0, 0, 0.1); /* 大号品牌色阴影 */
 
   /* ---- 选中行 ---- */
   --fn-row-selected-bg: rgba(244, 209, 180, 0.1); /* 选中行背景色 */
