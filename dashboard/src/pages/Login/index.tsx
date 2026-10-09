@@ -305,20 +305,8 @@ export default function LoginPage() {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             autoFocus
-            aria-describedby="login-username-hint"
             style={{ borderRadius: 10 }}
           />
-          <div
-            id="login-username-hint"
-            style={{
-              marginTop: 6,
-              fontSize: 12,
-              color: "var(--fn-text-tertiary)",
-              lineHeight: 1.4,
-            }}
-          >
-            {t("login.usernameHint")}
-          </div>
         </div>
 
         <Input.Password
