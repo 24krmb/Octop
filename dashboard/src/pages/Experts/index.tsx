@@ -123,7 +123,7 @@ export default function ExpertsPage() {
   );
 
   // ── Tab state ──────────────────────────────────────────────────
-  const [activeTab, setActiveTab] = useState<TabKey>("my");
+  const [activeTab, setActiveTab] = useState<TabKey>("library");
   const { viewMode, setViewMode, showCardView } = useCardTableView(
     loadViewMode(),
   );
@@ -825,12 +825,20 @@ export default function ExpertsPage() {
   return (
     <PageShell.FillTabs
       title={undefined}
-      subtitle={t("pageShell.experts.subtitle")}
+      subtitle={undefined}
     >
       <Tabs
         activeKey={activeTab}
         onChange={(k) => setActiveTab(k as TabKey)}
         items={[
+          {
+            key: "library",
+            label: (
+              <TabLabel icon={BookOpen}>{t("experts.expertLibrary")}</TabLabel>
+            ),
+            children: libraryContent,
+          },
+          
           {
             key: "my",
             label: (
@@ -849,13 +857,6 @@ export default function ExpertsPage() {
               </TabLabel>
             ),
             children: teamsContent,
-          },
-          {
-            key: "library",
-            label: (
-              <TabLabel icon={BookOpen}>{t("experts.expertLibrary")}</TabLabel>
-            ),
-            children: libraryContent,
           },
           // 助理市场仅管理员可见（用户角色隐藏此 tab）
           ...(currentUser?.role === "admin"

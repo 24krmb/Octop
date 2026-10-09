@@ -168,7 +168,7 @@ function NavItemButton({
         style={{
           color: active
             ? "var(--fn-sidebar-item-active-text)"
-            : "var(--fn-text-secondary)",
+            : "var(--fn-text-primary)",
           fontSize: typeSize(14, isMobile),
           fontWeight: 500,
           paddingRight: showExpand ? 4 : 12,

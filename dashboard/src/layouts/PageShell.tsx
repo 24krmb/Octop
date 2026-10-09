@@ -141,7 +141,8 @@ function PageShell({
         overflow: "hidden",
       }}
     >
-      {/* Title row — fixed, never scrolls */}
+      {/* Title row — fixed, never scrolls; skipped entirely when empty */}
+      {(title || subtitle || titleActions) && (
       <div
         style={{
           display: "flex",
@@ -186,6 +187,7 @@ function PageShell({
           <div style={{ flexShrink: 0, paddingTop: 2 }}>{titleActions}</div>
         )}
       </div>
+      )}
 
       {agentScoped && (
         <div className={styles.agentBar}>
