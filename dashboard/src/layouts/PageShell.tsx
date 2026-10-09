@@ -103,7 +103,7 @@ function PageShell({
   const isMobile = useIsMobile();
   const { activeAgent } = useAgent();
   const outerPad = isMobile ? 12 : 32;
-  const outerPadTop = isMobile ? 12 : 24;
+  const outerPadTop = 12;
   const contentPad = isMobile ? 12 : 24;
   /** Fill layout, or mobile path-tabs that must stay pinned above the body. */
   const pinBody = Boolean(fill || (isMobile && pathTabs));

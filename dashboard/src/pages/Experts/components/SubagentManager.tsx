@@ -447,7 +447,6 @@ export default function SubagentManager({
               className={styles.catalogCard}
               style={{ "--agent-accent": accent } as CSSProperties}
             >
-              <div className={styles.catalogCardAccent} />
               <div className={styles.catalogCardHeader}>
                 <div
                   className={styles.catalogCardIcon}
@@ -554,7 +553,6 @@ export default function SubagentManager({
               className={styles.catalogCard}
               style={{ "--agent-accent": accent } as CSSProperties}
             >
-              <div className={styles.catalogCardAccent} />
               <div className={styles.catalogCardHeader}>
                 <div
                   className={styles.catalogCardIcon}
