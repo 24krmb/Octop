@@ -134,6 +134,7 @@ function ThemedApp() {
         itemSelectedColor: "var(--fn-sidebar-item-active-text)",
       },
       Tabs: {
+        itemColor: "var(--fn-text-primary)",
         itemSelectedColor: "var(--fn-color-brand)",
         itemHoverColor: "var(--fn-color-brand)",
         inkBarColor: "var(--fn-color-brand)",

@@ -63,12 +63,13 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 14px 14px 14px 12px;
+  padding: 14px;
   min-height: 68px;
   min-width: 0;
-  border: 1px solid var(--fn-card-border-normal);
+  border: none;
   border-radius: 12px;
   background: var(--fn-bg-elevated);
+  box-shadow: var(--fn-shadow-soft-brand);
   transition:
     border-color 0.18s ease,
     box-shadow 0.18s ease;
@@ -79,8 +80,7 @@
       var(--tool-accent) 28%,
       var(--fn-card-border-normal)
     );
-    box-shadow: var(--fn-shadow-sm);
-  }
+      }
 }
 
 .cardUnavailable {

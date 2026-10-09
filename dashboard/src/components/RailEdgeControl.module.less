@@ -55,11 +55,11 @@
   justify-content: center;
   width: 22px;
   height: 22px;
-  border: 1px solid var(--fn-border-secondary);
+  border: none;
   border-radius: 50%;
   background: var(--fn-bg-elevated, #fff);
   color: var(--fn-text-secondary);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--fn-shadow-soft-brand);
   cursor: pointer;
   opacity: 1;
   transform: translate(-50%, -50%);
@@ -71,8 +71,7 @@
 
   &:hover {
     color: var(--fn-color-brand);
-    border-color: var(--fn-color-brand);
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.16);
+    box-shadow: var(--fn-shadow-soft-brand);
   }
 
   &:focus-visible {
