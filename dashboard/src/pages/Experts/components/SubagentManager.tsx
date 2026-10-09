@@ -191,7 +191,12 @@ export default function SubagentManager({
         listSubagentDivisions(agentId),
         listSubagentCatalog(undefined, agentId),
       ]);
-      setDivisions(divs);
+      // 置顶分类（自定义顺序），其余保持后端顺序
+      const PRIORITY = ["finance", "academic", "engineering"];
+      setDivisions([
+        ...PRIORITY.map((id) => divs.find((d) => d.id === id)).filter((d): d is SubagentCatalogDivision => !!d),
+        ...divs.filter((d) => !PRIORITY.includes(d.id)),
+      ]);
       setAllItems(rows);
     } catch (err) {
       message.error(apiErrorMessage(err, t("subagents.loadFailed")));
