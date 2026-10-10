@@ -5,7 +5,7 @@ html[data-theme="light"] {
   --hover-border:#765efc; /* 悬停态边框颜色 */
   --fn-bg-primary: #fff; /* 主背景色 */
   --fn-bg-secondary: #dfeafd; /* 次级背景色 */
-  --fn-bg-tertiary: #e4e4e7; /* 三级背景色 */
+  --fn-bg-tertiary: #E5EEFF; /* 对话表格背景色 */
   --fn-bg-elevated: #ffffff; /* 悬浮层（Elevated）背景色 */
   --fn-bg-layout: #f7faff; /* 页面布局背景色 */
   --fn-bg-hover: rgba(118,94,252, 0.04); /* 悬停态背景色 */
@@ -48,15 +48,15 @@ html[data-theme="light"] {
 
   /* ---- 边框 ---- */
   --fn-border-primary:rgb(214,227,255); /* 主边框色 */
-  --fn-border-secondary: #ececee; /* 次级边框色 */
-  --fn-border-tertiary: #dfeafd; /* 三级边框色 */
-  --fn-border-input: #d4d4d8; /* 输入框边框色 */
+  --fn-border-secondary:var(--fn-border-primary); /* 次级边框色 */
+  --fn-border-tertiary:var(--fn-border-primary); /* 三级边框色 */
+  --fn-border-input:var(--fn-border-primary); /* 输入框边框色 */
   --fn-border-input-alt: #e4e4e7; /* 输入框备选边框色 */
-  --fn-border-focus: #183153; /* 聚焦态边框色 */
-  --fn-border: #e4e4e7; /* 默认边框色 */
+  --fn-border-focus:var(--hover-border); /* 聚焦态边框色 */
+  --fn-border-strong:var(--hover-border); /* 强调边框色 */
+  --fn-border: rgb(214,227,255); /* 默认边框色 */
   --fn-border-color: #e4e4e7; /* 通用边框颜色（别名） */
-  --fn-border-strong: #d4d4d8; /* 强调边框色 */
-  --fn-border-subtle: rgba(0, 0, 0, 0.06); /* 弱化边框色 */
+  --fn-border-subtle: rgba(214,227,255,.7); /* 弱化边框色 */
   --fn-border-success: #0c9; /* 成功状态边框色 */
 
   /* ---- 品牌色（rose） ---- */
@@ -193,7 +193,7 @@ html[data-theme="dark"] {
   --hover-border:#F4D1B4; /* 悬停态边框颜色 */
   --fn-bg-primary: #232323; /* 主背景色 */
   --fn-bg-secondary: #1f1f23; /* 次级背景色 */
-  --fn-bg-tertiary: #27272a; /* 三级背景色 */
+  --fn-bg-tertiary: #27272a; /* 对话表格背景色 */
   --fn-bg-elevated: #232323; /* 悬浮层（Elevated）背景色 */
   --fn-bg-layout: #181818; /* 页面布局背景色 */
   --fn-bg-container: #09090b; /* 容器背景色 */

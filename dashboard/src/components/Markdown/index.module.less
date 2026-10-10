@@ -60,7 +60,7 @@
   blockquote {
     margin: 0.5em 0;
     padding: 4px 12px;
-    border-left: 3px solid var(--fn-border-primary);
+    border-left: 3px solid var(--fn-border);
     color: var(--fn-text-tertiary);
     background: var(--fn-bg-secondary);
     border-radius: 0 4px 4px 0;
@@ -68,7 +68,7 @@
 
   hr {
     border: none;
-    border-top: 1px solid var(--fn-border-primary);
+    border-top: 1px solid var(--fn-border);
     margin: 1em 0;
   }
 
@@ -90,7 +90,7 @@
 .inlineCode {
   padding: 2px 6px;
   border-radius: 4px;
-  background: var(--fn-bg-tertiary, rgba(0, 0, 0, 0.06));
+  background: var(--fn-bg-tertiary);
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   font-size: 0.9em;
   color: var(--fn-text-secondary);
@@ -101,7 +101,7 @@
   margin: 0.75em 0;
   border-radius: 8px;
   overflow: hidden;
-  border: 1px solid var(--fn-border-primary);
+  border: 1px solid var(--fn-border);
 }
 
 .codeBlockHeader {
@@ -109,8 +109,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 4px 12px;
-  background: var(--fn-bg-tertiary, rgba(0, 0, 0, 0.04));
-  border-bottom: 1px solid var(--fn-border-primary);
+  background: var(--fn-bg-tertiary);
+  border-bottom: 1px solid var(--fn-border);
   font-size: 12px;
 }
 
@@ -125,7 +125,7 @@
   align-items: center;
   border: none;
   background: transparent;
-  color: var(--fn-color-brand, #6366f1);
+  color: var(--fn-color-brand);
   cursor: pointer;
   font-size: 11px;
   padding: 2px 6px;
@@ -143,7 +143,7 @@
 }
 
 .codeBlockLang {
-  color: var(--fn-text-tertiary);
+  color: var(--fn-text-secondary);
   font-family: "SFMono-Regular", Consolas, monospace;
   text-transform: lowercase;
 }
@@ -174,7 +174,7 @@
   padding: 12px 16px;
   border-radius: 8px;
   background: var(--fn-bg-secondary);
-  border: 1px solid var(--fn-border-primary);
+  border: 1px solid var(--fn-border);
   overflow-x: auto;
   font-size: 13px;
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
@@ -191,7 +191,7 @@
   margin: 0.75em 0;
   padding: 16px;
   background: var(--fn-bg-secondary);
-  border: 1px solid var(--fn-border-primary);
+  border: 1px solid var(--fn-border);
   border-radius: 8px;
   overflow-x: auto;
   text-align: center;
@@ -207,7 +207,7 @@
   margin: 0.75em 0;
   overflow-x: auto;
   border-radius: 8px;
-  border: 1px solid var(--fn-border-primary);
+  border: 1px solid var(--fn-border);
 
   table {
     width: 100%;
@@ -218,11 +218,11 @@
     td {
       padding: 8px 12px;
       text-align: left;
-      border-bottom: 1px solid var(--fn-border-primary);
+      border-bottom: 1px solid var(--fn-border);
     }
 
     th {
-      background: var(--fn-bg-tertiary, rgba(0, 0, 0, 0.04));
+      background: var(--fn-bg-tertiary);
       font-weight: 600;
       color: var(--fn-text-secondary);
     }

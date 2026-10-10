@@ -226,7 +226,7 @@ html[data-theme="dark"] .octop-ant-input,
 html[data-theme="dark"] .ant-input-affix-wrapper,
 html[data-theme="dark"] .octop-ant-input-affix-wrapper {
   background-color: var(--fn-bg-primary) !important;
-  border-color: var(--fn-border-input) !important;
+  border-color: var(--fn-border-primary) !important;
   color: var(--fn-text-primary) !important;
 }
 
