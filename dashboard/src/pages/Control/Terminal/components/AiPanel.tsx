@@ -120,7 +120,7 @@ function GateView({
 
   return (
     <div className={styles.gate}>
-      <SquareTerminal size={32} color="var(--fn-text-quaternary, #9ca3af)" />
+      <SquareTerminal size={32} color="var(--fn-text-quaternary)" />
       <div className={styles.gateTitle}>{t("terminal.ai.gateTitle")}</div>
       <div className={styles.gateDesc}>{t("terminal.ai.gateDesc")}</div>
       <Button

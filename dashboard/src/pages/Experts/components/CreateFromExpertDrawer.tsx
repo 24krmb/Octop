@@ -901,7 +901,7 @@ export default function CreateFromExpertDrawer({
                                   style={{
                                     fontSize: 11,
                                     color:
-                                      "var(--fn-text-quaternary, var(--fn-text-tertiary))",
+                                      "var(--fn-text-quaternary)",
                                   }}
                                 >
                                   {f.name}
@@ -1015,7 +1015,7 @@ export default function CreateFromExpertDrawer({
                                 style={{
                                   fontSize: 11,
                                   color:
-                                    "var(--fn-text-quaternary, var(--fn-text-tertiary))",
+                                    "var(--fn-text-quaternary)",
                                 }}
                               >
                                 skills/{group.name}/
