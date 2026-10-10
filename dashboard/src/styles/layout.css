@@ -16,7 +16,7 @@ body {
   overscroll-behavior: none;
   /* Override index.html boot gray (#f7f8fa) so iOS PWA letterboxing
      below 100dvh is not a stray gray strip. */
-  background: var(--fn-bg-layout, #F9FAFB);
+  background: var(--fn-bg-layout);
 }
 
 html {
@@ -88,11 +88,11 @@ html[data-octop-desktop-chrome] .ant-drawer-right .ant-drawer-close {
 html.octop-chat-open,
 html.octop-chat-open body,
 html.octop-chat-open #root {
-  background: var(--fn-bg-elevated, #fff);
+  background: var(--fn-bg-elevated);
 }
 
 html.octop-chat-open .page-container {
-  background: var(--fn-bg-elevated, #fff);
+  background: var(--fn-bg-elevated);
 }
 
 /* ---- Global touch & interaction fixes ---- */

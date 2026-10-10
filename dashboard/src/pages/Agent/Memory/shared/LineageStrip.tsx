@@ -115,7 +115,7 @@ export default function LineageStrip({ agentId, atom }: Props) {
             ✏️ {t("memory.lineage.manualCorrection", "人工修正的记忆")}
           </Typography.Text>
           {correctionText ? (
-            <div style={{ marginTop: 4, fontSize: 12, color: "#595959" }}>
+            <div style={{ marginTop: 4, fontSize: 12, color: "var(--fn-text-secondary)" }}>
               {t("memory.lineage.beforeCorrection", "修正前：{{assertion}}", {
                 assertion: correctionText,
               })}
@@ -132,11 +132,11 @@ export default function LineageStrip({ agentId, atom }: Props) {
             style={{
               marginTop: 4,
               fontSize: 12,
-              color: "#595959",
-              background: "#fafafa",
+              color: "var(--fn-text-secondary)",
+              background: "var(--fn-bg-tertiary)",
               padding: "6px 8px",
               borderRadius: 4,
-              borderLeft: "3px solid #d9d9d9",
+              borderLeft: "3px solid var(--fn-border-primary)",
               whiteSpace: "pre-wrap",
               maxHeight: 80,
               overflow: "hidden",
@@ -146,7 +146,7 @@ export default function LineageStrip({ agentId, atom }: Props) {
             {truncate(String(fromQuote), 200)}
           </div>
         ) : (
-          <div style={{ marginTop: 4, fontSize: 12, color: "#8c8c8c" }}>
+          <div style={{ marginTop: 4, fontSize: 12, color: "var(--fn-text-tertiary)" }}>
             {t("memory.lineage.noOriginalContext", "没有可展示的原始来源")}
           </div>
         )}
@@ -156,16 +156,16 @@ export default function LineageStrip({ agentId, atom }: Props) {
 }
 
 const correctionBox: React.CSSProperties = {
-  border: "1px solid #91caff",
-  background: "#e6f4ff",
+  border: "1px solid var(--fn-color-brand-border)",
+  background: "var(--fn-color-brand-bg)",
   borderRadius: 6,
   padding: "10px 12px",
   marginBottom: 8,
 };
 
 const lineageBox: React.CSSProperties = {
-  border: "1px solid #f0f0f0",
-  background: "#fcfcfc",
+  border: "1px solid var(--fn-border-primary)",
+  background: "var(--fn-bg-primary)",
   borderRadius: 6,
   padding: "10px 12px",
   marginBottom: 14,

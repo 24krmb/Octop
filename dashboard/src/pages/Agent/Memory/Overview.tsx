@@ -237,7 +237,7 @@ export default function Overview({
                   tickFormatter={(date: string) => date.slice(5)}
                   tick={{ fontSize: 11, fill: "var(--fn-text-tertiary)" }}
                   tickLine={false}
-                  axisLine={{ stroke: "var(--fn-border-primary, #d9d9d9)" }}
+                  axisLine={{ stroke: "var(--fn-border-primary)" }}
                   height={30}
                   dy={4}
                 />
@@ -246,7 +246,7 @@ export default function Overview({
                   width={36}
                   tick={{ fontSize: 11, fill: "var(--fn-text-tertiary)" }}
                   tickLine={false}
-                  axisLine={{ stroke: "var(--fn-border-primary, #d9d9d9)" }}
+                  axisLine={{ stroke: "var(--fn-border-primary)" }}
                 />
                 <ChartTooltip
                   formatter={(value) => [
@@ -293,7 +293,7 @@ export default function Overview({
                     tickFormatter={(date: string) => date.slice(5)}
                     tick={{ fontSize: 11, fill: "var(--fn-text-tertiary)" }}
                     tickLine={false}
-                    axisLine={{ stroke: "var(--fn-border-primary, #d9d9d9)" }}
+                    axisLine={{ stroke: "var(--fn-border-primary)" }}
                     height={30}
                     dy={4}
                   />
@@ -302,7 +302,7 @@ export default function Overview({
                     width={36}
                     tick={{ fontSize: 11, fill: "var(--fn-text-tertiary)" }}
                     tickLine={false}
-                    axisLine={{ stroke: "var(--fn-border-primary, #d9d9d9)" }}
+                    axisLine={{ stroke: "var(--fn-border-primary)" }}
                   />
                   <ChartTooltip
                     formatter={(value) => [
