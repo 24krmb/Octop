@@ -141,7 +141,7 @@ html[data-theme="light"] {
   --fn-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.07),
     /* 特大号阴影 */ 0 8px 10px -6px rgba(0, 0, 0, 0.04);
   --fn-shadow-brand: 0 4px 14px rgba(118,94,252, 0.18); /* 品牌色阴影 */
-  --fn-shadow-brand-lg: 0 8px 24px rgba(118,94,252, 0.24);
+  --fn-shadow-brand-lg: 0 4px 14px rgba(118,94,252, 0.24);
   --fn-shadow-soft-brand: 0 2px 8px rgba(118, 94, 252, 0.1); /* 大号品牌色阴影 */
 
   /* ---- 选中行 ---- */
