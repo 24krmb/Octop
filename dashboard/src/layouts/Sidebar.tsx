@@ -181,7 +181,7 @@ function NavItemButton({
             alignItems: "center",
             color: active
               ? "var(--fn-sidebar-item-active-text)"
-              : "var(--fn-text-tertiary)",
+              : "var(--fn-text-primary)",
           }}
         >
           {item.icon}

@@ -53,7 +53,7 @@ export default function SidebarCollapsedIconNav({
                   : "transparent",
                 color: active
                   ? "var(--fn-sidebar-item-active-text)"
-                  : "var(--fn-text-tertiary)",
+                  : "var(--fn-text-primary)",
                 cursor: "pointer",
                 transition: "all var(--fn-transition-fast)",
                 marginBottom: 2,
@@ -70,7 +70,7 @@ export default function SidebarCollapsedIconNav({
               onMouseLeave={(e) => {
                 if (!active) {
                   e.currentTarget.style.background = "transparent";
-                  e.currentTarget.style.color = "var(--fn-text-tertiary)";
+                  e.currentTarget.style.color = "var(--fn-text-primary)";
                 }
               }}
             >
