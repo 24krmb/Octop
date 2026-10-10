@@ -6,8 +6,7 @@
 /* ---------- 浅色主题 ---------- */
 :root,
 html[data-theme="light"] {
-  --card-border: rgb(214,227,255); /* 卡片边框 */
-
+  --box-shadow: rgba(118,94,252,.1); /* 阴影颜色 */
   --fn-bg-primary: #fff; /* 主背景色 */
   --fn-bg-secondary: #dfeafd; /* 次级背景色 */
   --fn-bg-tertiary: #e4e4e7; /* 三级背景色 */
@@ -199,7 +198,7 @@ html[data-theme="light"] {
 
 /* ---------- 深色主题 ---------- */
 html[data-theme="dark"] {
-  --card-border: rgba(255, 255, 255, 0.1); /* 卡片边框 */
+  --box-shadow: rgba(0,0,0,.1); /* 阴影颜色 */
   --fn-bg-primary: #232323; /* 主背景色 */
   --fn-bg-secondary: #1f1f23; /* 次级背景色 */
   --fn-bg-tertiary: #27272a; /* 三级背景色 */
