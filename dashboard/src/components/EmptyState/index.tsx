@@ -50,7 +50,7 @@ export function EmptyState({
       <Inbox
         size={40}
         strokeWidth={1.2}
-        style={{ color: "var(--fn-text-quaternary, #bfbfbf)" }}
+        style={{ color: "var(--fn-text-quaternary)" }}
       />
     );
 
