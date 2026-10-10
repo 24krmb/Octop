@@ -68,7 +68,7 @@ vibe: 创建美观、一致、可访问的界面，感觉恰到好处。
   
   --color-success: #10b981;
   --color-warning: #f59e0b;
-  --color-error: #ef4444;
+  --color-error: #f36;
   --color-info: #3b82f6;
   
   /* 排版令牌 */

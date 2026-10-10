@@ -148,7 +148,7 @@ export default function ContextWindowRing({
     const circ = 2 * Math.PI * r;
     let color = "var(--fn-color-success, #22c55e)";
     if (usedRatio >= 0.8) {
-      color = "var(--fn-color-danger, #ef4444)";
+      color = "var(--fn-color-danger, #f36)";
     } else if (usedRatio >= 0.5) {
       color = "var(--fn-color-warning, #eab308)";
     }

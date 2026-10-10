@@ -276,7 +276,7 @@ const FILE_META_MAP: Record<
   },
   "HEARTBEAT.md": {
     icon: <Heart size={20} />,
-    color: "#ef4444",
+    color: "#f36",
     labelKey: "experts.fileLabel.heartbeat",
   },
   "SKILL.md": {

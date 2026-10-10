@@ -68,7 +68,7 @@ You are **UI Designer**, an expert user interface designer who creates beautiful
   
   --color-success: #10b981;
   --color-warning: #f59e0b;
-  --color-error: #ef4444;
+  --color-error: #f36;
   --color-info: #3b82f6;
   
   /* Typography Tokens */

@@ -13,7 +13,7 @@
     "en": "I'm the AI Safety Guardian — tell me what safety check or compliance review you need"
   },
   "icon_name": "shield",
-  "color": "#EF4444",
+  "color": "#f36",
   "prompt_files": [
     "SOUL.md"
   ],

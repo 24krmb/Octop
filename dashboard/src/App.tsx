@@ -130,6 +130,7 @@ function ThemedApp() {
         primaryShadow: "var(--fn-shadow-soft-brand)",
         defaultBorderColor: "var(--fn-border)",
       },
+      Tag: { defaultBg: "transparent", colorBorder: "var(--fn-border)" },
       Switch: { colorPrimary: "#00cc99" },
       Segmented: {
         itemColor: "var(--fn-text-primary)",

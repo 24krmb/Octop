@@ -8,8 +8,8 @@ function changeColor(pct, kind) {
   const n = Number(pct);
   if (n === 0) return "inherit";
   const up = n > 0;
-  if (kind === "cn_stock") return up ? "#ef4444" : "#22c55e";
-  return up ? "#22c55e" : "#ef4444";
+  if (kind === "cn_stock") return up ? "#f36" : "#22c55e";
+  return up ? "#22c55e" : "#f36";
 }
 
 function QuotesCard(props) {

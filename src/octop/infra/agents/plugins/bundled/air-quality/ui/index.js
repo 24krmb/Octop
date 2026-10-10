@@ -1,7 +1,7 @@
 const React = window.__OCTOP_REACT__;
 const { jsx: _jsx, jsxs: _jsxs } = window.__OCTOP_JSX__;
 
-const LABEL_COLOR = { 优: "#22c55e", 良: "#84cc16", 轻度: "#eab308", 中度: "#f97316", 重度: "#ef4444" };
+const LABEL_COLOR = { 优: "#22c55e", 良: "#84cc16", 轻度: "#eab308", 中度: "#f97316", 重度: "#f36" };
 
 function AirQuality(props) {
   const theme = props.host.getToolContext().theme;

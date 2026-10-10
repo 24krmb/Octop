@@ -113,7 +113,7 @@
 }
 
 .messagesError {
-  color: var(--fn-color-error, #ef4444);
+  color: var(--fn-color-error, #f36);
   text-align: center;
 }
 
@@ -206,7 +206,7 @@
   &:focus {
     outline: none;
     border-color: var(--fn-color-brand, #6366f1);
-    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.12);
+    box-shadow: 0 0 0 2px var(--box-shadow);
   }
 
   &:disabled {
@@ -281,8 +281,8 @@
   }
 
   &.actionBtnDanger {
-    border-color: var(--fn-color-error, #ef4444);
-    color: var(--fn-color-error, #ef4444);
+    border-color: var(--fn-color-error, #f36);
+    color: var(--fn-color-error, #f36);
 
     &:hover:not(:disabled) {
       background: rgba(239, 68, 68, 0.08);

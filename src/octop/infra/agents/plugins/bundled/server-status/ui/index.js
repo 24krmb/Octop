@@ -3,7 +3,7 @@ const { jsx: _jsx, jsxs: _jsxs } = window.__OCTOP_JSX__;
 
 function Bar({ label, percent, detail, icon }) {
   const pct = Math.max(0, Math.min(100, Number(percent) || 0));
-  const color = pct >= 90 ? "#ef4444" : pct >= 70 ? "#f59e0b" : "#22c55e";
+  const color = pct >= 90 ? "#f36" : pct >= 70 ? "#f59e0b" : "#22c55e";
   return _jsxs("div", {
     style: { marginTop: 12 },
     children: [

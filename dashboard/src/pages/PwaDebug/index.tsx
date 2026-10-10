@@ -21,7 +21,7 @@ interface CheckItem {
 function StatusDot({ status }: { status: CheckItem["status"] }) {
   const colors: Record<string, string> = {
     pass: "#22c55e",
-    fail: "#ef4444",
+    fail: "#f36",
     warn: "#f59e0b",
     loading: "#94a3b8",
     info: "#60a5fa",
@@ -645,9 +645,9 @@ export default function PwaDebugPage() {
           style={{
             padding: "8px 16px",
             borderRadius: 999,
-            border: "1px solid #ef4444",
+            border: "1px solid #f36",
             background: "transparent",
-            color: "#ef4444",
+            color: "#f36",
             fontSize: 13,
             cursor: "pointer",
           }}

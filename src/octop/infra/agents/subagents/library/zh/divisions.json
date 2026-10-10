@@ -59,7 +59,7 @@
     "security": {
       "label": "安全",
       "icon": "ShieldCheck",
-      "color": "#EF4444"
+      "color": "#f36"
     },
     "spatial-computing": {
       "label": "空间计算",

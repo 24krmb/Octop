@@ -62,7 +62,7 @@ const NAME_MAP: Record<string, IconSpec> = {
   "AGENTS.md": { Icon: BookOpen, color: "#059669" },
   "TOOLS.md": { Icon: Wrench, color: "#f59e0b" },
   "BOOTSTRAP.md": { Icon: Rocket, color: "#d97706" },
-  "HEARTBEAT.md": { Icon: Heart, color: "#ef4444" },
+  "HEARTBEAT.md": { Icon: Heart, color: "#f36" },
   "MEMORY.md": { Icon: Database, color: "#0891b2" },
   Makefile: { Icon: Wrench, color: "#78716c" },
   Dockerfile: { Icon: FileCode, color: "#0ea5e9" },
@@ -74,7 +74,7 @@ const EXT_MAP: Record<string, IconSpec> = {
   markdown: { Icon: NotebookText, color: "#3b82f6" },
   txt: { Icon: FileText, color: "#64748b" },
   rst: { Icon: FileText, color: "#64748b" },
-  pdf: { Icon: FileText, color: "#ef4444" },
+  pdf: { Icon: FileText, color: "#f36" },
   rtf: { Icon: FileText, color: "#64748b" },
 
   // Office

@@ -12,7 +12,7 @@
     "product": { "label": "Product", "icon": "Box", "color": "#D946EF" },
     "project-management": { "label": "Project Management", "icon": "ClipboardList", "color": "#0EA5E9" },
     "sales": { "label": "Sales", "icon": "TrendingUp", "color": "#10B981" },
-    "security": { "label": "Security", "icon": "ShieldCheck", "color": "#EF4444" },
+    "security": { "label": "Security", "icon": "ShieldCheck", "color": "#f36" },
     "spatial-computing": { "label": "Spatial Computing", "icon": "Boxes", "color": "#06B6D4" },
     "specialized": { "label": "Specialized", "icon": "Sparkles", "color": "#6366F1" },
     "support": { "label": "Support", "icon": "LifeBuoy", "color": "#84CC16" },
