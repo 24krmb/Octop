@@ -500,8 +500,7 @@ html[data-theme="dark"] .octop-ant-switch-checked {
 
 /* ---- Scrollbar ---- */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  display : none
 }
 ::-webkit-scrollbar-track {
   background: transparent;
@@ -519,4 +518,17 @@ html[data-theme="dark"] ::-webkit-scrollbar-thumb {
 }
 html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.18);
+}
+
+/* Firefox 不支持 ::-webkit-scrollbar，改用标准属性实现细滚动条，
+   避免出现占位带轨道的默认宽滚动条。Chrome 支持 ::-webkit-scrollbar
+   选择器，@supports 条件使其仅对 Firefox 生效。 */
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-width: none;
+    scrollbar-color: var(--fn-text-tertiary) transparent;
+  }
+  html[data-theme="dark"] * {
+    scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+  }
 }

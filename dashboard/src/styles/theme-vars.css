@@ -400,4 +400,4 @@ html,body,
 html[data-theme="dark"] body {background-color: var(--fn-bg-layout);color: var(--fn-text-primary)}
 
 /* ---- 平滑的文本选区 ---- */
-::selection {background: var(--fn-color-brand);color:var(var(--fn-text-inverse))}
+::selection {background: var(--hover-border);color:var(--fn-bg-primary)}
