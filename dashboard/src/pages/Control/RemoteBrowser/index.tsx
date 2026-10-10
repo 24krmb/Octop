@@ -215,7 +215,7 @@ function BookmarkBar({
         padding: "2px 8px",
         scrollbarWidth: "none",
         background: "var(--fn-bg-secondary)",
-        borderBottom: "1px solid var(--fn-border-secondary)",
+        borderBottom: "1px solid var(--fn-border-primary)",
         minHeight: 28,
       }}
     >
@@ -234,7 +234,7 @@ function BookmarkBar({
               maxWidth: 160,
               fontSize: 12,
               background: "var(--fn-bg-primary)",
-              border: "1px solid var(--fn-border-secondary)",
+              border: "1px solid var(--fn-border-primary)",
               color: "var(--fn-text-secondary)",
               userSelect: "none",
             }}

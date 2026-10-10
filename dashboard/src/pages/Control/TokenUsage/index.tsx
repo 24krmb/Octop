@@ -109,7 +109,7 @@ const IO_COLORS = {
 
 const CHART_TOOLTIP_STYLE = {
   background: "var(--fn-bg-elevated)",
-  border: "1px solid var(--fn-border-secondary)",
+  border: "1px solid var(--fn-border-primary)",
   borderRadius: 6,
   fontSize: 12,
 };
@@ -184,7 +184,7 @@ function UsageBarChart({
         >
           <CartesianGrid
             strokeDasharray="3 3"
-            stroke="var(--fn-border-secondary)"
+            stroke="var(--fn-border-primary)"
             vertical={false}
           />
           <XAxis

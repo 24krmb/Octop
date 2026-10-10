@@ -816,7 +816,7 @@
   display: flex;
   gap: 6px;
   align-items: center;
-  border-top: 1px solid var(--fn-border-secondary);
+  border-top: 1px solid var(--fn-border-primary);
   padding-top: 10px;
 }
 
@@ -1188,7 +1188,7 @@
   padding: 12px 14px;
   border-radius: var(--fn-radius-md);
   background: var(--fn-bg-secondary);
-  border: 1px solid var(--fn-border-secondary);
+  border: 1px solid var(--fn-border-primary);
 }
 
 .marketWorkflowMetaTitle {
@@ -1216,7 +1216,7 @@
   padding: 14px 16px;
   color: var(--fn-text-primary);
   background: var(--fn-bg-secondary);
-  border: 1px solid var(--fn-border-secondary);
+  border: 1px solid var(--fn-border-primary);
   border-radius: var(--fn-radius-md);
 }
 
@@ -1297,7 +1297,7 @@
   :global(hr) {
     margin: 12px 0;
     border: none;
-    border-top: 1px solid var(--fn-border-secondary);
+    border-top: 1px solid var(--fn-border-primary);
   }
 
   :global(blockquote) {
@@ -1688,6 +1688,12 @@
   &:global(.octop-tabs) :global(.octop-tabs-nav),
   &:global(.ant-tabs) :global(.ant-tabs-nav) {
     margin: 0;
+  }
+
+  /* 覆盖 antd Tabs nav 底部分隔线的硬编码颜色 */
+  &:global(.octop-tabs-top) > :global(.octop-tabs-nav)::before,
+  &:global(.ant-tabs-top) > :global(.ant-tabs-nav)::before {
+    border-bottom-color: var(--fn-border-primary);
   }
 }
 
@@ -2262,7 +2268,7 @@
   text-align: center;
   font-size: 13px;
   color: var(--fn-text-tertiary);
-  border: 1px dashed var(--fn-border-secondary);
+  border: 1px dashed var(--fn-border-primary);
   border-radius: var(--fn-radius-md);
 }
 
@@ -2403,7 +2409,7 @@
   flex-direction: column;
   gap: 8px;
   padding-top: 8px;
-  border-top: 1px solid var(--fn-border-secondary);
+  border-top: 1px solid var(--fn-border-primary);
 }
 
 .quickPromptPreviewLabel {
