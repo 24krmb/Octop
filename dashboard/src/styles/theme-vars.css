@@ -1,8 +1,3 @@
-/* ===================================================================
-   主题模式通过 html[data-theme="light|dark"] 切换
-   主题模式通过 html[data-theme="light|dark"] 切换
-   =================================================================== */
-
 /* ---------- 浅色主题 ---------- */
 :root,
 html[data-theme="light"] {
@@ -284,12 +279,7 @@ html[data-theme="dark"] {
     rgba(255, 255, 255, 0.04) 50%,
     rgba(96, 165, 250, 0.08) 100%
   );
-  --fn-assistant-bubble-border: rgba(
-    96,
-    165,
-    250,
-    0.14
-  ); /* AI 消息气泡边框色 */
+  --fn-assistant-bubble-border: rgba(96,165,250,0.14); /* AI 消息气泡边框色 */
   --fn-assistant-glow-color: 96, 165, 250; /* AI 消息光晕 RGB 分量（供 rgba() 拼接） */
 
   /* ---- 语义色 ---- */
@@ -332,19 +322,14 @@ html[data-theme="dark"] {
   --fn-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.35), 0 4px 6px rgba(0, 0, 0, 0.22); /* 大号阴影 */
   --fn-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.4), 0 8px 10px rgba(0, 0, 0, 0.25); /* 特大号阴影 */
   --fn-shadow-brand: 0 4px 14px rgba(244, 209, 180, 0.22); /* 品牌色阴影 */
-  --fn-shadow-brand-lg: 0 8px 24px rgba(244, 209, 180, 0.3);
+  --fn-shadow-brand-lg: 0 4px 14px rgba(244, 209, 180, 0.3);
   --fn-shadow-soft-brand: 0 2px 8px rgba(0, 0, 0, 0.1); /* 大号品牌色阴影 */
 
   /* ---- 选中行 ---- */
   --fn-row-selected-bg: rgba(244, 209, 180, 0.1); /* 选中行背景色 */
   --fn-row-selected-hover: rgba(244, 209, 180, 0.16); /* 选中行悬停背景色 */
   --fn-row-selected-alt-bg: rgba(244, 209, 180, 0.08); /* 交替选中行背景色 */
-  --fn-row-selected-alt-hover: rgba(
-    29,
-    78,
-    216,
-    0.13
-  ); /* 交替选中行悬停背景色 */
+  --fn-row-selected-alt-hover: rgba(29,78,216,0.13); /* 交替选中行悬停背景色 */
   --fn-row-selected-border: #F4D1B4; /* 选中行边框色 */
 
   /* ---- 卡片 ---- */
