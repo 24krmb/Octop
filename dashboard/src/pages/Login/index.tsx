@@ -298,7 +298,7 @@ export default function LoginPage() {
         <div style={{ width: "100%" }}>
           <Input
             prefix={
-              <User size={16} style={{ color: "var(--fn-text-quaternary)" }} />
+              <User size={16} style={{ color: "var(--fn-text-tertiary)" }} />
             }
             placeholder={t("login.username")}
             size="large"
@@ -311,7 +311,7 @@ export default function LoginPage() {
 
         <Input.Password
           prefix={
-            <Lock size={16} style={{ color: "var(--fn-text-quaternary)" }} />
+            <Lock size={16} style={{ color: "var(--fn-text-tertiary)" }} />
           }
           placeholder={t("login.password")}
           size="large"

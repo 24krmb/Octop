@@ -335,7 +335,7 @@ html[data-theme="dark"] .octop-ant-tag {
 /* Switch */
 html[data-theme="dark"] .ant-switch,
 html[data-theme="dark"] .octop-ant-switch {
-  background: var(--fn-text-quaternary) !important;
+  background: var(--fn-text-tertiary) !important;
 }
 
 html[data-theme="dark"] .ant-switch-checked,
@@ -507,7 +507,7 @@ html[data-theme="dark"] .octop-ant-switch-checked {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--fn-text-quaternary);
+  background: var(--fn-text-tertiary);
   border-radius: var(--fn-radius-full);
 }
 ::-webkit-scrollbar-thumb:hover {
