@@ -324,20 +324,15 @@
   justify-content: center;
   width: 28px;
   height: 28px;
+  border-radius:50%;
   padding: 0;
-  background: transparent;
-  border: none;
+  background: var(--fn-bg-primary);
+  border: 1px solid var(--fn-border-primary);
+  box-shadow: 0 4px 12px 0 var(--box-shadow);
   cursor: pointer;
-  color: var(--fn-text-quaternary, #c4c9d4);
-  transition:
-    color 0.16s ease,
-    transform 0.22s ease;
-
-  svg {
-    width: 20px;
-    height: 20px;
-    transition: transform 0.22s ease;
-  }
+  color: var(--fn-text-primary);
+  transition:color 0.16s ease,transform 0.22s ease;
+  svg {width: 20px;height: 20px;transition: transform 0.22s ease}
 
   &.quickMoreButtonExpanded svg {
     transform: rotate(180deg);

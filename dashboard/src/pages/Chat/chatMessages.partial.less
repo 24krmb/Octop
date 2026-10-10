@@ -8,16 +8,11 @@
   flex-direction: column;
 }
 
-/* Left gutter so the in-thread turn timeline ticks do not cover bubbles.
-   Prefer parent `.chatMainWithTurnRail` (title + composer + list). This local
-   class remains as a fallback when MessageList is mounted alone. */
 .messageListWrapperWithRail {
   --chat-turn-rail-gutter: 48px;
-
   .messageListInner {
     padding-inline-start: var(--chat-turn-rail-gutter);
     padding-inline-end: var(--chat-column-pad-x, 24px);
-
     @media (max-width: 863px) {
       padding-inline-start: var(--chat-column-pad-x, 24px);
     }
@@ -29,11 +24,7 @@
   overflow-y: auto;
   padding: 20px 0 24px;
   scrollbar-gutter: stable;
-  /* Disable browser scroll anchoring — fights follow-mode pins while
-     thinking/tool rows grow and causes visible up/down jitter. */
   overflow-anchor: none;
-
-  /* Custom scrollbar for visual polish */
   &::-webkit-scrollbar {
     width: 3px;
   }
@@ -51,13 +42,10 @@
 }
 
 .scrollToBottomBtn {
-  /* Layout: centered, floating above the message list */
   position: absolute;
   bottom: 20px;
   left: 50%;
   z-index: 20;
-
-  /* Quiet secondary affordance — readable but not competing with messages */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -72,7 +60,6 @@
   cursor: pointer;
   box-shadow: 0 2px 8px var(--box-shadow);
   white-space: nowrap;
-
   transition:
     background var(--fn-transition-fast),
     color var(--fn-transition-fast),
@@ -1378,7 +1365,7 @@
 
 .thinkingChevron {
   flex-shrink: 0;
-  color: var(--fn-text-quaternary);
+  color: var(--fn-text-secondary);
   transition: transform 0.2s ease;
   margin-left: auto;
 }

@@ -7,14 +7,15 @@
 :root,
 html[data-theme="light"] {
   --box-shadow: rgba(118,94,252,.1); /* 阴影颜色 */
+  --hover-border:#765efc; /* 悬停态边框颜色 */
   --fn-bg-primary: #fff; /* 主背景色 */
   --fn-bg-secondary: #dfeafd; /* 次级背景色 */
   --fn-bg-tertiary: #e4e4e7; /* 三级背景色 */
   --fn-bg-elevated: #ffffff; /* 悬浮层（Elevated）背景色 */
   --fn-bg-layout: #f7faff; /* 页面布局背景色 */
-  --fn-bg-hover: rgba(24, 49, 83, 0.04); /* 悬停态背景色 */
-  --fn-bg-active: rgba(24, 49, 83, 0.08); /* 激活（按下）态背景色 */
-  --fn-bg-selected: rgba(24, 49, 83, 0.06); /* 选中态背景色 */
+  --fn-bg-hover: rgba(118,94,252, 0.04); /* 悬停态背景色 */
+  --fn-bg-active: rgba(118,94,252, 0.08); /* 激活（按下）态背景色 */
+  --fn-bg-selected: rgba(118,94,252, 0.06); /* 选中态背景色 */
   --fn-bg-code: #fafafa; /* 代码块背景色 */
   --fn-bg-toolbar: #fafafa; /* 工具栏背景色 */
   --fn-bg-toolbar-hover: #dfeafd; /* 工具栏悬停背景色 */
@@ -81,10 +82,10 @@ html[data-theme="light"] {
     transparent
   );
   --fn-color-on-brand: #ffffff; /* 品牌色之上的前景色 */
-  --fn-color-brand-bg: rgba(24, 49, 83, 0.06); /* 品牌色浅背景 */
+  --fn-color-brand-bg: rgba(118,94,252, 0.06); /* 品牌色浅背景 */
   --fn-color-brand-light: #dae8ff; /* 品牌色浅色变体 */
-  --fn-color-brand-shadow: rgba(24, 49, 83, 0.15); /* 品牌色阴影 */
-  --fn-color-brand-glow: rgba(24, 49, 83, 0.08); /* 品牌色光晕 */
+  --fn-color-brand-shadow: rgba(118,94,252, 0.15); /* 品牌色阴影 */
+  --fn-color-brand-glow: rgba(118,94,252, 0.08); /* 品牌色光晕 */
 
   /* ---- AI 消息气泡（毛玻璃效果） ---- */
   --fn-assistant-bubble-bg: rgba(255, 255, 255, 0.45); /* AI 消息气泡背景色 */
@@ -94,7 +95,7 @@ html[data-theme="light"] {
     rgba(255, 255, 255, 0.35) 50%,
     rgba(219, 234, 254, 0.5) 100%
   );
-  --fn-assistant-bubble-border: rgba(24, 49, 83, 0.12); /* AI 消息气泡边框色 */
+  --fn-assistant-bubble-border: rgba(118,94,252, 0.12); /* AI 消息气泡边框色 */
   --fn-assistant-glow-color: 24, 49, 83; /* AI 消息光晕 RGB 分量（供 rgba() 拼接） */
 
   /* ---- 语义色 ---- */
@@ -139,20 +140,15 @@ html[data-theme="light"] {
     /* 大号阴影 */ 0 4px 6px -4px rgba(0, 0, 0, 0.04);
   --fn-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.07),
     /* 特大号阴影 */ 0 8px 10px -6px rgba(0, 0, 0, 0.04);
-  --fn-shadow-brand: 0 4px 14px rgba(24, 49, 83, 0.18); /* 品牌色阴影 */
-  --fn-shadow-brand-lg: 0 8px 24px rgba(24, 49, 83, 0.24);
+  --fn-shadow-brand: 0 4px 14px rgba(118,94,252, 0.18); /* 品牌色阴影 */
+  --fn-shadow-brand-lg: 0 8px 24px rgba(118,94,252, 0.24);
   --fn-shadow-soft-brand: 0 2px 8px rgba(118, 94, 252, 0.1); /* 大号品牌色阴影 */
 
   /* ---- 选中行 ---- */
-  --fn-row-selected-bg: rgba(24, 49, 83, 0.05); /* 选中行背景色 */
-  --fn-row-selected-hover: rgba(24, 49, 83, 0.09); /* 选中行悬停背景色 */
-  --fn-row-selected-alt-bg: rgba(24, 49, 83, 0.04); /* 交替选中行背景色 */
-  --fn-row-selected-alt-hover: rgba(
-    29,
-    78,
-    216,
-    0.08
-  ); /* 交替选中行悬停背景色 */
+  --fn-row-selected-bg: rgba(118,94,252, 0.05); /* 选中行背景色 */
+  --fn-row-selected-hover: rgba(118,94,252, 0.09); /* 选中行悬停背景色 */
+  --fn-row-selected-alt-bg: rgba(118,94,252, 0.04); /* 交替选中行背景色 */
+  --fn-row-selected-alt-hover: rgba(29,78,216,0.08); /* 交替选中行悬停背景色 */
   --fn-row-selected-border: #183153; /* 选中行边框色 */
 
   /* ---- 卡片 ---- */
@@ -166,7 +162,7 @@ html[data-theme="light"] {
   --fn-sidebar-border: rgba(219,231,255, 0.1); /* 侧边栏边框色 */
   --fn-sidebar-item-hover:#D2DFFF; /* 侧边栏项悬停背景色 */
   --fn-sidebar-item-active-bg:#C0D2FF; /* 侧边栏激活项背景色 */
-  --fn-sidebar-item-active: rgba(24, 49, 83, 0.08); /* 侧边栏激活项高亮色 */
+  --fn-sidebar-item-active: rgba(118,94,252, 0.08); /* 侧边栏激活项高亮色 */
   --fn-sidebar-item-active-text: #183153; /* 侧边栏激活项文本色 */
   --fn-sidebar-group-text:#33517E; /* 侧边栏分组标题文本色 */
 
@@ -199,6 +195,7 @@ html[data-theme="light"] {
 /* ---------- 深色主题 ---------- */
 html[data-theme="dark"] {
   --box-shadow: rgba(0,0,0,.1); /* 阴影颜色 */
+  --hover-border:#F4D1B4; /* 悬停态边框颜色 */
   --fn-bg-primary: #232323; /* 主背景色 */
   --fn-bg-secondary: #1f1f23; /* 次级背景色 */
   --fn-bg-tertiary: #27272a; /* 三级背景色 */
