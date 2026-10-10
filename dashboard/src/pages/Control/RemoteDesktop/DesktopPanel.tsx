@@ -805,7 +805,7 @@ export default function DesktopPanel({
       return (
         <Result
           icon={
-            <CheckCircle2 size={40} color="var(--fn-color-success,#52c41a)" />
+            <CheckCircle2 size={40} color="var(--fn-color-success,#0c9)" />
           }
           title={t("remoteDesktop.installSuccess", "桌面环境已就绪")}
           subTitle={t("remoteDesktop.installSuccessHint")}
@@ -889,7 +889,7 @@ export default function DesktopPanel({
         <Space direction="vertical" size="middle" style={{ width: "100%" }}>
           <Result
             icon={
-              <CheckCircle2 size={40} color="var(--fn-color-success,#52c41a)" />
+              <CheckCircle2 size={40} color="var(--fn-color-success,#0c9)" />
             }
             title={t("remoteDesktop.envReady", "桌面环境已就绪")}
             subTitle={

@@ -88,8 +88,8 @@
   border: 1px solid var(--fn-border-primary);
   border-radius: 10px;
   overflow: hidden;
-  background: var(--fn-bg-elevated, #fff);
-  box-shadow: 0 1px 2px rgba(26, 28, 40, 0.04);
+  background: var(--fn-bg-elevated);
+  box-shadow: 0 1px 2px var(--box-shadow);
 }
 
 .deviceBar {
@@ -100,7 +100,7 @@
   flex-shrink: 0;
   padding: 10px 14px;
   border-bottom: 1px solid var(--fn-border-primary);
-  background: var(--fn-bg-elevated, #fff);
+  background: var(--fn-bg-elevated);
 }
 
 .deviceMeta {
@@ -161,17 +161,17 @@
 }
 
 .viewSwitcherTabActive {
-  color: var(--fn-color-brand, #1677ff);
+  color: var(--fn-color-brand);
   background: var(
     --fn-color-brand-bg,
-    color-mix(in srgb, var(--fn-color-brand, #1677ff) 10%, transparent)
+    color-mix(in srgb, var(--fn-color-brand) 10%, transparent)
   );
 
   &:hover {
-    color: var(--fn-color-brand, #1677ff);
+    color: var(--fn-color-brand);
     background: var(
       --fn-color-brand-bg,
-      color-mix(in srgb, var(--fn-color-brand, #1677ff) 14%, transparent)
+      color-mix(in srgb, var(--fn-color-brand) 14%, transparent)
     );
   }
 }
@@ -211,7 +211,7 @@
   font-size: 12px;
   line-height: 20px;
   font-variant-numeric: tabular-nums;
-  background: var(--fn-bg-elevated, #fff);
+  background: var(--fn-bg-elevated);
   border: 1px solid var(--fn-border-primary);
   color: var(--fn-text-secondary);
 }
@@ -228,7 +228,7 @@
 }
 
 .statusIdle {
-  background: var(--fn-bg-elevated, #fff);
+  background: var(--fn-bg-elevated);
   border-color: var(--fn-border-primary);
   color: var(--fn-text-secondary);
 }
@@ -242,7 +242,7 @@
 .statusStreaming {
   background: rgba(82, 196, 26, 0.08);
   border-color: rgba(82, 196, 26, 0.35);
-  color: #389e0d;
+  color: #0c9;
 }
 
 .phoneTabPanels {
@@ -292,7 +292,7 @@
     width: 4px;
     height: 40px;
     border-radius: 999px;
-    background: var(--fn-text-tertiary, rgba(0, 0, 0, 0.35));
+    background: var(--fn-text-tertiary);
     box-shadow: 0 0 0 1px var(--fn-border-primary);
     transition:
       background-color 120ms ease-out,
@@ -306,14 +306,14 @@
       --fn-bg-hover,
       color-mix(in srgb, var(--fn-text-primary) 4%, transparent)
     );
-    border-left-color: var(--fn-color-brand, #1677ff);
-    border-right-color: var(--fn-color-brand, #1677ff);
+    border-left-color: var(--fn-color-brand);
+    border-right-color: var(--fn-color-brand);
 
     &::after {
       height: 48px;
-      background: var(--fn-color-brand, #1677ff);
+      background: var(--fn-color-brand);
       box-shadow: 0 0 0 1px
-        color-mix(in srgb, var(--fn-color-brand, #1677ff) 35%, transparent);
+        color-mix(in srgb, var(--fn-color-brand) 35%, transparent);
     }
   }
 }
@@ -401,7 +401,7 @@
 
 .streamLoadingIcon {
   animation: remotePhoneSpin 1s linear infinite;
-  color: var(--fn-color-brand, #1677ff);
+  color: var(--fn-color-brand);
 }
 
 @keyframes remotePhoneSpin {
@@ -479,7 +479,7 @@
   border: 3px solid #2a2d3d;
   border-radius: 28px;
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 20px 50px var(--box-shadow);
 }
 
 .canvas {
@@ -526,7 +526,7 @@
   padding: 0;
   border: 1px solid var(--fn-border-primary);
   border-radius: 10px;
-  background: var(--fn-bg-elevated, #fff);
+  background: var(--fn-bg-elevated);
   color: var(--fn-text-secondary);
   cursor: pointer;
   transition:
@@ -540,7 +540,7 @@
     color: var(--fn-text-primary);
     border-color: color-mix(
       in srgb,
-      var(--fn-color-brand, #1677ff) 35%,
+      var(--fn-color-brand) 35%,
       var(--fn-border-primary)
     );
   }
@@ -569,7 +569,7 @@
   padding: 16px 18px;
   box-sizing: border-box;
   border-left: 1px solid var(--fn-border-primary);
-  background: var(--fn-bg-elevated, #fff);
+  background: var(--fn-bg-elevated);
   overflow: auto;
   display: flex;
   flex-direction: column;
@@ -627,7 +627,7 @@
 
 .infoLabel {
   font-size: 12px;
-  color: var(--fn-text-tertiary, rgba(0, 0, 0, 0.45));
+  color: var(--fn-text-tertiary);
 }
 
 .infoLabelWithIcon {
@@ -648,7 +648,7 @@
 
 .infoSub {
   font-size: 12px;
-  color: var(--fn-text-tertiary, rgba(0, 0, 0, 0.45));
+  color: var(--fn-text-tertiary);
   word-break: break-word;
 }
 

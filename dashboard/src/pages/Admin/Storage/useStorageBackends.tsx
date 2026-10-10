@@ -247,7 +247,7 @@ export const STORAGE_TYPE_DEFS: StorageTypeDef[] = [
     kind: "filesystem",
     nameKey: "storage.kindFilesystem",
     descKey: "storage.descFilesystem",
-    color: "#52c41a",
+    color: "#0c9",
     icon: storageBrandIcon("filesystem"),
     fields: [
       {

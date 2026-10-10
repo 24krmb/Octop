@@ -84,10 +84,10 @@ const EXT_MAP: Record<string, IconSpec> = {
   doc: { Icon: FileType, color: "#2563eb" },
   docx: { Icon: FileType, color: "#2563eb" },
   odt: { Icon: FileType, color: "#2563eb" },
-  xls: { Icon: FileSpreadsheet, color: "#16a34a" },
-  xlsx: { Icon: FileSpreadsheet, color: "#16a34a" },
-  xlsm: { Icon: FileSpreadsheet, color: "#16a34a" },
-  ods: { Icon: FileSpreadsheet, color: "#16a34a" },
+  xls: { Icon: FileSpreadsheet, color: "#0c9" },
+  xlsx: { Icon: FileSpreadsheet, color: "#0c9" },
+  xlsm: { Icon: FileSpreadsheet, color: "#0c9" },
+  ods: { Icon: FileSpreadsheet, color: "#0c9" },
 
   // Data / config
   json: { Icon: FileJson, color: "#ca8a04" },
@@ -96,8 +96,8 @@ const EXT_MAP: Record<string, IconSpec> = {
   yml: { Icon: FileCode, color: "#db2777" },
   toml: { Icon: Settings, color: "#6b7280" },
   xml: { Icon: FileCode, color: "#ea580c" },
-  csv: { Icon: Table, color: "#16a34a" },
-  tsv: { Icon: Table, color: "#16a34a" },
+  csv: { Icon: Table, color: "#0c9" },
+  tsv: { Icon: Table, color: "#0c9" },
   env: { Icon: Key, color: "#84cc16" },
 
   // Scripts / shell

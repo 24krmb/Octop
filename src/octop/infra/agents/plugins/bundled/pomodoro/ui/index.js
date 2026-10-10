@@ -99,7 +99,7 @@ function TimerCard(props) {
       textAlign: "center",
       color: "#fff",
       background: done
-        ? "linear-gradient(165deg,#16a34a,#22c55e)"
+        ? "linear-gradient(165deg,#0c9,#22c55e)"
         : isPomo
           ? "linear-gradient(165deg,#c2410c,#ea580c 40%,#fb923c)"
           : "linear-gradient(165deg,#1d4ed8,#2563eb 45%,#7c3aed)",

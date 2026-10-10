@@ -129,16 +129,15 @@
   composes: chip;
   border-color: color-mix(
     in srgb,
-    var(--chip-accent, #2563eb) 45%,
+    var(--chip-accent) 45%,
     transparent
   );
   background: color-mix(
     in srgb,
-    var(--chip-accent, #2563eb) 10%,
+    var(--chip-accent) 10%,
     var(--fn-bg-secondary)
   );
-  box-shadow: 0 0 0 1px
-    color-mix(in srgb, var(--chip-accent, #2563eb) 18%, transparent);
+
 }
 
 .chipIcon {
@@ -148,7 +147,7 @@
   width: 16px;
   height: 16px;
   flex-shrink: 0;
-  color: var(--chip-accent, #2563eb);
+  color: var(--chip-accent);
   line-height: 0;
   border-radius: 50%;
   overflow: hidden;
@@ -174,19 +173,19 @@
   background: var(--fn-text-tertiary);
 
   &[data-state="running"] {
-    background: #22c55e;
+    background: #0c9;
   }
 
   &[data-state="stopped"],
   &[data-state="created"],
   &[data-state="stopping"],
   &[data-state="starting"] {
-    background: #eab308;
+    background: #FC0;
   }
 
   &[data-state="failed"],
   &[data-state="error"] {
-    background: #ef4444;
+    background: #f36;
   }
 }
 

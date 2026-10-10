@@ -177,7 +177,7 @@ export default function SlideCaptcha({
           paddingRight: verified ? THUMB_SIZE : 8,
           fontSize: 13,
           color: verified
-            ? "var(--fn-success, #16a34a)"
+            ? "var(--fn-success, #0c9)"
             : "var(--fn-text-tertiary)",
           pointerEvents: "none",
           whiteSpace: "nowrap",
@@ -225,7 +225,7 @@ export default function SlideCaptcha({
           alignItems: "center",
           justifyContent: "center",
           background: verified
-            ? "var(--fn-success, #16a34a)"
+            ? "var(--fn-success, #0c9)"
             : "var(--fn-bg-elevated)",
           border: `1px solid ${
             verified ? "transparent" : "var(--fn-border-primary)"

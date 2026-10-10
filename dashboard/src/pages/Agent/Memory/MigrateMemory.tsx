@@ -70,7 +70,7 @@ function DoctorCheckRow({ check }: { check: DoctorCheck }) {
       }}
     >
       {check.passed ? (
-        <CheckCircle size={14} style={{ color: "#52c41a", marginTop: 2 }} />
+        <CheckCircle size={14} style={{ color: "#0c9", marginTop: 2 }} />
       ) : (
         <XCircle size={14} style={{ color: "#ff4d4f", marginTop: 2 }} />
       )}

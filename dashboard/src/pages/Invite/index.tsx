@@ -321,7 +321,7 @@ export default function InvitePage() {
               <CheckCircle2
                 size={40}
                 style={{
-                  color: "var(--fn-success, #52c41a)",
+                  color: "var(--fn-success, #0c9)",
                   marginBottom: 12,
                 }}
               />

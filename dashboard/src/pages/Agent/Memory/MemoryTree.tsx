@@ -697,7 +697,7 @@ function AtomRow({
 
 function ConfidenceDot({ value }: { value: Confidence }) {
   const color =
-    value === "high" ? "#52c41a" : value === "medium" ? "#faad14" : "#f5222d";
+    value === "high" ? "#0c9" : value === "medium" ? "#faad14" : "#f5222d";
   const tip =
     value === "high"
       ? "很有把握"

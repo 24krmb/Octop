@@ -164,7 +164,7 @@
     background-color 0.25s ease;
 
   &:hover {
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 8px 32px var(--box-shadow);
     transform: translateY(-3px);
 
     .typeAvatar {
@@ -301,8 +301,8 @@
   gap: 4px;
   font-size: 11px;
   font-weight: 600;
-  color: var(--badge-color, #52c41a);
-  background: color-mix(in srgb, var(--badge-color, #52c41a) 12%, transparent);
+  color: var(--badge-color);
+  background: color-mix(in srgb, var(--badge-color) 12%, transparent);
   padding: 2px 8px;
   border-radius: 20px;
   line-height: 1.6;
@@ -315,7 +315,7 @@
   color: var(--fn-text-secondary);
   line-height: 1.65;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 2;line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -326,7 +326,7 @@
   flex-direction: column;
   gap: 4px;
   padding-top: 8px;
-  border-top: 1px solid var(--fn-border-primary);
+  border-top: 1px solid var(--fn-border);
 }
 
 /* ================================================================
@@ -487,9 +487,9 @@
   font-size: 11px;
   font-weight: 500;
   border-radius: 20px;
-  background: color-mix(in srgb, var(--tag-color, #888) 10%, transparent);
+  background: color-mix(in srgb, var(--tag-color) 10%, transparent);
   color: var(--tag-color, var(--fn-text-secondary));
-  border: 1px solid color-mix(in srgb, var(--tag-color, #888) 20%, transparent);
+  border: 1px solid color-mix(in srgb, var(--tag-color) 20%, transparent);
 }
 
 .detailSection {
@@ -528,7 +528,7 @@
   transition:
     opacity 0.15s,
     transform 0.1s;
-  background: var(--btn-color, var(--fn-color-brand));
+  background: var(--btn-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -577,7 +577,7 @@
 .dimTrack {
   flex: 1;
   height: 6px;
-  background: var(--fn-bg-secondary, #f0f0f0);
+  background: var(--fn-bg-secondary);
   border-radius: 3px;
   position: relative;
 }
@@ -597,8 +597,8 @@
   height: 10px;
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  border: 2px solid #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--fn-border);
+  box-shadow: 0 1px 3px var(--box-shadow);
 }
 
 .dimPct {

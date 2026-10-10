@@ -58,7 +58,7 @@ const ACTION_HEX: Record<string, string> = {
   reject: "#ff4d4f",
   deprecate: "#fa541c",
   page_regen: "#2f54eb",
-  create: "#52c41a",
+  create: "#0c9",
   update: "#1677ff",
   user_edit: "#1677ff",
   merge: "#faad14",

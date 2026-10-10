@@ -388,7 +388,7 @@ function ConfidenceBar({ confidence }: { confidence: string }) {
         size="small"
         strokeColor={
           confidence === "high"
-            ? "#52c41a"
+            ? "#0c9"
             : confidence === "medium"
             ? "#faad14"
             : "#ff7875"

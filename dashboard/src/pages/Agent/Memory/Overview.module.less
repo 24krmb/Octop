@@ -196,7 +196,7 @@
 }
 
 .statValueWarn {
-  color: #f59e0b;
+  color: #fc0;
 }
 
 .statLabel {
@@ -421,34 +421,34 @@
 }
 
 .tone_amber {
-  --tone-color: #f59e0b;
-  --tone-bg: rgba(245, 158, 11, 0.1);
-  --tone-shadow: rgba(245, 158, 11, 0.18);
+  --tone-color: #fc0;
+  --tone-bg: rgba(255, 204, 0, 0.1);
+  --tone-shadow: rgba(255, 204, 0, 0.18);
 
   &:hover {
-    border-color: rgba(245, 158, 11, 0.28);
+    border-color: rgba(255, 204, 0, 0.28);
     box-shadow: 0 8px 20px var(--tone-shadow);
   }
 }
 
 .tone_blue {
-  --tone-color: #3b82f6;
-  --tone-bg: rgba(59, 130, 246, 0.1);
-  --tone-shadow: rgba(59, 130, 246, 0.18);
+  --tone-color: #06F;
+  --tone-bg: rgba(0, 102, 255, 0.1);
+  --tone-shadow: rgba(0, 102, 255, 0.18);
 
   &:hover {
-    border-color: rgba(59, 130, 246, 0.28);
+    border-color: rgba(0, 102, 255, 0.28);
     box-shadow: 0 8px 20px var(--tone-shadow);
   }
 }
 
 .tone_violet {
-  --tone-color: #8b5cf6;
-  --tone-bg: rgba(139, 92, 246, 0.1);
-  --tone-shadow: rgba(139, 92, 246, 0.18);
+  --tone-color: #F3C;
+  --tone-bg: rgba(255, 51, 204, 0.1);
+  --tone-shadow: rgba(255, 51, 204, 0.18);
 
   &:hover {
-    border-color: rgba(139, 92, 246, 0.28);
+    border-color: rgba(255, 51, 204, 0.28);
     box-shadow: 0 8px 20px var(--tone-shadow);
   }
 }
@@ -543,7 +543,7 @@
 }
 
 .kpiPillWarn .kpiValue {
-  color: #f59e0b;
+  color: #fc0;
 }
 
 .kpiLabel {
@@ -576,7 +576,7 @@
 
 .kpiDelta {
   font-size: 11px;
-  color: #16a34a;
+  color: #0c9;
   font-weight: 500;
   font-variant-numeric: tabular-nums;
 }
@@ -600,7 +600,7 @@
   transition: box-shadow var(--fn-transition);
 
   &:hover {
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 4px 14px var(--box-shadow);
   }
 
   :global(.ant-card-head) {
@@ -645,7 +645,7 @@
   :global(.recharts-default-tooltip) {
     border-radius: 8px !important;
     border: 1px solid var(--fn-border-primary) !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 4px 16px var(--box-shadow) !important;
   }
 }
 
@@ -664,7 +664,7 @@
   transition: box-shadow var(--fn-transition);
 
   &:hover {
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 4px 14px var(--box-shadow);
   }
 
   :global(.ant-card-head) {
@@ -693,7 +693,7 @@
   :global(.recharts-default-tooltip) {
     border-radius: 8px !important;
     border: 1px solid var(--fn-border-primary) !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 4px 16px var(--box-shadow) !important;
   }
 }
 
@@ -706,7 +706,7 @@
   &::before {
     content: "·";
     margin: 0 6px;
-    color: var(--fn-text-quaternary, #d9d9d9);
+    color: var(--fn-text-quaternary);
   }
 }
 
@@ -759,7 +759,7 @@
   gap: 2px;
   border-radius: 7px;
   overflow: hidden;
-  background: var(--fn-bg-secondary, rgba(0, 0, 0, 0.06));
+  background: var(--fn-bg-secondary);
 }
 
 /* Bottom legend: horizontal color dot, label, and number; wraps when needed. */
@@ -787,7 +787,7 @@
   font-size: 12px;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
-  color: var(--fn-text-quaternary, #bfbfbf);
+  color: var(--fn-text-quaternary);
   transition: color var(--fn-transition);
 }
 
@@ -812,7 +812,7 @@
   gap: 2px;
   border-radius: 8px;
   overflow: hidden;
-  background: var(--fn-bg-secondary, rgba(0, 0, 0, 0.04));
+  background: var(--fn-bg-secondary);
 }
 
 .compSeg {
@@ -876,9 +876,9 @@
   gap: 2px;
   min-width: 96px;
   padding: 8px 16px;
-  border: 1px solid var(--fn-border-secondary, #f0f0f0);
+  border: 1px solid var(--fn-border-secondary);
   border-radius: 10px;
-  background: var(--fn-bg-secondary, #fafafa);
+  background: var(--fn-bg-secondary);
   cursor: default;
 }
 
@@ -887,12 +887,12 @@
 
   &:hover {
     border-color: var(--fn-color-brand);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 8px var(--box-shadow);
   }
 }
 
 .pipelineStageWarn {
-  border-color: #f59e0b;
+  border-color: #fc0;
 }
 
 .pipelineStageValue {
@@ -910,7 +910,7 @@
 
 .pipelineArrow {
   font-size: 16px;
-  color: var(--fn-text-quaternary, #d9d9d9);
+  color: var(--fn-text-quaternary);
   flex-shrink: 0;
 }
 
@@ -1010,8 +1010,8 @@
 }
 
 .memoryStatusOn {
-  color: #389e0d;
-  background: rgba(82, 196, 26, 0.1);
+  color: rgb(0, 204, 153);
+  background: rgba(0, 204, 153, 0.1);
 }
 
 .memoryStatusOff {
@@ -1084,12 +1084,12 @@
   position: absolute;
   top: 12px;
   right: 12px;
-  color: #389e0d;
+  color: #0c9;
   font-size: 10px;
 }
 
 .summaryWarn {
-  color: #d48806 !important;
+  color: #fc0 !important;
 }
 
 .summary_rose {
@@ -1098,18 +1098,18 @@
 }
 
 .summary_violet {
-  --summary-color: #8b5cf6;
-  --summary-bg: rgba(139, 92, 246, 0.1);
+  --summary-color: #F36;
+  --summary-bg: rgba(255, 51, 102, 0.1);
 }
 
 .summary_blue {
-  --summary-color: #3b82f6;
-  --summary-bg: rgba(59, 130, 246, 0.1);
+  --summary-color: #06F;
+  --summary-bg: rgba(0, 102, 255, 0.1);
 }
 
 .summary_amber {
-  --summary-color: #f59e0b;
-  --summary-bg: rgba(245, 158, 11, 0.1);
+  --summary-color: #fc0;
+  --summary-bg: rgba(255, 204, 0, 0.1);
 }
 
 .pipelineHeader {
@@ -1149,7 +1149,7 @@
   padding: 12px 14px;
   border: 1px solid var(--fn-border-primary);
   border-radius: 10px;
-  background: var(--fn-bg-secondary, rgba(0, 0, 0, 0.02));
+  background: var(--fn-bg-secondary);
 
   strong {
     color: var(--fn-text-primary);

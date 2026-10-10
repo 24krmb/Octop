@@ -58,19 +58,19 @@
 }
 
 .backendCard {
-  background: var(--fn-bg-elevated, var(--fn-bg-secondary, #fff));
-  border: 1px solid var(--fn-border-primary, #e5e7eb);
-  border-radius: var(--fn-radius-lg, 12px);
+  background: var(--fn-bg-elevated);
+  border: 1px solid var(--fn-border-primary);
+  border-radius: var(--fn-radius-lg);
   padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   height: 100%;
-  color: var(--fn-text-primary, #111827);
+  color: var(--fn-text-primary);
   transition: border-color 0.2s;
 
   &:hover {
-    border-color: var(--catalog-accent, var(--fn-color-brand));
+    border-color: var(--catalog-accent);
   }
 }
 
@@ -169,7 +169,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid var(--fn-border-secondary, #e5e7eb);
+  border-top: 1px solid var(--fn-border-secondary);
   padding-top: 10px;
   margin-top: auto;
   gap: 8px;
@@ -219,27 +219,27 @@
 }
 
 .statusBadgeOk {
-  color: #52c41a;
+  color: #0c9;
 }
 
 .statusBadgeWarn {
   color: #8c8c8c;
   padding: 2px 7px;
   border-radius: 10px;
-  background: var(--fn-bg-secondary, #f7f8fa);
-  border: 1px solid var(--fn-border-secondary, #e5e7eb);
+  background: var(--fn-bg-secondary);
+  border: 1px solid var(--fn-border-secondary);
 }
 
 .meta {
   margin: 8px 0 0;
-  color: var(--fn-text-secondary, #6b7280);
+  color: var(--fn-text-secondary);
   font-size: 13px;
   word-break: break-word;
 }
 
 .metaError {
   margin: 6px 0 0;
-  color: var(--fn-color-danger, #ef4444);
+  color: var(--fn-color-danger);
   font-size: 12px;
   line-height: 1.45;
   word-break: break-word;
@@ -317,11 +317,11 @@
   gap: 12px;
   width: 100%;
   text-align: left;
-  border: 1px solid var(--fn-border-primary, #e5e7eb);
-  background: var(--fn-bg-secondary, #f7f8fa);
+  border: 1px solid var(--fn-border-primary);
+  background: var(--fn-bg-secondary);
   border-radius: 10px;
   padding: 10px 12px;
-  color: var(--fn-text-primary, #111827);
+  color: var(--fn-text-primary);
 }
 
 .probeAvatar {
@@ -359,7 +359,7 @@
 }
 
 .connectedAgentBtn:hover {
-  border-color: var(--catalog-accent, var(--fn-color-brand, #e85d75));
+  border-color: var(--catalog-accent);
   background: color-mix(
     in srgb,
     var(--catalog-accent, var(--fn-color-brand, #e85d75)) 6%,
@@ -383,30 +383,31 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 1.3;
-  color: var(--fn-text-primary, #111827);
+  color: var(--fn-text-primary);
 }
 
 .probeDesc {
   margin-top: 4px;
-  color: var(--fn-text-secondary, #6b7280);
+  color: var(--fn-text-secondary);
   font-size: 12px;
   line-height: 1.45;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
 .probeEmpty {
   margin: 8px 0 0;
-  color: var(--fn-text-secondary, #6b7280);
+  color: var(--fn-text-secondary);
   font-size: 13px;
 }
 
 .probePanel {
   margin-top: 20px;
   padding-top: 16px;
-  border-top: 1px solid var(--fn-border-primary, #e5e7eb);
+  border-top: 1px solid var(--fn-border-primary);
 }
 
 .probePanelHead {
@@ -416,12 +417,12 @@
   margin-bottom: 10px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--fn-text-primary, #111827);
+  color: var(--fn-text-primary);
 }
 
 .drawerHint {
   margin: 0 0 16px;
-  color: var(--fn-text-secondary, #6b7280);
+  color: var(--fn-text-secondary);
   font-size: 13px;
   line-height: 1.55;
 }

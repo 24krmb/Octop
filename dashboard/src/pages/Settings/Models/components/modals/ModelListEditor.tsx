@@ -478,7 +478,7 @@ export function ModelListEditor({
                       <Check
                         size={14}
                         style={{
-                          color: "#52c41a",
+                          color: "#0c9",
                           marginRight: 8,
                         }}
                       />

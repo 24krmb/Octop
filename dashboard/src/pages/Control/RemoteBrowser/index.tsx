@@ -1058,7 +1058,7 @@ export default function RemoteBrowserPage({
       return (
         <Result
           icon={
-            <CheckCircle2 size={40} color="var(--fn-color-success,#52c41a)" />
+            <CheckCircle2 size={40} color="var(--fn-color-success,#0c9)" />
           }
           title={t("remoteBrowser.installSuccess", "安装成功")}
           subTitle={t(
@@ -1125,7 +1125,7 @@ export default function RemoteBrowserPage({
       return (
         <Result
           icon={
-            <CheckCircle2 size={40} color="var(--fn-color-success,#52c41a)" />
+            <CheckCircle2 size={40} color="var(--fn-color-success,#0c9)" />
           }
           title={t("remoteBrowser.browserAlreadyInstalled", "浏览器已就绪")}
           subTitle={t(
@@ -1303,7 +1303,7 @@ export default function RemoteBrowserPage({
             size={14}
             style={{
               marginLeft: 4,
-              color: "var(--fn-color-success,#52c41a)",
+              color: "var(--fn-color-success,#0c9)",
               verticalAlign: "-2px",
             }}
           />

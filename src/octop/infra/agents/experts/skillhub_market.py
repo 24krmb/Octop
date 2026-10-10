@@ -1338,7 +1338,7 @@ def _scene_color(scene: str) -> str:
         "academic": "#4f46e5",
         "content-creation": "#c026d3",
         "design": "#db2777",
-        "ecommerce": "#16a34a",
+        "ecommerce": "#0c9",
         "education": "#2563eb",
         "finance": "#059669",
         "healthcare": "#dc2626",

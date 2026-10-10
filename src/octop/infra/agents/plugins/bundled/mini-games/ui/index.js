@@ -7,7 +7,7 @@ function MiniGameCard(props) {
   const d = props.data && typeof props.data === "object" ? props.data : {};
   if (d.kind === "guess") {
     const hintMap = { start: "开始猜吧", low: "再大一点", high: "再小一点", equal: "猜中了！" };
-    const tone = d.hint === "equal" ? "#16a34a" : d.hint === "start" ? "#2563eb" : "#ea580c";
+    const tone = d.hint === "equal" ? "#0c9" : d.hint === "start" ? "#2563eb" : "#ea580c";
     return _jsxs("div", {
       style: {
         margin: 0,

@@ -13,7 +13,7 @@
     "en": "Tell me what ops issue to troubleshoot or which command to run"
   },
   "icon_name": "terminal",
-  "color": "#16a34a",
+  "color": "#0c9",
   "prompt_files": [
     "SOUL.md",
     "IDENTITY.md"

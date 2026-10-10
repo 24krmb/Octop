@@ -249,7 +249,7 @@ function emotionLabel(e: string): string {
 
 function emotionHex(e: string): string {
   const k = (e || "").toLowerCase();
-  if (k.includes("happy") || k.includes("joy")) return "#52c41a";
+  if (k.includes("happy") || k.includes("joy")) return "#0c9";
   if (k.includes("sad")) return "#1677ff";
   if (k.includes("angry") || k.includes("anger")) return "#ff4d4f";
   if (k.includes("surpr")) return "#722ed1";

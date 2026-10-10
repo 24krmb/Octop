@@ -364,7 +364,7 @@ export function ActiveModelPool({
                         {isTesting ? (
                           <Button type="text" size="small" loading />
                         ) : testState === "success" ? (
-                          <Check size={14} style={{ color: "#52c41a" }} />
+                          <Check size={14} style={{ color: "#0c9" }} />
                         ) : testState === "failure" ? (
                           <X size={14} style={{ color: "#ff4d4f" }} />
                         ) : (
