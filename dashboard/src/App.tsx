@@ -140,10 +140,14 @@ function ThemedApp() {
         itemHoverColor: "var(--fn-color-brand)",
         inkBarColor: "var(--fn-color-brand)",
       },
+      Input: {
+        colorBgContainer: "var(--fn-bg-primary)",
+        colorBorder: "var(--fn-border)",
+        ...(isDark ? { colorBgBase: "#0f1117" } : {}),
+      },
       ...(isDark
         ? {
           Modal: { headerBg: "#1a1c28", contentBg: "#1a1c28" },
-          Input: { colorBgBase: "#0f1117" },
           InputNumber: { colorBgBase: "#0f1117" },
           Select: { colorBgBase: "#0f1117", selectorBg: "#0f1117" },
           DatePicker: { colorBgBase: "#0f1117" },
