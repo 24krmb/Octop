@@ -100,7 +100,7 @@ export default function MobileAiPanel({
           </Tooltip>
         </div>
         <div className={styles.emptyState}>
-          <Bot size={30} color="var(--fn-text-quaternary)" />
+          <Bot size={30} color="var(--fn-text-secondary)" />
           <div className={styles.emptyTitle}>
             {t("remoteAndroid.ai.noAgentTitle", "请选择一个 Agent")}
           </div>

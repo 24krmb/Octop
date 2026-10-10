@@ -312,7 +312,7 @@ export default function TeamDrawer({
                       style={{
                         fontSize: 11,
                         color:
-                          "var(--fn-text-quaternary, var(--fn-text-tertiary))",
+                          "var(--fn-text-secondary)",
                       }}
                     >
                       {file.name}
@@ -325,7 +325,7 @@ export default function TeamDrawer({
                       fontSize: 12,
                       maxHeight: 200,
                       overflowY: "auto",
-                      background: "var(--fn-bg-secondary, #f5f5f5)",
+                      background: "var(--fn-bg-secondary)",
                       padding: 8,
                       borderRadius: 4,
                       margin: 0,

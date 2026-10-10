@@ -50,6 +50,7 @@ html[data-theme="light"] {
   /* ---- 文本 ---- */
   --fn-text-primary: #183153; /* 主文本色 */
   --fn-text-secondary:#33517E; /* 次级文本色 */
+  --fn-text-quaternary:#33517E; /* 四级文本色 */
   --fn-text-tertiary: #616d8a; /* 三级文本色 */
   --fn-text-placeholder: #a1a1aa; /* 占位符文本色 */
   --fn-text-disabled: #d4d4d8; /* 禁用态文本色 */
@@ -211,12 +212,13 @@ html[data-theme="dark"] {
   /* ---- 文本 ---- */
   --fn-text-primary: #b4b8bf; /* 主文本色 */
   --fn-text-secondary: #73757a; /* 次级文本色 */
+  --fn-text-quaternary:#73757a; /* 四级文本色 */
   --fn-text-tertiary: rgba(255, 255, 255, 0.45); /* 三级文本色 */
   --fn-text-placeholder: rgba(255, 255, 255, 0.2); /* 占位符文本色 */
   --fn-text-disabled: rgba(255, 255, 255, 0.2); /* 禁用态文本色 */
   --fn-text-inverse: #181818; /* 反色文本（用于深色背景上） */
   --fn-text-brand: #F4D1B4; /* 品牌色文本 */
-  --fn-text-danger: #ff3366; /* 危险色文本 */
+  --fn-text-danger: #f36; /* 危险色文本 */
   --fn-text-link: var(--fn-text-brand); /* 链接文本色 */
   --fn-logo-color: #F4D1B4; /* Logo 颜色 */
   --fn-logo-filter: brightness(1.15) saturate(0.9); /* Logo 滤镜效果 */

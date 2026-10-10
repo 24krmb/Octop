@@ -901,7 +901,7 @@ export default function CreateFromExpertDrawer({
                                   style={{
                                     fontSize: 11,
                                     color:
-                                      "var(--fn-text-quaternary)",
+                                      "var(--fn-text-secondary)",
                                   }}
                                 >
                                   {f.name}
@@ -1015,7 +1015,7 @@ export default function CreateFromExpertDrawer({
                                 style={{
                                   fontSize: 11,
                                   color:
-                                    "var(--fn-text-quaternary)",
+                                    "var(--fn-text-secondary)",
                                 }}
                               >
                                 skills/{group.name}/
@@ -1083,7 +1083,7 @@ export default function CreateFromExpertDrawer({
                                           style={{
                                             fontSize: 11,
                                             color:
-                                              "var(--fn-text-quaternary, var(--fn-text-tertiary))",
+                                              "var(--fn-text-secondary)",
                                           }}
                                         >
                                           {skillBasename}
@@ -1237,7 +1237,7 @@ export default function CreateFromExpertDrawer({
                                 style={{
                                   fontSize: 11,
                                   color:
-                                    "var(--fn-text-quaternary, var(--fn-text-tertiary))",
+                                    "var(--fn-text-secondary)",
                                 }}
                               >
                                 agents/{subagent.slug}.md
