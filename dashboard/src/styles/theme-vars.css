@@ -6,12 +6,13 @@
 /* ---------- 浅色主题 ---------- */
 :root,
 html[data-theme="light"] {
-  --fn-bg-primary: #ecf3ff; /* 主背景色 */
+  --card-border: rgb(214,227,255); /* 卡片边框 */
+
+  --fn-bg-primary: #fff; /* 主背景色 */
   --fn-bg-secondary: #dfeafd; /* 次级背景色 */
   --fn-bg-tertiary: #e4e4e7; /* 三级背景色 */
   --fn-bg-elevated: #ffffff; /* 悬浮层（Elevated）背景色 */
-  --fn-bg-layout: #e8edfe; /* 页面布局背景色 */
-  --fn-bg-container: #ffffff; /* 容器背景色 */
+  --fn-bg-layout: #f7faff; /* 页面布局背景色 */
   --fn-bg-hover: rgba(24, 49, 83, 0.04); /* 悬停态背景色 */
   --fn-bg-active: rgba(24, 49, 83, 0.08); /* 激活（按下）态背景色 */
   --fn-bg-selected: rgba(24, 49, 83, 0.06); /* 选中态背景色 */
@@ -51,7 +52,7 @@ html[data-theme="light"] {
   --fn-font-mono: ui-monospace, "SFMono-Regular", Consolas, monospace; /* 等宽字体族 */
 
   /* ---- 边框 ---- */
-  --fn-border-primary: #e4e4e7; /* 主边框色 */
+  --fn-border-primary:rgb(214,227,255); /* 主边框色 */
   --fn-border-secondary: #ececee; /* 次级边框色 */
   --fn-border-tertiary: #dfeafd; /* 三级边框色 */
   --fn-border-input: #d4d4d8; /* 输入框边框色 */
@@ -162,13 +163,13 @@ html[data-theme="light"] {
 
   /* ---- 侧边栏 ---- */
   --fn-sidebar-width: 240px; /* 侧边栏宽度 */
-  --fn-sidebar-bg: rgb(236, 243, 255); /* 侧边栏背景色 */
-  --fn-sidebar-border: rgba(236, 243, 255, 0.1); /* 侧边栏边框色 */
-  --fn-sidebar-item-hover: #dfeafd; /* 侧边栏项悬停背景色 */
-  --fn-sidebar-item-active-bg: #dae8ff; /* 侧边栏激活项背景色 */
+  --fn-sidebar-bg:rgb(219,231,255); /* 侧边栏背景色 */
+  --fn-sidebar-border: rgba(219,231,255, 0.1); /* 侧边栏边框色 */
+  --fn-sidebar-item-hover:#D2DFFF; /* 侧边栏项悬停背景色 */
+  --fn-sidebar-item-active-bg:#C0D2FF; /* 侧边栏激活项背景色 */
   --fn-sidebar-item-active: rgba(24, 49, 83, 0.08); /* 侧边栏激活项高亮色 */
   --fn-sidebar-item-active-text: #183153; /* 侧边栏激活项文本色 */
-  --fn-sidebar-group-text: #a1a1aa; /* 侧边栏分组标题文本色 */
+  --fn-sidebar-group-text:#33517E; /* 侧边栏分组标题文本色 */
 
   /* ---- 顶部栏 ---- */
   --fn-header-height: 56px; /* 顶部栏高度 */
@@ -198,6 +199,7 @@ html[data-theme="light"] {
 
 /* ---------- 深色主题 ---------- */
 html[data-theme="dark"] {
+  --card-border: rgba(255, 255, 255, 0.1); /* 卡片边框 */
   --fn-bg-primary: #232323; /* 主背景色 */
   --fn-bg-secondary: #1f1f23; /* 次级背景色 */
   --fn-bg-tertiary: #27272a; /* 三级背景色 */
