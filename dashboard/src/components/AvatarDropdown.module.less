@@ -4,7 +4,7 @@
   :global(.ant-popover-inner) {
     padding: 0;
     border-radius: 12px;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--box-shadow);
     overflow: hidden;
   }
 }
@@ -69,7 +69,7 @@
   transition: background var(--fn-transition-fast);
 
   &:hover {
-    background: var(--fn-bg-tertiary, rgba(0, 0, 0, 0.04));
+    background: var(--fn-bg-tertiary);
     color: var(--fn-text-primary);
   }
 
@@ -302,7 +302,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  border: 1px solid var(--fn-border-subtle, rgba(0, 0, 0, 0.08));
+  border: 1px solid var(--fn-border-subtle);
   border-radius: 10px;
   overflow: hidden;
   background: var(--fn-bg-elevated);
@@ -313,7 +313,7 @@
   align-items: center;
   gap: 12px;
   padding: 12px 14px;
-  border-bottom: 1px solid var(--fn-border-subtle, rgba(0, 0, 0, 0.06));
+  border-bottom: 1px solid var(--fn-border-subtle);
 
   &:last-child {
     border-bottom: none;
@@ -328,7 +328,7 @@
   height: 32px;
   flex-shrink: 0;
   border-radius: 8px;
-  background: var(--fn-bg-tertiary, rgba(0, 0, 0, 0.04));
+  background: var(--fn-bg-tertiary);
 
   img {
     display: block;
