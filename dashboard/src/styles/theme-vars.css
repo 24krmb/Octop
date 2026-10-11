@@ -18,7 +18,7 @@ html[data-theme="light"] {
 
   --box-shadow: rgba(102, 102, 255,.1); /* 阴影颜色 */
   --hover-border:#6666ff; /* 悬停态边框颜色 */
-  --fn-bg-primary: #fff; /* 主背景色 */
+  --fn-bg-primary: linear-gradient(180deg,#e8e7ff,#fff 25%,#fff 45%,#f5f5fe); /* 主背景色 */
   --fn-bg-secondary: #dfeafd; /* 次级背景色 */
   --fn-bg-tertiary: #E5EEFF; /* 对话表格背景色 */
   --fn-bg-elevated: #ffffff; /* 悬浮层（Elevated）背景色 */
