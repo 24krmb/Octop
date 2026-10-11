@@ -18,11 +18,11 @@ html[data-theme="light"] {
 
   --box-shadow: rgba(102, 102, 255,.1); /* 阴影颜色 */
   --hover-border:#6666ff; /* 悬停态边框颜色 */
-  --fn-bg-primary: linear-gradient(180deg,#e8e7ff,#fff 25%,#fff 45%,#f5f5fe); /* 主背景色 */
+  --fn-bg-primary: #fff; /* 主背景色 */
   --fn-bg-secondary: #dfeafd; /* 次级背景色 */
   --fn-bg-tertiary: #E5EEFF; /* 对话表格背景色 */
   --fn-bg-elevated: #ffffff; /* 悬浮层（Elevated）背景色 */
-  --fn-bg-layout: #f7faff; /* 页面布局背景色 */
+  --fn-bg-layout: linear-gradient(180deg,#e8e7ff,#f7faff 25%,#f7faff 45%,#f5f5fe); /* 页面布局背景色 */
   --fn-bg-hover: rgba(102, 102, 255, 0.04); /* 悬停态背景色 */
   --fn-bg-active: rgba(102, 102, 255, 0.08); /* 激活（按下）态背景色 */
   --fn-bg-selected: rgba(102, 102, 255, 0.06); /* 选中态背景色 */
