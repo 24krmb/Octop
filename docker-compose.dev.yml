@@ -25,6 +25,8 @@ services:
       OCTOP_HOME: /data/.octop
       OCTOP_BIND_HOST: 0.0.0.0
       OCTOP_PORT: "8088"
+      PIP_TARGET: /data/pylibs
+      PYTHONPATH: /data/pylibs
       UV_INDEX_URL: https://mirrors.cloud.tencent.com/pypi/simple
       UV_LINK_MODE: copy
       UV_PYTHON_DOWNLOADS: never
@@ -35,7 +37,7 @@ services:
         sed -i 's|deb.debian.org|mirrors.cloud.tencent.com|g' /etc/apt/sources.list.d/debian.sources 2>/dev/null;
         apt-get update -qq;
         apt-get install -y -qq --no-install-recommends pkgconf build-essential libffi-dev curl git >/dev/null 2>&1;
-        pip install -q -i https://mirrors.cloud.tencent.com/pypi/simple uv;
+        PIP_TARGET= pip install -q --upgrade -i https://mirrors.cloud.tencent.com/pypi/simple uv;
         echo '--- [1/2] uv sync（Linux 预编译包，无需编译）---';
         uv sync --frozen --no-dev;
         echo '--- [2/2] 启动 octop 后端 ---';
