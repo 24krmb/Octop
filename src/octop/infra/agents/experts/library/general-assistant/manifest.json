@@ -1,11 +1,11 @@
 {
   "id": "general-assistant",
   "label": {
-    "zh": "QA · 通用助手",
+    "zh": "QA Agent",
     "en": "Main · General Assistant"
   },
   "description": {
-    "zh": "友好的通用助手，无特定技能，适合作为起点或日常对话。",
+    "zh": "内置的 QA Agent。帮助用户理解、配置与日常使用，帮助用户定位问题，寻找答案，给出解决方法。",
     "en": "A friendly, no-skills default assistant — the safe starting point."
   },
   "welcome_message": {
