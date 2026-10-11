@@ -43,7 +43,6 @@ _FALLBACK_BUNDLED_AVATAR_IDS = frozenset(
     {
         "ai-coding-coach",
         "ai-safety-guardian",
-        "cvm-ai-doctor",
         "default",
         "general-assistant",
         "karpathy-knowledge-base",
@@ -92,6 +91,7 @@ def discover_bundled_avatar_ids(avatars_dir: Path | None = None) -> frozenset[st
     if root is None or not root.is_dir():
         return _FALLBACK_BUNDLED_AVATAR_IDS
     ids = {path.stem for path in root.glob("*.svg") if path.is_file()}
+    ids |= {path.stem for path in root.glob("*.png") if path.is_file()}
     return frozenset(ids) if ids else _FALLBACK_BUNDLED_AVATAR_IDS
 
 
@@ -431,7 +431,14 @@ def read_text_file_contents(expert_dir: Path, paths: list[str]) -> list[dict[str
 
 
 def builtin_expert_avatar_url(expert_id: str) -> str:
-    """Public dashboard URL for a bundled expert portrait."""
+    """Public dashboard URL for a bundled expert portrait.
+
+    Prefers a ``.png`` asset when present, falling back to the legacy
+    ``.svg`` wrapper so existing bundled portraits keep working.
+    """
+    root = bundled_avatars_dir()
+    if root is not None and (root / f"{expert_id}.png").is_file():
+        return f"/experts/avatars/{expert_id}.png"
     return _BUILTIN_AVATAR_URL_TEMPLATE.format(expert_id=expert_id)
 
 
@@ -448,9 +455,10 @@ def scene_expert_avatar_url(scene: str | None) -> str | None:
 def _avatar_id_from_url(url: str) -> str | None:
     text = url.strip()
     prefix = "/experts/avatars/"
-    if not text.startswith(prefix) or not text.endswith(".svg"):
-        return None
-    return text[len(prefix) : -len(".svg")]
+    for ext in (".svg", ".png"):
+        if text.startswith(prefix) and text.endswith(ext):
+            return text[len(prefix) : -len(ext)]
+    return None
 
 
 def resolve_expert_icon_url(
