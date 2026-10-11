@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="akshare-quant-pack">
+  <defs>
+    <linearGradient id="bg-akshare-quant-pack" x1="20" y1="8" x2="110" y2="120" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EDEBFF"/>
+      <stop offset="1" stop-color="#C7C4FF"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="32" fill="url(#bg-akshare-quant-pack)"/>
+  <!-- candlestick decor -->
+  <g opacity="0.55">
+    <rect x="14" y="30" width="8" height="22" rx="2" fill="#0c9"/>
+    <line x1="18" y1="24" x2="18" y2="58" stroke="#0c9" stroke-width="2"/>
+    <rect x="104" y="44" width="8" height="20" rx="2" fill="#f36"/>
+    <line x1="108" y1="38" x2="108" y2="72" stroke="#f36" stroke-width="2"/>
+    <rect x="90" y="18" width="8" height="16" rx="2" fill="#0c9"/>
+    <line x1="94" y1="13" x2="94" y2="40" stroke="#0c9" stroke-width="2"/>
+  </g>
+  <!-- shoulders -->
+  <path d="M26 118 Q28 94 48 88 Q64 84 80 88 Q100 94 102 118 Z" fill="#4444C0"/>
+  <path d="M56 90 L64 100 L72 90 Z" fill="#fff"/>
+  <path d="M62 96 H66 L67 112 L64 116 L61 112 Z" fill="#6666FF"/>
+  <!-- hair back -->
+  <path d="M30 58 Q32 28 64 24 Q96 28 98 58 Q96 40 64 36 Q34 40 30 58Z" fill="#3B3F58"/><path d="M30 58 Q28 78 34 86 L40 62 Z" fill="#3B3F58"/>
+  <!-- neck -->
+  <rect x="56" y="86" width="16" height="14" rx="6" fill="#D7B08C"/>
+  <!-- head -->
+  <ellipse cx="64" cy="64" rx="28" ry="30" fill="#D7B08C"/>
+  <ellipse cx="36" cy="66" rx="5" ry="7" fill="#D7B08C"/>
+  <ellipse cx="92" cy="66" rx="5" ry="7" fill="#D7B08C"/>
+  <!-- face -->
+  <ellipse cx="52" cy="62" rx="3.2" ry="3.8" fill="#111827"/>
+  <ellipse cx="76" cy="62" rx="3.2" ry="3.8" fill="#111827"/>
+  <circle cx="53.2" cy="60.8" r="1.1" fill="#fff" opacity="0.95"/>
+  <circle cx="77.2" cy="60.8" r="1.1" fill="#fff" opacity="0.95"/>
+  <path d="M46 54 Q52 51 58 54" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <path d="M70 54 Q76 51 82 54" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <path d="M64 64 Q66 70 62 72" fill="none" stroke="#C08457" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <path d="M52 74 Q64 82 76 74" fill="none" stroke="#B45309" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="44" cy="72" r="4" fill="#F9A8D4" opacity="0.32"/>
+  <circle cx="84" cy="72" r="4" fill="#F9A8D4" opacity="0.32"/>
+  <!-- glasses -->
+  <g stroke="#2E2E99" stroke-width="2.2" fill="none"><circle cx="50" cy="62" r="8"/><circle cx="78" cy="62" r="8"/><path d="M58 62 H70"/><path d="M42 62 H36"/><path d="M86 62 H92"/></g>
+</svg>

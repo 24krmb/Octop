@@ -1,0 +1,137 @@
+{
+  "id": "akshare-quant-pack",
+  "label": {
+    "zh": "量化研究团队 Alpha",
+    "en": "Quant Research Team · Alpha"
+  },
+  "description": {
+    "zh": "AKShare 量化研究智能体团队：Alpha 首席量化策略官领衔，携数据官、策略研究员、回测分析师、风控官、报告官五人天团，覆盖 A 股与期货期权的行情获取、指标计算、多因子选股、策略回测、风险控制与复盘报告，坚持“数据说话、回测诚实、风控一票否决”。",
+    "en": "An AKShare quant research team led by Alpha, Chief Quant Officer, with five specialists covering data, signals, backtesting, risk control, and reporting for A-shares and futures/options — data-driven, honest backtests, and risk-control veto."
+  },
+  "welcome_message": {
+    "zh": "告诉我你想研究什么行情、策略或持仓，五人天团随时开工",
+    "en": "Tell me the quotes, strategy, or position you want to research — the five-member team is ready"
+  },
+  "icon_name": "candlestick-chart",
+  "color": "#6666FF",
+  "prompt_files": [
+    "SOUL.md",
+    "IDENTITY.md"
+  ],
+  "quick_prompts": [
+    {
+      "title": {
+        "zh": "取日线行情",
+        "en": "Fetch daily bars"
+      },
+      "description": {
+        "zh": "拉取股票/指数/期货日线数据并落盘 CSV",
+        "en": "Fetch daily bars for stocks, indices, or futures and save CSV"
+      },
+      "prompt": {
+        "zh": "请帮我把 000001 平安银行最近 250 个交易日的日线行情（前复权）下载并保存为 CSV，给出数据身份证。",
+        "en": "Please download the last 250 trading days of daily bars (qfq) for 000001, save to CSV, and show the data provenance summary."
+      },
+      "color": "#e8f4ff",
+      "icon_name": "trending-up"
+    },
+    {
+      "title": {
+        "zh": "算技术指标",
+        "en": "Compute indicators"
+      },
+      "description": {
+        "zh": "基于日线数据统一口径计算 MA/MACD/RSI/BOLL 等指标",
+        "en": "Compute MA/MACD/RSI/BOLL and more on top of daily bars"
+      },
+      "prompt": {
+        "zh": "请对我工作区里最近下载的日线 CSV 计算常用技术指标（MA5/10/20/60、MACD、RSI、BOLL、KDJ、ATR），输出带指标列的新 CSV。",
+        "en": "Compute common indicators (MA5/10/20/60, MACD, RSI, BOLL, KDJ, ATR) on the most recent daily CSV in my workspace and output a new CSV with indicator columns."
+      },
+      "color": "#dcfce7",
+      "icon_name": "bar-chart-3"
+    },
+    {
+      "title": {
+        "zh": "双均线策略回测",
+        "en": "Backtest a strategy"
+      },
+      "description": {
+        "zh": "用历史数据验证双均线策略，输出绩效与风险指标",
+        "en": "Validate a dual-MA strategy on history with full performance metrics"
+      },
+      "prompt": {
+        "zh": "请回测 000300 指数上的 MA5/MA20 双均线策略（近 3 年，前复权，双边成本 0.1%），给出夏普、最大回撤、胜率与净值曲线。",
+        "en": "Backtest an MA5/MA20 dual-MA strategy on the CSI 300 (last 3 years, qfq, 0.1% round-trip cost) and report Sharpe, max drawdown, win rate, and equity curve."
+      },
+      "color": "#fef3c7",
+      "icon_name": "refresh-cw"
+    },
+    {
+      "title": {
+        "zh": "资金流监控",
+        "en": "Fund flow scan"
+      },
+      "description": {
+        "zh": "监控主力资金流、龙虎榜与北向资金动向",
+        "en": "Scan mainline money flow, dragon-tiger list, and northbound data"
+      },
+      "prompt": {
+        "zh": "请查询今天 A 股主力净流入排名前 10 的行业板块，并简要说明资金动向。",
+        "en": "Show today's top-10 A-share industry sectors by mainline net inflow and briefly explain the money-flow trend."
+      },
+      "color": "#f1f5f9",
+      "icon_name": "radio-tower"
+    },
+    {
+      "title": {
+        "zh": "多因子选股",
+        "en": "Multi-factor screen"
+      },
+      "description": {
+        "zh": "硬条件初筛 + 动量/估值/质量多因子打分",
+        "en": "Hard filters first, then momentum/value/quality factor scoring"
+      },
+      "prompt": {
+        "zh": "请按条件筛选 A 股：日成交额 ≥ 2 亿、0 < PE < 40、市值 ≥ 50 亿，按动量/换手/估值打分输出 Top 30。",
+        "en": "Screen A-shares: daily turnover ≥ 200M CNY, 0 < PE < 40, market cap ≥ 5B CNY; score by momentum/turnover/valuation and output the Top 30."
+      },
+      "color": "#eef2ff",
+      "icon_name": "list-todo"
+    },
+    {
+      "title": {
+        "zh": "仓位与止损",
+        "en": "Position & stop"
+      },
+      "description": {
+        "zh": "单笔风险预算与止损位计算，一票否决",
+        "en": "Per-trade risk budget and stop placement with veto power"
+      },
+      "prompt": {
+        "zh": "我有 100 万本金，想在 12.50 买入 000001、止损 11.80，请按单笔 1% 风险预算给出仓位与止损纪律。",
+        "en": "With 1,000,000 CNY capital, I want to buy 000001 at 12.50 with a stop at 11.80 — size the position under a 1% per-trade risk budget and state the stop discipline."
+      },
+      "color": "#fdf4e7",
+      "icon_name": "shield-check"
+    }
+  ],
+  "task_examples": {
+    "zh": [
+      "每天「17:30」拉取沪深300 与自选股的日线行情并落盘，简报当日涨跌幅 Top5，任务创建后立即启用",
+      "每个交易日「09:35」监控自选股资金流向，主力净流入超过阈值时提醒我，从今天开始持续生效",
+      "每周一「09:00」跑一次双均线策略回测（样本近 3 年），输出夏普、最大回撤与净值曲线",
+      "每天「18:00」跑多因子选股快照打分，列出新增进入 Top30 的标的与触发因子",
+      "每个交易日「21:00」复核当前持仓的仓位与止损位，风控不通过的一票否决并给出调整建议",
+      "每月 1 日「09:00」生成上月量化复盘报告：绩效归因、数据口径与固定免责声明"
+    ],
+    "en": [
+      "Every day at 17:30, fetch daily bars for CSI 300 and my watchlist, save them, and brief the top-5 movers — enable immediately",
+      "Every trading day at 09:35, monitor fund flow on my watchlist and alert me when mainline net inflow crosses the threshold, starting today",
+      "Every Monday at 09:00, backtest the dual-MA strategy on the last 3 years and report Sharpe, max drawdown, and equity curve",
+      "Every trading day at 18:00, run the multi-factor screener and list new entrants into the Top 30 with the triggering factors",
+      "Every trading day at 21:00, review position sizing and stops for current holdings; veto anything failing risk control and suggest adjustments",
+      "On the 1st of each month at 09:00, produce last month's quant review: performance attribution, data conventions, and the standard disclaimer"
+    ]
+  }
+}
