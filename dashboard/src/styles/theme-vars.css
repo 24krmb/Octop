@@ -22,7 +22,7 @@ html[data-theme="light"] {
   --fn-bg-secondary: #dfeafd; /* 次级背景色 */
   --fn-bg-tertiary: #E5EEFF; /* 对话表格背景色 */
   --fn-bg-elevated: #ffffff; /* 悬浮层（Elevated）背景色 */
-  --fn-bg-layout: linear-gradient(180deg,#e8e7ff,#f7faff 25%,#f7faff 45%,#f5f5fe); /* 页面布局背景色 */
+  --fn-bg-layout: linear-gradient(180deg,rgba(102,102,255,.18),rgba(102,102,255,.08) 25%,rgba(102,102,255,.05) 45%,rgba(102,102,255,.12)); /* f7faff页面布局背景色 */
   --fn-bg-hover: rgba(102, 102, 255, 0.04); /* 悬停态背景色 */
   --fn-bg-active: rgba(102, 102, 255, 0.08); /* 激活（按下）态背景色 */
   --fn-bg-selected: rgba(102, 102, 255, 0.06); /* 选中态背景色 */
