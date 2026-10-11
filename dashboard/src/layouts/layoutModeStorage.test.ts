@@ -14,9 +14,9 @@ describe("layoutModeStorage", () => {
     localStorage.removeItem(MINIMAL_NAV_PANE_KEY);
   });
 
-  it("defaults to classic layout and records pane", () => {
+  it("defaults to classic layout and capabilities pane", () => {
     expect(loadLayoutMode()).toBe("classic");
-    expect(loadMinimalNavPane()).toBe("records");
+    expect(loadMinimalNavPane()).toBe("settings");
   });
 
   it("persists layout mode and minimal pane", () => {
@@ -37,6 +37,6 @@ describe("layoutModeStorage", () => {
     localStorage.setItem(LAYOUT_MODE_KEY, "weird");
     localStorage.setItem(MINIMAL_NAV_PANE_KEY, "other");
     expect(loadLayoutMode()).toBe("classic");
-    expect(loadMinimalNavPane()).toBe("records");
+    expect(loadMinimalNavPane()).toBe("settings");
   });
 });

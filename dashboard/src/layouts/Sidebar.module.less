@@ -243,3 +243,46 @@
     display: none !important;
   }
 }
+
+/* ---- Unified pane tabs (能力 | 对话), desktop expanded rail ---- */
+.paneTabs {
+  display: flex;
+  gap: 2px;
+  margin: 10px 12px 6px;
+  padding: 3px;
+  background: var(--fn-bg-tertiary);
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.paneTab {
+  flex: 1;
+  height: 30px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--fn-text-secondary);
+  font-size: 13px;
+  cursor: pointer;
+  transition:
+    background var(--fn-transition),
+    color var(--fn-transition);
+
+  &:hover {
+    color: var(--fn-text-primary);
+  }
+}
+
+.paneTabActive {
+  background: var(--fn-bg-elevated);
+  color: var(--fn-text-primary);
+  font-weight: 600;
+  box-shadow: var(--fn-shadow-soft-brand);
+}
+
+.paneTabScroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}

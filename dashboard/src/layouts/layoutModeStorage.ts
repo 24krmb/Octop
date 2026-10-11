@@ -35,7 +35,8 @@ export function loadMinimalNavPane(): MinimalNavPane {
   } catch {
     /* ignore */
   }
-  return "records";
+  // Unified sidebar tabs default to the capability nav (能力).
+  return "settings";
 }
 
 export function saveMinimalNavPane(pane: MinimalNavPane): void {

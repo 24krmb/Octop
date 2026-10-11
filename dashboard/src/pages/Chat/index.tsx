@@ -24,7 +24,7 @@ import { useChat } from "./hooks/useChat";
 import { useSessions, fetchAndSyncSessionArtifacts } from "./hooks/useSessions";
 import * as chatStore from "./hooks/chatStore";
 import { formatRunUsage, assistantTurnsFromEnd } from "./utils/chatMessages";
-import { useChatSidebarState } from "./hooks/useChatSidebarState";
+import { useChatSidebarOpen } from "./hooks/useChatSidebarState";
 import { useChatHistoryRail } from "./hooks/useChatHistoryRail";
 import { useChatDockPanel } from "./hooks/useChatDockPanel";
 import { useChatSend, type ChatSendOverrides } from "./hooks/useChatSend";
@@ -142,14 +142,7 @@ function ChatPageInner() {
     null,
   );
   const [, setBrowserLastRecordingId] = useState<string | null>(null);
-  const {
-    sidebarOpen,
-    setSidebarOpen,
-    sidebarWidth,
-    isSidebarResizing,
-    sidebarElRef,
-    handleSidebarResizeStart,
-  } = useChatSidebarState(isMobile);
+  const [sidebarOpen, setSidebarOpen] = useChatSidebarOpen();
 
   // Pre-fill text from router state or module-level pending prefill
   // (set by cron-jobs suggestions before navigating here).
@@ -1180,9 +1173,6 @@ function ChatPageInner() {
     <ChatSidebarPanel
       isMobile={isMobile}
       sidebarOpen={sidebarOpen}
-      sidebarWidth={sidebarWidth}
-      isSidebarResizing={isSidebarResizing}
-      sidebarElRef={sidebarElRef}
       agents={sidebarAgents}
       sessions={sessions}
       activeThreadId={activeThreadId}
@@ -1213,9 +1203,7 @@ function ChatPageInner() {
       forkDisabled={sessionForkDisabled}
       forkDisabledHint={sessionForkDisabledHint}
       onSidebarOpenChange={setSidebarOpen}
-      onSidebarResizeStart={handleSidebarResizeStart}
-      layoutRail={!isMinimalLayout}
-      navEmbedded={isMinimalLayout}
+      navEmbedded={!isMobile || isMinimalLayout}
     />
   );
 

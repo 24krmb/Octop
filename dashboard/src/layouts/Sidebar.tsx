@@ -22,6 +22,7 @@ import type { MinimalNavPane } from "./layoutModeStorage";
 import MinimalRecordsHost from "./MinimalRecordsHost";
 import SidebarCollapsedIconNav from "./SidebarCollapsedIconNav";
 import SidebarMinimalPaneToggle from "./SidebarMinimalPaneToggle";
+import SidebarPaneTabs from "./SidebarPaneTabs";
 import { preferencesApi } from "../api/modules/preferences";
 import {
   COLLAPSED_WIDTH,
@@ -663,6 +664,44 @@ export default function Sidebar({
 
   const navScrollBody = isMinimal ? minimalNavBody : classicNavBody;
 
+  // Desktop expanded: unified two-tab sidebar (能力 | 对话).
+  // "能力" = classic nav minus the chat entry (the records tab is the chat
+  // entry now); "对话" = full SessionList via Chat portal on /chat,
+  // MinimalRecordsHost on other routes. Reuses the minimal records pane
+  // mount so ChatSidebarPanel's portal keeps working unchanged.
+  const capabilitiesSections = navSections
+    .map((section) => ({
+      ...section,
+      items: section.items.filter((item) => item.key !== "chat"),
+    }))
+    .filter((section) => section.items.length > 0);
+
+  const desktopTabBody = (
+    <>
+      <SidebarPaneTabs
+        capabilitiesLabel={settingsPaneLabel ?? t("nav.paneCapabilities")}
+        value={minimalPane}
+        onSelect={selectMinimalPane}
+      />
+      {minimalPane === "records" ? (
+        <div id={CHAT_HISTORY_RAIL_ID} className={styles.minimalRecordsPane}>
+          {!onChatPath ? <MinimalRecordsHost /> : null}
+        </div>
+      ) : (
+        <div className={styles.paneTabScroll}>
+          <NavList
+            sections={capabilitiesSections}
+            selectedKey={selectedKey}
+            onNavigate={handleNavigate}
+            isMobile={isMobile}
+            isGroupCollapsed={isGroupCollapsed}
+            toggleGroup={toggleGroup}
+          />
+        </div>
+      )}
+    </>
+  );
+
   // Mobile: fixed overlay drawer
   if (isMobile) {
     return (
@@ -796,13 +835,12 @@ export default function Sidebar({
         style={{
           flex: 1,
           minHeight: 0,
-          overflowY: isMinimal && minimalPane === "records" ? "hidden" : "auto",
-          overflowX: "hidden",
+          overflow: "hidden",
           display: "flex",
           flexDirection: "column",
         }}
       >
-        {navScrollBody}
+        {isRailCollapsed ? classicNavBody : desktopTabBody}
       </div>
 
       {userFooter}

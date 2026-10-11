@@ -1,12 +1,7 @@
-import { useCallback, useRef, useState, useSyncExternalStore } from "react";
-import { beginPointerDragSession } from "../../../hooks/usePointerDragSession";
+import { useSyncExternalStore } from "react";
 
 export const CHAT_SIDEBAR_KEY = "octop:chat-sidebar:open";
-export const CHAT_SIDEBAR_WIDTH_KEY = "octop:chat-sidebar:width";
-export const SIDEBAR_WIDTH_MIN = 200;
-export const SIDEBAR_WIDTH_MAX = 360;
-export const SIDEBAR_WIDTH_DEFAULT = 248;
-/** Viewport width at/above which the chat history rail defaults open. */
+/** Viewport width at/above which the chat session drawer defaults open. */
 export const CHAT_SIDEBAR_WIDE_BREAKPOINT = 1200;
 
 /**
@@ -20,24 +15,6 @@ export function resolveChatSidebarDefaultOpen(
   if (stored === "true") return true;
   if (stored === "false") return false;
   return viewportWidth >= CHAT_SIDEBAR_WIDE_BREAKPOINT;
-}
-
-function loadSidebarWidth(): number {
-  try {
-    const raw = localStorage.getItem(CHAT_SIDEBAR_WIDTH_KEY);
-    if (!raw) return SIDEBAR_WIDTH_DEFAULT;
-    const n = Number.parseInt(raw, 10);
-    if (
-      Number.isFinite(n) &&
-      n >= SIDEBAR_WIDTH_MIN &&
-      n <= SIDEBAR_WIDTH_MAX
-    ) {
-      return n;
-    }
-  } catch {
-    /* ignore */
-  }
-  return SIDEBAR_WIDTH_DEFAULT;
 }
 
 let sidebarOpen = (() => {
@@ -85,6 +62,13 @@ function getSidebarSnapshot() {
   return sidebarOpen;
 }
 
+/**
+ * Mobile overlay open state for the legacy chat-session drawer.
+ *
+ * The desktop sidebar is now the unified nav rail (capability/records tabs);
+ * this state only drives the mobile overlay drawer and is kept module-global
+ * so the mobile header and chat toolbar can toggle the same drawer.
+ */
 export function useChatSidebarOpen(): [
   boolean,
   (v: boolean | ((prev: boolean) => boolean)) => void,
@@ -95,85 +79,4 @@ export function useChatSidebarOpen(): [
     getSidebarSnapshot,
   );
   return [value, setSidebarOpenGlobal];
-}
-
-function clampSidebarWidth(n: number): number {
-  return Math.min(SIDEBAR_WIDTH_MAX, Math.max(SIDEBAR_WIDTH_MIN, n));
-}
-
-function applySidebarWidth(el: HTMLElement | null, width: number) {
-  if (!el) return;
-  el.style.width = `${width}px`;
-  el.style.minWidth = `${width}px`;
-}
-
-/**
- * Sidebar open/width state with a drag-to-resize handle.
- *
- * During drag we write width directly to the sidebar DOM (rAF-batched) so
- * React does not re-render SessionList on every pointermove — that was the
- * main source of jank. React state + localStorage commit only on pointerup.
- */
-export function useChatSidebarState(isMobile: boolean) {
-  const [sidebarOpen, setSidebarOpen] = useChatSidebarOpen();
-  const [sidebarWidth, setSidebarWidth] = useState(loadSidebarWidth);
-  const [isSidebarResizing, setIsSidebarResizing] = useState(false);
-  const sidebarWidthRef = useRef(sidebarWidth);
-  sidebarWidthRef.current = sidebarWidth;
-  const sidebarElRef = useRef<HTMLDivElement>(null);
-  const resizeStartRef = useRef({ x: 0, width: 0 });
-  const pendingWidthRef = useRef<number | null>(null);
-
-  const handleSidebarResizeStart = useCallback(
-    (e: React.PointerEvent) => {
-      if (isMobile || e.button !== 0) return;
-      e.preventDefault();
-      e.stopPropagation();
-
-      const handle = e.currentTarget as HTMLElement;
-      setIsSidebarResizing(true);
-      resizeStartRef.current = {
-        x: e.clientX,
-        width: sidebarWidthRef.current,
-      };
-      pendingWidthRef.current = sidebarWidthRef.current;
-
-      beginPointerDragSession({
-        pointerId: e.pointerId,
-        target: handle,
-        cursor: "col-resize",
-        onMove: (clientX) => {
-          const next = clampSidebarWidth(
-            resizeStartRef.current.width + clientX - resizeStartRef.current.x,
-          );
-          pendingWidthRef.current = next;
-          sidebarWidthRef.current = next;
-          applySidebarWidth(sidebarElRef.current, next);
-        },
-        onEnd: () => {
-          const finalWidth = pendingWidthRef.current ?? sidebarWidthRef.current;
-          pendingWidthRef.current = null;
-          setIsSidebarResizing(false);
-          sidebarWidthRef.current = finalWidth;
-          applySidebarWidth(sidebarElRef.current, finalWidth);
-          setSidebarWidth(finalWidth);
-          try {
-            localStorage.setItem(CHAT_SIDEBAR_WIDTH_KEY, String(finalWidth));
-          } catch {
-            /* ignore */
-          }
-        },
-      });
-    },
-    [isMobile],
-  );
-
-  return {
-    sidebarOpen,
-    setSidebarOpen,
-    sidebarWidth,
-    isSidebarResizing,
-    sidebarElRef,
-    handleSidebarResizeStart,
-  };
 }

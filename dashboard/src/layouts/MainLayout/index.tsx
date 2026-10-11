@@ -17,7 +17,7 @@ import {
   SELF_HEADER_PATHS,
   isWorkbenchPath,
 } from "../../routes";
-import { CHAT_HISTORY_RAIL_ID, isChatPath } from "../chatHistoryRail";
+import { isChatPath } from "../chatHistoryRail";
 import { useIsMobile } from "../../hooks/useIsMobile";
 import { useKeyboardOffset } from "../../hooks/useKeyboardOffset";
 import { useChatSidebarOpen } from "../../pages/Chat/hooks/useChatSidebarState";
@@ -69,7 +69,7 @@ export default function MainLayout() {
   const onWorkbench = isWorkbenchPath(currentPath);
 
   const [collapsed, setCollapsed] = useState(() => getSavedCollapsed());
-  const [chatSidebarOpen, setChatSidebarOpen] = useChatSidebarOpen();
+  const [, setChatSidebarOpen] = useChatSidebarOpen();
   const [workbenchMounted, setWorkbenchMounted] = useState(() => onWorkbench);
 
   useEffect(() => {
@@ -94,26 +94,16 @@ export default function MainLayout() {
 
   /**
    * Desktop nav rail edge:
-   * - expand: open nav; if classic chat history is also closed, open both
+   * - expand: open nav
    * - collapse: collapse nav only
    */
   const handleNavRailToggle = useCallback(() => {
     if (collapsed) {
       persistNavCollapsed(false);
-      if (!isMinimalLayout && isChatPath(currentPath) && !chatSidebarOpen) {
-        setChatSidebarOpen(true);
-      }
       return;
     }
     persistNavCollapsed(true);
-  }, [
-    collapsed,
-    chatSidebarOpen,
-    currentPath,
-    isMinimalLayout,
-    persistNavCollapsed,
-    setChatSidebarOpen,
-  ]);
+  }, [collapsed, persistNavCollapsed]);
 
   // When switching to mobile, always collapse; restore saved preference on desktop
   useEffect(() => {
@@ -232,20 +222,6 @@ export default function MainLayout() {
               />
             )}
           </div>
-
-          {isChatRoute && !isMinimalLayout && (
-            <div
-              id={CHAT_HISTORY_RAIL_ID}
-              style={{
-                flexShrink: 0,
-                display: "flex",
-                alignSelf: "stretch",
-                minHeight: 0,
-                height: "100%",
-                position: "relative",
-              }}
-            />
-          )}
 
           {/* Right column: mobile header (if any) + page content */}
           <div
