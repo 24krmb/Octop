@@ -76,9 +76,11 @@ html[data-octop-desktop-chrome] .ant-drawer-right .ant-drawer-close {
   overscroll-behavior: none;
 }
 
-/* ConfigProvider prefixCls="octop" → antd <App> is .octop-app.
+/* antd <App> with component-level prefixCls="24kclaw" → .24kclaw-app.
+   Class starts with a digit, so a bare .24kclaw-app selector is invalid CSS;
+   use the class-token attribute selector instead.
    Without an explicit height, MainLayout's height:100% cannot fill #root. */
-.octop-app,
+[class~="24kclaw-app"],
 .ant-app {
   height: 100%;
 }

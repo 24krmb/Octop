@@ -20,7 +20,7 @@ function AntdAppApiBinder() {
 /** Wrap under ConfigProvider so message/modal/notification follow theme. */
 export function AntdAppProvider({ children }: { children: ReactNode }) {
   return (
-    <App>
+    <App prefixCls="24kclaw">
       <AntdAppApiBinder />
       {children}
     </App>
