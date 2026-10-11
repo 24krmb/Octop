@@ -170,6 +170,10 @@ export function editorFromCatalog(
   for (const item of layout.items) layoutGroupByKey.set(item.key, item.group);
   for (const key of defaultKeyOrder(base)) {
     if (!seen.has(key) || hidden.includes(key)) continue;
+    // Keys the layout never listed were just auto-appended to their current
+    // default group by the pass above — relocating them again here would
+    // duplicate them (e.g. a group that shipped after the layout was saved).
+    if (!layoutGroupByKey.has(key)) continue;
     const newDefault = defaultGroupIdByKey.get(key);
     const nowUngrouped = !newDefault;
     const savedGroup = layoutGroupByKey.get(key);

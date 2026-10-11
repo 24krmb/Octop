@@ -50,6 +50,9 @@
   height: 100%;
   overflow: hidden;
   position: relative;
+  /* Above the page background so the floating title bar's frosted glass
+     composites over the message list, not over the layout gradient. */
+  z-index: 1;
   /* Reserve the title-bar row; the bar itself floats above so messages
      scroll underneath its frosted-glass backdrop. */
   padding-top: var(--fn-chat-chrome-height, 57px);

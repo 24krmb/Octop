@@ -122,7 +122,6 @@ export function navSectionLabel(
  * comes from {@link buildNavSections}.
  */
 export const SIDEBAR_GROUPED_NAV_KEYS = [
-  "personalization-subagents",
   "personalization-skills",
   "personalization-plugins",
   "personalization-tools",
@@ -142,6 +141,7 @@ export const SIDEBAR_GROUPED_NAV_KEYS = [
   "admin-plugins",
   "admin-security",
   "admin-advanced",
+  "token-usage",
   "agent-config",
 ] as const;
 

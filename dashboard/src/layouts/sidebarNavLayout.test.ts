@@ -37,10 +37,11 @@ describe("sidebarNavLayout", () => {
     expect(editor.ungrouped).toEqual([
       "chat",
       "experts",
+      "personalization-subagents",
       "tasks",
-      "token-usage",
     ]);
     expect(editor.groups.map((group) => group.id)).toEqual([
+      "personalization",
       "settings",
       "control",
       "admin",
@@ -58,22 +59,34 @@ describe("sidebarNavLayout", () => {
       ],
       items: [
         { key: "chat" },
-        { key: "personalization", group: "settings" },
+        { key: "personalization-subagents", group: "settings" },
         { key: "token-usage", hidden: true },
         { key: "workbench", group: "control" },
       ],
     });
+    // Missing built-in groups are spliced back ahead of the first saved
+    // built-in group, and subagents relocates to the front block because its
+    // default group became ungrouped.
     expect(applied.map((section) => section.id ?? "front")).toEqual([
       "front",
+      "personalization",
+      "admin",
       "settings",
       "control",
     ]);
-    expect(applied[0]?.items.map((item) => item.key)).toEqual(["chat"]);
-    expect(applied[1]?.title).toBe("配置");
-    expect(applied[1]?.items.map((item) => item.key)).toEqual([
-      "personalization",
+    expect(applied[0]?.items.map((item) => item.key)).toEqual([
+      "chat",
+      "personalization-subagents",
     ]);
-    expect(applied[2]?.groupKey).toBe("nav.control");
+    expect(applied[1]?.groupKey).toBe("nav.personalization");
+    expect(applied[2]?.groupKey).toBe("nav.admin");
+    expect(applied[3]?.title).toBe("配置");
+    expect(applied[3]?.items.map((item) => item.key)).toEqual([
+      "channels",
+      "connectors",
+      "bridge",
+    ]);
+    expect(applied[4]?.groupKey).toBe("nav.control");
   });
 
   it("sends keys missing from a saved layout to hidden", () => {
@@ -83,7 +96,7 @@ describe("sidebarNavLayout", () => {
     });
     expect(editor.ungrouped).toEqual(["chat"]);
     expect(editor.hidden).toContain("experts");
-    expect(editor.hidden).toContain("personalization");
+    expect(editor.hidden).toContain("personalization-subagents");
     expect(
       sectionsFromLayout(catalog(), {
         groups: [{ id: "settings" }],
@@ -97,8 +110,12 @@ describe("sidebarNavLayout", () => {
   it("moves a deleted group's items to the front of the ungrouped list", () => {
     const editor = editorFromCatalog(catalog(), null);
     const next = deleteGroup(editor, "settings");
-    expect(next.groups.map((group) => group.id)).toEqual(["control", "admin"]);
-    expect(next.ungrouped.slice(0, 2)).toEqual(["personalization", "channels"]);
+    expect(next.groups.map((group) => group.id)).toEqual([
+      "personalization",
+      "control",
+      "admin",
+    ]);
+    expect(next.ungrouped.slice(0, 2)).toEqual(["channels", "connectors"]);
     expect(next.ungrouped).toContain("chat");
   });
 
@@ -127,7 +144,7 @@ describe("sidebarNavLayout", () => {
         { key: "chat" },
         { key: "admin-users", group: "admin" },
         { key: "channels", group: "settings" },
-        { key: "personalization", group: "settings" },
+        { key: "personalization-subagents", group: "settings" },
       ],
     });
     const shown = [
@@ -138,10 +155,10 @@ describe("sidebarNavLayout", () => {
     expect(shown).not.toContain("admin-users");
     expect(shown).not.toContain("channels");
     expect(shown).toContain("chat");
-    expect(shown).toContain("personalization");
+    expect(shown).toContain("personalization-subagents");
     expect(
       visibleEditorGroups(editor, sections).map((group) => group.id),
-    ).toEqual(["settings", "c_aabbccdd"]);
+    ).toEqual(["personalization", "settings", "admin", "c_aabbccdd"]);
   });
 
   it("keeps a new empty group only in the editor", () => {
