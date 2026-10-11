@@ -19,8 +19,10 @@ function AntdAppApiBinder() {
 
 /** Wrap under ConfigProvider so message/modal/notification follow theme. */
 export function AntdAppProvider({ children }: { children: ReactNode }) {
+  // getPrefixCls returns customizePrefixCls verbatim (no -app suffix), so
+  // pass the full class to get exactly class="… 24kclaw-app".
   return (
-    <App prefixCls="24kclaw">
+    <App prefixCls="24kclaw-app">
       <AntdAppApiBinder />
       {children}
     </App>

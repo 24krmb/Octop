@@ -58,6 +58,9 @@
   @media (max-width: 767px) {
     /* On mobile, chatMain takes full width (no AvatarSidebar) */
     min-width: 0;
+    /* ChatTitleBar is not rendered on mobile (index.tsx !isMobile guard) —
+       the MainLayout brand bar replaces it, so reserve no chrome space. */
+    padding-top: 0;
   }
 }
 
