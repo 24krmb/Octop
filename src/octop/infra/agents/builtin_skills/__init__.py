@@ -7,7 +7,7 @@ from importlib.resources.abc import Traversable
 from typing import Any
 
 OCTOP_BUILTIN_SKILLS_ROOT = "_builtin_skills"
-RETIRED_BUILTIN_SKILLS = ("install-skill",)
+RETIRED_BUILTIN_SKILLS = ("install-skill", "discuz-api-publisher", "discuz-post-formatter")
 _WORKSPACE_TOKEN = b"{{OCTOP_WORKSPACE}}"
 _SKILLS_TOKEN = b"{{OCTOP_SKILLS}}"
 _BUILTIN_TOKEN = b"{{OCTOP_BUILTIN_SKILLS}}"

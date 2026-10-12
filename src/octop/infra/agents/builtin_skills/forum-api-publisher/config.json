@@ -1,12 +1,12 @@
 {
   "site": "https://www.24krmb.com",
   "app": {
-    "name": "24K-Claw AI Publisher",
+    "name": "24K-Claw Community Publisher",
     "appid": "19665625",
     "secret": "FEJ9X0HP6BVKOK8B"
   },
-  "token": null,
-  "expires_in": 0,
+  "token": "TRYOR40U4CYBY3WY",
+  "expires_in": 1791824826,
   "endpoints": {
     "forumlist": {
       "path": "index/forumlist",
@@ -91,10 +91,6 @@
       },
       "note": "门户文章（自建 XML，需站点导入）"
     }
-  },
-  "credentials": {
-    "forum_username": "6440",
-    "forum_password": "wcd357741"
   },
   "default_fid": "159",
   "default_forum_name": "各抒己见"
