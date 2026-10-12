@@ -378,6 +378,7 @@ def _summary_dict(s: Any) -> dict[str, Any]:
         "color": s.color,
         "quick_prompts": [_quick_prompt_dict(p) for p in getattr(s, "quick_prompts", ())],
         "task_examples": getattr(s, "task_examples", None),
+        "default_connectors": list(getattr(s, "default_connectors", ()) or ()),
     }
 
 

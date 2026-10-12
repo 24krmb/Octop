@@ -129,6 +129,7 @@ class ExpertSummary:
     color: str | None = None
     quick_prompts: tuple[ExpertQuickPrompt, ...] = ()
     task_examples: dict[str, list[str]] | None = None
+    default_connectors: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -819,6 +820,9 @@ class ExpertCatalog:
                         scene=_manifest_scene(data),
                     ),
                     color=data.get("color"),
+                    default_connectors=tuple(
+                        str(c) for c in (data.get("default_connectors") or [])
+                    ),
                     quick_prompts=_parse_quick_prompts(data),
                     task_examples=normalize_task_examples_for_display(parse_task_examples(data)),
                 )

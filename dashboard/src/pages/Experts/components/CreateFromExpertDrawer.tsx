@@ -138,6 +138,7 @@ function sourceDefaults(
   description: string;
   color: string | null;
   welcome_message: string;
+  default_connectors: string[];
 } {
   if (source.kind === "builtin") {
     return {
@@ -145,6 +146,9 @@ function sourceDefaults(
       description: pickLocale(source.expert.description, lang),
       color: source.expert.color ?? null,
       welcome_message: pickLocale(source.expert.welcome_message, lang),
+      default_connectors:
+        (source.expert as { default_connectors?: string[] })
+          .default_connectors ?? [],
     };
   }
   if (source.kind === "published") {
@@ -153,6 +157,7 @@ function sourceDefaults(
       description: source.expert.description,
       color: source.expert.color ?? null,
       welcome_message: pickLocale(source.expert.welcome_message, lang),
+      default_connectors: [],
     };
   }
   return {
@@ -160,6 +165,7 @@ function sourceDefaults(
     description: pickLocale(source.expert.description, lang),
     color: source.expert.color ?? null,
     welcome_message: "",
+    default_connectors: [],
   };
 }
 
@@ -295,6 +301,10 @@ export default function CreateFromExpertDrawer({
     setDetailPrompts(null);
   }
   const templatePrompts = detailPrompts ?? listPrompts;
+  const defaults = useMemo(
+    () => (source ? sourceDefaults(source, lang) : null),
+    [source, lang],
+  );
 
   useEffect(() => {
     if (!open || !source) return;
@@ -829,7 +839,7 @@ export default function CreateFromExpertDrawer({
             placeholder={t("experts.skillPackagesPlaceholder")}
           />
         </Form.Item>
-        <ExpertComposerDefaultsFields />
+        <ExpertComposerDefaultsFields defaultConnectorKinds={defaults?.default_connectors ?? []} />
 
         <Collapse
           ghost

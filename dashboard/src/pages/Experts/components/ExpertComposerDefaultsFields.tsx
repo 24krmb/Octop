@@ -6,15 +6,20 @@ import { connectorsApi } from "../../../api/modules/connectors";
 import { knowledgeBasesApi } from "../../../api/modules/knowledgeBases";
 import { useCurrentUser } from "../../../hooks/useCurrentUser";
 
-export default function ExpertComposerDefaultsFields() {
+export default function ExpertComposerDefaultsFields({
+  defaultConnectorKinds = [],
+}: {
+  defaultConnectorKinds?: string[];
+}) {
   const { t } = useTranslation();
+  const form = Form.useFormInstance();
   const currentUserId = useCurrentUser()?.id ?? null;
   const [knowledgeBases, setKnowledgeBases] = useState<
     { id: string; name: string }[]
   >([]);
   const [knowledgeLoading, setKnowledgeLoading] = useState(false);
   const [connectors, setConnectors] = useState<
-    { value: string; label: string }[]
+    { value: string; label: string; kind?: string }[]
   >([]);
   const [connectorsLoading, setConnectorsLoading] = useState(false);
 
@@ -53,6 +58,7 @@ export default function ExpertComposerDefaultsFields() {
             .filter((item) => item.status === "active" && item.has_credentials)
             .map((item) => ({
               value: item.mcp_server_name,
+              kind: item.kind,
               label:
                 currentUserId !== null && item.owner_user_id !== currentUserId
                   ? `${item.display_name} · ${
@@ -74,6 +80,17 @@ export default function ExpertComposerDefaultsFields() {
       cancelled = true;
     };
   }, [currentUserId]);
+
+  // 专家 manifest 声明的默认连接器：options 就绪后自动预选
+  useEffect(() => {
+    if (!defaultConnectorKinds.length || !connectors.length) return;
+    const current: string[] = form.getFieldValue("mcp_servers") || [];
+    if (current.length) return; // 用户已手动选过则不覆盖
+    const preset = connectors
+      .filter((o) => o.kind && defaultConnectorKinds.includes(o.kind))
+      .map((o) => o.value);
+    if (preset.length) form.setFieldsValue({ mcp_servers: preset });
+  }, [connectors, defaultConnectorKinds, form]);
 
   return (
     <>
