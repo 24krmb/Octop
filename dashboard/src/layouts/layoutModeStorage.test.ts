@@ -1,29 +1,22 @@
 import { afterEach, describe, expect, it } from "vitest";
 import {
-  LAYOUT_MODE_KEY,
   MINIMAL_NAV_PANE_KEY,
-  loadLayoutMode,
   loadMinimalNavPane,
-  saveLayoutMode,
   saveMinimalNavPane,
 } from "../../src/layouts/layoutModeStorage";
 
 describe("layoutModeStorage", () => {
   afterEach(() => {
-    localStorage.removeItem(LAYOUT_MODE_KEY);
     localStorage.removeItem(MINIMAL_NAV_PANE_KEY);
   });
 
-  it("defaults to classic layout and capabilities pane", () => {
-    expect(loadLayoutMode()).toBe("classic");
+  it("defaults to the capabilities pane", () => {
     expect(loadMinimalNavPane()).toBe("settings");
   });
 
-  it("persists layout mode and minimal pane", () => {
-    saveLayoutMode("minimal");
-    saveMinimalNavPane("settings");
-    expect(loadLayoutMode()).toBe("minimal");
-    expect(loadMinimalNavPane()).toBe("settings");
+  it("persists the selected pane", () => {
+    saveMinimalNavPane("records");
+    expect(loadMinimalNavPane()).toBe("records");
   });
 
   it("migrates briefly-shipped chat/nav aliases", () => {
@@ -34,9 +27,7 @@ describe("layoutModeStorage", () => {
   });
 
   it("ignores invalid stored values", () => {
-    localStorage.setItem(LAYOUT_MODE_KEY, "weird");
     localStorage.setItem(MINIMAL_NAV_PANE_KEY, "other");
-    expect(loadLayoutMode()).toBe("classic");
     expect(loadMinimalNavPane()).toBe("settings");
   });
 });

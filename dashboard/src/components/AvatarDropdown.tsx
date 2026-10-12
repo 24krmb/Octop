@@ -41,8 +41,6 @@ import { useUserRole } from "../hooks/useUserRole";
 import { useIsMobile } from "../hooks/useIsMobile";
 import ThemeSwitcher from "./ThemeSwitcher";
 import type { OctopUser } from "../api/modules/auth";
-import { useLayoutMode } from "../context/LayoutModeContext";
-import type { LayoutMode } from "../layouts/layoutModeStorage";
 import { userCan } from "../utils/permissions";
 import feishuIcon from "../assets/channels/feishu.svg";
 import dingtalkIcon from "../assets/channels/dingtalk.svg";
@@ -101,7 +99,6 @@ export default function AvatarDropdown({
   const navigate = useNavigate();
   const role = useUserRole();
   const isMobile = useIsMobile();
-  const { layoutMode, setLayoutMode } = useLayoutMode();
   const [menuOpen, setMenuOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [passwordOpen, setPasswordOpen] = useState(false);
@@ -565,28 +562,6 @@ export default function AvatarDropdown({
             {t("account.saveDisplayName")}
           </Button>
         </Form>
-      </section>
-
-      <Divider className={styles.settingsDivider} />
-
-      <section className={styles.settingsSection}>
-        <div className={styles.settingsSectionHead}>
-          <h3 className={styles.settingsSectionTitle}>
-            {t("account.layoutMode")}
-          </h3>
-          <p className={styles.settingsSectionDesc}>
-            {t("account.layoutModeHint")}
-          </p>
-        </div>
-        <Segmented
-          block
-          value={layoutMode}
-          options={[
-            { label: t("account.layoutClassic"), value: "classic" },
-            { label: t("account.layoutMinimal"), value: "minimal" },
-          ]}
-          onChange={(val) => setLayoutMode(val as LayoutMode)}
-        />
       </section>
 
       <Divider className={styles.settingsDivider} />

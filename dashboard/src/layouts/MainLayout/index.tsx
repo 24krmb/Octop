@@ -17,14 +17,11 @@ import {
   SELF_HEADER_PATHS,
   isWorkbenchPath,
 } from "../../routes";
-import { isChatPath } from "../chatHistoryRail";
+import { isChatPath, CLOSE_NAV_EVENT } from "../chatHistoryRail";
 import { useIsMobile } from "../../hooks/useIsMobile";
 import { useKeyboardOffset } from "../../hooks/useKeyboardOffset";
-import { useChatSidebarOpen } from "../../pages/Chat/hooks/useChatSidebarState";
-import { EXPAND_CHAT_RAIL_EVENT } from "../../pages/Chat/components/ChatSidebarPanel";
 import RequirePermission from "../../components/RequirePermission";
 import { routeNeedsPermission } from "../../utils/permissions";
-import { useLayoutMode } from "../../context/LayoutModeContext";
 import { useDashboardPushToast } from "../../hooks/useDashboardPushToast";
 
 const Chat = lazy(() => import("../../pages/Chat"));
@@ -58,10 +55,8 @@ export default function MainLayout() {
   const currentPath = location.pathname;
   const selectedKey = resolveSelectedKey(currentPath);
   const isMobile = useIsMobile();
-  const { layoutMode } = useLayoutMode();
   useDashboardPushToast();
   useKeyboardOffset();
-  const isMinimalLayout = layoutMode === "minimal";
   const isFullscreen =
     FULLSCREEN_PATHS.has(currentPath) ||
     [...FULLSCREEN_PATHS].some((p) => currentPath.startsWith(p + "/")) ||
@@ -69,7 +64,6 @@ export default function MainLayout() {
   const onWorkbench = isWorkbenchPath(currentPath);
 
   const [collapsed, setCollapsed] = useState(() => getSavedCollapsed());
-  const [, setChatSidebarOpen] = useChatSidebarOpen();
   const [workbenchMounted, setWorkbenchMounted] = useState(() => onWorkbench);
 
   useEffect(() => {
@@ -129,19 +123,15 @@ export default function MainLayout() {
     return () => window.removeEventListener("octop:toggle-nav", handler);
   }, []);
 
-  // Chat history rail expand: if nav is also collapsed, open both rails.
-  // Minimal layout has no second rail — Sidebar handles records pane itself.
+  // Chat closes the mobile nav drawer after picking a session/agent in the
+  // records pane. No-op on desktop (the rail stays as the user left it).
   useEffect(() => {
-    if (isMinimalLayout) return;
     const handler = () => {
-      setChatSidebarOpen(true);
-      if (collapsed) {
-        persistNavCollapsed(false);
-      }
+      if (isMobile) setCollapsed(true);
     };
-    window.addEventListener(EXPAND_CHAT_RAIL_EVENT, handler);
-    return () => window.removeEventListener(EXPAND_CHAT_RAIL_EVENT, handler);
-  }, [collapsed, isMinimalLayout, persistNavCollapsed, setChatSidebarOpen]);
+    window.addEventListener(CLOSE_NAV_EVENT, handler);
+    return () => window.removeEventListener(CLOSE_NAV_EVENT, handler);
+  }, [isMobile]);
 
   const routes = (
     <Suspense fallback={<PageLoading />}>

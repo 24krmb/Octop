@@ -24,7 +24,6 @@ import { useChat } from "./hooks/useChat";
 import { useSessions, fetchAndSyncSessionArtifacts } from "./hooks/useSessions";
 import * as chatStore from "./hooks/chatStore";
 import { formatRunUsage, assistantTurnsFromEnd } from "./utils/chatMessages";
-import { useChatSidebarOpen } from "./hooks/useChatSidebarState";
 import { useChatHistoryRail } from "./hooks/useChatHistoryRail";
 import { useChatDockPanel } from "./hooks/useChatDockPanel";
 import { useChatSend, type ChatSendOverrides } from "./hooks/useChatSend";
@@ -70,7 +69,6 @@ import {
   selectEnabledExperts,
   projectChatAgentOption,
 } from "../../context/AgentContext";
-import { useLayoutMode } from "../../context/LayoutModeContext";
 import { useBrowserSessionState } from "../../hooks/useBrowserSessionState";
 import { prefetchVoiceConfig } from "../../hooks/useVoiceConfig";
 import {
@@ -105,7 +103,10 @@ import HistoryMigrationBanner from "./components/HistoryMigrationBanner";
 import { apiErrorMessage } from "../../utils/apiError";
 import PwaInstallPrompt from "../../components/PwaInstallPrompt";
 import { promptNeedsUserInput } from "../../utils/quickInputPrefill";
-import { OPEN_NAV_RECORDS_EVENT } from "../../layouts/chatHistoryRail";
+import {
+  CLOSE_NAV_EVENT,
+  OPEN_NAV_RECORDS_EVENT,
+} from "../../layouts/chatHistoryRail";
 import {
   usePluginToolUis,
   setPluginUiDockHandlers,
@@ -132,8 +133,6 @@ function ChatPageInner() {
   const isMobile = useIsMobile();
   const hitlEnabled = useHitlEnabled();
   const user = useCurrentUser();
-  const { layoutMode } = useLayoutMode();
-  const isMinimalLayout = layoutMode === "minimal";
   const canTerminal = userCan(user, "terminal");
   const canConfigureModels = navAllowed(user, "models");
   const chatHistoryRail = useChatHistoryRail();
@@ -142,7 +141,12 @@ function ChatPageInner() {
     null,
   );
   const [, setBrowserLastRecordingId] = useState<string | null>(null);
-  const [sidebarOpen, setSidebarOpen] = useChatSidebarOpen();
+
+  // Ask the layout to close the mobile nav drawer (records pane lives inside
+  // it now — there is no separate chat overlay to close).
+  const closeMobileNav = useCallback(() => {
+    window.dispatchEvent(new Event(CLOSE_NAV_EVENT));
+  }, []);
 
   // Pre-fill text from router state or module-level pending prefill
   // (set by cron-jobs suggestions before navigating here).
@@ -830,7 +834,7 @@ function ChatPageInner() {
     sessions,
     isMobile,
     setActiveAgent,
-    setSidebarOpen,
+    closeMobileNav,
     setSelectedModel,
     setHasBrowserTool,
     deleteSession,
@@ -1172,7 +1176,6 @@ function ChatPageInner() {
   const chatSidebarPanel = (
     <ChatSidebarPanel
       isMobile={isMobile}
-      sidebarOpen={sidebarOpen}
       agents={sidebarAgents}
       sessions={sessions}
       activeThreadId={activeThreadId}
@@ -1186,7 +1189,7 @@ function ChatPageInner() {
         if (agentId && agentId !== resolvedAgentId) {
           void octopThreadsApi.rebind(agentId, sessionId).catch(() => {});
           navigate(`/chat/${agentId}/${sessionId}`);
-          if (isMobile) setSidebarOpen(false);
+          if (isMobile) closeMobileNav();
           return;
         }
         handleSelectSession(sessionId);
@@ -1202,8 +1205,6 @@ function ChatPageInner() {
       onForkSession={handleForkSession}
       forkDisabled={sessionForkDisabled}
       forkDisabledHint={sessionForkDisabledHint}
-      onSidebarOpenChange={setSidebarOpen}
-      navEmbedded={!isMobile || isMinimalLayout}
     />
   );
 
@@ -1247,11 +1248,7 @@ function ChatPageInner() {
                 <button
                   className={styles.menuBtn}
                   onClick={() => {
-                    if (isMinimalLayout) {
-                      window.dispatchEvent(new Event(OPEN_NAV_RECORDS_EVENT));
-                      return;
-                    }
-                    setSidebarOpen(!sidebarOpen);
+                    window.dispatchEvent(new Event(OPEN_NAV_RECORDS_EVENT));
                   }}
                   title={t("nav.chatHistory") || "会话列表"}
                 >

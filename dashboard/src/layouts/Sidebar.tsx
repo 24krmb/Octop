@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import type { TFunction } from "i18next";
 import AvatarDropdown from "../components/AvatarDropdown";
-import { ArrowRightLeft, ChevronDown, X } from "lucide-react";
+import { ChevronDown, X } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 import { useLayoutMode } from "../context/LayoutModeContext";
 import { useUserRole } from "../hooks/useUserRole";
@@ -11,8 +11,6 @@ import { useCurrentUser, useSetCurrentUser } from "../hooks/useCurrentUser";
 import { useUpdateStatus } from "../hooks/useUpdateStatus";
 import { prefetchRoute } from "../routes/prefetch";
 import { useServerCapabilities } from "../hooks/useServerCapabilities";
-import { useChatSidebarOpen } from "../pages/Chat/hooks/useChatSidebarState";
-import { EXPAND_CHAT_RAIL_EVENT } from "../pages/Chat/components/ChatSidebarPanel";
 import {
   CHAT_HISTORY_RAIL_ID,
   OPEN_NAV_RECORDS_EVENT,
@@ -21,7 +19,6 @@ import {
 import type { MinimalNavPane } from "./layoutModeStorage";
 import MinimalRecordsHost from "./MinimalRecordsHost";
 import SidebarCollapsedIconNav from "./SidebarCollapsedIconNav";
-import SidebarMinimalPaneToggle from "./SidebarMinimalPaneToggle";
 import SidebarPaneTabs from "./SidebarPaneTabs";
 import { preferencesApi } from "../api/modules/preferences";
 import {
@@ -124,8 +121,6 @@ function NavItemButton({
   active,
   isMobile,
   onNavigate,
-  onExpandChatRail,
-  showChatRailExpand,
   role,
   hasUpdate,
   t,
@@ -134,16 +129,10 @@ function NavItemButton({
   active: boolean;
   isMobile?: boolean;
   onNavigate: (path: string) => void;
-  onExpandChatRail?: () => void;
-  showChatRailExpand?: boolean;
   role: string | null;
   hasUpdate: boolean;
   t: TFunction<"translation", undefined>;
 }) {
-  const showExpand = Boolean(
-    showChatRailExpand && item.key === "chat" && onExpandChatRail,
-  );
-
   return (
     <div
       className={styles.navItemRow}
@@ -172,7 +161,7 @@ function NavItemButton({
             : "var(--fn-text-primary)",
           fontSize: typeSize(14, isMobile),
           fontWeight: 500,
-          paddingRight: showExpand ? 4 : 12,
+          paddingRight: 12,
         }}
       >
         <span
@@ -226,20 +215,6 @@ function NavItemButton({
           )}
         </span>
       </button>
-      {showExpand ? (
-        <button
-          type="button"
-          className={styles.chatRailExpandBtn}
-          onClick={(e) => {
-            e.stopPropagation();
-            onExpandChatRail?.();
-          }}
-          aria-label={t("chat.expandHistorySidebar", "展开对话历史")}
-          title={t("chat.expandHistorySidebar", "展开对话历史")}
-        >
-          <ArrowRightLeft size={14} strokeWidth={1.8} aria-hidden />
-        </button>
-      ) : null}
     </div>
   );
 }
@@ -248,8 +223,6 @@ function NavList({
   sections,
   selectedKey,
   onNavigate,
-  onExpandChatRail,
-  showChatRailExpand,
   isMobile,
   isGroupCollapsed,
   toggleGroup,
@@ -260,8 +233,6 @@ function NavList({
   sections: NavSection[];
   selectedKey: string;
   onNavigate: (path: string) => void;
-  onExpandChatRail?: () => void;
-  showChatRailExpand?: boolean;
   isMobile?: boolean;
   isGroupCollapsed: (groupId: string) => boolean;
   toggleGroup: (groupId: string) => void;
@@ -317,8 +288,6 @@ function NavList({
                     active={selectedKey === item.key}
                     isMobile={isMobile}
                     onNavigate={onNavigate}
-                    onExpandChatRail={onExpandChatRail}
-                    showChatRailExpand={showChatRailExpand}
                     role={role}
                     hasUpdate={hasUpdate}
                     t={t}
@@ -359,8 +328,6 @@ function NavList({
                     active={selectedKey === item.key}
                     isMobile={isMobile}
                     onNavigate={onNavigate}
-                    onExpandChatRail={onExpandChatRail}
-                    showChatRailExpand={showChatRailExpand}
                     role={role}
                     hasUpdate={hasUpdate}
                     t={t}
@@ -390,8 +357,7 @@ export default function Sidebar({
   const setUser = useSetCurrentUser();
   const { hasUpdate } = useUpdateStatus();
   const { mobileEnabled } = useServerCapabilities();
-  const { layoutMode, minimalPane, setMinimalPane } = useLayoutMode();
-  const isMinimal = layoutMode === "minimal";
+  const { minimalPane, setMinimalPane } = useLayoutMode();
   const onChatPath = isChatPath(location.pathname);
   const catalog = useMemo(
     () => buildNavSections(user, { mobileEnabled }),
@@ -423,15 +389,13 @@ export default function Sidebar({
       cancelled = true;
     };
   }, [user]);
-  const [chatSidebarOpen, setChatSidebarOpen] = useChatSidebarOpen();
-  const showChatRailExpand = !isMinimal && !chatSidebarOpen;
 
   const isRailCollapsed = collapsed && !isMobile;
   const wordmarkSrc = isDark
     ? "/logo_horizontal_white.png"
     : "/logo_horizontal_dark.png";
 
-  const selectMinimalPane = useCallback(
+  const selectPane = useCallback(
     (pane: MinimalNavPane, opts?: { expand?: boolean }) => {
       setMinimalPane(pane);
       if (opts?.expand && collapsed) {
@@ -441,20 +405,17 @@ export default function Sidebar({
     [collapsed, onToggle, setMinimalPane],
   );
 
-  // Pane choice is user-controlled; do not flip 记录/设置 when the route changes.
-  // Both records-open events map to the same pane switch in minimal mode.
+  // Records-open events (mobile toolbar, desktop shortcuts) all map to the
+  // records tab + expanding the drawer/rail.
   useEffect(() => {
-    if (!isMinimal) return;
     const handler = () => {
-      selectMinimalPane("records", { expand: true });
+      selectPane("records", { expand: true });
     };
     window.addEventListener(OPEN_NAV_RECORDS_EVENT, handler);
-    window.addEventListener(EXPAND_CHAT_RAIL_EVENT, handler);
     return () => {
       window.removeEventListener(OPEN_NAV_RECORDS_EVENT, handler);
-      window.removeEventListener(EXPAND_CHAT_RAIL_EVENT, handler);
     };
-  }, [isMinimal, selectMinimalPane]);
+  }, [selectPane]);
 
   const handleNavigate = (path: string) => {
     // When navigating to /chat, preserve the current chatId in the URL so the
@@ -467,26 +428,6 @@ export default function Sidebar({
     navigate(path);
     if (isMobile) onToggle();
   };
-
-  const handleExpandChatRail = useCallback(() => {
-    if (isMinimal) {
-      selectMinimalPane("records", { expand: true });
-      return;
-    }
-    window.dispatchEvent(new Event(EXPAND_CHAT_RAIL_EVENT));
-    setChatSidebarOpen(true);
-    if (!window.location.pathname.startsWith("/chat")) {
-      navigate("/chat");
-    }
-    if (isMobile) onToggle();
-  }, [
-    isMinimal,
-    isMobile,
-    navigate,
-    onToggle,
-    selectMinimalPane,
-    setChatSidebarOpen,
-  ]);
 
   const brandInner = (
     <>
@@ -537,30 +478,11 @@ export default function Sidebar({
     />
   );
 
-  const primaryItems = navSections.find((section) => !section.id)?.items ?? [];
   const namedSections = navSections.filter((section) => section.id);
   const firstNamed = namedSections[0];
   const settingsPaneLabel = firstNamed ? navSectionLabel(firstNamed, t) : null;
-  const groupedItems = namedSections.flatMap((section) =>
-    section.id && isGroupCollapsed(section.id) ? [] : section.items,
-  );
 
-  useEffect(() => {
-    if (isMinimal && !settingsPaneLabel && minimalPane === "settings") {
-      setMinimalPane("records");
-    }
-  }, [isMinimal, settingsPaneLabel, minimalPane, setMinimalPane]);
-
-  const paneToggle = settingsPaneLabel ? (
-    <SidebarMinimalPaneToggle
-      settingsLabel={settingsPaneLabel}
-      minimalPane={minimalPane}
-      collapsed={isRailCollapsed}
-      onSelect={selectMinimalPane}
-    />
-  ) : null;
-
-  const classicNavBody = isRailCollapsed ? (
+  const classicNavBody = (
     <div style={{ padding: "8px 0" }}>
       <SidebarCollapsedIconNav
         items={navSections.flatMap((section) => {
@@ -576,93 +498,7 @@ export default function Sidebar({
         t={t}
       />
     </div>
-  ) : (
-    <NavList
-      sections={navSections}
-      selectedKey={selectedKey}
-      onNavigate={handleNavigate}
-      onExpandChatRail={handleExpandChatRail}
-      showChatRailExpand={showChatRailExpand}
-      isMobile={isMobile}
-      isGroupCollapsed={isGroupCollapsed}
-      toggleGroup={toggleGroup}
-    />
   );
-
-  const minimalNavBody = (
-    <div className={styles.minimalNavBody}>
-      {isRailCollapsed ? (
-        <div style={{ padding: "8px 0", flexShrink: 0 }}>
-          <SidebarCollapsedIconNav
-            items={primaryItems}
-            selectedKey={selectedKey}
-            onNavigate={handleNavigate}
-            role={role}
-            hasUpdate={hasUpdate}
-            t={t}
-          />
-          {paneToggle}
-          {minimalPane === "settings" ? (
-            <SidebarCollapsedIconNav
-              items={groupedItems}
-              selectedKey={selectedKey}
-              onNavigate={handleNavigate}
-              role={role}
-              hasUpdate={hasUpdate}
-              t={t}
-            />
-          ) : null}
-        </div>
-      ) : (
-        <>
-          <div className={styles.minimalPrimaryBlock}>
-            <NavList
-              sections={navSections}
-              selectedKey={selectedKey}
-              onNavigate={handleNavigate}
-              onExpandChatRail={handleExpandChatRail}
-              showChatRailExpand={false}
-              isMobile={isMobile}
-              isGroupCollapsed={isGroupCollapsed}
-              toggleGroup={toggleGroup}
-              sectionFilter="primary"
-            />
-            {paneToggle}
-          </div>
-          <div
-            className={styles.minimalSettingsPane}
-            hidden={minimalPane !== "settings"}
-          >
-            <NavList
-              sections={navSections}
-              selectedKey={selectedKey}
-              onNavigate={handleNavigate}
-              isMobile={isMobile}
-              isGroupCollapsed={isGroupCollapsed}
-              toggleGroup={toggleGroup}
-              sectionFilter="grouped"
-              hideHeaderIds={
-                firstNamed?.id ? new Set([firstNamed.id]) : undefined
-              }
-            />
-          </div>
-        </>
-      )}
-      {/*
-        Chat route: empty mount point — Chat portals live sessions here.
-        Other routes: MinimalRecordsHost keeps expert/session nav available.
-      */}
-      <div
-        id={CHAT_HISTORY_RAIL_ID}
-        className={styles.minimalRecordsPane}
-        hidden={isRailCollapsed || minimalPane !== "records"}
-      >
-        {!onChatPath ? <MinimalRecordsHost /> : null}
-      </div>
-    </div>
-  );
-
-  const navScrollBody = isMinimal ? minimalNavBody : classicNavBody;
 
   // Desktop expanded: unified two-tab sidebar (能力 | 对话).
   // "能力" = classic nav minus the chat entry (the records tab is the chat
@@ -681,7 +517,7 @@ export default function Sidebar({
       <SidebarPaneTabs
         capabilitiesLabel={settingsPaneLabel ?? t("nav.paneCapabilities")}
         value={minimalPane}
-        onSelect={selectMinimalPane}
+        onSelect={selectPane}
       />
       {minimalPane === "records" ? (
         <div id={CHAT_HISTORY_RAIL_ID} className={styles.minimalRecordsPane}>
@@ -772,17 +608,18 @@ export default function Sidebar({
           </button>
         </div>
 
+        {/* Same two-tab body as the desktop rail; both panes scroll
+            internally, so the container itself never scrolls. */}
         <div
           style={{
             flex: 1,
-            overflow:
-              isMinimal && minimalPane === "records" ? "hidden" : "auto",
+            overflow: "hidden",
             minHeight: 0,
             display: "flex",
             flexDirection: "column",
           }}
         >
-          {navScrollBody}
+          {desktopTabBody}
         </div>
 
         <div
