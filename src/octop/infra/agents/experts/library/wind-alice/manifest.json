@@ -1,0 +1,51 @@
+{
+  "id": "wind-alice",
+  "label": {
+    "zh": "Wind Alice",
+    "en": "Wind Alice"
+  },
+  "description": {
+    "zh": "金融专业人员的 AI 工作伙伴。Alice 将 Wind 专业金融数据、金融知识与智能能力融入日常工作，服务于投资研究、市场分析、财富管理、客户服务、产品销售、机构业务、风险管理、合规审查、投教内容生产等金融工作场景，帮助金融从业者快速获取信息、发现机会、形成洞察、生成内容并执行任务，让传统的“搜索—查找—整理”工作方式，升级为“对话—协作—交付—连接”的智能工作模式，并帮助金融专业人员打造更高效的服务方式，提升业务能力与客户价值。",
+    "en": "An AI work companion for financial professionals. Alice brings Wind professional financial data, domain knowledge, and intelligence into daily workflows — serving investment research, market analysis, wealth management, client service, product sales, institutional business, risk management, compliance review, and investor-education content. She helps professionals find information fast, spot opportunities, form insights, generate content, and execute tasks — upgrading the traditional search-find-organize workflow into a conversational, collaborative, delivery-oriented, and connected intelligent mode of working."
+  },
+  "welcome_message": {
+    "zh": "你好，我是 Alice —— 你的金融 AI 工作伙伴。行情、研报、数据、洞察，告诉我你在忙什么，我们一起把它做完。",
+    "en": "Hi, I'm Alice — your AI work companion for finance. Quotes, research, data, insights — tell me what you're working on, and let's get it done together."
+  },
+  "icon_name": "trending-up",
+  "color": "#E60012",
+  "prompt_files": [
+    "SOUL.md",
+    "IDENTITY.md"
+  ],
+  "quick_prompts": [
+    {
+      "title": {"zh": "今日市场速览", "en": "Market snapshot"},
+      "description": {"zh": "快速概览指数、板块与市场热点", "en": "Quick overview of indices, sectors, and market highlights"},
+      "prompt": {"zh": "请给我今天的 A 股市场速览：主要指数表现、领涨领跌板块、北向资金动向和值得关注的公告。", "en": "Give me today's A-share market snapshot: major indices, leading/lagging sectors, northbound flows, and notable announcements."},
+      "color": "#fff1f0",
+      "icon_name": "trending-up"
+    },
+    {
+      "title": {"zh": "个股深度资料", "en": "Stock deep-dive"},
+      "description": {"zh": "一只股票的基本面、行情与公告全景", "en": "Full picture of fundamentals, quotes, and announcements"},
+      "prompt": {"zh": "请帮我整理 600519 贵州茅台的个股全景：最新行情、核心财务指标、近期公告与研报观点。", "en": "Compile a full profile of 600519 Kweichow Moutai: latest quotes, key financials, recent announcements, and research views."},
+      "color": "#f0f5ff",
+      "icon_name": "bar-chart-3"
+    },
+    {
+      "title": {"zh": "晨报初稿", "en": "Morning note draft"},
+      "description": {"zh": "把隔夜信息整理成一份晨报初稿", "en": "Turn overnight information into a morning-note draft"},
+      "prompt": {"zh": "请结合隔夜海外市场与今日重要数据，帮我起草一份晨报初稿（宏观要点、今日关注、风险提示三段式）。", "en": "Draft a morning note from overnight markets and today's key data (macro highlights, watch list, risk warnings)."},
+      "color": "#f6ffed",
+      "icon_name": "file-text"
+    },
+    {
+      "title": {"zh": "客户沟通话术", "en": "Client talking points"},
+      "description": {"zh": "针对行情变化生成面向客户的沟通要点", "en": "Generate client-facing talking points on market moves"},
+      "prompt": {"zh": "市场近期波动加大，请帮我写一段面向高净值客户的沟通话术：解释波动原因、给出资产配置建议框架、语气稳健专业。", "en": "Draft talking points for HNW clients on recent volatility: causes, asset-allocation framework, steady and professional tone."},
+      "color": "#fffbe6",
+      "icon_name": "message-square"
+    }
+  ]
+}

@@ -114,3 +114,13 @@ fnos/native/app/site-packages/
 docs/superpowers/
 scripts/lh_image_install_octop_tencentos.sh
 .worktrees/
+
+# Skill installer (npx skills) local cache/state under the bundled expert
+# library — never commit: download scratch, lock files, run state.
+src/octop/infra/agents/experts/library/.agents/
+src/octop/infra/agents/experts/library/skills-lock.json
+
+# wind-alice skill local config holds the Wind API key in plaintext.
+src/octop/infra/agents/experts/library/wind-alice/skills/wind-alice/config.json
+src/octop/infra/agents/experts/library/**/update-state.json
+src/octop/infra/agents/experts/library/**/update.lock
