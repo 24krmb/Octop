@@ -1,0 +1,101 @@
+{
+  "site": "https://www.24krmb.com",
+  "app": {
+    "name": "24K-Claw AI Publisher",
+    "appid": "19665625",
+    "secret": "FEJ9X0HP6BVKOK8B"
+  },
+  "token": null,
+  "expires_in": 0,
+  "endpoints": {
+    "forumlist": {
+      "path": "index/forumlist",
+      "get": {},
+      "post": {},
+      "note": "版块列表（官方包，读）"
+    },
+    "forumdisplay": {
+      "path": "forumdisplay",
+      "get": {
+        "mod": "forumdisplay",
+        "fid": "{fid}",
+        "page": "{page}"
+      },
+      "post": {},
+      "note": "版块帖子列表（官方包，读）"
+    },
+    "viewthread": {
+      "path": "viewthread",
+      "get": {
+        "mod": "viewthread",
+        "tid": "{tid}"
+      },
+      "post": {},
+      "note": "看帖（官方包，读）"
+    },
+    "loginInfo": {
+      "path": "member/loginInfo",
+      "get": {
+        "mod": "logging",
+        "action": "login"
+      },
+      "post": {},
+      "note": "登录页信息（官方包）"
+    },
+    "login": {
+      "path": "member/login",
+      "get": {
+        "mod": "logging",
+        "action": "login",
+        "loginsubmit": "yes"
+      },
+      "post": {
+        "fastloginfield": "username",
+        "username": "{username}",
+        "password": "{password}",
+        "cookietime": "2592000"
+      },
+      "note": "账号登录（官方包）"
+    },
+    "newThread": {
+      "path": "newthread",
+      "post": {
+        "fid": "{fid}",
+        "subject": "{subject}",
+        "message": "{message}"
+      },
+      "note": "发帖（官方包）。POST 三参数；成功响应=301 跳转（Body 含 post_newthread_succeed + url_forward + tid/pid）"
+    },
+    "reply": {
+      "path": "forum/reply",
+      "post": {
+        "fid": "{fid}",
+        "tid": "{tid}",
+        "subject": "{subject}",
+        "message": "{message}",
+        "replysubmit": "yes"
+      },
+      "validateUnique": 10,
+      "note": "回帖（自建 XML 已导入）；成功标志 location_reply_succeed / post_reply_succeed"
+    },
+    "article": {
+      "path": "portal/publish",
+      "get": {
+        "mod": "portalcp",
+        "ac": "article"
+      },
+      "post": {
+        "subject": "{subject}",
+        "content": "{content}",
+        "catid": "{catid}"
+      },
+      "note": "门户文章（自建 XML，需站点导入）"
+    }
+  },
+  "credentials": {
+    "forum_username": "6440",
+    "forum_password": "wcd357741"
+  },
+  "default_fid": "159",
+  "default_forum_name": "各抒己见"
+}

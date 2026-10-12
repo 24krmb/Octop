@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+    <item id="Title"><![CDATA[Discuz! RESTful]]></item>
+    <item id="Data">
+        <item id="copyright"><![CDATA[24K-Claw]]></item>
+        <item id="api">
+            <item id="v1">
+                <item id="forum">
+                    <item id="name"><![CDATA[论坛发帖接口]]></item>
+                    <item id="newThread">
+                        <item id="name"><![CDATA[发布新主题]]></item>
+                        <item id="attr">
+                            <item id="validateUnique"><![CDATA[10]]></item>
+                        </item>
+                        <item id="script"><![CDATA[forum]]></item>
+                        <item id="get">
+                            <item id="mod"><![CDATA[newthread]]></item>
+                            <item id="fid"><![CDATA[{:fid:}]]></item>
+                        </item>
+                        <item id="post">
+                            <item id="topicsubmit"><![CDATA[yes]]></item>
+                            <item id="subject"><![CDATA[{:subject:}]]></item>
+                            <item id="message"><![CDATA[{:message:}]]></item>
+                            <item id="usesig"><![CDATA[1]]></item>
+                        </item>
+                        <item id="output">
+                            <item id="_G/dshowmessageParam"><![CDATA[msg]]></item>
+                            <item id="_G/uid,username"><![CDATA[user]]></item>
+                            <item id="_L/tid"><![CDATA[tid]]></item>
+                        </item>
+                        <item id="usage">
+                            <item id="fid"><![CDATA[版块ID]]></item>
+                            <item id="subject"><![CDATA[主题标题]]></item>
+                            <item id="message"><![CDATA[主题正文，支持Discuz!代码]]></item>
+                        </item>
+                    </item>
+                    <item id="reply">
+                        <item id="name"><![CDATA[回复主题]]></item>
+                        <item id="attr">
+                            <item id="validateUnique"><![CDATA[10]]></item>
+                        </item>
+                        <item id="script"><![CDATA[forum]]></item>
+                        <item id="get">
+                            <item id="mod"><![CDATA[reply]]></item>
+                            <item id="tid"><![CDATA[{:tid:}]]></item>
+                            <item id="fid"><![CDATA[{:fid:}]]></item>
+                        </item>
+                        <item id="post">
+                            <item id="replysubmit"><![CDATA[yes]]></item>
+                            <item id="subject"><![CDATA[{:subject:}]]></item>
+                            <item id="message"><![CDATA[{:message:}]]></item>
+                            <item id="usesig"><![CDATA[1]]></item>
+                        </item>
+                        <item id="output">
+                            <item id="_G/dshowmessageParam"><![CDATA[msg]]></item>
+                            <item id="_L/pid"><![CDATA[pid]]></item>
+                        </item>
+                        <item id="usage">
+                            <item id="tid"><![CDATA[主题ID]]></item>
+                            <item id="fid"><![CDATA[版块ID]]></item>
+                            <item id="message"><![CDATA[回帖内容]]></item>
+                        </item>
+                    </item>
+                </item>
+                <item id="portal">
+                    <item id="name"><![CDATA[门户文章接口]]></item>
+                    <item id="publish">
+                        <item id="name"><![CDATA[发布文章]]></item>
+                        <item id="script"><![CDATA[portal]]></item>
+                        <item id="get">
+                            <item id="mod"><![CDATA[portalcp]]></item>
+                            <item id="ac"><![CDATA[article]]></item>
+                        </item>
+                        <item id="post">
+                            <item id="subject"><![CDATA[{:subject:}]]></item>
+                            <item id="content"><![CDATA[{:content:}]]></item>
+                            <item id="catid"><![CDATA[{:catid:}]]></item>
+                        </item>
+                        <item id="output">
+                            <item id="_G/dshowmessageParam"><![CDATA[msg]]></item>
+                            <item id="_L/articleid"><![CDATA[articleid]]></item>
+                        </item>
+                        <item id="usage">
+                            <item id="catid"><![CDATA[文章栏目ID]]></item>
+                            <item id="subject"><![CDATA[文章标题]]></item>
+                            <item id="content"><![CDATA[文章内容HTML]]></item>
+                        </item>
+                    </item>
+                </item>
+            </item>
+        </item>
+    </item>
+</root>
