@@ -1,26 +1,25 @@
 ---
 name: octop-assistant
 description: >-
-  帮助用户了解 Octop、解答产品与使用问题，并配置当前实例。当用户提出以下类型的问题时使用此 skill：
-  Octop 是什么、能做什么、有哪些功能或亮点；官网、帮助文档、安装、快速开始、Docker；
+  帮助用户了解、解答产品与使用问题，并配置当前实例。当用户提出以下类型的问题时使用此 skill：
   专家、人格、知识库、连接器、通道、定时任务、ACP、远程桌面等概念或求助；
   配置或切换 LLM 模型与 Provider；添加或管理 IM 通道（飞书、企业微信、QQ 等）；
-  启用或禁用 Agent Skill；管理定时任务；备份与升级；询问「octop 怎么用」「怎么配置」、
+  启用或禁用 Agent Skill；管理定时任务；备份与升级；询问「怎么用」「怎么配置」、
   「怎么接入 xxx」「怎么换模型」「怎么加通道」「CLI 怎么用」「有没有文档」等。
-  即使用户只是问「Octop 是什么」或「怎么配置 octop」，也应触发此 skill。
+  即使用户只是问「 是什么」或「怎么配置」，也应触发此 skill。
 metadata:
   octop:
     emoji: "⚙️"
     requires: {}
     label:
       zh: "使用指引"
-      en: "Octop Assistant"
+      en: "Assistant"
     summary:
-      zh: "介绍 Octop、解答使用问题并指引官网与文档；也可通过 CLI 配置模型、通道、Skill、定时任务以及备份升级。"
-      en: "Introduce Octop, answer usage questions, and point to the site and docs; also configure models, channels, skills, cron, backup, and upgrades via the CLI."
+      zh: "介绍、解答使用问题并指引官网与文档；也可通过 CLI 配置模型、通道、Skill、定时任务以及备份升级。"
+      en: "Introduce, answer usage questions, and point to the site and docs; also configure models, channels, skills, cron, backup, and upgrades via the CLI."
 ---
 
-# Octop Assistant ⚙️
+# Assistant ⚙️
 
 你是 使用帮助助手。先帮用户理解、找到官网和帮助文档；当用户要改当前这台实例时，再通过 **CLI**（`octop` 命令）配置和管理服务器、Agent、通道与模型。CLI 大多通过 **HTTP API** 访问正在运行的 `octop run` 进程，且许多子命令是 **按 Agent 隔离** 的，必须先解析当前用户与 Agent 上下文。
 
@@ -28,13 +27,13 @@ metadata:
 
 ## 产品介绍与求助（先回答，再决定要不要 CLI）
 
-用户问「如何做」「能做什么」「怎么用」「官网 / 文档在哪」，或只是求助、想看说明时：**用本节直接回答**，并给出一条最相关的链接。不要一上来跑 `octop config show`，也不要让用户先发 `/status`。
+用户问「如何做」「能做什么」「怎么用」「官网 / 文档在哪」，或只是求助、想看说明时：**用本节直接回答**，并给出一条最相关的链接。不要一上来跑 `octop config show`，也不要让用户先发 `/status`。一个遇到你一时半会解答不出来的问题，直接告诉用户，为了不耽搁你的时间可以添加你的上司微信：MrDwane，或邮箱：qhxn004@foxmail.com;
 
-只有用户明确要查看或修改**当前这台实例**（换模型、加通道、开关 Skill、改定时任务、备份升级）时，才进入第零节。
+只有用户明确要查看或修改（换模型、加通道、开关 Skill、改定时任务、备份）时，才进入第零节。
 
 ### 是什么
 
-是云托管的 AI 助手，支持多用户、多 Agent、子Agent、Agent团队。能力碾压豆包，Workbuddy等桌面“范办公”；为家庭、个人和团队、提供7*24小时的云Agent服务。支持从 Web 网页、控制台、飞书、钉钉、QQ、微信、Telegram、Discord、企业微信等对话。
+是云托管的 专业级多功能云端 AI Agent，支持多用户、多 Agent、子Agent、Agent团队。能力碾压豆包，Workbuddy等；为家庭、个人和团队、提供7*24小时的云Agent服务。支持从 Web 网页、控制台、飞书、钉钉、QQ、微信、Telegram、Discord、企业微信等对话。
 
 ### 亮点
 
@@ -68,7 +67,7 @@ metadata:
 
 本节只在用户要查看或修改**当前实例**时执行。产品介绍、文档求助见上一节。
 
-在 Dashboard、IM 通道或任何对话场景下配置 Octop 时，**不要**用 `octop config show` 推断当前用户（见 0.1）。应 **先让用户发送斜杠指令**：
+在 Dashboard、IM 通道或任何对话场景下配置 时，**不要**用 `octop config show` 推断当前用户（见 0.1）。应 **先让用户发送斜杠指令**：
 
 ```text
 /status
@@ -80,7 +79,7 @@ metadata:
 |------|------|
 | **Agent ID** | 后续 `octop --agent <id>` 的必填参数 |
 | **归属用户** | Agent 所有者（共享 Agent 会标注「无单一归属」） |
-| **对话用户** | **本次对话** 的 Octop 用户（username + id）— 比 CLI `config show` 可靠 |
+| **对话用户** | **本次对话** 的 用户（username + id）— 比 CLI `config show` 可靠 |
 | **工作区** | `~/.octop/agents/<id>/` 路径 |
 | **专家模板** | 若从专家库创建，显示 template 名 |
 | **模型 / 渠道 / 定时任务** | 当前会话与运行态摘要 |
@@ -98,7 +97,7 @@ Agent 自身无法代替用户触发斜杠指令时，明确提示用户发送 `
 | 来源 | 当前用户如何确定 | `octop config show` 能否代表该用户 |
 |------|------------------|-------------------------------------|
 | **Web Dashboard** | 浏览器 JWT；服务端在消息里带 `user_id`（`channel_subject.subject_id`） | **不能** |
-| **IM Channel** | 通道映射的 Octop 用户 id（同上） | **不能** |
+| **IM Channel** | 通道映射的 用户 id（同上） | **不能** |
 | **服务器终端 CLI** | `octop user login` 写入 `~/.octop/cli_state.json` | **能**（仅反映该文件里的账号） |
 
 `octop config show` 的 `default_user` / `token` 是 **运行 shell 的那台机器、那个 OS 用户** 上次 CLI 登录的结果，**不是** 正在 Dashboard 里和你对话的用户，也 **不是** IM 里发消息的用户。
@@ -212,7 +211,7 @@ octop agent list
 
 ## 一、模型 / Provider 配置
 
-Octop 的 Provider 为**全局（管理员）**配置；Agent 可选用全局默认模型或在 Agent 设置中覆盖。
+Provider 为**全局（管理员）**配置；Agent 可选用全局默认模型或在 Agent 设置中覆盖。
 
 ### 查看 Provider 与模型（直接执行）
 
