@@ -27,7 +27,12 @@
 
 .typeGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  /* At most 4 columns: min track width = max(240px, container/4), so wide
+     screens cap at 4 while narrow ones still wrap via auto-fill. */
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(max(240px, calc((100% - 36px) / 4)), 1fr)
+  );
   row-gap: 16px;
   column-gap: 12px;
   /* Extra room for 2px border + hover translateY(-2px) inside overflow. */
