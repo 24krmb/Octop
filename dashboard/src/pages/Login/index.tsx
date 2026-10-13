@@ -242,6 +242,7 @@ export default function LoginPage() {
   return (
     <div
       style={{
+        position: "relative",
         minHeight: "100dvh",
         boxSizing: "border-box",
         display: "flex",
@@ -249,18 +250,39 @@ export default function LoginPage() {
         justifyContent: "center",
         padding:
           "max(24px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(24px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px))",
-        background: "var(--fn-bg-layout)",
+        /* Poster fallback while the video loads (or if it fails). */
+        background:
+          'url("https://acd-assets.alicdn.com/acd_work/cdc/assets/pd-series/meoo_bg_light.png") center / cover no-repeat, var(--fn-bg-layout)',
         transition: "background var(--fn-transition)",
+        overflow: "hidden",
       }}
     >
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        src="https://cloud.video.taobao.com/vod/xC8EPBQJP9vae3i80vXGb9s5oS6SEG93viyZwMMWqj8.mp4"
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          pointerEvents: "none",
+        }}
+      />
       <div
         style={{
+          position: "relative",
           width: "100%",
           maxWidth: 360,
           padding: "48px 32px 40px",
-          background: "var(--fn-bg-elevated)",
+          backgroundColor: "rgba(255,255,255,0.62)",
+          backgroundImage: "linear-gradient(155deg,rgba(255,255,255,0.34) 0%,rgba(255,255,255,0.08) 30%,rgba(255,255,255,0) 55%)",
+          backdropFilter: "blur(4px)",
+          boxShadow: "var(--comiis-shadow)",
           borderRadius: 16,
-          boxShadow: "0 8px 32px rgba(118, 94, 252, 0.1)",
           border: "none",
           display: "flex",
           flexDirection: "column",
