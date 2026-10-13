@@ -198,7 +198,7 @@ export default defineConfig(({ mode }) => {
           globPatterns: [
             "assets/index.*.js",
             "assets/vendor-*.js",
-            "assets/*.{css,woff2}",
+            "assets/*.css",
           ],
           // vendor-antd (incl. the ColorPicker color engine) exceeds the
           // 2 MiB workbox default; raise the precache limit so it stays
@@ -237,6 +237,21 @@ export default defineConfig(({ mode }) => {
                 expiration: {
                   maxEntries: 200,
                   maxAgeSeconds: 30 * 24 * 60 * 60,
+                },
+              },
+            },
+            {
+              // Self-hosted Noto Sans SC slices are intentionally NOT
+              // precached (hundreds of small files). Browsers fetch only the
+              // slices for glyphs actually rendered; CacheFirst keeps each
+              // fetched slice for a year (hashed URLs never change).
+              urlPattern: /\/assets\/.*\.woff2?$/,
+              handler: "CacheFirst",
+              options: {
+                cacheName: "font-slices",
+                expiration: {
+                  maxEntries: 120,
+                  maxAgeSeconds: 365 * 24 * 60 * 60,
                 },
               },
             },

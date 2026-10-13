@@ -3,6 +3,13 @@
 // before React mounts and useEffect runs).
 import "./pwa-prompt";
 
+// Self-hosted Noto Sans SC (unicode-range slices, font-display: swap) — only
+// the slices for glyphs actually rendered get downloaded. Keeps Windows
+// rendering identical to macOS without any external CDN dependency.
+import "@fontsource/noto-sans-sc/400.css";
+import "@fontsource/noto-sans-sc/500.css";
+import "@fontsource/noto-sans-sc/700.css";
+
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import { initI18n } from "./i18n";
