@@ -1,6 +1,5 @@
 html,
 body {
-  /* lvh = largest viewport (behind the home indicator). dvh stops short. */
   height: 100%;
   height: 100lvh;
   min-height: 100lvh;
@@ -8,14 +7,11 @@ body {
   overflow: hidden;
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter",
-    "Noto Sans SC", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter","Noto Sans SC", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
   overscroll-behavior: none;
-  /* Override index.html boot gray (#f7f8fa) so iOS PWA letterboxing
-     below 100dvh is not a stray gray strip. */
   background: var(--fn-bg-layout);
 }
 
@@ -54,10 +50,7 @@ html[data-octop-desktop-chrome] [data-octop-chrome-end-pad] {
 
 html[data-octop-desktop-chrome] .octop-drawer-right .octop-drawer-header,
 html[data-octop-desktop-chrome] .ant-drawer-right .ant-drawer-header {
-  padding-inline-end: max(
-    24px,
-    var(--window-controls-inset-end, 0px)
-  ) !important;
+  padding-inline-end: max(24px,var(--window-controls-inset-end, 0px)) !important;
 }
 
 html[data-octop-desktop-chrome] .octop-drawer-right .octop-drawer-close,
@@ -66,8 +59,6 @@ html[data-octop-desktop-chrome] .ant-drawer-right .ant-drawer-close {
 }
 
 #root {
-  /* Pin to the layout viewport. With viewport-fit=cover this includes
-     the iOS home-indicator band; 100dvh does not. */
   position: fixed;
   inset: 0;
   height: auto;
@@ -76,17 +67,10 @@ html[data-octop-desktop-chrome] .ant-drawer-right .ant-drawer-close {
   overscroll-behavior: none;
 }
 
-/* antd <App> with component-level prefixCls="24kclaw" → .24kclaw-app.
-   Class starts with a digit, so a bare .24kclaw-app selector is invalid CSS;
-   use the class-token attribute selector instead.
-   Without an explicit height, MainLayout's height:100% cannot fill #root. */
-[class~="24kclaw-app"],
-.ant-app {
-  height: 100%;
-}
 
-/* Chat paints to the screen edge; don't leak page-layout gray under the
-   composer or in the iOS home-indicator letterbox. */
+[class~="24kclaw-app"],
+.ant-app {height: 100%}
+
 html.octop-chat-open,
 html.octop-chat-open body,
 html.octop-chat-open #root {
@@ -390,9 +374,7 @@ html[data-theme="dark"] .octop-ant-switch-checked {
     padding: 0;
   }
 
-  /* Tables scroll inside their own wrapper on mobile — do not set
-     min-width on .octop-table (that expands the page and creates a
-     second, page-level horizontal scrollbar). */
+
   .ant-table-wrapper,
   .octop-table-wrapper {
     max-width: 100%;
@@ -407,7 +389,7 @@ html[data-theme="dark"] .octop-ant-switch-checked {
       max(12px, env(safe-area-inset-bottom, 0px)) !important;
   }
 
-  /* Edge drawers (not bottom sheets): keep chrome out of the iOS PWA insets. */
+
   .ant-drawer-left .ant-drawer-header,
   .ant-drawer-right .ant-drawer-header,
   .ant-drawer-top .ant-drawer-header,
@@ -431,13 +413,12 @@ html[data-theme="dark"] .octop-ant-switch-checked {
     padding: 16px !important;
   }
 
-  /* Drawer responsive */
   .ant-drawer-content-wrapper,
   [class*="-drawer-content-wrapper"] {
     max-width: 100vw !important;
   }
 
-  /* Confirm dialogs — full-width stacked action buttons */
+
   .octop-confirm-modal--mobile.octop-modal-root .octop-modal,
   .octop-confirm-modal--mobile [class*="-modal"] {
     max-width: calc(100vw - 32px) !important;
