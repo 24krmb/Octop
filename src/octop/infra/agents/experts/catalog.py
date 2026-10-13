@@ -54,6 +54,7 @@ _FALLBACK_BUNDLED_AVATAR_IDS = frozenset(
         "stock-tdx-quant",
         "krmb-fin-formatter",
         "krmb-fin-fupanxia",
+        "krmb-fin-statistical",
         "meituan-living-assistant",
         "multi-agent-orchestrator",
         "news-trend",

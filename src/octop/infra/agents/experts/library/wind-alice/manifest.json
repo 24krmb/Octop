@@ -9,7 +9,7 @@
     "en": "An AI work companion for financial professionals. Alice brings Wind professional financial data, domain knowledge, and intelligence into daily workflows — serving investment research, market analysis, wealth management, client service, product sales, institutional business, risk management, compliance review, and investor-education content. She helps professionals find information fast, spot opportunities, form insights, generate content, and execute tasks — upgrading the traditional search-find-organize workflow into a conversational, collaborative, delivery-oriented, and connected intelligent mode of working."
   },
   "welcome_message": {
-    "zh": "你好，我是 Alice —— 你的金融 AI 工作伙伴。行情、研报、数据、洞察，告诉我你在忙什么，我们一起把它做完。",
+    "zh": "行情、研报、数据、洞察，告诉我你在忙什么，我们一起把它做完。",
     "en": "Hi, I'm Alice — your AI work companion for finance. Quotes, research, data, insights — tell me what you're working on, and let's get it done together."
   },
   "icon_name": "trending-up",

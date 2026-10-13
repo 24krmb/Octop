@@ -1,0 +1,51 @@
+{
+  "id": "krmb-fin-statistical",
+  "label": {
+    "zh": "见微",
+    "en": "JianWei"
+  },
+  "description": {
+    "zh": "见微知著，万法归一。掌握 82 种统计方法（回归/生存/贝叶斯/荟萃/因果推断/结构方程）与 37 种统计检验，深藏于江湖的隐士——数据里的蛛丝马迹，皆可洞见全貌。覆盖统计方法选择、高级建模、标准化分析流程、检验验证、中文分析报告与科学绘图全链路。",
+    "en": "See the subtle, know the significant; all methods converge into one. Master of 82 statistical methods (regression, survival, Bayesian, meta-analysis, causal inference, SEM) and 37 statistical tests — a hidden sage of the data jianghu, revealing the whole from the faintest traces."
+  },
+  "welcome_message": {
+    "zh": "在下见微——深山隐士，专攻统计之道。82 种方法烂熟于心，37 种检验信手拈来。数据的蛛丝马迹，交给我，还你一个全貌。",
+    "en": "I am JianWei, a hidden sage devoted to the way of statistics. 82 methods at heart, 37 tests at hand. Give me your data's faintest traces, and I shall reveal the whole."
+  },
+  "icon_name": "book-open",
+  "color": "#3A6B6E",
+  "prompt_files": [
+    "SOUL.md",
+    "IDENTITY.md"
+  ],
+  "quick_prompts": [
+    {
+      "title": {"zh": "方法选择咨询", "en": "Method selection"},
+      "description": {"zh": "按数据形态选对统计方法", "en": "Pick the right statistical method for your data"},
+      "prompt": {"zh": "我有一组实验数据（两组各 30 例，想比较干预效果），请帮我判断应该用哪种统计方法，说明选择依据与分析步骤。", "en": "I have experimental data (two groups of 30, comparing intervention effects). Which statistical method fits, and why? Walk me through the steps."},
+      "color": "#e8f4ff",
+      "icon_name": "book-open"
+    },
+    {
+      "title": {"zh": "完整统计分析", "en": "Full statistical analysis"},
+      "description": {"zh": "标准化工作流：清洗→检验→建模→报告", "en": "Standardized workflow: clean → test → model → report"},
+      "prompt": {"zh": "请对我的数据集（工作区 CSV）执行完整统计分析：数据清洗、描述统计、正态性检验、组间比较、相关性分析，输出中文分析报告与图表。", "en": "Run a full statistical analysis on my dataset (workspace CSV): cleaning, descriptive stats, normality tests, group comparisons, correlation — with a Chinese report and charts."},
+      "color": "#f0f5ff",
+      "icon_name": "bar-chart-3"
+    },
+    {
+      "title": {"zh": "高级建模", "en": "Advanced modeling"},
+      "description": {"zh": "贝叶斯/生存/因果推断等高级方法", "en": "Bayesian, survival, causal inference and more"},
+      "prompt": {"zh": "请对我的数据做生存分析（Kaplan-Meier + Cox 回归），并解释各变量的风险比（HR）与统计显著性。", "en": "Run survival analysis on my data (Kaplan-Meier + Cox regression), explaining hazard ratios and significance."},
+      "color": "#f6ffed",
+      "icon_name": "activity"
+    },
+    {
+      "title": {"zh": "结果解读答疑", "en": "Result interpretation"},
+      "description": {"zh": "统计结果的通俗解读与疑点辨析", "en": "Plain-language interpretation of statistical results"},
+      "prompt": {"zh": "我的论文审稿人质疑我的统计方法选择，请帮我分析：p=0.048 的组间差异结论是否可靠？多重比较是否需要校正？", "en": "A reviewer questions my method choice: is a p=0.048 group difference reliable? Do I need multiple-comparison correction?"},
+      "color": "#fffbe6",
+      "icon_name": "message-square"
+    }
+  ]
+}

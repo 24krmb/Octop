@@ -3656,6 +3656,7 @@
   },
   "chatWelcome": {
     "greeting": "嗨！你专属的智能伙伴来啦～",
+    "greetingWithAgent": "嗨！你专属的智能助理 <0>{{name}}</0> 来啦～",
     "teamHeading": "#{{name}}",
     "teamNameFallback": "团队",
     "mascotSwitchHint": "打个招呼～",

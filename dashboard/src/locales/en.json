@@ -3656,6 +3656,7 @@
   },
   "chatWelcome": {
     "greeting": "Hi! Your personal AI sidekick is here",
+    "greetingWithAgent": "Hi! Your personal assistant <0>{{name}}</0> is here~",
     "teamHeading": "#{{name}}",
     "teamNameFallback": "Team",
     "mascotSwitchHint": "Tap to switch the mascot",

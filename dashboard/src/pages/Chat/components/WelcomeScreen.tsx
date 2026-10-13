@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { useWelcomeQuickCardsLayout } from "../hooks/useWelcomeQuickCardsLayout";
 import WelcomeQuickCards, { WelcomeQuickCardProbe } from "./WelcomeQuickCards";
 import styles from "../index.module.less";
@@ -90,11 +90,21 @@ export default function WelcomeScreen({
             />
           )}
           <h1 className={styles.welcomeTitle}>
-            {isTeam
-              ? t("chatWelcome.teamHeading", {
-                  name: agentName?.trim() || t("chatWelcome.teamNameFallback"),
-                })
-              : t("chatWelcome.greeting")}
+            {isTeam ? (
+              t("chatWelcome.teamHeading", {
+                name: agentName?.trim() || t("chatWelcome.teamNameFallback"),
+              })
+            ) : agentName ? (
+              <Trans
+                i18nKey="chatWelcome.greetingWithAgent"
+                values={{ name: agentName.trim() }}
+                components={[
+                  <span className={styles.welcomeTitleMention} />,
+                ]}
+              />
+            ) : (
+              t("chatWelcome.greeting")
+            )}
           </h1>
           <p className={styles.welcomeSubtitle}>
             {isTeam ? (
@@ -102,16 +112,9 @@ export default function WelcomeScreen({
                 {welcomeSuffix ?? t("chatWelcome.descriptionWithTeamSuffix")}
               </span>
             ) : agentName ? (
-              <>
-                <span className={styles.welcomeAgentLine}>
-                  <span className={styles.welcomeAgentMention}>
-                    @{agentName}
-                  </span>
-                </span>
-                <span className={styles.welcomeSubtitleText}>
-                  {welcomeSuffix ?? t("chatWelcome.descriptionWithAgentSuffix")}
-                </span>
-              </>
+              <span className={styles.welcomeSubtitleText}>
+                {welcomeSuffix ?? t("chatWelcome.descriptionWithAgentSuffix")}
+              </span>
             ) : (
               t("chatWelcome.description")
             )}
