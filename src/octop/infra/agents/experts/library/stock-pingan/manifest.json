@@ -16,34 +16,71 @@
   "color": "#F26F21",
   "prompt_files": [
     "SOUL.md",
-    "IDENTITY.md"
+    "IDENTITY.md",
+    "BOOTSTRAP.md"
   ],
   "quick_prompts": [
     {
-      "title": {"zh": "盘面速览", "en": "Market snapshot"},
-      "description": {"zh": "主要指数与热门板块一屏速览", "en": "One-screen overview of major indices and hot sectors"},
-      "prompt": {"zh": "请给我今天的 A 股盘面速览：主要指数涨跌、成交额、涨幅居前的板块和代表性个股。", "en": "Today's A-share snapshot: major index moves, turnover, top sectors, and representative stocks."},
+      "title": {
+        "zh": "盘面速览",
+        "en": "Market snapshot"
+      },
+      "description": {
+        "zh": "主要指数与热门板块一屏速览",
+        "en": "One-screen overview of major indices and hot sectors"
+      },
+      "prompt": {
+        "zh": "请给我今天的 A 股盘面速览：主要指数涨跌、成交额、涨幅居前的板块和代表性个股。",
+        "en": "Today's A-share snapshot: major index moves, turnover, top sectors, and representative stocks."
+      },
       "color": "#fff7e6",
       "icon_name": "trending-up"
     },
     {
-      "title": {"zh": "ETF 选品", "en": "ETF selection"},
-      "description": {"zh": "按主题或资产类别筛选匹配的 ETF", "en": "Filter matching ETFs by theme or asset class"},
-      "prompt": {"zh": "我想配置科技方向的 ETF，请帮我对比几只规模较大、流动性好的科技类 ETF（跟踪指数、费率、规模、近期表现）。", "en": "I'd like tech-sector ETF exposure. Compare several large, liquid tech ETFs (tracking index, fees, AUM, recent performance)."},
+      "title": {
+        "zh": "ETF 选品",
+        "en": "ETF selection"
+      },
+      "description": {
+        "zh": "按主题或资产类别筛选匹配的 ETF",
+        "en": "Filter matching ETFs by theme or asset class"
+      },
+      "prompt": {
+        "zh": "我想配置科技方向的 ETF，请帮我对比几只规模较大、流动性好的科技类 ETF（跟踪指数、费率、规模、近期表现）。",
+        "en": "I'd like tech-sector ETF exposure. Compare several large, liquid tech ETFs (tracking index, fees, AUM, recent performance)."
+      },
       "color": "#f0f5ff",
       "icon_name": "bar-chart-3"
     },
     {
-      "title": {"zh": "热点资讯解读", "en": "News interpretation"},
-      "description": {"zh": "重要财经资讯的影响解读", "en": "Interpret market impact of key financial news"},
-      "prompt": {"zh": "请梳理今天重要的财经资讯，并对可能受影响的板块和个股做简要解读。", "en": "Summarize today's key financial news and briefly interpret likely impacts on sectors and stocks."},
+      "title": {
+        "zh": "热点资讯解读",
+        "en": "News interpretation"
+      },
+      "description": {
+        "zh": "重要财经资讯的影响解读",
+        "en": "Interpret market impact of key financial news"
+      },
+      "prompt": {
+        "zh": "请梳理今天重要的财经资讯，并对可能受影响的板块和个股做简要解读。",
+        "en": "Summarize today's key financial news and briefly interpret likely impacts on sectors and stocks."
+      },
       "color": "#f6ffed",
       "icon_name": "file-text"
     },
     {
-      "title": {"zh": "基金定投计划", "en": "ETF saving plan"},
-      "description": {"zh": "生成一份 ETF 定投参考计划", "en": "Draft a reference ETF dollar-cost-averaging plan"},
-      "prompt": {"zh": "请帮我设计一份宽基 ETF 定投参考计划：适合长期新手、每月固定金额，说明选择逻辑和注意事项。", "en": "Design a reference broad-based ETF DCA plan for a long-term beginner with a fixed monthly amount, explaining selection logic and caveats."},
+      "title": {
+        "zh": "基金定投计划",
+        "en": "ETF saving plan"
+      },
+      "description": {
+        "zh": "生成一份 ETF 定投参考计划",
+        "en": "Draft a reference ETF dollar-cost-averaging plan"
+      },
+      "prompt": {
+        "zh": "请帮我设计一份宽基 ETF 定投参考计划：适合长期新手、每月固定金额，说明选择逻辑和注意事项。",
+        "en": "Design a reference broad-based ETF DCA plan for a long-term beginner with a fixed monthly amount, explaining selection logic and caveats."
+      },
       "color": "#fffbe6",
       "icon_name": "list-todo"
     }

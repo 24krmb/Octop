@@ -15,7 +15,8 @@
   "icon_name": "zap",
   "color": "#6366F1",
   "prompt_files": [
-    "SOUL.md"
+    "SOUL.md",
+    "BOOTSTRAP.md"
   ],
   "quick_prompts": [
     {

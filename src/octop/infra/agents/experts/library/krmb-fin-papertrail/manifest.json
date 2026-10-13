@@ -1,0 +1,88 @@
+{
+  "id": "krmb-fin-papertrail",
+  "label": {
+    "zh": "溯薇",
+    "en": "SuWei"
+  },
+  "description": {
+    "zh": "溯流而上，采薇而得——学术论文检索的溯源者。arXiv/PubMed/Semantic Scholar/Google Scholar 多库检索，IEEE/ACM/Scopus/Web of Science 系统性文献综述，批量 PDF 下载与元数据提取，知网 CNKI 高级检索自动化，引文规范管理与文献智能监测——文献脉络，一溯到底。",
+    "en": "Trace the stream, gather as you go — the academic literature tracer. Multi-database search (arXiv, PubMed, Semantic Scholar, Google Scholar), systematic reviews (IEEE, ACM, Scopus, WoS), batch PDF downloads with metadata extraction, CNKI advanced search automation, citation management, and smart literature monitoring."
+  },
+  "welcome_message": {
+    "zh": "在下溯薇——文献溯源者。多库检索、系统性综述、引文管理、文献监测，学术脉络一溯到底。你想追哪篇文献的源头？",
+    "en": "I am SuWei, the literature tracer. Multi-database search, systematic reviews, citation management, monitoring — tracing academic lineage to the source. Which paper shall we chase?"
+  },
+  "icon_name": "book-open",
+  "color": "#7C6BAF",
+  "prompt_files": [
+    "SOUL.md",
+    "IDENTITY.md",
+    "BOOTSTRAP.md"
+  ],
+  "quick_prompts": [
+    {
+      "title": {
+        "zh": "主题文献检索",
+        "en": "Topic search"
+      },
+      "description": {
+        "zh": "跨库检索某主题的代表性文献",
+        "en": "Cross-database search for representative papers"
+      },
+      "prompt": {
+        "zh": "请帮我检索「机器学习在量化投资中的应用」近三年的代表性论文（arXiv + Semantic Scholar），列出标题、作者、期刊/会议、引用数与一句话摘要。",
+        "en": "Search representative papers from the last 3 years on ML in quant investing (arXiv + Semantic Scholar): title, authors, venue, citations, one-line summary."
+      },
+      "color": "#eef0fa",
+      "icon_name": "book-open"
+    },
+    {
+      "title": {
+        "zh": "系统性文献综述",
+        "en": "Systematic review"
+      },
+      "description": {
+        "zh": "按 PRISMA 流程系统性梳理文献",
+        "en": "Systematic literature review workflow"
+      },
+      "prompt": {
+        "zh": "请围绕「高频交易的市场影响」做一次系统性文献检索：覆盖 IEEE/ACM/Scopus，整理纳入/排除标准与文献矩阵。",
+        "en": "Run a systematic search on HFT market impact across IEEE/ACM/Scopus with inclusion/exclusion criteria and a literature matrix."
+      },
+      "color": "#f0f5ff",
+      "icon_name": "list-todo"
+    },
+    {
+      "title": {
+        "zh": "引用规范管理",
+        "en": "Citation management"
+      },
+      "description": {
+        "zh": "参考文献格式化与真实性核验",
+        "en": "Format and verify references"
+      },
+      "prompt": {
+        "zh": "请帮我把这篇草稿的参考文献整理成 GB/T 7714 格式，并逐条核验文献真实存在（标题/作者/年份/来源）。",
+        "en": "Format my draft's references in GB/T 7714 style and verify each one actually exists (title/authors/year/venue)."
+      },
+      "color": "#f6ffed",
+      "icon_name": "file-text"
+    },
+    {
+      "title": {
+        "zh": "文献监测推送",
+        "en": "Literature monitoring"
+      },
+      "description": {
+        "zh": "设定关键词定期监测新文献",
+        "en": "Monitor new papers by keywords"
+      },
+      "prompt": {
+        "zh": "请帮我设置「LLM+金融风控」的文献监测：关键论文出现时给出标题、摘要与链接的中文速报。",
+        "en": "Set up monitoring for LLM+financial-risk papers: when key papers appear, give a Chinese brief with title, abstract, and link."
+      },
+      "color": "#fffbe6",
+      "icon_name": "refresh-cw"
+    }
+  ]
+}

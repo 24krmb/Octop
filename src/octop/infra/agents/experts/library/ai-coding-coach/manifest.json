@@ -15,7 +15,8 @@
   "icon_name": "code",
   "color": "#3B82F6",
   "prompt_files": [
-    "SOUL.md"
+    "SOUL.md",
+    "BOOTSTRAP.md"
   ],
   "quick_prompts": [
     {

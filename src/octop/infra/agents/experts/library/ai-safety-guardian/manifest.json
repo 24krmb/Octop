@@ -15,7 +15,8 @@
   "icon_name": "shield",
   "color": "#f36",
   "prompt_files": [
-    "SOUL.md"
+    "SOUL.md",
+    "BOOTSTRAP.md"
   ],
   "quick_prompts": [
     {

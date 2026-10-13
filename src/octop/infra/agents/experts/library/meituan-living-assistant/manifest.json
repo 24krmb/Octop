@@ -15,7 +15,8 @@
   "icon_name": "utensils",
   "color": "#ffc300",
   "prompt_files": [
-    "SOUL.md"
+    "SOUL.md",
+    "BOOTSTRAP.md"
   ],
   "quick_prompts": [
     {

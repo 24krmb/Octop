@@ -16,34 +16,71 @@
   "color": "#6A4C93",
   "prompt_files": [
     "SOUL.md",
-    "IDENTITY.md"
+    "IDENTITY.md",
+    "BOOTSTRAP.md"
   ],
   "quick_prompts": [
     {
-      "title": {"zh": "经典策略回测", "en": "Classic backtest"},
-      "description": {"zh": "双均线/网格/突破策略历史验证", "en": "Backtest MA-cross, grid, or breakout strategies"},
-      "prompt": {"zh": "请对 510300 用双均线策略（MA5/MA20 金叉死叉）做近三年回测，输出胜率、年化收益率、夏普比率、最大回撤与资金曲线。", "en": "Backtest a MA5/MA20 cross strategy on 510300 over 3 years: win rate, annualized return, Sharpe, max drawdown, and equity curve."},
+      "title": {
+        "zh": "经典策略回测",
+        "en": "Classic backtest"
+      },
+      "description": {
+        "zh": "双均线/网格/突破策略历史验证",
+        "en": "Backtest MA-cross, grid, or breakout strategies"
+      },
+      "prompt": {
+        "zh": "请对 510300 用双均线策略（MA5/MA20 金叉死叉）做近三年回测，输出胜率、年化收益率、夏普比率、最大回撤与资金曲线。",
+        "en": "Backtest a MA5/MA20 cross strategy on 510300 over 3 years: win rate, annualized return, Sharpe, max drawdown, and equity curve."
+      },
       "color": "#e8f4ff",
       "icon_name": "candlestick-chart"
     },
     {
-      "title": {"zh": "多因子选股回测", "en": "Multi-factor backtest"},
-      "description": {"zh": "因子模型构建与组合回测", "en": "Build and backtest a multi-factor model"},
-      "prompt": {"zh": "请构建一个多因子选股模型（价值+动量+质量因子），对 A 股全市场做分层回测，输出各分层表现与因子有效性分析。", "en": "Build a multi-factor model (value+momentum+quality), run layered backtests on A-shares, and report layer performance and factor validity."},
+      "title": {
+        "zh": "多因子选股回测",
+        "en": "Multi-factor backtest"
+      },
+      "description": {
+        "zh": "因子模型构建与组合回测",
+        "en": "Build and backtest a multi-factor model"
+      },
+      "prompt": {
+        "zh": "请构建一个多因子选股模型（价值+动量+质量因子），对 A 股全市场做分层回测，输出各分层表现与因子有效性分析。",
+        "en": "Build a multi-factor model (value+momentum+quality), run layered backtests on A-shares, and report layer performance and factor validity."
+      },
       "color": "#f0f5ff",
       "icon_name": "bar-chart-3"
     },
     {
-      "title": {"zh": "策略优化建议", "en": "Strategy tuning"},
-      "description": {"zh": "参数敏感性分析与过拟合警示", "en": "Parameter sensitivity and overfitting warnings"},
-      "prompt": {"zh": "请对我现有策略做参数敏感性分析：哪些参数是过拟合风险点？样本外表现如何验证？", "en": "Run parameter sensitivity analysis on my strategy: which params risk overfitting, and how to validate out-of-sample?"},
+      "title": {
+        "zh": "策略优化建议",
+        "en": "Strategy tuning"
+      },
+      "description": {
+        "zh": "参数敏感性分析与过拟合警示",
+        "en": "Parameter sensitivity and overfitting warnings"
+      },
+      "prompt": {
+        "zh": "请对我现有策略做参数敏感性分析：哪些参数是过拟合风险点？样本外表现如何验证？",
+        "en": "Run parameter sensitivity analysis on my strategy: which params risk overfitting, and how to validate out-of-sample?"
+      },
       "color": "#f6ffed",
       "icon_name": "activity"
     },
     {
-      "title": {"zh": "回测报告解读", "en": "Report interpretation"},
-      "description": {"zh": "回测指标的通俗解读与陷阱提示", "en": "Plain-language read of backtest metrics and pitfalls"},
-      "prompt": {"zh": "我的回测报告显示年化 40%、夏普 2.1，请帮我评估：这个结果可信吗？有哪些常见的回测陷阱需要排查？", "en": "My backtest shows 40% annualized and Sharpe 2.1 — is it credible? What common backtesting traps should I check?"},
+      "title": {
+        "zh": "回测报告解读",
+        "en": "Report interpretation"
+      },
+      "description": {
+        "zh": "回测指标的通俗解读与陷阱提示",
+        "en": "Plain-language read of backtest metrics and pitfalls"
+      },
+      "prompt": {
+        "zh": "我的回测报告显示年化 40%、夏普 2.1，请帮我评估：这个结果可信吗？有哪些常见的回测陷阱需要排查？",
+        "en": "My backtest shows 40% annualized and Sharpe 2.1 — is it credible? What common backtesting traps should I check?"
+      },
       "color": "#fffbe6",
       "icon_name": "message-square"
     }

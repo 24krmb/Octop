@@ -15,7 +15,8 @@
   "icon_name": "home",
   "color": "#6c757d",
   "prompt_files": [
-    "AGENTS.md"
+    "AGENTS.md",
+    "BOOTSTRAP.md"
   ],
   "task_examples": {
     "zh": [

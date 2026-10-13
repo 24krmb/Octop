@@ -16,7 +16,8 @@
   "color": "#0EA5E9",
   "prompt_files": [
     "SOUL.md",
-    "AGENTS.md"
+    "AGENTS.md",
+    "BOOTSTRAP.md"
   ],
   "quick_prompts": [
     {

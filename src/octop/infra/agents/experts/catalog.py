@@ -56,6 +56,7 @@ _FALLBACK_BUNDLED_AVATAR_IDS = frozenset(
         "krmb-fin-fupanxia",
         "krmb-fin-statistical",
         "krmb-fin-backtrace",
+        "krmb-fin-papertrail",
         "meituan-living-assistant",
         "multi-agent-orchestrator",
         "news-trend",
