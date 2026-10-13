@@ -47,6 +47,7 @@ _FALLBACK_BUNDLED_AVATAR_IDS = frozenset(
         "general-assistant",
         "karpathy-knowledge-base",
         "wind-alice",
+        "stock-pingan",
         "meituan-living-assistant",
         "multi-agent-orchestrator",
         "news-trend",
