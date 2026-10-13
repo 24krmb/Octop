@@ -1,6 +1,9 @@
 import { Cable, Mail } from "lucide-react";
 
-import { getConnectorLogo } from "../../../assets/connectors";
+import {
+  getConnectorLogo,
+  getConnectorLogoByName,
+} from "../../../assets/connectors";
 import type { ConnectorCatalogEntry } from "../../../api/modules/connectors";
 import styles from "./index.module.less";
 
@@ -61,14 +64,19 @@ export function connectorAccent(
 export function ConnectorLogo({
   kind,
   icon,
+  name,
   size = 22,
 }: {
   kind: string;
   icon?: string | null;
+  /** Display name fallback (custom-MCP instances share one kind). */
+  name?: string | null;
   size?: number;
 }) {
   const src =
-    getConnectorLogo(kind) ?? (icon ? getConnectorLogo(icon) : undefined);
+    getConnectorLogo(kind) ??
+    getConnectorLogoByName(name) ??
+    (icon ? getConnectorLogo(icon) : undefined);
   if (!src) {
     const Icon = kind === "agently-cli" ? Mail : Cable;
     return (

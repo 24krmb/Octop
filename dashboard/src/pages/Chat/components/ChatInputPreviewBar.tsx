@@ -227,7 +227,7 @@ export default function ChatInputPreviewBar({
             <ContextChip
               key={name}
               variant="connector"
-              icon={<ConnectorLogo kind={c.kind} size={16} />}
+              icon={<ConnectorLogo kind={c.kind} name={c.label} size={16} />}
               label={c.label}
               onRemove={() =>
                 onConnectorsChange(selectedConnectors.filter((n) => n !== name))

@@ -25,6 +25,7 @@ import weknora from "./weknora.svg";
 import youdaoNote from "./youdao-note.png";
 import yuandian from "./yuandian.png";
 import windStockData from "./wind-stock-data.png";
+import tdxFinance from "./tdx-finance.png";
 
 export const CONNECTOR_LOGOS: Record<string, string> = {
   "tencent-ardot": tencentArdot,
@@ -60,7 +61,29 @@ export const CONNECTOR_LOGOS: Record<string, string> = {
   "wind-bond-data": windStockData,
   "wind-analytics-data": windStockData,
   "wind-financial-docs": windStockData,
+  "tdx-finance": tdxFinance,
 };
+
+/**
+ * Custom-MCP instances all share kind "custom-mcp", so kind-based lookup
+ * cannot give them distinct logos. These keys match against the connector's
+ * display name instead (case-insensitive substring).
+ */
+const CONNECTOR_NAME_LOGOS: Record<string, string> = {
+  通达信: tdxFinance,
+  tdx: tdxFinance,
+};
+
+export function getConnectorLogoByName(
+  name: string | null | undefined,
+): string | undefined {
+  if (!name) return undefined;
+  const needle = name.toLowerCase();
+  for (const [key, logo] of Object.entries(CONNECTOR_NAME_LOGOS)) {
+    if (needle.includes(key.toLowerCase())) return logo;
+  }
+  return undefined;
+}
 
 export function getConnectorLogo(kind: string): string | undefined {
   if (!kind) return undefined;

@@ -1,11 +1,11 @@
 {
   "id": "office-automation",
   "label": {
-    "zh": "小办 · 办公自动化",
+    "zh": "办公自动化",
     "en": "Auto · Office Automation"
   },
   "description": {
-    "zh": "办公自动化助手「小办」— 内置 Word、Excel、PPT、PDF 全套文档技能，支持表格清洗与分析、文档编辑排版、演示文稿制作、PDF 提取与填表；还能整理会议纪要、生成周报日报、读取本地文件和获取办公资讯。",
+    "zh": "办公自动化助手— 内置 Word、Excel、PPT、PDF 全套文档技能，支持表格清洗与分析、文档编辑排版、演示文稿制作、PDF 提取与填表；还能整理会议纪要、生成周报日报、读取本地文件和获取办公资讯。",
     "en": "Office automation assistant 'Auto' — bundled Word, Excel, PPT, and PDF skills for spreadsheet analysis, document editing, presentation creation, and PDF extraction/forms; plus meeting minutes, weekly reports, file reading, and office news briefings."
   },
   "welcome_message": {

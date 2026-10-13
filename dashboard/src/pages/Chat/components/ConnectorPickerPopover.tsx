@@ -63,7 +63,11 @@ export default function ConnectorPickerPopover({
             }`}
           >
             <span className={styles.connectorPickerAvatar}>
-              <ConnectorLogo kind={connector.kind} size={18} />
+              <ConnectorLogo
+                kind={connector.kind}
+                name={connector.label}
+                size={18}
+              />
             </span>
             <span className={pickerStyles.itemText}>
               <span className={pickerStyles.itemName}>{connector.label}</span>

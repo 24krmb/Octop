@@ -1,0 +1,51 @@
+{
+  "id": "krmb-fin-formatter",
+  "label": {
+    "zh": "财锋派",
+    "en": "FinForm"
+  },
+  "description": {
+    "zh": "24KRMB 社区的财经内容创作与发布助手：把你的市场分析、交易复盘、研究观点整理成社区帖子格式，预览确认后一键发布到 24krmb.com。从成稿到上线，一气呵成——让每一份金融洞察都能锋利呈现。",
+    "en": "The financial content creation and publishing assistant for the 24KRMB community: turn your market analysis, trading reviews, and research views into community-ready posts, preview, and publish to 24krmb.com in one flow."
+  },
+  "welcome_message": {
+    "zh": "你好，我是财锋派——24KRMB 社区的财经内容创作与发布助手。分析、复盘、观点：给我素材，我帮你排版成帖、确认后直达社区。",
+    "en": "Hi, I'm FinForm — the content and publishing assistant for the 24KRMB community. Give me your analysis or review, I'll format it into a post and publish it after your confirmation."
+  },
+  "icon_name": "pen-tool",
+  "color": "#C9A227",
+  "prompt_files": [
+    "SOUL.md",
+    "IDENTITY.md"
+  ],
+  "quick_prompts": [
+    {
+      "title": {"zh": "市场点评成稿发布", "en": "Commentary → post"},
+      "description": {"zh": "把市场观点排版成帖并发到社区", "en": "Format market views into a post and publish"},
+      "prompt": {"zh": "今天市场波动较大，请帮我把以下观点整理成社区帖子并发布：市场短期震荡为主，结构性行情延续，建议关注量能变化与板块轮动节奏。", "en": "Format my market view into a community post and publish: short-term choppy market, structural trends continue, watch volume and sector rotation."},
+      "color": "#fff8e1",
+      "icon_name": "pen-tool"
+    },
+    {
+      "title": {"zh": "交易复盘成帖", "en": "Trading review → post"},
+      "description": {"zh": "交易复盘整理成帖并发布", "en": "Format a trading review and publish"},
+      "prompt": {"zh": "请帮我把今天的交易复盘整理成帖子发布：入场逻辑、持仓变化、反思与次日计划三段式结构。", "en": "Format today's trading review into a post: entry logic, position changes, reflections, next-day plan."},
+      "color": "#f0f5ff",
+      "icon_name": "file-text"
+    },
+    {
+      "title": {"zh": "研究观点排版", "en": "Research formatting"},
+      "description": {"zh": "长文研究观点排版成社区帖", "en": "Format long-form research into a post"},
+      "prompt": {"zh": "我有一篇关于科技板块的研究观点草稿，请帮我排版成社区帖子格式：标题提炼、分段重组、重点加粗，先给我预览不要直接发布。", "en": "Format my tech-sector research draft into a community post: refined title, restructured paragraphs, bolded highlights — preview only, do not publish."},
+      "color": "#f6ffed",
+      "icon_name": "edit"
+    },
+    {
+      "title": {"zh": "每日复盘专栏", "en": "Daily column"},
+      "description": {"zh": "固定结构的每日复盘成稿", "en": "Structured daily review draft"},
+      "prompt": {"zh": "请按固定结构帮我起草今日复盘专栏：指数与量能、板块焦点、个人关注标的、明日计划，成稿后先预览。", "en": "Draft today's daily column in fixed structure: indices and volume, sector focus, my watchlist, tomorrow's plan — preview first."},
+      "color": "#fffbe6",
+      "icon_name": "trending-up"
+    }
+  ]
+}

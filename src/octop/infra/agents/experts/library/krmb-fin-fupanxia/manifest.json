@@ -1,0 +1,87 @@
+{
+  "id": "krmb-fin-fupanxia",
+  "label": {
+    "zh": "复盘侠",
+    "en": "Fupanxia"
+  },
+  "description": {
+    "zh": "24KRMB.COM 论坛的发帖搭档：市场点评、每日复盘、研究观点、交易心得——全场景创作、固定结构成稿、预览确认、直达论坛。让每一次分享都简单顺畅。",
+    "en": "The posting companion for the 24KRMB.COM forum: market commentary, daily reviews, research views, trading notes — full-scenario creation, fixed-structure drafts, preview, and straight to the forum."
+  },
+  "welcome_message": {
+    "zh": "你好，我是复盘侠——24KRMB 论坛的发帖搭档。今天的盘面怎么样？跟我说说，我帮你成稿发帖。",
+    "en": "Hi, I'm Fupanxia — your posting companion on the 24KRMB forum. How was today's market? Tell me, and I'll draft the post."
+  },
+  "icon_name": "refresh-cw",
+  "color": "#C7000B",
+  "prompt_files": [
+    "SOUL.md",
+    "IDENTITY.md"
+  ],
+  "quick_prompts": [
+    {
+      "title": {
+        "zh": "每日复盘成帖",
+        "en": "Daily review post"
+      },
+      "description": {
+        "zh": "固定四段式复盘直接发论坛",
+        "en": "Fixed-structure daily review, posted"
+      },
+      "prompt": {
+        "zh": "今天的盘面：指数小幅收涨，量能与昨日持平，科技板块领涨，我关注的 600900 走势平稳。请按每日复盘固定结构（指数与量能/板块焦点/关注标的/明日计划）成稿并发布到论坛。",
+        "en": "Today: indices closed slightly up, flat volume, tech leading, my watchlist steady. Draft the daily review post (indices and volume / sector focus / watchlist / tomorrow plan) and publish."
+      },
+      "color": "#fff1f0",
+      "icon_name": "refresh-cw"
+    },
+    {
+      "title": {
+        "zh": "市场点评成帖",
+        "en": "Commentary post"
+      },
+      "description": {
+        "zh": "市场观点整理成帖发布",
+        "en": "Format market views into a post"
+      },
+      "prompt": {
+        "zh": "近期市场结构性行情明显，科技与消费交替走强。请帮我把这个观点整理成帖子发布：市场状态、结构性机会、风险提示，成稿后先预览。",
+        "en": "Structural market with tech and consumer alternating. Format into a post: market state, opportunities, risk notes — preview first."
+      },
+      "color": "#f0f5ff",
+      "icon_name": "pen-tool"
+    },
+    {
+      "title": {
+        "zh": "周度持仓报告",
+        "en": "Weekly positions post"
+      },
+      "description": {
+        "zh": "一周持仓与操作复盘成帖",
+        "en": "Weekly positions and actions review"
+      },
+      "prompt": {
+        "zh": "本周持仓无变化，两笔小额加仓ETF。请整理成周度持仓报告发布：本周操作、持仓结构、下周关注。",
+        "en": "No position changes this week, small ETF additions. Format into a weekly positions report: actions, structure, next-week watch."
+      },
+      "color": "#f6ffed",
+      "icon_name": "file-text"
+    },
+    {
+      "title": {
+        "zh": "交易心得分享",
+        "en": "Trading notes share"
+      },
+      "description": {
+        "zh": "交易心得与教训成帖分享",
+        "en": "Share trading lessons as a post"
+      },
+      "prompt": {
+        "zh": "这次止损执行得不错，但入场偏早。请帮我把这个心得整理成帖子：事件经过、做对的地方、待改进点、给其他股友的建议。",
+        "en": "Stop-loss went well but entry was early. Format into a post: what happened, what went right, what to improve, advice for fellow traders."
+      },
+      "color": "#fffbe6",
+      "icon_name": "message-square"
+    }
+  ]
+}

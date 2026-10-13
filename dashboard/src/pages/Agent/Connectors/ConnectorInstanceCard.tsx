@@ -82,6 +82,7 @@ export function ConnectorInstanceCard({
             <ConnectorLogo
               kind={instance.kind}
               icon={catalogEntry?.icon}
+              name={instance.display_name}
               size={40}
             />
           </div>

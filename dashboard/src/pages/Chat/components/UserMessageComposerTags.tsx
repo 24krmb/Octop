@@ -76,7 +76,11 @@ export default function UserMessageComposerTags({
         key: `connector-${name}`,
         variant: "connector",
         icon: connector ? (
-          <ConnectorLogo kind={connector.kind} size={14} />
+          <ConnectorLogo
+            kind={connector.kind}
+            name={connector?.label}
+            size={14}
+          />
         ) : (
           "⛓"
         ),

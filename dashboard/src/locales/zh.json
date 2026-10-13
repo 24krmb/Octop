@@ -2091,7 +2091,7 @@
     "requiresApiKey": "需配置 API Key",
     "rankingsEmpty": "该榜单暂无技能",
     "agentSkillsLib": "{{agent}} 的技能库 (/skills/<name>/SKILL.md)",
-    "noAgentSelected": "请先在顶部切换器选择一个 agent",
+    "noAgentSelected": "先在顶部选择一个助理，如果没有先创建一个主Agent",
     "noSkills": "暂无技能",
     "noSkillsDesc": "创建一个自定义技能,助理会在合适的时机调用它。",
     "totalCount": "共 {{count}} 个技能",
@@ -2328,7 +2328,7 @@
       "runtimeTimeoutSeconds": "超时时间 (秒)",
       "runtimeMisfireGrace": "错过容忍 (秒)"
     },
-    "noAgentSelected": "请先选择一个助理来管理它的定时任务",
+    "noAgentSelected": "先从上面选择一个助理来管理它的定时任务，如果不显示助理，先创建第一个助理",
     "deleteFailed": "删除失败",
     "goToChat": "发送到聊天"
   },
@@ -3405,7 +3405,7 @@
       "notes": "备注信息",
       "notesPlaceholder": "可选，仅自己可见的说明",
       "peerUrl": "对端地址",
-      "peerUrlPlaceholder": "https://octop.example.com",
+      "peerUrlPlaceholder": "https://www.example.com",
       "peerUrlRequired": "请输入对端 24K-Claw 地址",
       "username": "用户名",
       "usernameRequired": "请输入对端用户名",
@@ -3579,7 +3579,7 @@
     "saveSuccess": "配置保存成功",
     "saveFailed": "配置保存失败",
     "loadFailed": "配置加载失败",
-    "noActiveAgent": "请先选择一个助理"
+    "noActiveAgent": "先从顶部切换器选择一个助理，如果没有助理，先创建 主Agent"
   },
   "heartbeat": {
     "title": "心跳",
@@ -3611,7 +3611,7 @@
     "taskSaveFailed": "心跳任务保存失败",
     "taskPlaceholder": "在此输入心跳任务内容…",
     "clickToEditTask": "点击此处进入编辑模式",
-    "noAgentSelected": "请先在顶部切换器选择一个 agent"
+    "noAgentSelected": "先在顶部选择一个助理，如果没有，先创建一个主Agent"
   },
   "proactiveConfig": {
     "title": "主动关心设置",
@@ -3644,7 +3644,7 @@
     "activeHoursEndRequired": "请选择结束时间",
     "activeHoursStart": "关心时段 · 开始",
     "activeHoursStartRequired": "请选择开始时间",
-    "episodeBannerText": "24K-Claw 会从你的情绪日记中挑选合适的时机，主动发来一句关心。你可以在「情绪日记」中查看哪些记录会被参考。",
+    "episodeBannerText": "会从你的情绪日记中挑选合适的时机，主动发来一句关心。你可以在「情绪日记」中查看哪些记录会被参考。",
     "intervalOrderError": "最短间隔不能大于最长间隔",
     "maxIntervalHours": "最长间隔（小时）",
     "maxIntervalRequired": "请输入最大间隔",
@@ -3663,14 +3663,14 @@
     "descriptionWithTeamSuffix": "这是一个助理团队，成员会一起回答你的问题",
     "description": "无论工作还是生活，说出你的想法，我来搞定",
     "newChat": "新建对话",
-    "inputPlaceholder": "和您的AI助理开撩吧😄",
+    "inputPlaceholder": "和您的AI助理开撩吧 (≧ω≦)",
     "aiDisclaimer": "内容由 AI 生成，可能不准确，请注意核实",
     "hideThinking": "隐藏思考过程",
     "showThinking": "查看思考过程",
     "promptSectionTitle": "快速开始",
     "showMore": "更多",
     "showLess": "收起",
-    "skillSectionTitle": "技能工坊",
+    "skillSectionTitle": "Skill工坊",
     "skillRefresh": "换一换",
     "quickPrompt1Title": "总结长文",
     "quickPrompt1Desc": "粘贴文章或报告，提炼核心要点和结论",

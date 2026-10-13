@@ -48,11 +48,18 @@ function ThemedApp() {
   // 品牌色固定为主题蓝（palette 体系已移除）。
   // 品牌色唯一真相来源 = theme-vars.css 的 --fn-* 变量（亮暗自动切换）。
   // antd 派生 token 全部显式映射到变量族，绕开算法对变量字符串的运算。
+  // 注意：colorPrimary/colorLink 必须给 antd 可解析的真实色值——antd 5.29
+  // 会从 colorPrimary 派生兼容版 solid 按钮底色，var() 字符串无法参与颜色
+  // 运算，派生失败会回退成 #000。真值与 theme-vars.css 的
+  // --fn-color-brand / --fn-color-brand-hover 保持同步（浅 #6666FF，
+  // 暗 #F4D1B4）；其余变量族仅原样输出 CSS，不受影响。
+  const brandPrimaryColor = isDark ? "#F4D1B4" : "#6666FF";
+  const brandPrimaryHoverColor = isDark ? "#F4D1B4" : "#5343f3";
   const brandTokens = {
-    colorPrimary: "var(--fn-color-brand)",
-    colorPrimaryHover: "var(--fn-color-brand-hover)",
-    colorPrimaryActive: "var(--fn-color-brand-hover)",
-    colorLink: "var(--fn-color-brand)",
+    colorPrimary: brandPrimaryColor,
+    colorPrimaryHover: brandPrimaryHoverColor,
+    colorPrimaryActive: brandPrimaryHoverColor,
+    colorLink: brandPrimaryColor,
     colorPrimaryBg: "var(--fn-color-brand-bg)",
     colorPrimaryBgHover: "var(--fn-color-brand-bg)",
     colorPrimaryBorder: "var(--fn-color-brand-border)",
@@ -129,6 +136,13 @@ function ThemedApp() {
       Button: {
         primaryShadow: "var(--fn-shadow-soft-brand)",
         defaultBorderColor: "var(--fn-border)",
+        // Non-primary solid variant (antd v6 default): theme vars instead of
+        // the stock black/white pair. Primary buttons keep colorPrimary.
+        // NOTE: the style layer reads colorBgSolid*, not solidColorBg.
+        colorBgSolid: "var(--fn-sidebar-item-active-bg)",
+        colorBgSolidHover: "var(--fn-sidebar-item-hover)",
+        colorBgSolidActive: "var(--fn-sidebar-item-hover)",
+        solidTextColor: "var(--fn-sidebar-item-active-text)",
       },
       Tag: { defaultBg: "transparent", colorBorder: "var(--fn-border)" },
       Switch: { colorPrimary: "#00cc99" },
