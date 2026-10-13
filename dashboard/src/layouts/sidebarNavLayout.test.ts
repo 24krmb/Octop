@@ -81,11 +81,7 @@ describe("sidebarNavLayout", () => {
     expect(applied[1]?.groupKey).toBe("nav.personalization");
     expect(applied[2]?.groupKey).toBe("nav.admin");
     expect(applied[3]?.title).toBe("配置");
-    expect(applied[3]?.items.map((item) => item.key)).toEqual([
-      "channels",
-      "connectors",
-      "bridge",
-    ]);
+    expect(applied[3]?.items.map((item) => item.key)).toEqual(["channels"]);
     expect(applied[4]?.groupKey).toBe("nav.control");
   });
 
@@ -115,7 +111,7 @@ describe("sidebarNavLayout", () => {
       "control",
       "admin",
     ]);
-    expect(next.ungrouped.slice(0, 2)).toEqual(["channels", "connectors"]);
+    expect(next.ungrouped.slice(0, 2)).toEqual(["channels", "chat"]);
     expect(next.ungrouped).toContain("chat");
   });
 
@@ -158,7 +154,7 @@ describe("sidebarNavLayout", () => {
     expect(shown).toContain("personalization-subagents");
     expect(
       visibleEditorGroups(editor, sections).map((group) => group.id),
-    ).toEqual(["personalization", "settings", "admin", "c_aabbccdd"]);
+    ).toEqual(["personalization", "admin", "c_aabbccdd"]);
   });
 
   it("keeps a new empty group only in the editor", () => {

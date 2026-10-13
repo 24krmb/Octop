@@ -13,7 +13,7 @@ metadata:
     emoji: "⚙️"
     requires: {}
     label:
-      zh: "Octop 助手"
+      zh: "使用指引"
       en: "Octop Assistant"
     summary:
       zh: "介绍 Octop、解答使用问题并指引官网与文档；也可通过 CLI 配置模型、通道、Skill、定时任务以及备份升级。"

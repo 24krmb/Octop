@@ -64,9 +64,9 @@ export const SIDEBAR_NAV_KEYS = [
   "personalization-memory",
   "personalization-mbti",
   "channels",
-  "connectors",
   "skill-packages",
   "knowledge-bases",
+  "connectors",
   "bridge",
   "workbench",
   "remote-desktop",
@@ -223,6 +223,23 @@ export function buildNavSections(
       icon: <Database size={iconSize} strokeWidth={iconStroke} />,
       labelKey: "nav.knowledgeBases",
     },
+    // Connectors + cloud bridge sit right under the knowledge base entry.
+    ...(navAllowed(user, "connectors")
+      ? [
+          {
+            key: "connectors",
+            path: "/connectors",
+            icon: <Link2 size={iconSize} strokeWidth={iconStroke} />,
+            labelKey: "nav.connectors",
+          } as NavItem,
+        ]
+      : []),
+    {
+      key: "bridge",
+      path: "/bridge",
+      icon: <Cloudy size={iconSize} strokeWidth={iconStroke} />,
+      labelKey: "nav.bridge",
+    },
     {
       key: "personalization-mbti",
       path: "/personalization/mbti",
@@ -247,21 +264,6 @@ export function buildNavSections(
       labelKey: "nav.channels",
     });
   }
-  if (navAllowed(user, "connectors")) {
-    settingsItems.push({
-      key: "connectors",
-      path: "/connectors",
-      icon: <Link2 size={iconSize} strokeWidth={iconStroke} />,
-      labelKey: "nav.connectors",
-    });
-  }
-  // User-scoped remote Octop links — always available (like personalization).
-  settingsItems.push({
-    key: "bridge",
-    path: "/bridge",
-    icon: <Cloudy size={iconSize} strokeWidth={iconStroke} />,
-    labelKey: "nav.bridge",
-  });
   if (settingsItems.length > 0) {
     sections.push({
       id: "settings",
