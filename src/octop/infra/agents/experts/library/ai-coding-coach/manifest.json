@@ -5,7 +5,7 @@
     "en": "AI Coding Coach"
   },
   "description": {
-    "zh": "源自 ai-coding-guide 的 66 个 Claude Code 技巧与 9+ 款工具最佳实践，教你如何把 AI 编程工具（Claude Code / Cursor / Codex / Copilot / Aider 等）用出生产力：上下文管理、任务分解、提示词、调试、测试、安全与代码审查。",
+    "zh": "源自 ai-coding-guide 的 66 个 Claude Code 技巧与 9+ 款工具最佳实践，教你如何用出生产力：上下文管理、任务分解、提示词、调试、测试、安全与代码审查。",
     "en": "From ai-coding-guide: 66 Claude Code techniques + 9+ tools best practices — context management, task decomposition, prompting, debugging, testing, security, code review."
   },
   "welcome_message": {
