@@ -123,7 +123,7 @@ export default function TeamMemberPicker({
         <div className={styles.memberPickerGrid}>
           {filtered.map((expert) => {
             const active = selectedSet.has(expert.agent_id);
-            const accent = expert.color || "#0d9488";
+            const accent = expert.color || "var(--fn-color-success)";
             return (
               <button
                 key={expert.agent_id}

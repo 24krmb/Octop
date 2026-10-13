@@ -16,7 +16,7 @@ const BREAKDOWN_CACHE_TTL_MS = 30_000;
 const SEGMENT_COLORS: Record<ContextUsageSegmentKey, string> = {
   system_prompt: "#9ca3af",
   tool_definitions: "#c4b5fd",
-  rules: "#86efac",
+  rules: "var(--fn-color-success)",
   skills: "#fbbf24",
   mcp: "#e879f9",
   subagent_definitions: "#3b82f6",
@@ -146,7 +146,7 @@ export default function ContextWindowRing({
     const usedPercent = contextUsedPercent(ringUsed, ringMax);
     const r = 13;
     const circ = 2 * Math.PI * r;
-    let color = "var(--fn-color-success, #22c55e)";
+    let color = "var(--fn-color-success)";
     if (usedRatio >= 0.8) {
       color = "var(--fn-color-danger, #f36)";
     } else if (usedRatio >= 0.5) {

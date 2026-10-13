@@ -92,7 +92,7 @@ type DimGranularity = Exclude<ViewMode, "summary">;
 const CHART_COLORS = [
   "#4f6ef7",
   "#a06ef7",
-  "#22c55e",
+  "#0c9",
   "#f59e0b",
   "#f36",
   "#06b6d4",

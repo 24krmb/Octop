@@ -59,7 +59,7 @@ const NAME_MAP: Record<string, IconSpec> = {
   "SOUL.md": { Icon: Sparkles, color: "#7c3aed" },
   "IDENTITY.md": { Icon: Fingerprint, color: "#db2777" },
   "USER.md": { Icon: User, color: "#2563eb" },
-  "AGENTS.md": { Icon: BookOpen, color: "#059669" },
+  "AGENTS.md": { Icon: BookOpen, color: "var(--fn-color-success)" },
   "TOOLS.md": { Icon: Wrench, color: "#f59e0b" },
   "BOOTSTRAP.md": { Icon: Rocket, color: "#d97706" },
   "HEARTBEAT.md": { Icon: Heart, color: "#f36" },
@@ -84,10 +84,10 @@ const EXT_MAP: Record<string, IconSpec> = {
   doc: { Icon: FileType, color: "#2563eb" },
   docx: { Icon: FileType, color: "#2563eb" },
   odt: { Icon: FileType, color: "#2563eb" },
-  xls: { Icon: FileSpreadsheet, color: "#0c9" },
-  xlsx: { Icon: FileSpreadsheet, color: "#0c9" },
-  xlsm: { Icon: FileSpreadsheet, color: "#0c9" },
-  ods: { Icon: FileSpreadsheet, color: "#0c9" },
+  xls: { Icon: FileSpreadsheet, color: "var(--fn-color-success)" },
+  xlsx: { Icon: FileSpreadsheet, color: "var(--fn-color-success)" },
+  xlsm: { Icon: FileSpreadsheet, color: "var(--fn-color-success)" },
+  ods: { Icon: FileSpreadsheet, color: "var(--fn-color-success)" },
 
   // Data / config
   json: { Icon: FileJson, color: "#ca8a04" },
@@ -96,15 +96,15 @@ const EXT_MAP: Record<string, IconSpec> = {
   yml: { Icon: FileCode, color: "#db2777" },
   toml: { Icon: Settings, color: "#6b7280" },
   xml: { Icon: FileCode, color: "#ea580c" },
-  csv: { Icon: Table, color: "#0c9" },
-  tsv: { Icon: Table, color: "#0c9" },
+  csv: { Icon: Table, color: "var(--fn-color-success)" },
+  tsv: { Icon: Table, color: "var(--fn-color-success)" },
   env: { Icon: Key, color: "#84cc16" },
 
   // Scripts / shell
-  sh: { Icon: Terminal, color: "#22c55e" },
-  bash: { Icon: Terminal, color: "#22c55e" },
-  zsh: { Icon: Terminal, color: "#22c55e" },
-  fish: { Icon: Terminal, color: "#22c55e" },
+  sh: { Icon: Terminal, color: "var(--fn-color-success)" },
+  bash: { Icon: Terminal, color: "var(--fn-color-success)" },
+  zsh: { Icon: Terminal, color: "var(--fn-color-success)" },
+  fish: { Icon: Terminal, color: "var(--fn-color-success)" },
 
   // Python / JS / TS ecosystem
   py: { Icon: Code2, color: "#3572A5" },
@@ -156,9 +156,9 @@ const EXT_MAP: Record<string, IconSpec> = {
   mp4: { Icon: FileVideo, color: "#7c3aed" },
   webm: { Icon: FileVideo, color: "#7c3aed" },
   mov: { Icon: FileVideo, color: "#7c3aed" },
-  mp3: { Icon: FileAudio, color: "#0d9488" },
-  wav: { Icon: FileAudio, color: "#0d9488" },
-  m4a: { Icon: FileAudio, color: "#0d9488" },
+  mp3: { Icon: FileAudio, color: "var(--fn-color-success)" },
+  wav: { Icon: FileAudio, color: "var(--fn-color-success)" },
+  m4a: { Icon: FileAudio, color: "var(--fn-color-success)" },
 
   // Archives
   zip: { Icon: FileArchive, color: "#78716c" },

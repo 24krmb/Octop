@@ -24,7 +24,7 @@ import {
 type CronJob = CronJobSpecOutput;
 
 // Accent color per status
-const ENABLED_ACCENT = "#22c55e";
+const ENABLED_ACCENT = "#0c9";
 const DISABLED_ACCENT = "#8c8c8c";
 
 interface CronJobCardProps {

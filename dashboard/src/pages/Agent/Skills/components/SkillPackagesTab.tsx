@@ -402,8 +402,8 @@ export default function SkillPackagesTab({
                           <div
                             className={styles.packageSkillRowIcon}
                             style={{
-                              color: "#059669",
-                              background: iconUrl ? "transparent" : "#0596691a",
+                              color: "var(--fn-color-success)",
+                              background: iconUrl ? "transparent" : "rgba(74, 222, 128, 0.1)",
                             }}
                           >
                             <PackageSkillIcon iconUrl={iconUrl} emoji={emoji} />

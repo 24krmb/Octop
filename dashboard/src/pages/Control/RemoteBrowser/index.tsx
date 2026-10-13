@@ -1303,7 +1303,7 @@ export default function RemoteBrowserPage({
             size={14}
             style={{
               marginLeft: 4,
-              color: "var(--fn-color-success,#0c9)",
+              color: "var(--fn-color-success,var(--fn-color-success))",
               verticalAlign: "-2px",
             }}
           />

@@ -247,7 +247,7 @@ export const STORAGE_TYPE_DEFS: StorageTypeDef[] = [
     kind: "filesystem",
     nameKey: "storage.kindFilesystem",
     descKey: "storage.descFilesystem",
-    color: "#0c9",
+    color: "var(--fn-color-success)",
     icon: storageBrandIcon("filesystem"),
     fields: [
       {
@@ -296,7 +296,7 @@ export const STORAGE_TYPE_DEFS: StorageTypeDef[] = [
     kind: "opensandbox",
     nameKey: "storage.kindOpensandbox",
     descKey: "storage.descOpensandbox",
-    color: "#0f766e",
+    color: "var(--fn-color-success)",
     icon: storageBrandIcon("opensandbox"),
     fields: [
       {

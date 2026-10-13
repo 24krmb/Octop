@@ -20,7 +20,7 @@ interface CheckItem {
 
 function StatusDot({ status }: { status: CheckItem["status"] }) {
   const colors: Record<string, string> = {
-    pass: "#22c55e",
+    pass: "#0c9",
     fail: "#f36",
     warn: "#f59e0b",
     loading: "#94a3b8",

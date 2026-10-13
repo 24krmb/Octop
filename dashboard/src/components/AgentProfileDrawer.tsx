@@ -408,7 +408,7 @@ export default function AgentProfileDrawer({
                 </div>
               ) : (
                 visibleTeamMembers.map((member) => {
-                  const accent = member.color || "#0d9488";
+                  const accent = member.color || "var(--fn-color-success)";
                   const stateKey = member.state || "unknown";
                   return (
                     <ProfileEntityCard

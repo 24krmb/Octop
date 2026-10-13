@@ -29,7 +29,7 @@ html[data-theme="light"] {
   --fn-bg-toolbar: #fafafa; /* 工具栏背景色 */
   --fn-bg-toolbar-hover: #dfeafd; /* 工具栏悬停背景色 */
   --fn-bg-input-label: #fafafa; /* 输入框标签背景色 */
-  --fn-bg-success-light: #ecfdf5; /* 成功状态浅背景色 */
+  --fn-bg-success-light: rgba(74, 222, 128, 0.1); /* 成功状态浅背景色 */
   --fn-bg-danger-light: #fef2f2; /* 危险状态浅背景色 */
   --fn-bg-warning-light: #fffbeb; /* 警告状态浅背景色 */
   --fn-bg-info-light: #dae8ff; /* 信息状态浅背景色 */
@@ -82,8 +82,8 @@ html[data-theme="light"] {
 
   /* ---- 语义色 ---- */
   --fn-color-success: #0c9; /* 成功色 */
-  --fn-color-success-border: #6ee7b7; /* 成功色边框 */
-  --fn-color-success-glow: rgba(0, 204, 153, 0.2); /* 成功色光晕 */
+  --fn-color-success-border: rgba(74, 222, 128, 0.2); /* 成功色边框 */
+  --fn-color-success-glow: rgba(74, 222, 128, 0.2); /* 成功色光晕 */
   --fn-color-danger: #dc2626; /* 危险色 */
   --fn-color-danger-border: #fca5a5; /* 危险色边框 */
   --fn-color-warning: #f59e0b; /* 警告色 */
@@ -95,8 +95,8 @@ html[data-theme="light"] {
   --fn-color-error-bg: #fef2f2; /* 错误色背景 */
   --fn-color-error-border: #fca5a5; /* 错误色边框 */
   --fn-success: #0c9; /* 成功色（别名） */
-  --fn-success-bg: #ecfdf5; /* 成功色背景 */
-  --fn-success-border: #6ee7b7; /* 成功色边框（别名） */
+  --fn-success-bg: rgba(74, 222, 128, 0.1); /* 成功色背景 */
+  --fn-success-border: rgba(74, 222, 128, 0.2); /* 成功色边框（别名） */
   --fn-danger: #dc2626; /* 危险色（别名） */
   --fn-warning-color: #d97706; /* 警告色文本（别名） */
   --fn-color-file-zip: #f59e0b; /* ZIP 文件图标颜色 */
@@ -191,7 +191,7 @@ html[data-theme="dark"] {
   --fn-bg-toolbar: #131316; /* 工具栏背景色 */
   --fn-bg-toolbar-hover: #1f1f23; /* 工具栏悬停背景色 */
   --fn-bg-input-label: #232323; /* 输入框标签背景色 */
-  --fn-bg-success-light: rgba(16, 185, 129, 0.08); /* 成功状态浅背景色 */
+  --fn-bg-success-light: rgba(74, 222, 128, 0.1); /* 成功状态浅背景色 */
   --fn-bg-danger-light: rgba(239, 68, 68, 0.08); /* 危险状态浅背景色 */
   --fn-bg-warning-light: rgba(245, 158, 11, 0.08); /* 警告状态浅背景色 */
   --fn-bg-info-light: rgba(59, 130, 246, 0.08); /* 信息状态浅背景色 */
@@ -234,7 +234,7 @@ html[data-theme="dark"] {
   --fn-border-color: rgba(255, 255, 255, 0.1); /* 通用边框颜色（别名） */
   --fn-border-strong: rgba(255, 255, 255, 0.2); /* 强调边框色 */
   --fn-border-subtle: rgba(255, 255, 255, 0.05); /* 弱化边框色 */
-  --fn-border-success: rgba(52, 211, 153, 0.25); /* 成功状态边框色 */
+  --fn-border-success: rgba(74, 222, 128, 0.2); /* 成功状态边框色 */
 
   /* ---- 品牌色（rose，深色背景下提亮） ---- */
   --fn-color-brand: #F4D1B4; /* 品牌主色 */
@@ -272,8 +272,8 @@ html[data-theme="dark"] {
 
   /* ---- 语义色 ---- */
   --fn-color-success: #0c9; /* 成功色 */
-  --fn-color-success-border: rgba(52, 211, 153, 0.25); /* 成功色边框 */
-  --fn-color-success-glow: rgba(52, 211, 153, 0.2); /* 成功色光晕 */
+  --fn-color-success-border: rgba(74, 222, 128, 0.2); /* 成功色边框 */
+  --fn-color-success-glow: rgba(74, 222, 128, 0.2); /* 成功色光晕 */
   --fn-color-danger: #f36; /* 危险色 */
   --fn-color-danger-border: rgba(248, 113, 113, 0.25); /* 危险色边框 */
   --fn-color-warning: #fbbf24; /* 警告色 */
@@ -285,8 +285,8 @@ html[data-theme="dark"] {
   --fn-color-error-bg: rgba(239, 68, 68, 0.08); /* 错误色背景 */
   --fn-color-error-border: rgba(248, 113, 113, 0.25); /* 错误色边框 */
   --fn-success: #0c9; /* 成功色（别名） */
-  --fn-success-bg: rgba(16, 185, 129, 0.08); /* 成功色背景 */
-  --fn-success-border: rgba(52, 211, 153, 0.25); /* 成功色边框（别名） */
+  --fn-success-bg: rgba(74, 222, 128, 0.1); /* 成功色背景 */
+  --fn-success-border: rgba(74, 222, 128, 0.2); /* 成功色边框（别名） */
   --fn-danger: #f36; /* 危险色（别名） */
   --fn-warning-color: #fbbf24; /* 警告色文本（别名） */
   --fn-color-file-zip: #fbbf24; /* ZIP 文件图标颜色 */

@@ -261,7 +261,7 @@ const FILE_META_MAP: Record<
   },
   "AGENTS.md": {
     icon: <BookOpen size={20} />,
-    color: "#059669",
+    color: "var(--fn-color-success)",
     labelKey: "experts.fileLabel.agents",
   },
   "TOOLS.md": {

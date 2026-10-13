@@ -42,7 +42,7 @@ const defaultQuickPrompt: QuickPrompt = {
 const presetColors = [
   "#e8f4ff",
   "#eef2ff",
-  "#f0fdf4",
+  "rgba(74, 222, 128, 0.1)",
   "#fff7ed",
   "#fef3c7",
   "#fdf2f8",
