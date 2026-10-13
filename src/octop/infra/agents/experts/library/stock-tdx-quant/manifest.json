@@ -1,0 +1,90 @@
+{
+  "id": "stock-tdx-quant",
+  "label": {
+    "zh": "通达信量化",
+    "en": "TDX Quant"
+  },
+  "description": {
+    "zh": "通达信 Quant + MCP + SKILL，让 AI 智能体更懂市场、更会研究、更快协同，帮助你把复杂任务拆解成稳定、可复用的智能工作流。覆盖个股深度分析、龙虎榜解析、财报速读、公司质地打分、估值定价、业绩预告博弈等投研全链路场景。",
+    "en": "TDX Quant + MCP + SKILL makes AI agents understand markets better, research smarter, and collaborate faster — turning complex tasks into stable, reusable intelligent workflows. Covers full-stack research: stock deep-dives, dragon-tiger analysis, financial quick-reads, company quality scoring, valuation frameworks, and earnings-preview games."
+  },
+  "welcome_message": {
+    "zh": "你好，我是通达信量化助手——个股深研、龙虎榜解析、财报速读、估值定价，复杂任务拆解成可复用的智能工作流。今天研究什么？",
+    "en": "Hi, I'm the TDX Quant assistant — stock deep-dives, dragon-tiger analysis, financial quick-reads, valuation frameworks. Complex tasks, reusable workflows. What are we researching today?"
+  },
+  "icon_name": "activity",
+  "color": "#2B6BD4",
+  "prompt_files": [
+    "SOUL.md",
+    "IDENTITY.md"
+  ],
+  "quick_prompts": [
+    {
+      "title": {
+        "zh": "个股一页纸深研",
+        "en": "Stock one-pager"
+      },
+      "description": {
+        "zh": "单只 A 股全面投资研究成稿",
+        "en": "Full research on a single A-share"
+      },
+      "prompt": {
+        "zh": "请对 600519 做一份个股深度分析：公司近况、核心投资逻辑、财务与估值、风险点，输出一页纸结构化报告。",
+        "en": "Deep-dive 600519: recent developments, core thesis, financials and valuation, risks — as a structured one-pager."
+      },
+      "color": "#e8f4ff",
+      "icon_name": "file-text"
+    },
+    {
+      "title": {
+        "zh": "龙虎榜解析",
+        "en": "Dragon-tiger read"
+      },
+      "description": {
+        "zh": "席位意图与博弈格局拆解",
+        "en": "Unpack seat intentions and game dynamics"
+      },
+      "prompt": {
+        "zh": "请解析最近一个交易日龙虎榜上的热门个股：机构、北向、游资席位的买卖结构与博弈意图。",
+        "en": "Analyze the latest dragon-tiger list: institutional/northbound/speculative seat flows and intentions."
+      },
+      "color": "#fff1f0",
+      "icon_name": "activity"
+    },
+    {
+      "title": {
+        "zh": "财报速读",
+        "en": "Earnings quick-read"
+      },
+      "description": {
+        "zh": "三表核心指标速提与异常检测",
+        "en": "Fast extraction and anomaly detection on financials"
+      },
+      "prompt": {
+        "zh": "请速读 000001 最新财报：三表核心指标、多期趋势对比、财务异常点检测。",
+        "en": "Quick-read 000001's latest report: core metrics across statements, multi-period trends, anomaly flags."
+      },
+      "color": "#f0f5ff",
+      "icon_name": "bar-chart-3"
+    },
+    {
+      "title": {
+        "zh": "公司质地打分",
+        "en": "Quality scorecard"
+      },
+      "description": {
+        "zh": "商业模式与质地多维度评分",
+        "en": "Multi-dimension company quality scoring"
+      },
+      "prompt": {
+        "zh": "请对 300750 做公司质地打分：商业模式、竞争优势、成长质量、财务质量、治理与资本配置各维度评分与依据。",
+        "en": "Score 300750 on business model, moat, growth quality, financial quality, governance, and capital allocation — with evidence."
+      },
+      "color": "#f6ffed",
+      "icon_name": "list-todo"
+    }
+  ],
+  "default_connectors": [
+    "tdx-finance"
+  ]
+}

@@ -1,0 +1,15 @@
+interface:
+  display_name: "繁微 Fiona 外盘数据"
+  short_description: "查询内外盘映射，跟踪盘前与假期外盘变化，生成区间观察报告"
+  default_prompt: "使用 $fiona-foreign-data，整理指定盘前、假期或自定义区间的外盘变化，注明实际覆盖和国内关联；需要报告时生成 HTML。"
+
+policy:
+  allow_implicit_invocation: true
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "foreign"
+      description: "繁微外盘映射与已同步行情，需在客户端凭证区配置服务方授权的 API Key"
+      transport: "streamable_http"
+      url: "https://track.finoview.com.cn/fiona/mcp/foreign"

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "foreign": {
+      "type": "http",
+      "url": "https://track.finoview.com.cn/fiona/mcp/foreign",
+      "headers": {
+        "Authorization": "Bearer <your-authorized-mcp-token>"
+      }
+    }
+  }
+}

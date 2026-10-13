@@ -1,0 +1,25 @@
+interface:
+  display_name: "繁微 Fiona 技术面分析"
+  short_description: "综合趋势、动量、波动率与技术价格结构研判期货技术状态"
+  default_prompt: "使用 $fiona-technical-analysis 分析期货品种的技术状态、支撑压力以及后续确认和失效条件。"
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "fiona-technical-analysis"
+      description: "Fiona multi-frequency technical-analysis signals and series"
+      transport: "streamable_http"
+      url: "https://track.finoview.com.cn/fiona/mcp/technical-analysis"
+    - type: "mcp"
+      value: "fiona-intraday-monitor"
+      description: "Fiona intraday futures monitoring and contract analysis"
+      transport: "streamable_http"
+      url: "https://track.finoview.com.cn/fiona/mcp/intraday-monitor"
+    - type: "mcp"
+      value: "futures_market_data"
+      description: "Fiona futures calendars, contracts, quotes, OHLCV, and volatility"
+      transport: "streamable_http"
+      url: "https://track.finoview.com.cn/fiona/mcp/futures_market_data"
+
+policy:
+  allow_implicit_invocation: true

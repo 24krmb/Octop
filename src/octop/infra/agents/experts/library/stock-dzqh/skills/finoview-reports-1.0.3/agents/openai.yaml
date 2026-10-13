@@ -1,0 +1,7 @@
+interface:
+  display_name: "繁微Fiona 研究材料理解与比较"
+  short_description: "查询研报、观点、快评，提炼核心结论、关键数据、研究逻辑和风险，支持比较并保留原文依据"
+  default_prompt: "Use $finoview-reports to query Finoview research reports, viewpoints and fast commentaries, then extract and compare key conclusions with source evidence."
+
+policy:
+  allow_implicit_invocation: true

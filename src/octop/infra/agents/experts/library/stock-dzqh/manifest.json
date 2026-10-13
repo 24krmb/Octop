@@ -1,0 +1,51 @@
+{
+  "id": "stock-dzqh",
+  "label": {
+    "zh": "东证期货",
+    "en": "Orient Futures"
+  },
+  "description": {
+    "zh": "大宗商品期货全数据下的智能洞察，提供衍生品智能投研——覆盖期货合约行情、基差与价差结构、持仓与仓单、产业链数据，是 AI 时代金融分析的新方式。面向产业客户、交易与投研人员：数据一问即达，洞察对话即成。",
+    "en": "Intelligent insights from full-spectrum commodity futures data — derivatives-focused smart research covering futures quotes, basis and spread structures, positions and warehouse receipts, and industry-chain data. A new way of financial analysis in the AI era, for industrial clients, traders, and researchers."
+  },
+  "welcome_message": {
+    "zh": "你好，我是东证期货 AI 助手——大宗商品全数据下的智能洞察。合约行情、基差结构、持仓仓单、产业链数据，对话即达。",
+    "en": "Hi, I'm the Orient Futures AI assistant — intelligent insights from commodity futures data. Quotes, basis, positions, and industry-chain data at your fingertips."
+  },
+  "icon_name": "bar-chart-3",
+  "color": "#15427A",
+  "prompt_files": [
+    "SOUL.md",
+    "IDENTITY.md"
+  ],
+  "quick_prompts": [
+    {
+      "title": {"zh": "期货行情速览", "en": "Futures snapshot"},
+      "description": {"zh": "主力合约行情一屏速览", "en": "One-screen view of major contracts"},
+      "prompt": {"zh": "请给我今天主要商品期货主力合约的行情速览：有色、黑色、能化、农产品四大板块的涨跌与成交量变化。", "en": "Today's futures snapshot: price moves and volume changes across metals, ferrous, energy-chemicals, and agricultural sectors."},
+      "color": "#e8f4ff",
+      "icon_name": "bar-chart-3"
+    },
+    {
+      "title": {"zh": "基差结构分析", "en": "Basis analysis"},
+      "description": {"zh": "现货与期货基差结构解读", "en": "Interpret spot-futures basis structures"},
+      "prompt": {"zh": "请分析当前螺纹钢的基差结构：现货价格、主力合约价差、近远月价差，并解读对套保与交易的含义。", "en": "Analyze rebar basis: spot vs futures spread, calendar spreads, and implications for hedging and trading."},
+      "color": "#f0f5ff",
+      "icon_name": "activity"
+    },
+    {
+      "title": {"zh": "持仓与仓单洞察", "en": "Position & receipts"},
+      "description": {"zh": "持仓变化与仓单数据的智能解读", "en": "Smart read of positions and warehouse receipts"},
+      "prompt": {"zh": "请解读最近一周主要商品期货的持仓变化和注册仓单趋势，指出多空矛盾点。", "en": "Interpret last week's position changes and warehouse-receipt trends across major futures, highlighting long/short tensions."},
+      "color": "#f6ffed",
+      "icon_name": "list-todo"
+    },
+    {
+      "title": {"zh": "产业链数据洞察", "en": "Industry-chain insight"},
+      "description": {"zh": "上下游产业链数据的智能分析", "en": "Smart analysis across the industry chain"},
+      "prompt": {"zh": "请从产业链视角分析当前黑色系（铁矿-焦煤-螺纹钢）的数据结构与价格传导逻辑。", "en": "Analyze the ferrous chain (iron ore-coking coal-rebar) data structure and price-transmission logic."},
+      "color": "#fffbe6",
+      "icon_name": "network"
+    }
+  ]
+}

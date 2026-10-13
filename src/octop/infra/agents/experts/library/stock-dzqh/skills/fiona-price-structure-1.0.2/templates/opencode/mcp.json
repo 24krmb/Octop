@@ -1,0 +1,23 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "fiona-price-structure": {
+      "type": "remote",
+      "url": "https://track.finoview.com.cn/fiona/mcp/price_structure",
+      "enabled": true,
+      "headers": {
+        "Authorization": "Bearer <your-authorized-mcp-token>"
+      }
+    },
+    "futures-market-data": {
+      "type": "remote",
+      "url": "https://track.finoview.com.cn/fiona/mcp/futures_market_data",
+      "enabled": true
+    },
+    "futures-ranking": {
+      "type": "remote",
+      "url": "https://track.finoview.com.cn/fiona/mcp/futures_ranking",
+      "enabled": true
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "futures-market-data": {
+      "type": "streamable-http",
+      "url": "https://track.finoview.com.cn/fiona/mcp/futures_market_data"
+    },
+    "futures-ranking": {"type": "streamable-http", "url": "https://track.finoview.com.cn/fiona/mcp/futures_ranking"},
+    "market-calculate": {"type": "streamable-http", "url": "https://track.finoview.com.cn/fiona/mcp/market_calculate"}
+  }
+}

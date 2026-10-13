@@ -87,7 +87,11 @@ export default function ExpertComposerDefaultsFields({
     const current: string[] = form.getFieldValue("mcp_servers") || [];
     if (current.length) return; // 用户已手动选过则不覆盖
     const preset = connectors
-      .filter((o) => o.kind && defaultConnectorKinds.includes(o.kind))
+      .filter(
+        (o) =>
+          (o.kind && defaultConnectorKinds.includes(o.kind)) ||
+          defaultConnectorKinds.includes(o.value),
+      )
       .map((o) => o.value);
     if (preset.length) form.setFieldsValue({ mcp_servers: preset });
   }, [connectors, defaultConnectorKinds, form]);

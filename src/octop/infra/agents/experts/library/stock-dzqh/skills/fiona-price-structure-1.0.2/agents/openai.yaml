@@ -1,0 +1,25 @@
+interface:
+  display_name: "繁微Fiona 价格结构分析"
+  short_description: "综合主力走势、历史分位、基差、期限结构与展期进度分析价格强弱"
+  default_prompt: "Use $fiona-price-structure to analyze a futures product's price trend, historical position, basis, term structure, and roll progress."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "fiona-price-structure"
+      description: "Fiona futures price-structure and roll-monitoring tools"
+      transport: "streamable_http"
+      url: "https://track.finoview.com.cn/fiona/mcp/price_structure"
+    - type: "mcp"
+      value: "futures_market_data"
+      description: "Fiona futures quotes, contracts, and trading-calendar tools"
+      transport: "streamable_http"
+      url: "https://track.finoview.com.cn/fiona/mcp/futures_market_data"
+    - type: "mcp"
+      value: "futures_ranking"
+      description: "Fiona futures cross-section, historical-percentile, and seasonality tools"
+      transport: "streamable_http"
+      url: "https://track.finoview.com.cn/fiona/mcp/futures_ranking"
+
+policy:
+  allow_implicit_invocation: true

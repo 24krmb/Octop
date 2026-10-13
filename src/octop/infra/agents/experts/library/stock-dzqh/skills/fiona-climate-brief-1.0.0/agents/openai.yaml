@@ -1,0 +1,4 @@
+interface:
+  display_name: "繁微 Fiona 气候与大宗商品研究观察"
+  short_description: "研究全球气候与商品期货的关联，支持问答、日周报和移动端结论长图"
+  default_prompt: "请使用 $fiona-climate-brief 分析近期全球气候变化对主要大宗商品的影响，结合区域天气、产业证据和历史比较，说明判断依据及后续观察重点。"

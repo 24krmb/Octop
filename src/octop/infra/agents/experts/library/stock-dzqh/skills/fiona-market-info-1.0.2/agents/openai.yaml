@@ -1,0 +1,25 @@
+interface:
+  display_name: "Fiona 期货市场基础信息"
+  short_description: "按客户场景查询期货品种、合约、行情、排名、持仓和资金事实"
+  default_prompt: "使用 $fiona-market-info 查询期货市场基础信息。"
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "futures_market_data"
+      description: "期货品种、合约、行情和交易日历"
+      transport: "streamable_http"
+      url: "https://track.finoview.com.cn/fiona/mcp/futures_market_data"
+    - type: "mcp"
+      value: "futures_ranking"
+      description: "期货时间序列、截面统计和排名"
+      transport: "streamable_http"
+      url: "https://track.finoview.com.cn/fiona/mcp/futures_ranking"
+    - type: "mcp"
+      value: "market_calculate"
+      description: "成交持仓、资金流和市场计算"
+      transport: "streamable_http"
+      url: "https://track.finoview.com.cn/fiona/mcp/market_calculate"
+
+policy:
+  allow_implicit_invocation: true

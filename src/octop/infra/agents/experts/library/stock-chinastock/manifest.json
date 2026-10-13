@@ -1,0 +1,51 @@
+{
+  "id": "stock-chinastock",
+  "label": {
+    "zh": "银河证券",
+    "en": "China Galaxy Securities"
+  },
+  "description": {
+    "zh": "中国银河证券为个人、企业、机构、国际及资本市场客户提供财富管理、投资银行、机构业务、国际业务、投资交易等全方位、多层次、专业高效的综合金融服务。一站式对话体验：财富管理方案、机构业务支持、跨境与国际业务资讯、投资交易参考，专业服务对话即达。",
+    "en": "China Galaxy Securities delivers comprehensive, multi-tiered, and professional financial services — wealth management, investment banking, institutional business, international business, and investment trading — for individuals, corporations, institutions, international clients, and capital markets. One-stop conversational access: wealth-management solutions, institutional support, cross-border insights, and trading references."
+  },
+  "welcome_message": {
+    "zh": "你好，我是银河证券 AI 助手——财富管理、机构业务、国际业务、投资交易，综合金融服务对话即达。今天需要什么支持？",
+    "en": "Hi, I'm the China Galaxy Securities AI assistant — wealth management, institutional business, international services, and trading support, all conversational. How can I help today?"
+  },
+  "icon_name": "file-text",
+  "color": "#B01E24",
+  "prompt_files": [
+    "SOUL.md",
+    "IDENTITY.md"
+  ],
+  "quick_prompts": [
+    {
+      "title": {"zh": "财富管理方案", "en": "Wealth plan draft"},
+      "description": {"zh": "按风险偏好起草资产配置参考框架", "en": "Draft an asset-allocation reference by risk profile"},
+      "prompt": {"zh": "请为一位稳健型个人投资者起草资产配置参考框架（股/债/货基/黄金比例区间），并说明各类资产的作用与再平衡思路。", "en": "Draft a reference asset-allocation framework for a conservative investor (equity/bond/money-market/gold ranges), with roles and rebalancing logic."},
+      "color": "#fff1f0",
+      "icon_name": "trending-up"
+    },
+    {
+      "title": {"zh": "投行与机构资讯", "en": "IB & institutional news"},
+      "description": {"zh": "IPO、再融资与机构业务动态梳理", "en": "Recap IPO, refinancing, and institutional updates"},
+      "prompt": {"zh": "请梳理近期 A 股 IPO 与再融资市场动态，以及值得关注的项目与政策变化。", "en": "Recap recent A-share IPO and refinancing dynamics, notable deals, and policy changes."},
+      "color": "#f0f5ff",
+      "icon_name": "file-text"
+    },
+    {
+      "title": {"zh": "国际业务资讯", "en": "Global business brief"},
+      "description": {"zh": "港股、美股与跨境投资动态", "en": "HK, US, and cross-border investment updates"},
+      "prompt": {"zh": "请给我最近的港股与美股市场要点，以及跨境投资（互联互通、QDII）相关的新变化。", "en": "Give me recent HK and US market highlights, plus new developments in cross-border investing (Stock Connect, QDII)."},
+      "color": "#f6ffed",
+      "icon_name": "globe"
+    },
+    {
+      "title": {"zh": "交易术语科普", "en": "Trading glossary"},
+      "description": {"zh": "用通俗语言解释交易机制与术语", "en": "Explain trading mechanics in plain language"},
+      "prompt": {"zh": "请用通俗语言解释「融资融券」是什么：运作机制、适合什么样的投资者、主要风险点。", "en": "Explain margin trading and short selling in plain language: mechanics, suitable investors, and key risks."},
+      "color": "#fffbe6",
+      "icon_name": "message-square"
+    }
+  ]
+}

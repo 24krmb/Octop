@@ -1,0 +1,30 @@
+interface:
+  display_name: "Fiona 期货市场预期研判"
+  short_description: "以市场预期为主线，结合行情、排名和必要的 DZ 观点输出条件化情景研判"
+  default_prompt: "使用 $fiona-futures-expectation 对指定期货品种进行证据化市场预期研判。"
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "rating_prediction"
+      description: "市场预期分布和东证观点时间序列"
+      transport: "streamable_http"
+      url: "https://track.finoview.com.cn/fiona/mcp/rating_prediction"
+    - type: "mcp"
+      value: "futures_market_data"
+      description: "期货品种、合约、行情和交易日历（按需验证）"
+      transport: "streamable_http"
+      url: "https://track.finoview.com.cn/fiona/mcp/futures_market_data"
+    - type: "mcp"
+      value: "viewpoint"
+      description: "观点库、周度观点和动态快评（按需辅助）"
+      transport: "streamable_http"
+      url: "https://track.finoview.com.cn/fiona/mcp/viewpoint"
+    - type: "mcp"
+      value: "futures_ranking"
+      description: "期货时间序列、截面统计和排名"
+      transport: "streamable_http"
+      url: "https://track.finoview.com.cn/fiona/mcp/futures_ranking"
+
+policy:
+  allow_implicit_invocation: true

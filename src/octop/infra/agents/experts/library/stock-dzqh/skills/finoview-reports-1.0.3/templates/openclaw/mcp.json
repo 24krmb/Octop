@@ -1,0 +1,12 @@
+{
+    "mcpServers": {
+        "report": {
+            "type": "http",
+            "url": "https://track.finoview.com.cn/fiona/mcp/report"
+        },
+        "viewpoint": {
+            "type": "http",
+            "url": "https://track.finoview.com.cn/fiona/mcp/viewpoint"
+        }
+    }
+}

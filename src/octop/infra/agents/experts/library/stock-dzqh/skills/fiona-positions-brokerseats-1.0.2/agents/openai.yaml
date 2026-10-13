@@ -1,0 +1,20 @@
+interface:
+  display_name: "繁微Fiona 会员席位持仓分析"
+  short_description: "分析期货会员席位多空持仓排名、增减动向、净持仓方向与持仓集中度"
+  default_prompt: "Use $fiona-positions-brokerseats to analyze futures member-seat long/short positions, rankings, changes, net positions and concentration."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "futures_market_data"
+      description: "Fiona futures member positions, quotes, contracts and trading-calendar tools"
+      transport: "streamable_http"
+      url: "https://track.finoview.com.cn/fiona/mcp/futures_market_data"
+    - type: "mcp"
+      value: "market_data_calculate"
+      description: "Fiona member position amounts, summaries, profit and opening-process tools"
+      transport: "streamable_http"
+      url: "https://track.finoview.com.cn/fiona/mcp/market_calculate"
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,15 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "mcp": {
+        "report": {
+            "type": "remote",
+            "url": "https://track.finoview.com.cn/fiona/mcp/report",
+            "enabled": true
+        },
+        "viewpoint": {
+            "type": "remote",
+            "url": "https://track.finoview.com.cn/fiona/mcp/viewpoint",
+            "enabled": true
+        }
+    }
+}

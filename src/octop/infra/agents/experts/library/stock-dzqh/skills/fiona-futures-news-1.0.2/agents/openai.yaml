@@ -1,0 +1,4 @@
+interface:
+  display_name: "繁微Fiona 期货资讯研究"
+  short_description: "以公开检索为主研判期货资讯，按需结合经济日历数据"
+  default_prompt: "Use $fiona-futures-news to summarize important futures-market news from the past 24 hours."

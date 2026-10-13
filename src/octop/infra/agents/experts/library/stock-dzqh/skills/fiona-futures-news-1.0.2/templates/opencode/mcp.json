@@ -1,0 +1,21 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "mcp": {
+        "fiona-news": {
+            "type": "remote",
+            "url": "https://track.finoview.com.cn/fiona/mcp/news",
+            "enabled": true,
+            "headers": {
+                "Authorization": "Bearer <your-authorized-mcp-token>"
+            }
+        },
+        "fiona-economic-calendar": {
+            "type": "remote",
+            "url": "https://track.finoview.com.cn/fiona/mcp/economic_calendar",
+            "enabled": true,
+            "headers": {
+                "Authorization": "Bearer <your-authorized-mcp-token>"
+            }
+        }
+    }
+}

@@ -1,0 +1,51 @@
+{
+  "id": "stock-gtht",
+  "label": {
+    "zh": "国泰海通",
+    "en": "Guotai Haitong"
+  },
+  "description": {
+    "zh": "国泰海通智能助手：金融数据、实时行情、灵犀智能选股、灵犀自选股管理、研报搜索、灵犀市场热榜查询——依托国泰海通专业金融能力，一站式对话服务投资研究与交易决策。",
+    "en": "Guotai Haitong AI assistant: financial data, real-time quotes, Lingxi smart stock screening, Lingxi watchlist management, research report search, and Lingxi market hot-list queries — one-stop conversational access to professional capabilities for research and trading decisions."
+  },
+  "welcome_message": {
+    "zh": "你好，我是国泰海通 AI 助手——金融数据、实时行情、灵犀智能选股、研报搜索、市场热榜，专业能力对话即达。今天想从哪里开始？",
+    "en": "Hi, I'm the Guotai Haitong AI assistant — financial data, real-time quotes, Lingxi smart screening, research search, and market hot lists, all conversational. Where shall we start?"
+  },
+  "icon_name": "trending-up",
+  "color": "#E60027",
+  "prompt_files": [
+    "SOUL.md",
+    "IDENTITY.md"
+  ],
+  "quick_prompts": [
+    {
+      "title": {"zh": "实时行情查询", "en": "Real-time quotes"},
+      "description": {"zh": "指数与个股实时行情一问即达", "en": "Instant index and stock quotes"},
+      "prompt": {"zh": "请查询上证指数、深证成指、创业板指的实时行情，以及最近涨幅居前的个股。", "en": "Fetch real-time quotes for the SSE, SZSE, and ChiNext indices, plus recently leading stocks."},
+      "color": "#fff1f0",
+      "icon_name": "trending-up"
+    },
+    {
+      "title": {"zh": "灵犀智能选股", "en": "Lingxi smart screening"},
+      "description": {"zh": "按条件智能筛选候选标的", "en": "Smart screening by your criteria"},
+      "prompt": {"zh": "请用灵犀智能选股帮我筛选：市值 100 亿以上、近 20 日涨幅超过 10%、成交量放大的个股，列出名单与关键数据。", "en": "Use Lingxi smart screening: market cap over 10B, 20-day gain over 10%, expanding volume — list candidates with key data."},
+      "color": "#f0f5ff",
+      "icon_name": "bar-chart-3"
+    },
+    {
+      "title": {"zh": "研报搜索", "en": "Research search"},
+      "description": {"zh": "按主题检索最新研报观点", "en": "Search latest research by theme"},
+      "prompt": {"zh": "请搜索最近一周关于人工智能产业的券商研报，列出标题、券商、评级与核心观点。", "en": "Search last week's AI-industry broker reports: title, broker, rating, and core views."},
+      "color": "#f6ffed",
+      "icon_name": "file-text"
+    },
+    {
+      "title": {"zh": "市场热榜", "en": "Market hot list"},
+      "description": {"zh": "热股/热榜一屏掌握市场焦点", "en": "One-screen view of market focus"},
+      "prompt": {"zh": "请查询今天的市场热榜：热门个股、热门板块与讨论焦点。", "en": "Fetch today's market hot list: trending stocks, sectors, and discussion focus."},
+      "color": "#fffbe6",
+      "icon_name": "activity"
+    }
+  ]
+}

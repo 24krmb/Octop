@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "futures-market-data": {"type": "streamable-http", "url": "https://track.finoview.com.cn/fiona/mcp/futures_market_data"},
+    "viewpoint": {"type": "streamable-http", "url": "https://track.finoview.com.cn/fiona/mcp/viewpoint"},
+    "futures-ranking": {"type": "streamable-http", "url": "https://track.finoview.com.cn/fiona/mcp/futures_ranking"},
+    "rating-prediction": {"type": "streamable-http", "url": "https://track.finoview.com.cn/fiona/mcp/rating_prediction", "headers": {"Authorization": "Bearer <your-authorized-mcp-token>"}}
+  }
+}

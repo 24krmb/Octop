@@ -1,0 +1,18 @@
+{
+    "mcpServers": {
+        "fiona-news": {
+            "type": "streamable-http",
+            "url": "https://track.finoview.com.cn/fiona/mcp/news",
+            "headers": {
+                "Authorization": "Bearer <your-authorized-mcp-token>"
+            }
+        },
+        "fiona-economic-calendar": {
+            "type": "streamable-http",
+            "url": "https://track.finoview.com.cn/fiona/mcp/economic_calendar",
+            "headers": {
+                "Authorization": "Bearer <your-authorized-mcp-token>"
+            }
+        }
+    }
+}
