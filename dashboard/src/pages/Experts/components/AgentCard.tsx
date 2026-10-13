@@ -46,7 +46,7 @@ const STATE_META: Record<
   string,
   { color: string; bg: string; spin?: boolean }
 > = {
-  running: { color: "rgba(74, 222, 128, 0.1)", bg: "rgba(74, 222, 128, 0.1)" },
+  running: { color: "var(--fn-color-success)", bg: "rgba(74, 222, 128, 0.1)" },
   stopped: { color: "#8c8c8c", bg: "rgba(140,140,140,0.10)" },
   created: { color: "#8c8c8c", bg: "rgba(140,140,140,0.10)" },
   failed: { color: "#f36", bg: "rgba(255,51,102,0.1)" },
