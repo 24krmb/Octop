@@ -43,25 +43,19 @@ export default function SkillsTabs({ agentId }: SkillsTabsProps) {
   const currentUser = useCurrentUser();
   // Hide the skill-packages tab for users without the `skill_packages` permission.
   const canSkillPackages = userCanAny(currentUser, PERM.skillPackages);
-  // 技能市场（SkillHub）仅管理员可见。
-  const isAdmin = currentUser?.role === "admin";
   const remoteAgent = Boolean(agentId?.startsWith("bridge:"));
   const [activeTab, setActiveTab] = useState<SkillsTab>("custom");
   const tabs = useMemo(
     () =>
       SKILL_TABS.filter(
-        (tab) =>
-          (tab.key !== "packages" || (canSkillPackages && !remoteAgent)) &&
-          (tab.key !== "skillhub" || isAdmin),
+        (tab) => tab.key !== "packages" || (canSkillPackages && !remoteAgent),
       ),
-    [canSkillPackages, remoteAgent, isAdmin],
+    [canSkillPackages, remoteAgent],
   );
   const resolvedTab =
     activeTab === "packages" && (!canSkillPackages || remoteAgent)
       ? "custom"
-      : activeTab === "skillhub" && !isAdmin
-        ? "custom"
-        : activeTab;
+      : activeTab;
   const onInstalledTab =
     resolvedTab === "custom" ||
     resolvedTab === "builtin" ||

@@ -858,20 +858,11 @@ export default function ExpertsPage() {
             ),
             children: teamsContent,
           },
-          // 助理市场仅管理员可见（用户角色隐藏此 tab）
-          ...(currentUser?.role === "admin"
-            ? [
-                {
-                  key: "market" as TabKey,
-                  label: (
-                    <TabLabel icon={Store}>
-                      {t("experts.expertMarket")}
-                    </TabLabel>
-                  ),
-                  children: marketContent,
-                },
-              ]
-            : []),
+          {
+            key: "market" as TabKey,
+            label: <TabLabel icon={Store}>{t("experts.expertMarket")}</TabLabel>,
+            children: marketContent,
+          },
         ]}
       />
 
