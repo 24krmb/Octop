@@ -240,6 +240,7 @@ export default function ModelsPage() {
     <PageShell
       title={undefined}
       subtitle={t("pageShell.models.subtitle")}
+      flat
       actions={
         modelCategory === "chat" ? (
           <Space>

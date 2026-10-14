@@ -42,6 +42,8 @@ interface PageShellProps {
   showTeams?: boolean;
   /** When true, the content area does not scroll; children fill remaining height. */
   fill?: boolean;
+  /** Transparent content area: no card background, radius, or top/side padding. */
+  flat?: boolean;
   children: React.ReactNode;
 }
 
@@ -98,6 +100,7 @@ function PageShell({
   agentScoped,
   showTeams,
   fill,
+  flat,
   children,
 }: PageShellProps) {
   const isMobile = useIsMobile();
@@ -202,13 +205,12 @@ function PageShell({
         style={{
           flex: 1,
           // FillTabs (fill) mode: transparent — tabs sit directly on the page.
-          background: fill
-            ? "transparent"
-            : "var(--fn-bg-primary)",
-          borderRadius: fill ? 0 : 8,
+          background: fill || flat ? "transparent" : "var(--fn-bg-primary)",
+          borderRadius: fill || flat ? 0 : 8,
           // FillTabs (fill) mode: no padding at all — the tab bar sits right
           // below the page title row, flush with the container edges.
-          padding: fill ? 0 : contentPad,
+          // flat mode: card chrome removed, bottom keeps the safe-area pad.
+          padding: fill || flat ? 0 : contentPad,
           paddingBottom: fill
             ? 0
             : pinBody
