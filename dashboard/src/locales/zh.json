@@ -1137,7 +1137,7 @@
     "noResults": "没有匹配的子智能体",
     "noDescription": "暂无描述",
     "agentNotReady": "请先启动该助理再管理子智能体",
-    "pickAgent": "请先选择一个助理",
+    "pickAgent": "先从上面选择一个Agent来管理它的定时任务，如果不显示Agent，先创建第一个 主 Agent",
     "createSubagent": "新增子智能体",
     "editSubagent": "编辑子智能体",
     "createSuccess": "子智能体已创建",
@@ -1379,7 +1379,7 @@
     "noAgentsTitle": "还没有助理",
     "noAgentsHint": "从助理列表选择模板，快速创建你的第一个 AI 助理。",
     "createExpert": "去创建助理",
-    "pickAgent": "请先选择一个助理",
+    "pickAgent": "先从上面选择一个Agent来管理它的定时任务，如果不显示Agent，先创建第一个 主 Agent",
     "bootstrapKickoff": "你好，我们开始吧",
     "createSessionFailed": "创建会话失败，请重试",
     "searchSessions": "搜索会话",
@@ -1789,7 +1789,7 @@
     "uploaded": "已上传 {{name}}",
     "uploadFailed": "上传失败",
     "empty": "工作区为空",
-    "pickAgent": "请先选择一个助理",
+    "pickAgent": "先从上面选择一个Agent来管理它的定时任务，如果不显示Agent，先创建第一个 主 Agent",
     "pickFile": "选择一个文件以查看内容",
     "pickEntry": "选择工作区或文件以查看内容",
     "requiresRunning": "请先启动助理（加载后端运行时）后再打开工作区",
@@ -2328,7 +2328,7 @@
       "runtimeTimeoutSeconds": "超时时间 (秒)",
       "runtimeMisfireGrace": "错过容忍 (秒)"
     },
-    "noAgentSelected": "先从上面选择一个助理来管理它的定时任务，如果不显示助理，先创建第一个助理",
+    "noAgentSelected": "先从上面选择一个Agent来管理它的定时任务，如果不显示Agent，先创建第一个 主 Agent",
     "deleteFailed": "删除失败",
     "goToChat": "发送到聊天"
   },
@@ -3930,7 +3930,7 @@
     "confirmDeleteDesc": "确定删除「{{filename}}」吗？此操作无法撤销。",
     "deleteSuccess": "已删除",
     "deleteFailed": "删除失败，请稍后再试",
-    "noAgentSelected": "请先在顶部选择一个 24K-Claw",
+    "noAgentSelected": "先从上面选择一个Agent来管理它的定时任务，如果不显示Agent，先创建第一个 主 Agent",
     "tabs": {
       "overview": "概览",
       "profile": "用户画像",
@@ -5986,7 +5986,7 @@
     "weknoraStep2": "检测本机服务，或手动填写部署地址"
   },
   "mbtiPage": {
-    "pickAgent": "请先选择一个助理"
+    "pickAgent": "先从上面选择一个Agent来管理它的定时任务，如果不显示Agent，先创建第一个 主 Agent"
   },
   "acp": {
     "description": "连接支持 ACP 协议的外部编程助理。Runner 配置对该账号下所有助理共享；可在下方按助理单独开启 acp_runner 工具。",
