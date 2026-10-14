@@ -33,7 +33,7 @@
   background: var(--fn-bg-primary);
   border: 1px solid var(--fn-card-border-normal);
   border-radius: var(--fn-card-radius, var(--fn-radius-lg));
-  box-shadow: var(--fn-card-shadow-normal);
+  box-shadow: var(--box-shadow);
   transition:
     border-color 0.18s ease,
     box-shadow 0.18s ease,
@@ -41,7 +41,7 @@
 
   &:hover {
     border-color: var(--fn-border-input);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--fn-shadow-brand-lg, 0 8px 24px var(--box-shadow));
     transform: translateY(-1px);
   }
 
@@ -75,10 +75,8 @@
 
 .cardSetup {
   cursor: pointer;
-  border-style: dashed;
 
   &:hover {
-    border-style: solid;
     border-color: color-mix(
       in srgb,
       var(--fn-color-brand) 40%,
