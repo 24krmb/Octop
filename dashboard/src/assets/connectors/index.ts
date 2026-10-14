@@ -26,6 +26,7 @@ import youdaoNote from "./youdao-note.png";
 import yuandian from "./yuandian.png";
 import windStockData from "./wind-stock-data.png";
 import tdxFinance from "./tdx-finance.png";
+import fiona from "./fiona.png";
 
 export const CONNECTOR_LOGOS: Record<string, string> = {
   "tencent-ardot": tencentArdot,
@@ -72,6 +73,8 @@ export const CONNECTOR_LOGOS: Record<string, string> = {
 const CONNECTOR_NAME_LOGOS: Record<string, string> = {
   通达信: tdxFinance,
   tdx: tdxFinance,
+  繁微: fiona,
+  fiona: fiona,
 };
 
 export function getConnectorLogoByName(

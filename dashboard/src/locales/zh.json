@@ -2391,7 +2391,7 @@
     "intro_dashboard": "本地仪表盘通道，开箱即用；用于后台调试，无需第三方配置。",
     "intro_yuanbao": "配置腾讯元宝通讯频道，将助理能力接入元宝会话场景。",
     "intro_octopbot": "配置 OctopBot 平台频道，对接腾讯云托管机器人与你的助理。",
-    "intro_xiaoyi": "配置华为小艺（OpenClaw）频道，经 A2A 协议与语音助手互通。",
+    "intro_xiaoyi": "配置华为小艺，经 A2A 协议与语音助手互通。",
     "intro_mqtt": "配置 MQTT 频道，将 IoT 设备或机器人消息路由到助理。",
     "intro_telegram": "配置 Telegram Bot 频道，支持私聊与群组消息经 Bot API 接入。",
     "yuanbaoGetCredentialsHint": "在这里获取你的机器人信息",

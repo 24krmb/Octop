@@ -13,7 +13,7 @@
     "en": "Hi, I'm Fupanxia — your posting companion on the 24KRMB forum. How was today's market? Tell me, and I'll draft the post."
   },
   "icon_name": "refresh-cw",
-  "color": "#C7000B",
+  "color": "#f36",
   "prompt_files": [
     "SOUL.md",
     "IDENTITY.md",

@@ -16,7 +16,7 @@ html[data-theme="light"] {
   --fn-color-brand-shadow: rgba(102, 102, 255, 0.15); /* 品牌色阴影 */
   --fn-color-brand-glow: rgba(102, 102, 255, 0.08); /* 品牌色光晕 */
   --box-shadow: rgba(102, 102, 255,.1); /* 阴影颜色 */
-  --hover-border:#6666ff; /* 悬停态边框颜色 */
+  --hover-border:rgb(102, 102, 255); /* 悬停态边框颜色 */
   --fn-bg-primary: #fff; /* 主背景色 */
   --fn-bg-secondary: #dfeafd; /* 次级背景色 */
   --fn-bg-tertiary: #E5EEFF; /* 对话表格背景色 */
