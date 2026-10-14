@@ -5,6 +5,7 @@
 格式遵循 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)，版本号遵循 [语义化版本规范](https://semver.org/spec/v2.0.0.html)。
 
 ## [Unreleased]
+- 修复 Windows 恢复当前专家 SQLite 备份时，安全备份使用只读句柄同步落盘导致 `Bad file descriptor` 的问题；仍在安全备份成功落盘后才覆盖当前数据。
 - 升级 octop-harness 最低版本至 1.0.3，接入独立记忆调用重试及按专家排空后台任务，支持当前专家安全恢复备份。
 - 微信定时任务：从旧版本升上来的库不再因为 `cron_jobs` 仍使用 `trigger` 列而创建失败，启动时会改成 `schedule_spec` 并保留原有任务。微信对话用的发送票会写入会话，进程重启后定时推送仍可投递；机器人登录掉线（`errcode=-14`）时仍需重新扫码
 - 团队微信不再把工具调用前的半句进度发给用户；派给其他专家的那句说明会保留
