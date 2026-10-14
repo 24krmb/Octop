@@ -515,12 +515,6 @@ export default function MBTISelector({
                     />
                     <div className={styles.typeCardBody}>
                       <div className={styles.typeCardHeader}>
-                        <img
-                          className={styles.typeAvatar}
-                          src={`/assets/mbti/${code}.svg`}
-                          alt={code}
-                          style={{ background: `${type.color}14` }}
-                        />
                         <div className={styles.typeCardMeta}>
                           <div className={styles.typeCardName}>
                             <span style={{ color: type.color }}>
