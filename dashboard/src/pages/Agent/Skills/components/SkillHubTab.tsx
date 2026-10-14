@@ -352,7 +352,7 @@ export default function SkillHubTab({
           paddingTop: 48,
         }}
       >
-        <div style={{ color: "var(--fn-color-danger, #ff4d4f)" }}>
+        <div style={{ color: "var(--fn-color-danger, #f36)" }}>
           {loadError}
         </div>
         <Button

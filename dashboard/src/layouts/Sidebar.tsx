@@ -200,7 +200,7 @@ function NavItemButton({
                 fontSize: typeSize(9, isMobile),
                 fontWeight: 600,
                 color: "#fff",
-                backgroundColor: "#ff4d4f",
+                backgroundColor: "#f36",
                 padding: "1px 4px",
                 borderRadius: "2px",
                 whiteSpace: "nowrap",

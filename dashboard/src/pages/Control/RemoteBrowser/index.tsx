@@ -1074,7 +1074,7 @@ export default function RemoteBrowserPage({
       return (
         <div>
           <Result
-            icon={<Terminal size={40} color="var(--fn-color-error,#ff4d4f)" />}
+            icon={<Terminal size={40} color="var(--fn-color-error,#f36)" />}
             title={t("remoteBrowser.installFailed", "安装失败")}
             subTitle={t(
               "remoteBrowser.installFailedHint",

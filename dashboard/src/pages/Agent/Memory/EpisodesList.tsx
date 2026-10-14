@@ -251,7 +251,7 @@ function emotionHex(e: string): string {
   const k = (e || "").toLowerCase();
   if (k.includes("happy") || k.includes("joy")) return "#0c9";
   if (k.includes("sad")) return "#1677ff";
-  if (k.includes("angry") || k.includes("anger")) return "#ff4d4f";
+  if (k.includes("angry") || k.includes("anger")) return "#f36";
   if (k.includes("surpr")) return "#722ed1";
   if (k.includes("anxi") || k.includes("worry")) return "#fa8c16";
   return "#8c8c8c";

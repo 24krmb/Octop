@@ -672,7 +672,7 @@ function AtomRow({
               width: 22,
               height: 22,
               borderRadius: 4,
-              color: "#ff4d4f",
+              color: "#f36",
               cursor: "pointer",
               flexShrink: 0,
             }}

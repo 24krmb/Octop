@@ -93,7 +93,7 @@ export default function SidebarCollapsedIconNav({
                     fontSize: 7,
                     fontWeight: 700,
                     color: "#fff",
-                    backgroundColor: "#ff4d4f",
+                    backgroundColor: "#f36",
                     width: 14,
                     height: 14,
                     display: "flex",

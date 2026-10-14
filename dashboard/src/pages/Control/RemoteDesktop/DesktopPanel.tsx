@@ -818,7 +818,7 @@ export default function DesktopPanel({
       return (
         <Space direction="vertical" size="middle" style={{ width: "100%" }}>
           <Result
-            icon={<Terminal size={40} color="var(--fn-color-error,#ff4d4f)" />}
+            icon={<Terminal size={40} color="var(--fn-color-error,#f36)" />}
             title={t("remoteDesktop.installFailed", "安装失败")}
             subTitle={t("remoteDesktop.installFailedHint")}
             style={{ padding: "8px 0" }}

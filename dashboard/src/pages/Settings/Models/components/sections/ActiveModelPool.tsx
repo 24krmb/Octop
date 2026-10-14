@@ -366,7 +366,7 @@ export function ActiveModelPool({
                         ) : testState === "success" ? (
                           <Check size={14} style={{ color: "var(--fn-color-success)" }} />
                         ) : testState === "failure" ? (
-                          <X size={14} style={{ color: "#ff4d4f" }} />
+                          <X size={14} style={{ color: "#f36" }} />
                         ) : (
                           <Tooltip title={t("models.testConnection")}>
                             <Button

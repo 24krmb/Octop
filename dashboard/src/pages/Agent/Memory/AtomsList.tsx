@@ -234,7 +234,7 @@ export default function AtomsList({ agentId }: Props) {
                       handleDeprecate(a);
                     }}
                     style={{
-                      color: "#ff4d4f",
+                      color: "#f36",
                       cursor: "pointer",
                       padding: "2px 4px",
                       borderRadius: 4,

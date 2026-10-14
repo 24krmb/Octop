@@ -55,7 +55,7 @@ const ACTION_HEX: Record<string, string> = {
   capture: "#8c8c8c",
   extract: "#1677ff",
   promote: "#722ed1",
-  reject: "#ff4d4f",
+  reject: "#f36",
   deprecate: "#fa541c",
   page_regen: "#2f54eb",
   create: "#0c9",

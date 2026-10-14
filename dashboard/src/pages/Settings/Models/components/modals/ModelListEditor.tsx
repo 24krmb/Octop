@@ -486,7 +486,7 @@ export function ModelListEditor({
                       <X
                         size={14}
                         style={{
-                          color: "#ff4d4f",
+                          color: "#f36",
                           marginRight: 8,
                         }}
                       />

@@ -246,7 +246,7 @@ export default function OctopAgentsPage() {
             </Tag>
             {row.last_error && (
               <Tooltip title={formatAgentError(row.last_error, t)}>
-                <AlertCircle size={14} color="var(--fn-color-error, #ff4d4f)" />
+                <AlertCircle size={14} color="var(--fn-color-error, #f36)" />
               </Tooltip>
             )}
           </Space>
