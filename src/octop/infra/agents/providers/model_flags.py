@@ -11,6 +11,17 @@ _ONNX_PRESET_NAMES = frozenset({"onnx", "onnx (local)"})
 # Same pattern for Ollama (placeholder api_key + exact preset names).
 _OLLAMA_PRESET_API_KEY = "ollama"
 _OLLAMA_PRESET_NAMES = frozenset({"ollama", "ollama (local)"})
+# Common embedding-only naming conventions. ``is_vision_model`` already keys
+# off name hints ("vision", "-vl", ...); embedding needs the same treatment
+# because remote catalogs rarely carry an explicit ``embedding: true`` flag.
+# Substrings are matched against the lower-cased model id.
+_EMBEDDING_NAME_HINTS = (
+    "embed",       # text-embedding-3-small, qwen*-embedding, bce-embedding, nomic-embed-text
+    "bge-",        # BAAI general embedding series (bge-m3 has no "embed" substring)
+    "e5-",         # e5-large-v2 family
+    "gte-",        # gte-large family
+    "rerank",      # rerankers share the embedding picker, never chat
+)
 
 
 def is_onnx_local_provider(
@@ -84,6 +95,12 @@ def is_embedding_model(
     - ``embedding: true``
     - ``task: "embedding"``
 
+    Name-convention fallback: many upstream model catalogs (DashScope,
+    SiliconFlow, Ollama, vLLM listings, ...) ship embedding entries without an
+    explicit flag, so mirror ``is_vision_model`` and recognise the common
+    naming conventions too. This keeps embedding-only entries out of chat
+    pickers and lets ``embedding-options`` surface remote providers (#1929).
+
     Legacy fallback: models under the ONNX local provider are treated as
     embedding-only even if the flag was missing.
     """
@@ -91,6 +108,9 @@ def is_embedding_model(
         return True
     task = str(model.get("task") or "").strip().lower()
     if task == "embedding":
+        return True
+    model_id = str(model.get("id") or "").strip().lower()
+    if model_id and any(hint in model_id for hint in _EMBEDDING_NAME_HINTS):
         return True
     return is_onnx_local_provider(provider_name, provider_api_key=provider_api_key)
 
