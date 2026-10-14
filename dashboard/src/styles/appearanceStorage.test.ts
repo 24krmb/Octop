@@ -48,13 +48,13 @@ describe("appearanceStorage", () => {
       JSON.stringify({
         preference: "light",
         palette: "custom",
-        customColor: "#AB5E50",
+        customColor: "#96f",
       }),
     );
 
     const appearance = readStoredAppearance();
     expect(appearance.palette).toBe("custom");
-    expect(appearance.customColor).toBe("#ab5e50");
+    expect(appearance.customColor).toBe("#96f");
   });
 
   it("falls back to the default custom color on invalid hex", () => {
@@ -77,14 +77,14 @@ describe("appearanceStorage", () => {
     writeStoredAppearance({
       preference: "light",
       palette: "custom",
-      customColor: "#00AA55",
+      customColor: "#0c9",
     });
 
     expect(localStorage.getItem(LEGACY_PALETTE_STORAGE_KEY)).toBeNull();
     expect(JSON.parse(localStorage.getItem(THEME_STORAGE_KEY)!)).toEqual({
       preference: "light",
       palette: "custom",
-      customColor: "#00aa55",
+      customColor: "#0c9",
     });
   });
 

@@ -502,9 +502,9 @@ html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
 @supports not selector(::-webkit-scrollbar) {
   * {
     scrollbar-width: none;
-    scrollbar-color: var(--fn-text-tertiary) transparent;
+    scrollbar-color: var(--fn-color-brand) transparent;
   }
   html[data-theme="dark"] * {
-    scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+    scrollbar-color: var(--fn-color-brand) transparent;
   }
 }

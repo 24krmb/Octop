@@ -406,7 +406,7 @@ function TetrisCard(props) {
       }),
       _jsx("button", {
         type: "button",
-        style: { ...btnStyle(true), width: "100%", marginTop: 6, background: "#1d4ed8" },
+        style: { ...btnStyle(true), width: "100%", marginTop: 6, background: "#66f" },
         onClick: () => {
           patchedOver.current = false;
           setGame(createGame());

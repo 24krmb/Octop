@@ -36,8 +36,8 @@ describe("parseStoredColor", () => {
   });
 
   it("keeps a custom hex as-is (lowercased)", () => {
-    expect(parseStoredColor("#AB5E50")).toBe("#ab5e50");
-    expect(parseStoredColor("#00aa55")).toBe("#00aa55");
+    expect(parseStoredColor("#6666ff")).toBe("#6666ff");
+    expect(parseStoredColor("#00cc99")).toBe("#00cc99");
   });
 
   it("expands 3-digit hex before matching", () => {

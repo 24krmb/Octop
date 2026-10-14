@@ -271,7 +271,7 @@ def test_normalize_manifest_assets_uses_pastel_palette_for_quick_prompt_colors()
     )
 
     payload = _generated_payload(prompt_count=2)
-    payload["quick_prompts"][0]["color"] = "#1d4ed8"
+    payload["quick_prompts"][0]["color"] = "#66f"
     payload["quick_prompts"][1]["color"] = "#e8f4ff"
 
     assets = normalize_manifest_assets(

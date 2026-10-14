@@ -102,7 +102,7 @@ function TimerCard(props) {
         ? "linear-gradient(165deg,#0c9,#22c55e)"
         : isPomo
           ? "linear-gradient(165deg,#c2410c,#ea580c 40%,#fb923c)"
-          : "linear-gradient(165deg,#1d4ed8,#2563eb 45%,#7c3aed)",
+          : "linear-gradient(165deg,#66f,#2563eb 45%,#7c3aed)",
       boxShadow: "0 16px 36px rgba(234,88,12,.28)",
     },
     "data-octop-plugin-ui": "pomodoro",

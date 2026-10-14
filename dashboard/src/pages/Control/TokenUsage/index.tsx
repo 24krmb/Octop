@@ -314,7 +314,7 @@ function DailyTrendCharts({
   turnsLabel: string;
 }) {
   const { isDark } = useTheme();
-  const turnsColor = brandPrimary("custom", isDark, "#1d4ed8");
+  const turnsColor = brandPrimary("custom", isDark, "#66f");
   const empty = data.length === 0;
 
   return (

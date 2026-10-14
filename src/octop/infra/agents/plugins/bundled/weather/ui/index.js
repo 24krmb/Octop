@@ -21,7 +21,7 @@ function sky(code, dark) {
   if (n === 0) return dark ? "linear-gradient(160deg,#1e3a5f,#0ea5e9)" : "linear-gradient(160deg,#7dd3fc,#38bdf8 45%,#fde68a)";
   if (n <= 3) return dark ? "linear-gradient(160deg,#334155,#64748b)" : "linear-gradient(160deg,#cbd5e1,#94a3b8)";
   if (n >= 71 && n < 80) return dark ? "linear-gradient(160deg,#1e293b,#94a3b8)" : "linear-gradient(160deg,#e2e8f0,#bfdbfe)";
-  if (n >= 50) return dark ? "linear-gradient(160deg,#1e293b,#1d4ed8)" : "linear-gradient(160deg,#93c5fd,#64748b)";
+  if (n >= 50) return dark ? "linear-gradient(160deg,#1e293b,#66f)" : "linear-gradient(160deg,#93c5fd,#64748b)";
   return dark ? "linear-gradient(160deg,#1e293b,#334155)" : "linear-gradient(160deg,#e0f2fe,#bae6fd)";
 }
 

@@ -345,7 +345,7 @@ _r(
             emotion_zh="用实际行动而非语言来表达关心",
             planning_zh="详细的清单，明确责任人和截止日期",
         ),
-        color="#1D4ED8",
+        color="#66f",
         symbol="\u2630",
     )
 )
