@@ -1,0 +1,9 @@
+{
+  "site": "https://www.24krmb.com",
+  "api_url": "https://www.24krmb.com/post_article_api.php",
+  "password": "QwenPaw_2024_Secret!",
+  "default_catid": "193",
+  "default_username": "财锋派",
+  "default_from_name": "24K-Claw AI",
+  "default_from_url": "https://www.24krmb.com"
+}

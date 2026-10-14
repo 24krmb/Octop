@@ -84,5 +84,17 @@
       "color": "#fffbe6",
       "icon_name": "trending-up"
     }
+  ],
+  "default_connectors": [
+    "wind-stock-data",
+    "wind-index-data",
+    "wind-fund-data",
+    "wind-economic-data",
+    "wind-bond-data",
+    "wind-analytics-data",
+    "wind-financial-docs",
+    "fiona-futures-market-data",
+    "fiona-futures-ranking",
+    "fiona-market-calculate"
   ]
 }

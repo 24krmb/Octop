@@ -94,8 +94,7 @@ def get_credentials():
     p = os.environ.get("COMMUNITY_PASSWORD")
     if u and p:
         return u, p, "env"
-    cred_file = os.environ.get("COMMUNITY_CRED_FILE",
-                               os.path.join(os.path.dirname(HERE), "..", "..", "..", "..", ".discuz_credentials.json"))
+    cred_file = os.environ.get("COMMUNITY_CRED_FILE", "/data/.octop/.discuz_credentials.json")
     cred_file = os.path.abspath(cred_file)
     if os.path.isfile(cred_file):
         c = json.load(open(cred_file, encoding="utf-8"))
@@ -215,15 +214,33 @@ def cmd_reply(cfg, a):
 
 
 def cmd_article(cfg, a):
+    """门户文章两步流：第一步 GET 取 formhash；第二步 GET(formhash)+POST 提交。"""
     tok = ensure_token(cfg)
     tok, lg = login(cfg, tok)
     if not lg.get("ok"):
         print(json.dumps({"ok": False, "error": "login_failed", "detail": lg}, ensure_ascii=False))
         sys.exit(3)
+    uid = str(uuid.uuid4())
+    # 第一步：只 GET，从 output._G/formhash 取校验串
+    probe = with_retry(cfg, lambda: call(cfg, "portal/publish", {
+        "GET": {"mod": "portalcp", "ac": "article", "catid": str(a.catid)}},
+        token=tok, uniqueid=uid)[0])
+    formhash = (probe.get("data", {}) or {}).get("formhash") or ""
+    if not formhash:
+        print(json.dumps({"ok": False, "error": "no_formhash", "detail": probe}, ensure_ascii=False)[:1500])
+        sys.exit(4)
+    # 第二步：GET(formhash) + POST 全字段提交
     result = with_retry(cfg, lambda: call(cfg, "portal/publish", {
-        "POST": {"catid": str(a.catid), "subject": a.title, "content": a.content}},
-        token=tok)[0])
-    print(json.dumps(interpret(result), ensure_ascii=False, indent=1))
+        "GET": {"mod": "portalcp", "ac": "article", "catid": str(a.catid),
+                "formhash": formhash},
+        "POST": {"articlesubmit": "true", "catid": str(a.catid),
+                 "title": a.title, "content": a.content, "formhash": formhash}},
+        token=tok, uniqueid=str(uuid.uuid4()))[0])
+    out = interpret(result)
+    if out.get("ok") and out.get("articleid"):
+        out["url"] = f"{cfg['site']}/portal.php?mod=view&aid={out['articleid']}"
+    out["formhash_got"] = True
+    print(json.dumps(out, ensure_ascii=False, indent=1))
 
 
 def main():

@@ -5,8 +5,8 @@
     "appid": "19665625",
     "secret": "FEJ9X0HP6BVKOK8B"
   },
-  "token": "TRYOR40U4CYBY3WY",
-  "expires_in": 1791824826,
+  "token": "CPPUMJ7JP2PEEEU8",
+  "expires_in": 1791977629,
   "endpoints": {
     "forumlist": {
       "path": "index/forumlist",

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+    <item id="Title"><![CDATA[Discuz! RESTful]]></item>
+    <item id="Data">
+        <item id="copyright"><![CDATA[24K-Claw]]></item>
+        <item id="api">
+            <item id="v1">
+                <item id="portal">
+                    <item id="name"><![CDATA[门户文章接口 v2]]></item>
+                    <item id="publish">
+                        <item id="name"><![CDATA[发布文章（两步：先取formhash再提交）]]></item>
+                        <item id="attr">
+                            <item id="validateUnique"><![CDATA[10]]></item>
+                        </item>
+                        <item id="script"><![CDATA[portal]]></item>
+                        <item id="get">
+                            <item id="mod"><![CDATA[portalcp]]></item>
+                            <item id="ac"><![CDATA[article]]></item>
+                            <item id="catid"><![CDATA[{:catid:}]]></item>
+                            <item id="formhash"><![CDATA[{:formhash:}]]></item>
+                        </item>
+                        <item id="post">
+                            <item id="portal_submit"><![CDATA[yes]]></item>
+                            <item id="subject"><![CDATA[{:subject:}]]></item>
+                            <item id="content"><![CDATA[{:content:}]]></item>
+                            <item id="catid"><![CDATA[{:catid:}]]></item>
+                            <item id="formhash"><![CDATA[{:formhash:}]]></item>
+                            <item id="from"><![CDATA[portal]]></item>
+                        </item>
+                        <item id="output">
+                            <item id="_G/dshowmessageParam"><![CDATA[msg]]></item>
+                            <item id="_G/formhash"><![CDATA[formhash]]></item>
+                            <item id="_L/articleid"><![CDATA[articleid]]></item>
+                        </item>
+                        <item id="usage">
+                            <item id="catid"><![CDATA[文章栏目ID]]></item>
+                            <item id="subject"><![CDATA[文章标题]]></item>
+                            <item id="content"><![CDATA[文章内容HTML]]></item>
+                            <item id="formhash"><![CDATA[表单校验串（第一阶段从output获取）]]></item>
+                        </item>
+                    </item>
+                </item>
+            </item>
+        </item>
+    </item>
+</root>
