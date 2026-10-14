@@ -116,8 +116,7 @@
     var(--fn-color-brand),
     var(--fn-color-brand-soft)
   );
-  box-shadow: 0 4px 12px
-    color-mix(in srgb, var(--fn-color-brand) 28%, transparent);
+  box-shadow: var(--box-shadow);
 }
 
 .dossierHeadText {
@@ -169,7 +168,7 @@
   border-radius: 10px;
   background: var(--fn-bg-elevated);
   border: 1px solid var(--fn-border-primary);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  box-shadow: var(--box-shadow);
 }
 
 .statItem {
@@ -378,7 +377,7 @@
   gap: 6px;
   padding: 4px 10px;
   border-radius: 999px;
-  background: var(--fn-bg-secondary, rgba(0, 0, 0, 0.03));
+  background: var(--fn-bg-secondary);
   border: 1px solid var(--fn-border-primary);
   font-size: 12px;
   color: var(--fn-text-secondary);
@@ -928,15 +927,10 @@
   justify-content: space-between;
   gap: 16px;
   padding: 18px 20px;
-  border: 1px solid var(--fn-border-primary);
+  border: 1px solid var(--fn-border);
   border-radius: 14px;
   flex-shrink: 0;
-  background: radial-gradient(
-      circle at 0 0,
-      color-mix(in srgb, var(--fn-color-brand) 11%, transparent),
-      transparent 38%
-    ),
-    var(--fn-bg-elevated);
+  background: var(--fn-bg-primary)
 }
 
 .overviewHeroMain,
