@@ -54,7 +54,6 @@ describe("sidebarNav", () => {
     );
     expect(grouped.map((section) => section.id)).toEqual([
       "personalization",
-      "settings",
       "control",
       "admin",
     ]);

@@ -255,24 +255,15 @@ export function buildNavSections(
     });
   }
 
-  const settingsItems: NavItem[] = [];
+  const controlItems: NavItem[] = [];
   if (navAllowed(user, "channels")) {
-    settingsItems.push({
+    controlItems.push({
       key: "channels",
       path: "/personalization/channels",
       icon: <Waypoints size={iconSize} strokeWidth={iconStroke} />,
       labelKey: "nav.channels",
     });
   }
-  if (settingsItems.length > 0) {
-    sections.push({
-      id: "settings",
-      groupKey: "nav.settings",
-      items: settingsItems,
-    });
-  }
-
-  const controlItems: NavItem[] = [];
   if (navAllowed(user, "workbench")) {
     controlItems.push({
       key: "workbench",

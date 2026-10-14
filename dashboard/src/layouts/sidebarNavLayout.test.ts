@@ -42,7 +42,6 @@ describe("sidebarNavLayout", () => {
     ]);
     expect(editor.groups.map((group) => group.id)).toEqual([
       "personalization",
-      "settings",
       "control",
       "admin",
     ]);
@@ -65,13 +64,13 @@ describe("sidebarNavLayout", () => {
       ],
     });
     // Missing built-in groups are spliced back ahead of the first saved
-    // built-in group, and subagents relocates to the front block because its
-    // default group became ungrouped.
+    // built-in group, subagents relocates to the front block because its
+    // default group became ungrouped, and the saved "settings" group ends up
+    // empty (channels now defaults to control) so it is omitted.
     expect(applied.map((section) => section.id ?? "front")).toEqual([
       "front",
       "personalization",
       "admin",
-      "settings",
       "control",
     ]);
     expect(applied[0]?.items.map((item) => item.key)).toEqual([
@@ -80,9 +79,15 @@ describe("sidebarNavLayout", () => {
     ]);
     expect(applied[1]?.groupKey).toBe("nav.personalization");
     expect(applied[2]?.groupKey).toBe("nav.admin");
-    expect(applied[3]?.title).toBe("配置");
-    expect(applied[3]?.items.map((item) => item.key)).toEqual(["channels"]);
-    expect(applied[4]?.groupKey).toBe("nav.control");
+    expect(applied[3]?.groupKey).toBe("nav.control");
+    // workbench keeps its saved placement; channels (new default member of
+    // control) is appended by the migration pass right after it.
+    expect(applied[3]?.items.map((item) => item.key)).toEqual([
+      "workbench",
+      "channels",
+      "remote-desktop",
+      "acp",
+    ]);
   });
 
   it("sends keys missing from a saved layout to hidden", () => {
@@ -105,13 +110,17 @@ describe("sidebarNavLayout", () => {
 
   it("moves a deleted group's items to the front of the ungrouped list", () => {
     const editor = editorFromCatalog(catalog(), null);
-    const next = deleteGroup(editor, "settings");
+    const next = deleteGroup(editor, "control");
     expect(next.groups.map((group) => group.id)).toEqual([
       "personalization",
-      "control",
       "admin",
     ]);
-    expect(next.ungrouped.slice(0, 2)).toEqual(["channels", "chat"]);
+    expect(next.ungrouped.slice(0, 4)).toEqual([
+      "channels",
+      "workbench",
+      "remote-desktop",
+      "acp",
+    ]);
     expect(next.ungrouped).toContain("chat");
   });
 
