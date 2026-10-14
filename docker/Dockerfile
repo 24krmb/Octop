@@ -114,6 +114,8 @@ ENV PATH="/app/.venv/bin:$PATH" \
 
 COPY src/ ./src/
 COPY --from=frontend-builder /build/src/octop/dashboard/ ./src/octop/dashboard/
+# 专家头像探测源（bundled_avatars_dir 找 dashboard/public/experts/avatars）——随镜像自带，避免运行时缺失
+COPY dashboard/public/experts/avatars/ ./dashboard/public/experts/avatars/
 
 COPY .env.example ./
 COPY docker/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
