@@ -4,6 +4,11 @@ Remote catalogs (DashScope, SiliconFlow, Ollama, vLLM listings, ...) ship
 embedding entries without an explicit ``embedding: true`` flag, so
 ``is_embedding_model`` must also recognise common naming conventions —
 mirroring how ``is_vision_model`` already keys off name hints.
+
+Rerankers (review feedback on this PR) are a sibling capability: excluded
+from chat pickers like embeddings, but they must NOT serve as a knowledge
+base embedding backend — they answer ``/rerank`` with relevance scores, not
+``/embeddings`` with vectors.
 """
 
 from __future__ import annotations
@@ -13,6 +18,7 @@ import pytest
 from octop.infra.agents.providers.model_flags import (
     is_chat_eligible_model,
     is_embedding_model,
+    is_rerank_model,
 )
 
 EMBEDDING_BY_NAME = [
@@ -25,7 +31,6 @@ EMBEDDING_BY_NAME = [
     "bce-embedding-base_v1",  # NetEase BCE
     "e5-large-v2",
     "gte-large-zh",
-    "bge-reranker-v2-m3",  # rerankers share the embedding picker
 ]
 
 CHAT_MODELS = [
@@ -35,6 +40,12 @@ CHAT_MODELS = [
     "qwen3-235b-a22b",
     "glm-4.6",
     "claude-sonnet-4",
+]
+
+RERANK_MODELS = [
+    "bge-reranker-v2-m3",  # BAAI — family prefix also matches the embedding hint
+    "jina-reranker-v2-base-multilingual",
+    "qwen3-reranker-8b",
 ]
 
 
@@ -48,9 +59,19 @@ def test_chat_models_not_flagged_as_embedding(model_id: str) -> None:
     assert is_embedding_model({"id": model_id}) is False
 
 
+@pytest.mark.parametrize("model_id", RERANK_MODELS)
+def test_rerankers_are_rerank_not_embedding(model_id: str) -> None:
+    assert is_rerank_model({"id": model_id}) is True
+    # A reranker must not become a knowledge-base embedding backend...
+    assert is_embedding_model({"id": model_id}) is False
+    # ...nor re-enter the chat pickers.
+    assert is_chat_eligible_model({"id": model_id, "enabled": True}) is False
+
+
 def test_explicit_flags_still_win() -> None:
     assert is_embedding_model({"id": "any-model", "embedding": True}) is True
     assert is_embedding_model({"id": "any-model", "task": "embedding"}) is True
+    assert is_rerank_model({"id": "any-model", "task": "rerank"}) is True
 
 
 def test_onnx_provider_fallback_unchanged() -> None:
@@ -71,3 +92,22 @@ def test_chat_eligible_excludes_embedding_models() -> None:
         is False
     )
     assert is_chat_eligible_model({"id": "gpt-4o", "enabled": True}) is True
+
+
+def test_mixed_provider_keeps_chat_drops_embedding() -> None:
+    """One provider serving both: chat stays, embedding leaves the pickers."""
+    models = [
+        {"id": "deepseek-chat", "enabled": True},
+        {"id": "text-embedding-v3", "enabled": True},
+    ]
+    kwargs = {"provider_name": "acme", "provider_api_key": "k"}
+    chat = [m["id"] for m in models if is_chat_eligible_model(m, **kwargs)]
+    assert chat == ["deepseek-chat"]
+
+
+def test_embedding_only_provider_serves_kb_only() -> None:
+    """An embedding-only provider: usable by the knowledge base, no chat."""
+    models = [{"id": "text-embedding-v3", "enabled": True}]
+    kwargs = {"provider_name": "acme", "provider_api_key": "k"}
+    assert is_embedding_model(models[0], **kwargs) is True
+    assert not [m for m in models if is_chat_eligible_model(m, **kwargs)]
