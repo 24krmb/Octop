@@ -264,8 +264,6 @@ export default function ChatInputActionsRow({
   const [reasoningModelRef, setReasoningModelRef] = useState<string | null>(
     null,
   );
-  /** Mobile-only bottom drawer for the overflow ("more") menu. */
-  const [mobileOverflowOpen, setMobileOverflowOpen] = useState(false);
 
   // Press-and-hold dictation: start on pointerdown, finish on release or when
   // the pointer slides off the button (also covers touch cancel).
@@ -499,7 +497,12 @@ export default function ChatInputActionsRow({
         >
           <ChevronLeft size={16} />
         </button>
-        <span>{reasoningModel ? modelOptionLabel(reasoningModel) : ""}</span>
+        <Tooltip
+          title={reasoningModel ? modelOptionLabel(reasoningModel) : ""}
+          mouseEnterDelay={0.4}
+        >
+          <span>{reasoningModel ? modelOptionLabel(reasoningModel) : ""}</span>
+        </Tooltip>
       </div>
       {reasoningModelCapability.adapter === "status_only" ? (
         <div className={styles.reasoningStatusRow}>
@@ -623,9 +626,15 @@ export default function ChatInputActionsRow({
                       alt=""
                       className={styles.modelMenuIcon}
                     />
-                    <span className={styles.modelMenuLabel}>
-                      {modelOptionLabel(model)}
-                    </span>
+                    <Tooltip
+                      title={modelOptionLabel(model)}
+                      mouseEnterDelay={0.4}
+                      placement="top"
+                    >
+                      <span className={styles.modelMenuLabel}>
+                        {modelOptionLabel(model)}
+                      </span>
+                    </Tooltip>
                   </button>
                   {capability && onReasoningChange && (
                     <button
@@ -753,9 +762,11 @@ export default function ChatInputActionsRow({
             <span>{t("chat.selectModel", "Model")}</span>
           </span>
           <span className={styles.mobileOverflowItemMeta}>
-            <span className={styles.mobileOverflowItemMetaLabel}>
-              {selectedModelTriggerLabel}
-            </span>
+            <Tooltip title={selectedModelTriggerLabel} mouseEnterDelay={0.4}>
+              <span className={styles.mobileOverflowItemMetaLabel}>
+                {selectedModelTriggerLabel}
+              </span>
+            </Tooltip>
             <ChevronRight size={16} />
           </span>
         </button>
@@ -1274,6 +1285,7 @@ export default function ChatInputActionsRow({
         )}
         {isStreaming ? (
           canSend ? (
+            // Queue into the chip bar; ↵ Steer lives on the chip row.
             <Tooltip title={t("chat.queue.action")} mouseEnterDelay={0.4}>
               <button
                 className={styles.sendBtn}

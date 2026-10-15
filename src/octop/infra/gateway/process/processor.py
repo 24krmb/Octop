@@ -37,6 +37,7 @@ from octop.infra.gateway.hitl.coordinator import (
     HitlChannelCoordinator,
     HitlSlashOutcome,
     HitlStreamContext,
+    iter_with_session_auto_approve,
 )
 from octop.infra.gateway.hitl.format import normalize_hitl_request
 from octop.infra.gateway.hitl.stream_compat import install_harness_hitl_compat
@@ -60,8 +61,8 @@ from octop.infra.gateway.process.harness_request import (
 from octop.infra.gateway.process.message_keys import (
     INBOUND_ATTACHMENTS_KEY,
     resolve_user_id_for_message,
-    sanitize_im_metadata,
     session_key_from_message,
+    session_metadata_from_message,
 )
 from octop.infra.gateway.process.stream_project import (
     StreamProjectionState,
@@ -184,6 +185,7 @@ class GlobalProcessor:
             user_repo=user_repo,
             thread_message_repo=thread_message_repo,
             gateway=gateway,
+            hitl_coordinator=self._hitl,
         )
 
     async def _begin_history(
@@ -625,7 +627,7 @@ class GlobalProcessor:
         )
         session_key = session_key_from_message(msg, agent_id=agent_id)
         channel_type = msg.channel_type or "unknown"
-        im_meta = sanitize_im_metadata(msg)
+        im_meta = session_metadata_from_message(msg)
 
         cmd = parse_slash(msg.text)
         locale = resolve_user_locale(
@@ -652,6 +654,7 @@ class GlobalProcessor:
                 outcome=slash_outcome,
                 history_factory=self._begin_history,
                 history_finalize=self._complete_resumed_history,
+                member_hitl=self.teams.deliver_member_hitl,
             ):
                 yield ev
             if slash_outcome.completed_turn:
@@ -700,6 +703,7 @@ class GlobalProcessor:
                         usage_tracker=usage_tracker,
                         history_tracker=history_tracker,
                         outcome=answer_outcome,
+                        member_hitl=self.teams.deliver_member_hitl,
                     ):
                         yield ev
                 finally:
@@ -894,6 +898,15 @@ class GlobalProcessor:
                 await self._finish_history(history_tracker, completed=stream_ok and not hitl_paused)
         yield MessageEvent.completed()
 
+    def cancel_agent_stream(self, agent_id: str, thread_id: str) -> None:
+        """Signal the harness to stop the active stream (mid-turn steer preemption).
+
+        The stream iterator ends cleanly (no error chunk); state stays at the
+        last completed superstep checkpoint.
+        """
+        if self._agent_manager is not None:
+            self._agent_manager.cancel_stream(agent_id, thread_id)
+
     # -- Raw harness-chunk stream (Dashboard WS, etc.) -------------------------
     # IM channels (DingTalk, Feishu, …) stream via __call__ → MessageEvent instead.
 
@@ -926,7 +939,7 @@ class GlobalProcessor:
         )
         session_key = session_key_from_message(msg, agent_id=agent_id)
         channel_type = msg.channel_type or "unknown"
-        im_meta = sanitize_im_metadata(msg)
+        im_meta = session_metadata_from_message(msg)
         meta = msg.metadata or {}
         locale = resolve_user_locale(
             user_repo=self._user_repo,
@@ -953,6 +966,7 @@ class GlobalProcessor:
                 outcome=slash_outcome,
                 history_factory=self._begin_history,
                 history_finalize=self._complete_resumed_history,
+                member_hitl=self.teams.deliver_member_hitl,
             ):
                 for frame in message_event_to_cli_chunks(ev):
                     yield _maybe_stamp_team_host(frame, agent_id, team_host)
@@ -1003,6 +1017,7 @@ class GlobalProcessor:
                         usage_tracker=usage_tracker,
                         history_tracker=history_tracker,
                         outcome=answer_outcome,
+                        member_hitl=self.teams.deliver_member_hitl,
                     ):
                         for frame in message_event_to_cli_chunks(ev):
                             yield _maybe_stamp_team_host(frame, agent_id, team_host)
@@ -1063,6 +1078,7 @@ class GlobalProcessor:
                 response_lines=slash_lines,
             )
             self._hitl.expire_pending_for_thread(thread_id, agent_id=agent_id, user_id=user_id)
+            self.teams.cancel_member_hitl(thread_id)
             self._touch_thread_after_turn(thread_id, msg.text)
             for line in slash_lines:
                 yield _maybe_stamp_team_host(
@@ -1091,6 +1107,7 @@ class GlobalProcessor:
             )
 
         self._hitl.expire_pending_for_thread(thread_id, agent_id=agent_id, user_id=user_id)
+        self.teams.cancel_member_hitl(thread_id)
         request = await self._build_dashboard_request(
             msg,
             agent_id=agent_id,
@@ -1135,7 +1152,14 @@ class GlobalProcessor:
         emitted_tool_error_ids: set[str] = set()
 
         try:
-            async for chunk in self._agent_manager.stream(agent_id, request):
+            async for chunk in iter_with_session_auto_approve(
+                self._agent_manager.stream(agent_id, request),
+                thread_id=thread_id,
+                policies=self._hitl.session_policies,
+                resume=lambda next_decisions: self._agent_manager.resume_hitl(
+                    agent_id, thread_id, next_decisions
+                ),
+            ):
                 usage_tracker.observe(chunk)
                 history_tracker.observe(chunk)
                 from octop.infra.history.recorder import flush_tracker  # noqa: PLC0415
@@ -1256,10 +1280,17 @@ class GlobalProcessor:
         saw_tool_call = False
         emitted_tool_error_ids: set[str] = set()
         try:
-            async for chunk in self._agent_manager.resume_hitl(
-                agent_id,
-                thread_id,
-                decisions,
+            async for chunk in iter_with_session_auto_approve(
+                self._agent_manager.resume_hitl(
+                    agent_id,
+                    thread_id,
+                    decisions,
+                ),
+                thread_id=thread_id,
+                policies=self._hitl.session_policies,
+                resume=lambda next_decisions: self._agent_manager.resume_hitl(
+                    agent_id, thread_id, next_decisions
+                ),
             ):
                 usage_tracker.observe(chunk)
                 history_tracker.observe(chunk)
