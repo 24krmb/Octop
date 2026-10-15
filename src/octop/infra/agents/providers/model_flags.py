@@ -36,10 +36,7 @@ def is_onnx_local_provider(
     Prefer the stable placeholder API key written at create time. Fall back to
     exact preset name/id matches only — Ollama is also "local" and must not match.
     """
-    if (
-        provider_api_key is not None
-        and provider_api_key.strip().lower() == _ONNX_PRESET_API_KEY
-    ):
+    if provider_api_key is not None and provider_api_key.strip().lower() == _ONNX_PRESET_API_KEY:
         return True
     if not provider_name:
         return False
@@ -62,10 +59,7 @@ def is_ollama_local_provider(
     _ = provider_base_url
     if is_onnx_local_provider(provider_name, provider_api_key=provider_api_key):
         return False
-    if (
-        provider_api_key is not None
-        and provider_api_key.strip().lower() == _OLLAMA_PRESET_API_KEY
-    ):
+    if provider_api_key is not None and provider_api_key.strip().lower() == _OLLAMA_PRESET_API_KEY:
         return True
     if not provider_name:
         return False
@@ -175,9 +169,7 @@ def is_chat_eligible_model(
     """True when *model* may appear in chat pickers and auto-route candidates."""
     if not model.get("enabled", True):
         return False
-    if is_embedding_model(
-        model, provider_name=provider_name, provider_api_key=provider_api_key
-    ):
+    if is_embedding_model(model, provider_name=provider_name, provider_api_key=provider_api_key):
         return False
     if is_rerank_model(model):
         return False
