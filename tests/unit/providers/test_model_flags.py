@@ -75,10 +75,7 @@ def test_explicit_flags_still_win() -> None:
 
 
 def test_onnx_provider_fallback_unchanged() -> None:
-    assert (
-        is_embedding_model({}, provider_name="onnx (local)", provider_api_key="onnx")
-        is True
-    )
+    assert is_embedding_model({}, provider_name="onnx (local)", provider_api_key="onnx") is True
 
 
 def test_blank_or_missing_id_is_not_embedding() -> None:
@@ -87,10 +84,7 @@ def test_blank_or_missing_id_is_not_embedding() -> None:
 
 
 def test_chat_eligible_excludes_embedding_models() -> None:
-    assert (
-        is_chat_eligible_model({"id": "text-embedding-3-small", "enabled": True})
-        is False
-    )
+    assert is_chat_eligible_model({"id": "text-embedding-3-small", "enabled": True}) is False
     assert is_chat_eligible_model({"id": "gpt-4o", "enabled": True}) is True
 
 
