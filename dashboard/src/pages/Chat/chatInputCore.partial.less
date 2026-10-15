@@ -20,9 +20,8 @@
 
 .askQuestionDock {
   flex-shrink: 0;
-  /* Match .chatInput horizontal gutters so the card lines up with the composer. */
   padding: 0 var(--chat-column-pad-x, 24px) 8px;
-  background: var(--fn-bg-elevated);
+  background:transparent;
   box-sizing: border-box;
 
   @media (max-width: 767px) {
@@ -30,8 +29,7 @@
   }
 }
 
-.askQuestionDockInner,
-.modelConfigDockInner {
+.askQuestionDockInner,.modelConfigDockInner {
   width: 100%;
   max-width: var(--chat-column-max, 960px);
   margin: 0 auto;

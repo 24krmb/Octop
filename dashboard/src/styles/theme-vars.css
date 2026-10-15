@@ -55,7 +55,7 @@ html[data-theme="light"] {
   --fn-text-disabled: #d4d4d8; /* 禁用态文本色 */
   --fn-text-inverse: #ffffff; /* 反色文本（用于深色背景上） */
   --fn-text-brand: #183153; /* 品牌色文本 */
-  --fn-text-danger: #dc2626; /* 危险色文本 */
+  --fn-text-danger: #f36; /* 危险色文本 */
   --fn-text-link: var(--fn-text-brand); /* 链接文本色 */
   --fn-logo-color: #183153; /* Logo 颜色 */
   --fn-logo-filter: none; /* Logo 滤镜效果 */
@@ -81,32 +81,37 @@ html[data-theme="light"] {
   --fn-assistant-glow-color: 24, 49, 83; /* AI 消息光晕 RGB 分量（供 rgba() 拼接） */
 
   /* ---- 语义色 ---- */
-  --fn-color-success: #0c9; /* 成功色 */
-  --fn-color-success-border: rgba(74, 222, 128, 0.2); /* 成功色边框 */
-  --fn-color-success-glow: rgba(74, 222, 128, 0.2); /* 成功色光晕 */
-  --fn-color-danger: #dc2626; /* 危险色 */
-  --fn-color-danger-border: #fca5a5; /* 危险色边框 */
-  --fn-color-warning: #f59e0b; /* 警告色 */
-  --fn-color-warning-border: #fcd34d; /* 警告色边框 */
+  --fn-color-error: rgb(255, 51, 102); /* 错误色 */
+  --fn-danger: rgb(255, 51, 102); /* 危险色（别名） */
+  --fn-color-danger: rgb(255, 51, 102); /* 危险色 */
+  --fn-color-danger-border: rgba(255,51,102,.2); /* 危险色边框 */
+
+  --fn-warning-color:rgb(255,200,61); /* 警告色文本（别名） */
+  --fn-color-warning:rgb(255,200,61); /* 警告色 */
   --fn-color-warning-text: #d97706; /* 警告色文本 */
-  --fn-color-info: #3b82f6; /* 信息色 */
+  --fn-color-warning-border:rgba(255,200,61,.2); /* 警告色边框 */
+
+  --fn-color-success: rgb(0, 204, 153); /* 成功色 */
+  --fn-success: rgb(0, 204, 153); /* 成功色（别名） */
+  --fn-color-success-border: rgba(0, 204, 153, 0.2); /* 成功色边框 */
+  --fn-color-success-glow: rgba(0, 204, 153, 0.2); /* 成功色光晕 */
+  --fn-success-bg: rgba(0, 204, 153, 0.1); /* 成功色背景 */
+  --fn-success-border: rgba(0, 204, 153, 0.2); /* 成功色边框（别名） */
+
+  --fn-color-info:rgb(96,165,250); /* 信息色 */
   --fn-color-info-border: #93c5fd; /* 信息色边框 */
-  --fn-color-error: #dc2626; /* 错误色 */
+  
   --fn-color-error-bg: #fef2f2; /* 错误色背景 */
-  --fn-color-error-border: #fca5a5; /* 错误色边框 */
-  --fn-success: #0c9; /* 成功色（别名） */
-  --fn-success-bg: rgba(74, 222, 128, 0.1); /* 成功色背景 */
-  --fn-success-border: rgba(74, 222, 128, 0.2); /* 成功色边框（别名） */
-  --fn-danger: #dc2626; /* 危险色（别名） */
-  --fn-warning-color: #d97706; /* 警告色文本（别名） */
+  --fn-color-error-border:rgba(255,51,102,.2);; /* 错误色边框 */
+
   --fn-color-file-zip: #f59e0b; /* ZIP 文件图标颜色 */
-  --fn-color-file-word: #3b82f6; /* Word 文件图标颜色 */
-  --fn-color-file-ppt: #dc2626; /* PPT 文件图标颜色 */
+  --fn-color-file-word:rgb(96,165,250); /* Word 文件图标颜色 */
+  --fn-color-file-ppt: #f36; /* PPT 文件图标颜色 */
   --fn-color-file-image: #ec4899; /* 图片文件图标颜色 */
 
   /* ---- 标签 ---- */
   --fn-tag-local-bg: #dae8ff; /* 本地标签背景色 */
-  --fn-tag-local-text: #3b82f6; /* 本地标签文本色 */
+  --fn-tag-local-text:rgb(96,165,250); /* 本地标签文本色 */
   --fn-tag-local-border: #bfdbfe; /* 本地标签边框色 */
   --fn-tag-remote-bg: #fff7ed; /* 远程标签背景色 */
   --fn-tag-remote-text: #f97316; /* 远程标签文本色 */

@@ -266,7 +266,7 @@
   .bubbleContent {
     grid-column: 2;
     justify-self: end;
-    max-width: min(75%, 600px);
+    max-width: min(100%, 600px);
   }
   .avatarCol {
     grid-column: 3;
@@ -280,7 +280,7 @@
     grid-column: 2;
     grid-row: 1;
     justify-self: end;
-    max-width: min(75%, 600px);
+    max-width: min(100%, 600px);
   }
   .bubbleContent,
   .avatarCol {
@@ -440,7 +440,6 @@
   box-shadow: none;
   position: relative;
   overflow: visible;
-
   @media (max-width: 767px) {
     font-size: 16px;
   }
@@ -919,9 +918,9 @@
   max-width: 100%;
   box-sizing: border-box;
   padding: 8px 12px;
-  border-radius: 10px;
+  border-radius: 12px;
   border: none;
-  background: rgba(15, 23, 42, 0.025);
+  background:var(--fn-bg-primary);
 }
 
 /* Mobile: same gutter on every row, assistant copy uses the empty right
@@ -1300,7 +1299,7 @@
   padding: 8px 10px;
   border-radius: 8px;
   border-left: 2px solid var(--fn-border-primary);
-  background: var(--fn-bg-subtle);
+  background:transparent;
   color: var(--fn-text-secondary);
   font-size: 13px;
   line-height: 1.55;
@@ -1430,7 +1429,7 @@
 }
 
 .msgUsage {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--fn-text-tertiary);
   user-select: none;
 }
