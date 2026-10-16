@@ -32,6 +32,7 @@ from octop.infra.setup.password_file import WIZARD_FILE_NAME
 from octop.infra.setup.wizard_tokens import WizardTokenStore
 from octop.infra.users.manager import UserManager
 from octop.infra.utils.paths import PathLayout
+from octop.infra.utils.process_resources import ensure_nofile_limit
 
 if TYPE_CHECKING:
     from octop.infra.auth.ldap.service import LdapAuthService
@@ -336,6 +337,7 @@ class OctopServer:
 
         apply_env_file(env_file_path(self.paths.root))
         self._setup_logging()
+        ensure_nofile_limit()
         config = ensure_mobile_capabilities_probed(self.paths.config)
         self.config = config
 
