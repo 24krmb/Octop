@@ -1,11 +1,22 @@
+import { useCallback } from "react";
+import { useTranslation } from "react-i18next";
+import type { RefObject } from "react";
 import SessionList from "./SessionList";
 import MinimalAgentSessionNav from "./MinimalAgentSessionNav";
 import type { Session } from "../hooks/useSessions";
 import type { OctopAgent } from "../../../context/AgentContext";
+import RailEdgeControl from "../../../components/RailEdgeControl";
 import styles from "../index.module.less";
+
+/** Dispatched when the chat history rail expand control is clicked. */
+export const EXPAND_CHAT_RAIL_EVENT = "octop:expand-chat-rail";
 
 interface ChatSidebarPanelProps {
   isMobile: boolean;
+  sidebarOpen: boolean;
+  sidebarWidth: number;
+  isSidebarResizing?: boolean;
+  sidebarElRef?: RefObject<HTMLDivElement>;
   agents: OctopAgent[];
   sessions: Session[];
   activeThreadId: string | null;
@@ -27,15 +38,23 @@ interface ChatSidebarPanelProps {
   onForkSession: (id: string, agentId?: string | null) => void;
   forkDisabled?: boolean;
   forkDisabledHint?: string;
+  onSidebarOpenChange: (open: boolean) => void;
+  onSidebarResizeStart: (e: React.PointerEvent) => void;
+  /** Mounted in MainLayout left rail (between app nav and content). */
+  layoutRail?: boolean;
+  /**
+   * Minimal layout: render SessionList only inside the nav "records" pane
+   * (no second rail chrome / mobile overlay).
+   */
+  navEmbedded?: boolean;
 }
 
-/**
- * Session-history panel hosted inside the nav sidebar's records tab via
- * portal — there is no standalone sidebar chrome anymore. Mobile keeps the
- * compact merged nav; desktop renders the full session list.
- */
 export default function ChatSidebarPanel({
   isMobile,
+  sidebarOpen,
+  sidebarWidth,
+  isSidebarResizing = false,
+  sidebarElRef,
   agents,
   sessions,
   activeThreadId,
@@ -53,24 +72,79 @@ export default function ChatSidebarPanel({
   onForkSession,
   forkDisabled,
   forkDisabledHint,
+  onSidebarOpenChange,
+  onSidebarResizeStart,
+  layoutRail = false,
+  navEmbedded = false,
 }: ChatSidebarPanelProps) {
+  const { t } = useTranslation();
+
+  const handleRailToggle = useCallback(() => {
+    if (sidebarOpen) {
+      onSidebarOpenChange(false);
+      return;
+    }
+    // MainLayout may also expand the nav when both rails were collapsed.
+    window.dispatchEvent(new Event(EXPAND_CHAT_RAIL_EVENT));
+    onSidebarOpenChange(true);
+  }, [sidebarOpen, onSidebarOpenChange]);
+
+  const sessionList = navEmbedded ? (
+    <MinimalAgentSessionNav
+      agents={agents}
+      activeId={activeThreadId}
+      activeAgentId={resolvedAgentId ?? null}
+      activeSessions={sessions}
+      onSelect={onSelectSession}
+      onAgentSelect={onAgentSelect}
+      onNewChat={onNewChatWithAgent}
+      onDeleteActive={onDeleteSession}
+      onRenameActive={onRenameSession}
+      onPinActive={onPinSession}
+      onFork={onForkSession}
+      activeForkDisabled={forkDisabled}
+      activeForkDisabledHint={forkDisabledHint}
+    />
+  ) : (
+    <SessionList
+      agents={agents}
+      sessions={sessions}
+      activeId={activeThreadId}
+      activeAgentId={resolvedAgentId ?? null}
+      hasMore={sessionsHasMore}
+      loadingMore={sessionsLoadingMore}
+      onLoadMore={onLoadMoreSessions}
+      onFetchAllSessions={onFetchAllSessions}
+      onSelect={onSelectSession}
+      onAgentSelect={onAgentSelect}
+      onNewChat={onNewChatWithAgent}
+      onDelete={onDeleteSession}
+      onRename={onRenameSession}
+      onPin={onPinSession}
+      onFork={onForkSession}
+      activeForkDisabled={forkDisabled}
+      activeForkDisabledHint={forkDisabledHint}
+    />
+  );
+
+  if (navEmbedded) {
+    return (
+      <div className={styles.sidebarNavEmbedded} data-testid="chat-nav-records">
+        {sessionList}
+      </div>
+    );
+  }
+
   return (
-    <div className={styles.sidebarNavEmbedded} data-testid="chat-nav-records">
-      {isMobile ? (
-        <MinimalAgentSessionNav
-          agents={agents}
-          activeId={activeThreadId}
-          activeAgentId={resolvedAgentId ?? null}
-          activeSessions={sessions}
-          onSelect={onSelectSession}
-          onAgentSelect={onAgentSelect}
-          onNewChat={onNewChatWithAgent}
-          onDeleteActive={onDeleteSession}
-          onRenameActive={onRenameSession}
-          onPinActive={onPinSession}
-          onFork={onForkSession}
-          activeForkDisabled={forkDisabled}
-          activeForkDisabledHint={forkDisabledHint}
+    <div
+      className={`${styles.sidebarWrapper} ${
+        layoutRail ? styles.sidebarWrapperLayoutRail : ""
+      } ${!isMobile && !sidebarOpen ? styles.sidebarWrapperCollapsed : ""}`}
+    >
+      {isMobile && sidebarOpen && (
+        <div
+          className={styles.overlay}
+          onClick={() => onSidebarOpenChange(false)}
         />
       )}
 

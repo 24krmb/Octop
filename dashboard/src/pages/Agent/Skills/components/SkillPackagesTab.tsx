@@ -399,12 +399,7 @@ export default function SkillPackagesTab({
                     installed,
                   );
                   const displayName = packageSkill.name || packageSkill.slug;
-                  const figurative = resolveFigurativeSkillIcon(
-                    packageSkill.slug,
-                    emoji,
-                    displayName,
-                    32,
-                  );
+
                   const displayDesc =
                     packageSkill.description || t("skills.noDescription");
                   const shadows = workspaceSlugs.has(packageSkill.slug);

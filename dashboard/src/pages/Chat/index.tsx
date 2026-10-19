@@ -1310,6 +1310,10 @@ function ChatPageInner() {
   const chatSidebarPanel = (
     <ChatSidebarPanel
       isMobile={isMobile}
+      sidebarOpen={sidebarOpen}
+      sidebarWidth={sidebarWidth}
+      isSidebarResizing={isSidebarResizing}
+      sidebarElRef={sidebarElRef}
       agents={sidebarAgents}
       sessions={sessions}
       activeThreadId={activeThreadId}
