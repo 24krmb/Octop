@@ -89,6 +89,7 @@ import {
   dockTabIdForToolCall,
 } from "./ChatToolDockContext";
 import ChatSidebarPanel from "./components/ChatSidebarPanel";
+import { useChatSidebarState } from "./hooks/useChatSidebarState";
 import ChatTitleBar from "./components/ChatTitleBar";
 import TeamChatBadge from "./components/TeamChatBadge";
 import RemoteExpertHint from "./components/RemoteExpertHint";
@@ -1306,6 +1307,15 @@ function ChatPageInner() {
     if (!name || name === "New Chat") return t("chatWelcome.newChat");
     return name;
   }, [activeSession, t]);
+
+  const {
+    sidebarOpen,
+    setSidebarOpen,
+    sidebarWidth,
+    isSidebarResizing,
+    sidebarElRef,
+    handleSidebarResizeStart,
+  } = useChatSidebarState(isMobile);
 
   const chatSidebarPanel = (
     <ChatSidebarPanel
