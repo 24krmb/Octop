@@ -727,6 +727,7 @@ export default function Sidebar({
             style={{
               display: "flex",
               alignItems: "center",
+              justifyContent: "center",
               gap: 6,
               minWidth: 0,
               flex: 1,
@@ -808,7 +809,7 @@ export default function Sidebar({
           gap: 6,
           minWidth: 0,
           padding: isRailCollapsed ? "12px 0" : "14px 14px 10px",
-          justifyContent: isRailCollapsed ? "center" : "flex-start",
+          justifyContent: "center",
           flexShrink: 0,
         }}
       >
