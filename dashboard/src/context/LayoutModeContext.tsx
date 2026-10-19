@@ -7,26 +7,41 @@ import {
   type ReactNode,
 } from "react";
 import {
+  loadLayoutMode,
   loadMinimalNavPane,
+  saveLayoutMode,
   saveMinimalNavPane,
+  type LayoutMode,
   type MinimalNavPane,
 } from "../layouts/layoutModeStorage";
 
 interface LayoutModeContextValue {
-  /** Lower sidebar pane: capability nav (settings) vs chat records. */
+  layoutMode: LayoutMode;
+  setLayoutMode: (mode: LayoutMode) => void;
+  /** Lower pane in minimal layout (settings vs records). Ignored in classic. */
   minimalPane: MinimalNavPane;
   setMinimalPane: (pane: MinimalNavPane) => void;
 }
 
 const LayoutModeContext = createContext<LayoutModeContextValue>({
+  layoutMode: "classic",
+  setLayoutMode: () => {},
   minimalPane: "settings",
   setMinimalPane: () => {},
 });
 
 export function LayoutModeProvider({ children }: { children: ReactNode }) {
+  const [layoutMode, setLayoutModeState] = useState<LayoutMode>(() =>
+    loadLayoutMode(),
+  );
   const [minimalPane, setMinimalPaneState] = useState<MinimalNavPane>(() =>
     loadMinimalNavPane(),
   );
+
+  const setLayoutMode = useCallback((mode: LayoutMode) => {
+    setLayoutModeState(mode);
+    saveLayoutMode(mode);
+  }, []);
 
   const setMinimalPane = useCallback((pane: MinimalNavPane) => {
     setMinimalPaneState(pane);
@@ -34,8 +49,8 @@ export function LayoutModeProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const value = useMemo(
-    () => ({ minimalPane, setMinimalPane }),
-    [minimalPane, setMinimalPane],
+    () => ({ layoutMode, setLayoutMode, minimalPane, setMinimalPane }),
+    [layoutMode, setLayoutMode, minimalPane, setMinimalPane],
   );
 
   return (
