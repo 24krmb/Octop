@@ -1324,6 +1324,8 @@ function ChatPageInner() {
       sidebarWidth={sidebarWidth}
       isSidebarResizing={isSidebarResizing}
       sidebarElRef={sidebarElRef}
+      onSidebarOpenChange={setSidebarOpen}
+      onSidebarResizeStart={handleSidebarResizeStart}
       agents={sidebarAgents}
       sessions={sessions}
       activeThreadId={activeThreadId}
