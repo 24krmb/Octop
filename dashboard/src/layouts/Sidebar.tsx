@@ -126,7 +126,6 @@ function NavItemButton({
   onNavigate,
   onToggleChatRail,
   showChatRailToggle,
-  chatRailOpen,
   role,
   hasUpdate,
   t,
