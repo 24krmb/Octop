@@ -124,3 +124,5 @@ src/octop/infra/agents/experts/library/skills-lock.json
 src/octop/infra/agents/experts/library/wind-alice/skills/wind-alice/config.json
 src/octop/infra/agents/experts/library/**/update-state.json
 src/octop/infra/agents/experts/library/**/update.lock
+# Local conda environment
+.conda-octop/

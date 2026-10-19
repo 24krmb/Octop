@@ -27,6 +27,7 @@ import yuandian from "./yuandian.png";
 import windStockData from "./wind-stock-data.png";
 import tdxFinance from "./tdx-finance.png";
 import fiona from "./fiona.png";
+import yuqueMcp from "./yuque-mcp.png";
 
 export const CONNECTOR_LOGOS: Record<string, string> = {
   "tencent-ardot": tencentArdot,

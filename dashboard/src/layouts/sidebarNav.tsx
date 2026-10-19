@@ -12,17 +12,13 @@ import {
   Activity,
   Share2,
   Cloudy,
+  Sparkles,
   Puzzle,
   Package,
   HardDrive,
   GraduationCap,
   Shield,
   PanelsTopLeft,
-  Bot,
-  Plug,
-  Wrench,
-  Brain,
-  Fingerprint,
 } from "lucide-react";
 import type { OctopUser } from "../api/modules/auth";
 import { navAllowed, userCan } from "../utils/permissions";
@@ -32,6 +28,22 @@ export const COLLAPSED_WIDTH = 56;
 
 const iconSize = 16;
 const iconStroke = 1.8;
+
+const PERSONALIZATION_NAV_TABS = [
+  { key: "skills", path: "/personalization/skills" },
+  { key: "subagents", path: "/personalization/subagents" },
+  { key: "tools", path: "/personalization/tools" },
+  { key: "agent_plugins", path: "/personalization/plugins" },
+  { key: "mbti", path: "/personalization/mbti" },
+  { key: "memory", path: "/personalization/memory" },
+] as const;
+
+function personalizationNavPath(user: OctopUser | null): string {
+  for (const tab of PERSONALIZATION_NAV_TABS) {
+    if (userCan(user, tab.key)) return tab.path;
+  }
+  return PERSONALIZATION_NAV_TABS[0].path;
+}
 
 export interface NavItem {
   key: string;
@@ -57,16 +69,11 @@ export const SIDEBAR_NAV_KEYS = [
   "experts",
   "tasks",
   "token-usage",
-  "personalization-subagents",
-  "personalization-skills",
-  "personalization-plugins",
-  "personalization-tools",
-  "personalization-memory",
-  "personalization-mbti",
+  "personalization",
   "channels",
+  "connectors",
   "skill-packages",
   "knowledge-bases",
-  "connectors",
   "bridge",
   "workbench",
   "remote-desktop",
@@ -79,18 +86,12 @@ export const SIDEBAR_NAV_KEYS = [
   "admin-advanced",
 ] as const;
 
-export const BUILTIN_NAV_GROUP_IDS = [
-  "personalization",
-  "settings",
-  "control",
-  "admin",
-] as const;
+export const BUILTIN_NAV_GROUP_IDS = ["settings", "control", "admin"] as const;
 
 const BUILTIN_NAV_GROUP_LABEL_KEYS: Record<
   (typeof BUILTIN_NAV_GROUP_IDS)[number],
   string
 > = {
-  personalization: "nav.personalization",
   settings: "nav.settings",
   control: "nav.control",
   admin: "nav.admin",
@@ -122,11 +123,7 @@ export function navSectionLabel(
  * comes from {@link buildNavSections}.
  */
 export const SIDEBAR_GROUPED_NAV_KEYS = [
-  "personalization-skills",
-  "personalization-plugins",
-  "personalization-tools",
-  "personalization-memory",
-  "personalization-mbti",
+  "personalization",
   "channels",
   "connectors",
   "skill-packages",
@@ -141,7 +138,6 @@ export const SIDEBAR_GROUPED_NAV_KEYS = [
   "admin-plugins",
   "admin-security",
   "admin-advanced",
-  "token-usage",
   "agent-config",
 ] as const;
 
@@ -155,115 +151,98 @@ export function buildNavSections(
   user: OctopUser | null,
   opts?: { mobileEnabled?: boolean },
 ): NavSection[] {
-  const sections: NavSection[] = [
+  const topItems: NavItem[] = [
     {
-      items: [
-        {
-          key: "chat",
-          path: "/chat",
-          icon: <MessageSquareText size={iconSize} strokeWidth={iconStroke} />,
-          labelKey: "nav.chat",
-        },
-        {
-          key: "experts",
-          path: "/experts",
-          icon: <GraduationCap size={iconSize} strokeWidth={iconStroke} />,
-          labelKey: "nav.experts",
-        },
-        {
-          key: "personalization-subagents",
-          path: "/personalization/subagents",
-          icon: <Bot size={iconSize} strokeWidth={iconStroke} />,
-          labelKey: "nav.subagents",
-        },
-        {
-          key: "tasks",
-          path: "/tasks",
-          icon: <Timer size={iconSize} strokeWidth={iconStroke} />,
-          labelKey: "nav.tasks",
-        },
-      ],
+      key: "chat",
+      path: "/chat",
+      icon: <MessageSquareText size={iconSize} strokeWidth={iconStroke} />,
+      labelKey: "nav.chat",
     },
   ];
-
-  const personalizationItems: NavItem[] = [
-    {
-      key: "personalization-memory",
-      path: "/personalization/memory",
-      icon: <Brain size={iconSize} strokeWidth={iconStroke} />,
-      labelKey: "nav.memory",
-    },
-    {
-      key: "personalization-tools",
-      path: "/personalization/tools",
-      icon: <Wrench size={iconSize} strokeWidth={iconStroke} />,
-      labelKey: "nav.tools",
-    },
-    {
-      key: "personalization-plugins",
-      path: "/personalization/plugins",
-      icon: <Plug size={iconSize} strokeWidth={iconStroke} />,
-      labelKey: "nav.plugins",
-    },
-    {
-      key: "personalization-skills",
-      path: "/personalization/skills",
-      icon: <Puzzle size={iconSize} strokeWidth={iconStroke} />,
-      labelKey: "nav.skills",
-    },
-    {
-      key: "skill-packages",
-      path: "/skill-packages",
-      icon: <Package size={iconSize} strokeWidth={iconStroke} />,
-      labelKey: "nav.skillPackages",
-    },
-    {
-      key: "knowledge-bases",
-      path: "/knowledge-bases",
-      icon: <Database size={iconSize} strokeWidth={iconStroke} />,
-      labelKey: "nav.knowledgeBases",
-    },
-    // Connectors + cloud bridge sit right under the knowledge base entry.
-    ...(navAllowed(user, "connectors")
-      ? [
-          {
-            key: "connectors",
-            path: "/connectors",
-            icon: <Link2 size={iconSize} strokeWidth={iconStroke} />,
-            labelKey: "nav.connectors",
-          } as NavItem,
-        ]
-      : []),
-    {
-      key: "bridge",
-      path: "/bridge",
-      icon: <Cloudy size={iconSize} strokeWidth={iconStroke} />,
-      labelKey: "nav.bridge",
-    },
-    {
-      key: "personalization-mbti",
-      path: "/personalization/mbti",
-      icon: <Fingerprint size={iconSize} strokeWidth={iconStroke} />,
-      labelKey: "nav.mbti",
-    },
-  ];
-  if (personalizationItems.length > 0) {
-    sections.push({
-      id: "personalization",
-      groupKey: "nav.personalization",
-      items: personalizationItems,
+  if (navAllowed(user, "experts")) {
+    topItems.push({
+      key: "experts",
+      path: "/experts",
+      icon: <GraduationCap size={iconSize} strokeWidth={iconStroke} />,
+      labelKey: "nav.experts",
     });
   }
+  if (navAllowed(user, "tasks")) {
+    topItems.push({
+      key: "tasks",
+      path: "/tasks",
+      icon: <Timer size={iconSize} strokeWidth={iconStroke} />,
+      labelKey: "nav.tasks",
+    });
+  }
+  if (navAllowed(user, "token-usage")) {
+    topItems.push({
+      key: "token-usage",
+      path: "/token-usage",
+      icon: <Activity size={iconSize} strokeWidth={iconStroke} />,
+      labelKey: "nav.tokenUsage",
+    });
+  }
+  const sections: NavSection[] = [{ items: topItems }];
 
-  const controlItems: NavItem[] = [];
+  const settingsItems: NavItem[] = [];
+  if (navAllowed(user, "personalization")) {
+    settingsItems.push({
+      key: "personalization",
+      path: personalizationNavPath(user),
+      icon: <Sparkles size={iconSize} strokeWidth={iconStroke} />,
+      labelKey: "nav.personalization",
+    });
+  }
   if (navAllowed(user, "channels")) {
-    controlItems.push({
+    settingsItems.push({
       key: "channels",
       path: "/personalization/channels",
       icon: <Waypoints size={iconSize} strokeWidth={iconStroke} />,
       labelKey: "nav.channels",
     });
   }
+  if (navAllowed(user, "connectors")) {
+    settingsItems.push({
+      key: "connectors",
+      path: "/connectors",
+      icon: <Link2 size={iconSize} strokeWidth={iconStroke} />,
+      labelKey: "nav.connectors",
+    });
+  }
+  if (navAllowed(user, "skill-packages")) {
+    settingsItems.push({
+      key: "skill-packages",
+      path: "/skill-packages",
+      icon: <Package size={iconSize} strokeWidth={iconStroke} />,
+      labelKey: "nav.skillPackages",
+    });
+  }
+  if (navAllowed(user, "knowledge-bases")) {
+    settingsItems.push({
+      key: "knowledge-bases",
+      path: "/knowledge-bases",
+      icon: <Database size={iconSize} strokeWidth={iconStroke} />,
+      labelKey: "nav.knowledgeBases",
+    });
+  }
+  // User-scoped remote Octop links stay available without a module permission.
+  settingsItems.push({
+    key: "bridge",
+    path: "/bridge",
+    icon: <Cloudy size={iconSize} strokeWidth={iconStroke} />,
+    labelKey: "nav.bridge",
+    badge: "Beta",
+  });
+  if (settingsItems.length > 0) {
+    sections.push({
+      id: "settings",
+      groupKey: "nav.settings",
+      items: settingsItems,
+    });
+  }
+
+  const controlItems: NavItem[] = [];
   if (navAllowed(user, "workbench")) {
     controlItems.push({
       key: "workbench",
@@ -318,12 +297,6 @@ export function buildNavSections(
       labelKey: "nav.models",
     });
   }
-  adminItems.push({
-    key: "token-usage",
-    path: "/token-usage",
-    icon: <Activity size={iconSize} strokeWidth={iconStroke} />,
-    labelKey: "nav.tokenUsage",
-  });
   if (navAllowed(user, "admin-storage")) {
     adminItems.push({
       key: "admin-storage",

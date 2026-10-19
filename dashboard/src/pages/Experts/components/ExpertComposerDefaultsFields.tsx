@@ -8,8 +8,11 @@ import { useCurrentUser } from "../../../hooks/useCurrentUser";
 
 export default function ExpertComposerDefaultsFields({
   defaultConnectorKinds = [],
+  agentId,
 }: {
   defaultConnectorKinds?: string[];
+  /** Bridge shadow id so knowledge / connector pickers tunnel to the peer. */
+  agentId?: string | null;
 }) {
   const { t } = useTranslation();
   const form = Form.useFormInstance();
@@ -27,7 +30,7 @@ export default function ExpertComposerDefaultsFields({
     let cancelled = false;
     setKnowledgeLoading(true);
     knowledgeBasesApi
-      .list()
+      .list(agentId)
       .then((bases) => {
         if (!cancelled) {
           setKnowledgeBases(
@@ -44,13 +47,13 @@ export default function ExpertComposerDefaultsFields({
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [agentId]);
 
   useEffect(() => {
     let cancelled = false;
     setConnectorsLoading(true);
     connectorsApi
-      .listInstances()
+      .listInstances(agentId)
       .then((instances) => {
         if (cancelled) return;
         setConnectors(
@@ -79,7 +82,7 @@ export default function ExpertComposerDefaultsFields({
     return () => {
       cancelled = true;
     };
-  }, [currentUserId]);
+  }, [agentId, currentUserId]);
 
   // 专家 manifest 声明的默认连接器：options 就绪后自动预选
   useEffect(() => {

@@ -1311,8 +1311,16 @@ export default function RemoteBrowserPage({
       </>
     ),
     onClick: openEnvModal,
-    icon: <Globe size={14} />,
-    type: "default" as const,
+    icon:
+      envReady && !envLoading ? (
+        <CheckCircle2
+          size={14}
+          style={{ color: "var(--fn-color-success,#52c41a)" }}
+        />
+      ) : (
+        <Globe size={14} />
+      ),
+    type: envReady ? ("default" as const) : ("primary" as const),
     title: t(
       "remoteBrowser.checkInstallTip",
       "检查本机是否已准备好浏览器，未安装时可一键安装",
@@ -1608,7 +1616,7 @@ export default function RemoteBrowserPage({
       title={undefined}
       subtitle={t(
         "pageShell.browser.subtitle",
-        "基于 Chromium 的无头浏览器会话",
+        "查看并操控远端无头浏览器，实时接管专家的网页操作",
       )}
       fill
     >

@@ -43,6 +43,10 @@ _FALLBACK_BUNDLED_AVATAR_IDS = frozenset(
     {
         "ai-coding-coach",
         "ai-safety-guardian",
+        "business-operations",
+        "clinical-learning-subscription",
+        "cvm-ai-doctor",
+        "cvm-cluster-doctor",
         "default",
         "general-assistant",
         "karpathy-knowledge-base",

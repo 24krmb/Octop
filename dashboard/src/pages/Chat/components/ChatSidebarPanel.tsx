@@ -18,7 +18,10 @@ interface ChatSidebarPanelProps {
   onAgentSelect: (agentId: string) => void;
   /** Start a fresh chat from an expert row (classic + minimal). */
   onNewChatWithAgent: (agentId: string) => void;
-  onDeleteSession: (id: string) => void;
+  onDeleteSession: (
+    id: string,
+    compact: boolean,
+  ) => void | Promise<boolean | void>;
   onRenameSession: (id: string, name: string) => void;
   onPinSession: (id: string, pinned: boolean) => void;
   onForkSession: (id: string, agentId?: string | null) => void;
@@ -69,25 +72,44 @@ export default function ChatSidebarPanel({
           activeForkDisabled={forkDisabled}
           activeForkDisabledHint={forkDisabledHint}
         />
-      ) : (
-        <SessionList
-          agents={agents}
-          sessions={sessions}
-          activeId={activeThreadId}
-          activeAgentId={resolvedAgentId ?? null}
-          hasMore={sessionsHasMore}
-          loadingMore={sessionsLoadingMore}
-          onLoadMore={onLoadMoreSessions}
-          onFetchAllSessions={onFetchAllSessions}
-          onSelect={onSelectSession}
-          onAgentSelect={onAgentSelect}
-          onNewChat={onNewChatWithAgent}
-          onDelete={onDeleteSession}
-          onRename={onRenameSession}
-          onPin={onPinSession}
-          onFork={onForkSession}
-          activeForkDisabled={forkDisabled}
-          activeForkDisabledHint={forkDisabledHint}
+      )}
+
+      <div
+        ref={sidebarElRef}
+        className={`${styles.sidebar} ${
+          sidebarOpen ? styles.sidebarOpen : ""
+        } ${isSidebarResizing ? styles.sidebarResizing : ""}`}
+        style={
+          !isMobile && sidebarOpen
+            ? { width: sidebarWidth, minWidth: sidebarWidth }
+            : undefined
+        }
+      >
+        {sessionList}
+        {!isMobile && sidebarOpen && (
+          <div
+            className={`${styles.sidebarResizeHandle} ${
+              isSidebarResizing ? styles.sidebarResizeHandleActive : ""
+            }`}
+            onPointerDown={onSidebarResizeStart}
+            role="separator"
+            aria-orientation="vertical"
+            aria-label={t("chat.resizeSidebar", "调整侧栏宽度")}
+          />
+        )}
+      </div>
+
+      {!isMobile && (
+        <RailEdgeControl
+          expanded={sidebarOpen}
+          onToggle={handleRailToggle}
+          side={sidebarOpen ? "end" : "start"}
+          /* Collapsed: share the nav rail divider — avoid a second gapped line. */
+          showLine={sidebarOpen}
+          placement={sidebarOpen ? "center" : "after"}
+          className={
+            sidebarOpen ? styles.chatRailEdgeOpen : styles.chatRailEdgeClosed
+          }
         />
       )}
     </div>
