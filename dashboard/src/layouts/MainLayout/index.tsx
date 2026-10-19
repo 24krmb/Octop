@@ -17,11 +17,14 @@ import {
   SELF_HEADER_PATHS,
   isWorkbenchPath,
 } from "../../routes";
-import { isChatPath, CLOSE_NAV_EVENT } from "../chatHistoryRail";
+import { CHAT_HISTORY_RAIL_ID, isChatPath } from "../chatHistoryRail";
 import { useIsMobile } from "../../hooks/useIsMobile";
 import { useKeyboardOffset } from "../../hooks/useKeyboardOffset";
+import { useChatSidebarOpen } from "../../pages/Chat/hooks/useChatSidebarState";
+import { EXPAND_CHAT_RAIL_EVENT } from "../../pages/Chat/components/ChatSidebarPanel";
 import RequirePermission from "../../components/RequirePermission";
 import { routeNeedsPermission } from "../../utils/permissions";
+import { useLayoutMode } from "../../context/LayoutModeContext";
 import { useDashboardPushToast } from "../../hooks/useDashboardPushToast";
 
 const Chat = lazy(() => import("../../pages/Chat"));
@@ -55,8 +58,10 @@ export default function MainLayout() {
   const currentPath = location.pathname;
   const selectedKey = resolveSelectedKey(currentPath);
   const isMobile = useIsMobile();
+  const { layoutMode } = useLayoutMode();
   useDashboardPushToast();
   useKeyboardOffset();
+  const isMinimalLayout = layoutMode === "minimal";
   const isFullscreen =
     FULLSCREEN_PATHS.has(currentPath) ||
     [...FULLSCREEN_PATHS].some((p) => currentPath.startsWith(p + "/")) ||
@@ -64,6 +69,7 @@ export default function MainLayout() {
   const onWorkbench = isWorkbenchPath(currentPath);
 
   const [collapsed, setCollapsed] = useState(() => getSavedCollapsed());
+  const [chatSidebarOpen, setChatSidebarOpen] = useChatSidebarOpen();
   const [workbenchMounted, setWorkbenchMounted] = useState(() => onWorkbench);
 
   useEffect(() => {
@@ -88,16 +94,26 @@ export default function MainLayout() {
 
   /**
    * Desktop nav rail edge:
-   * - expand: open nav
+   * - expand: open nav; if classic chat history is also closed, open both
    * - collapse: collapse nav only
    */
   const handleNavRailToggle = useCallback(() => {
     if (collapsed) {
       persistNavCollapsed(false);
+      if (!isMinimalLayout && isChatPath(currentPath) && !chatSidebarOpen) {
+        setChatSidebarOpen(true);
+      }
       return;
     }
     persistNavCollapsed(true);
-  }, [collapsed, persistNavCollapsed]);
+  }, [
+    collapsed,
+    chatSidebarOpen,
+    currentPath,
+    isMinimalLayout,
+    persistNavCollapsed,
+    setChatSidebarOpen,
+  ]);
 
   // When switching to mobile, always collapse; restore saved preference on desktop
   useEffect(() => {
@@ -123,15 +139,19 @@ export default function MainLayout() {
     return () => window.removeEventListener("octop:toggle-nav", handler);
   }, []);
 
-  // Chat closes the mobile nav drawer after picking a session/agent in the
-  // records pane. No-op on desktop (the rail stays as the user left it).
+  // Chat history rail expand: if nav is also collapsed, open both rails.
+  // Minimal layout has no second rail — Sidebar handles records pane itself.
   useEffect(() => {
+    if (isMinimalLayout) return;
     const handler = () => {
-      if (isMobile) setCollapsed(true);
+      setChatSidebarOpen(true);
+      if (collapsed) {
+        persistNavCollapsed(false);
+      }
     };
-    window.addEventListener(CLOSE_NAV_EVENT, handler);
-    return () => window.removeEventListener(CLOSE_NAV_EVENT, handler);
-  }, [isMobile]);
+    window.addEventListener(EXPAND_CHAT_RAIL_EVENT, handler);
+    return () => window.removeEventListener(EXPAND_CHAT_RAIL_EVENT, handler);
+  }, [collapsed, isMinimalLayout, persistNavCollapsed, setChatSidebarOpen]);
 
   const routes = (
     <Suspense fallback={<PageLoading />}>
@@ -170,7 +190,7 @@ export default function MainLayout() {
             display: "flex",
             flexDirection: "row",
             background: isChatRoute
-              ? "var(--fn-bg-elevated)"
+              ? "var(--fn-bg-elevated, #fff)"
               : "var(--fn-bg-primary)",
             transition: "background var(--fn-transition)",
             overflow: "hidden",
@@ -218,6 +238,20 @@ export default function MainLayout() {
             )}
           </div>
 
+          {isChatRoute && !isMinimalLayout && (
+            <div
+              id={CHAT_HISTORY_RAIL_ID}
+              style={{
+                flexShrink: 0,
+                display: "flex",
+                alignSelf: "stretch",
+                minHeight: 0,
+                height: "100%",
+                position: "relative",
+              }}
+            />
+          )}
+
           {/* Right column: mobile header (if any) + page content */}
           <div
             style={{
@@ -259,7 +293,7 @@ export default function MainLayout() {
                 className="page-container"
                 style={{
                   background: isChatRoute
-                    ? "var(--fn-bg-elevated)"
+                    ? "var(--fn-bg-elevated, #fff)"
                     : "var(--fn-bg-layout)",
                   transition: "background var(--fn-transition)",
                   flex: 1,
