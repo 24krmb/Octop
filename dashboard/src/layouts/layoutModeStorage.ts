@@ -1,8 +1,30 @@
-/** Sidebar's lower pane: capability nav (settings) vs chat records. */
+/** App chrome layout: classic (dual rail) vs minimal (single nav with settings/records). */
+export type LayoutMode = "classic" | "minimal";
+
+/** Minimal-mode lower pane: merged settings nav vs agent/session records. */
 export type MinimalNavPane = "settings" | "records";
 
+export const LAYOUT_MODE_KEY = "octop:layout-mode";
 /** v2: default pane is records (primary). */
 export const MINIMAL_NAV_PANE_KEY = "octop:sidebar-minimal-pane-v2";
+
+export function loadLayoutMode(): LayoutMode {
+  try {
+    const raw = localStorage.getItem(LAYOUT_MODE_KEY);
+    if (raw === "minimal" || raw === "classic") return raw;
+  } catch {
+    /* ignore */
+  }
+  return "classic";
+}
+
+export function saveLayoutMode(mode: LayoutMode): void {
+  try {
+    localStorage.setItem(LAYOUT_MODE_KEY, mode);
+  } catch {
+    /* ignore */
+  }
+}
 
 export function loadMinimalNavPane(): MinimalNavPane {
   try {
@@ -13,8 +35,7 @@ export function loadMinimalNavPane(): MinimalNavPane {
   } catch {
     /* ignore */
   }
-  // Unified sidebar tabs default to the capability nav (能力).
-  return "settings";
+  return "records";
 }
 
 export function saveMinimalNavPane(pane: MinimalNavPane): void {
