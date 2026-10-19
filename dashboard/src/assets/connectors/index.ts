@@ -74,6 +74,8 @@ export const CONNECTOR_LOGOS: Record<string, string> = {
 const CONNECTOR_NAME_LOGOS: Record<string, string> = {
   通达信: tdxFinance,
   tdx: tdxFinance,
+  语雀: yuqueMcp,
+  yuque: yuqueMcp,
   繁微: fiona,
   fiona: fiona,
 };
