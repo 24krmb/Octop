@@ -146,10 +146,6 @@ function NavItemButton({
   const showToggle = Boolean(
     showChatRailToggle && item.key === "chat" && onToggleChatRail,
   );
-  const railLabel = chatRailOpen
-    ? t("chat.collapseHistorySidebar", "收起对话历史")
-    : t("chat.expandHistorySidebar", "展开对话历史");
-
   return (
     <div
       className={styles.navItemRow}
@@ -230,21 +226,7 @@ function NavItemButton({
           )}
         </span>
       </button>
-      {showToggle ? (
-        <button
-          type="button"
-          className={styles.chatRailExpandBtn}
-          onClick={(e) => {
-            e.stopPropagation();
-            onToggleChatRail?.();
-          }}
-          aria-expanded={Boolean(chatRailOpen)}
-          aria-label={railLabel}
-          title={railLabel}
-        >
-          <ArrowRightLeft size={14} strokeWidth={1.8} aria-hidden />
-        </button>
-      ) : null}
+
     </div>
   );
 }
