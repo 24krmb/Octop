@@ -523,7 +523,6 @@ export default function Sidebar({
       />
       {!isRailCollapsed && !isMobile && (
         <>
-          <CurrentVersionBadge isMobile={isMobile} />
           <AppVersionBadge isMobile={isMobile} />
         </>
       )}
