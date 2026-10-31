@@ -7,7 +7,6 @@ const CronJobsPage = lazy(() => import("../pages/Control/CronJobs"));
 const ConnectorsPage = lazy(() => import("../pages/Agent/Connectors"));
 const SkillPackagesPage = lazy(() => import("../pages/SkillPackages"));
 const KnowledgeBasesPage = lazy(() => import("../pages/KnowledgeBases"));
-const BridgePage = lazy(() => import("../pages/Settings/Bridge"));
 const PersonalizationPage = lazy(
   () => import("../pages/Agent/Personalization"),
 );
@@ -155,7 +154,6 @@ export const routeConfigs: RouteConfig[] = [
   { path: "/connectors", element: <ConnectorsPage /> },
   { path: "/skill-packages", element: <SkillPackagesPage /> },
   { path: "/knowledge-bases", element: <KnowledgeBasesPage /> },
-  { path: "/bridge", element: <BridgePage /> },
   {
     path: "/personalization/acp",
     element: <RedirectPreserveSearch to="/acp" />,

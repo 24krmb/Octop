@@ -66,7 +66,6 @@ export default function AdvancedSettingsPage() {
     return <Navigate to={`/admin/models?tab=${moved}`} replace />;
   }
   if (moved === "bridge") {
-    return <Navigate to="/bridge" replace />;
   }
 
   if (forbidden) return <ForbiddenPage />;

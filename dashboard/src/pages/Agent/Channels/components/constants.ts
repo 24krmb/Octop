@@ -88,9 +88,7 @@ export const CHANNEL_LABEL_KEYS: Record<ChannelKey, string> = {
 export const CHANNEL_LABELS: Record<ChannelKey, string> = {
   weixin: "微信",
   qq: "QQ",
-  wecom: "企业微信",
   feishu: "飞书",
-  yuanbao: "元宝",
   dingtalk: "钉钉",
   discord: "Discord",
   xiaoyi: "小艺",

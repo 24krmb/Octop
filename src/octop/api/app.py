@@ -137,13 +137,6 @@ def build_app(server: OctopServer) -> FastAPI:
     install_jwt_auth(app, server)
     install_setup_lockdown(app, server)
 
-    if server.app_runtime is not None and server.app_runtime.bridge_manager is not None:
-        from octop.api.bridge_peer import prepare_peer_dashboard_turn
-
-        server.app_runtime.bridge_manager.bind_asgi_app(
-            app,
-            peer_turn_runner=prepare_peer_dashboard_turn,
-        )
 
     from octop.infra.setup.tls.challenge import challenge_store
 
@@ -166,7 +159,6 @@ def build_app(server: OctopServer) -> FastAPI:
         auth_oauth,
         auth_oidc,
         backup,
-        bridge,
         channels,
         chat,
         connectors,
@@ -240,7 +232,6 @@ def build_app(server: OctopServer) -> FastAPI:
             _RouterMount(chat.router, "/api", ["chat"]),
             _RouterMount(slash.router, "/api", ["slash"]),
             _RouterMount(connectors.router, "/api", ["connectors"]),
-            _RouterMount(bridge.router, "/api", ["bridge"]),
             _RouterMount(knowledge_bases.router, "/api", ["knowledge"]),
             _RouterMount(internal_mcp.router, "/api", ["internal-mcp"]),
             _RouterMount(channels.router, "/api", ["channels"]),
