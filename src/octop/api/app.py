@@ -129,11 +129,6 @@ def build_app(server: OctopServer) -> FastAPI:
             expose_headers=[ACCESS_TOKEN_RESPONSE_HEADER],
         )
 
-    from octop.api.middleware.bridge_proxy import install as install_bridge_proxy
-
-    # Bridge proxy must sit inside JWT auth so ``request.state.octop_user`` is set
-    # (Starlette runs the last-added middleware first).
-    install_bridge_proxy(app, server)
     install_jwt_auth(app, server)
     install_setup_lockdown(app, server)
 

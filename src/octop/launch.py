@@ -68,7 +68,7 @@ async def run_foreground(
     import uvicorn
 
     from octop.api.app import build_app
-    from octop.infra.bridge.transport import BRIDGE_WS_MAX_BYTES
+    BRIDGE_WS_MAX_BYTES = 16777216  # 16 MiB websocket max payload
     from octop.infra.setup.tls.http_companion import build_http_companion_app
     from octop.infra.setup.tls.listeners import build_listen_plan
     from octop.infra.setup.tls.store import resolve_tls_paths

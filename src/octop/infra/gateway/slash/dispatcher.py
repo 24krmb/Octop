@@ -14,7 +14,6 @@ from octop_harness.slash import (
 from octop.infra.errors import OctopError
 from octop.infra.gateway.slash.catalog import SlashCommandSpec, list_specs, spec_for
 from octop.infra.gateway.slash.ctx import SlashCtx
-from octop.infra.gateway.slash.runtime_bridge import build_runtime_ctx
 from octop.infra.gateway.slash.types import GatewayHandler
 
 if TYPE_CHECKING:
@@ -24,7 +23,7 @@ if TYPE_CHECKING:
 class SlashDispatcher:
     def __init__(self, runtime: RuntimeSlashDispatcher | None = None) -> None:
         self._handlers: dict[str, GatewayHandler] = {}
-        self._runtime = runtime or build_runtime_dispatcher()
+        self._runtime = runtime
 
     def register(self, spec: SlashCommandSpec, handler: GatewayHandler) -> None:
         for n in (spec.name, *spec.aliases):
@@ -33,10 +32,6 @@ class SlashDispatcher:
     async def handle(self, cmd: SlashCommand, ctx: SlashCtx, sink: SlashSink) -> bool:
         handler = self._handlers.get(cmd.name)
         if handler is None:
-            if self._runtime.has(cmd.name):
-                runtime_ctx = await build_runtime_ctx(cmd, ctx)
-                await self._runtime.handle(cmd, runtime_ctx, sink)
-                return True
             return False
         try:
             await handler(self, cmd, ctx, sink)

@@ -606,7 +606,6 @@ class OctopServer:
         await proactive_scheduler.start_all()
 
         from octop.infra.auth.tokens import sign_token
-        from octop.infra.bridge.manager import BridgeManager, public_base_url_from_config
 
         services = self.services
         if services is None:
@@ -625,15 +624,6 @@ class OctopServer:
                 ttl_seconds=ttl,
             )
 
-        advertise = public_base_url_from_config(config.bind_host, config.port)
-        bridge_mgr = BridgeManager(
-            bridge_repo=services.bridge_connection_repo,
-            secret_repo=services.secret_repo,
-            user_repo=services.user_repo,
-            advertise_base_url=advertise,
-            token_signer=_sign_user_token,
-        )
-
         self.app_runtime = AppRuntime(
             agent_registry=registry,
             gateway=gateway,
@@ -642,7 +632,6 @@ class OctopServer:
             proactive_scheduler=proactive_scheduler,
             trajectory_service=trajectory_service,
             history_archive=history_archive,
-            bridge_manager=bridge_mgr,
         )
         from octop.infra.knowledge.gate import (  # noqa: PLC0415
             warn_if_local_embedding_deps_missing,
