@@ -7,7 +7,21 @@ from importlib.resources.abc import Traversable
 from typing import Any
 
 OCTOP_BUILTIN_SKILLS_ROOT = "_builtin_skills"
-RETIRED_BUILTIN_SKILLS = ("install-skill", "discuz-api-publisher", "discuz-post-formatter")
+RETIRED_BUILTIN_SKILLS = (
+    "install-skill",
+    "discuz-api-publisher",
+    "discuz-post-formatter",
+    # 2026-10-31 瘦身：下架 9 个官方内置技能（源仍在 harness 包，workspace 同步时清除）
+    "findmapple-notes",
+    "ascii-video",
+    "findmy",
+    "imessage",
+    "jupyter-live-kernel",
+    "manim-video",
+    "nano-pdf",
+    "ocr-and-documents",
+    "powerpoint",
+)
 _WORKSPACE_TOKEN = b"{{OCTOP_WORKSPACE}}"
 _SKILLS_TOKEN = b"{{OCTOP_SKILLS}}"
 _BUILTIN_TOKEN = b"{{OCTOP_BUILTIN_SKILLS}}"
