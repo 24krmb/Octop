@@ -1829,11 +1829,9 @@ export function ChannelDrawer({
             !isEdit && (
               <>
                 {selectedKind === "qq" && renderQqPanel()}
-                {selectedKind === "wecom" && renderWecomPanel()}
                 {selectedKind === "weixin" && renderWeixinPanel()}
                 {selectedKind === "dingtalk" && renderDingtalkPanel()}
                 {selectedKind === "feishu" && renderFeishuPanel()}
-                {selectedKind === "yuanbao" && renderYuanbaoPanel()}
               </>
             )}
 
