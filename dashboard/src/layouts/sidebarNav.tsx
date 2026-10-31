@@ -75,7 +75,6 @@ export const SIDEBAR_NAV_KEYS = [
   "skill-packages",
   "knowledge-bases",
   "bridge",
-  "workbench",
   "remote-desktop",
   "acp",
   "admin-users",
@@ -129,7 +128,6 @@ export const SIDEBAR_GROUPED_NAV_KEYS = [
   "skill-packages",
   "knowledge-bases",
   "bridge",
-  "workbench",
   "remote-desktop",
   "acp",
   "admin-users",
@@ -235,14 +233,6 @@ export function buildNavSections(
   }
 
   const controlItems: NavItem[] = [];
-  if (navAllowed(user, "workbench")) {
-    controlItems.push({
-      key: "workbench",
-      path: "/workbench",
-      icon: <PanelsTopLeft size={iconSize} strokeWidth={iconStroke} />,
-      labelKey: "nav.workbench",
-    });
-  }
   // Server desktop + phone share one nav entry; phone tab also needs host capability.
   if (
     userCan(user, "desktop") ||

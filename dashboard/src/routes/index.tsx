@@ -68,9 +68,6 @@ export const pathToKey: Record<string, string> = {
   // Control
   "/acp": "acp",
   "/channels": "channels",
-  "/workbench": "workbench",
-  "/workbench/terminal": "workbench",
-  "/workbench/browser": "workbench",
   "/terminal": "workbench",
   "/remote-browser": "workbench",
   "/remote-desktop": "remote-desktop",
@@ -97,7 +94,6 @@ export const pathToKey: Record<string, string> = {
  * Pages that should fill the entire content area without padding/scroll wrapper.
  */
 export const FULLSCREEN_PATHS = new Set([
-  "/workbench",
   "/workbench/terminal",
   "/workbench/browser",
   "/chat",
@@ -117,7 +113,6 @@ export const SELF_HEADER_PATHS = new Set<string>([]);
 /** Mobile-only fullscreen pages (custom header + no content padding). */
 export const MOBILE_FULLSCREEN_PATHS = new Set<string>([]);
 
-export function isWorkbenchPath(pathname: string): boolean {
   return pathname === "/workbench" || pathname.startsWith("/workbench/");
 }
 
@@ -171,7 +166,6 @@ export const routeConfigs: RouteConfig[] = [
     path: "/channels",
     element: <RedirectPreserveSearch to="/personalization/channels" />,
   },
-  // Workbench (terminal + browser) is keep-alive mounted in MainLayout.
   { path: "/workbench", element: null },
   { path: "/workbench/terminal", element: null },
   { path: "/workbench/browser", element: null },
