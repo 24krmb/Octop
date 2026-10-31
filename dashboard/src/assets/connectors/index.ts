@@ -3,27 +3,22 @@ import baiduMap from "./baidu-map.png";
 import ctripWendao from "./ctrip-wendao.png";
 import didi from "./didi.svg";
 import dida365 from "./dida365.png";
-import dify from "./dify.svg";
 import agentlyCli from "./agently-cli.png";
 import feishuCli from "./feishu-cli.png";
 import fliggy from "./fliggy.png";
 import meituanTravel from "./meituan-travel.png";
 import notion from "./notion.png";
 import openalex from "./openalex.svg";
-import qcc from "./qcc.png";
 import qqMail from "./qq-mail.png";
-import qqMusic from "./qq-music.png";
 import tencentDocs from "./tencent-docs.png";
 import tencentIma from "./tencent-ima.png";
 import tencentMeeting from "./tencent-meeting.png";
 import tencentNews from "./tencent-news.png";
 import tencentLexiang from "./tencent-lexiang.png";
 import tencentWeiyun from "./tencent-weiyun.png";
-import wechatReading from "./wechat-reading.png";
 import wecomCli from "./wecom-cli.png";
 import weknora from "./weknora.svg";
 import youdaoNote from "./youdao-note.png";
-import yuandian from "./yuandian.png";
 import windStockData from "./wind-stock-data.png";
 import tdxFinance from "./tdx-finance.png";
 import fiona from "./fiona.png";
@@ -34,7 +29,6 @@ export const CONNECTOR_LOGOS: Record<string, string> = {
   "tencent-docs": tencentDocs,
   "baidu-map": baiduMap,
   "qq-mail": qqMail,
-  "qq-music": qqMusic,
   fliggy,
   "ctrip-wendao": ctripWendao,
   didi,
@@ -52,7 +46,6 @@ export const CONNECTOR_LOGOS: Record<string, string> = {
   dida365: dida365,
   dify,
   "tencent-news": tencentNews,
-  "wechat-reading": wechatReading,
   "youdao-note": youdaoNote,
   "tencent-weiyun": tencentWeiyun,
   weknora,

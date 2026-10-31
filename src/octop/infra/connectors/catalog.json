@@ -113,29 +113,6 @@
       }
     },
     {
-      "kind": "wechat-reading",
-      "name": {
-        "en": "Weixin Reading",
-        "zh": "微信读书"
-      },
-      "description": {
-        "en": "Sync your bookshelf and reading notes",
-        "zh": "书架同步与读书笔记"
-      },
-      "auth_kind": "api_key",
-      "doc_url": "https://weread.qq.com/r/weread-skills",
-      "icon": "wechat-reading",
-      "color": "#1aad19",
-      "phase": "available",
-      "mcp_mode": "gateway",
-      "category": "media",
-      "quick_auth_url": "https://weread.qq.com/r/weread-skills",
-      "auth_hint": {
-        "en": "Sign in at https://weread.qq.com/r/weread-skills, copy the wrk- API Key, and paste it below",
-        "zh": "登录 https://weread.qq.com/r/weread-skills 获取 wrk- 开头的 API Key 后粘贴到下方"
-      }
-    },
-    {
       "kind": "tencent-lexiang",
       "name": {
         "en": "Tencent Lexiang",
@@ -220,30 +197,6 @@
       "auth_hint": {
         "en": "Pick your mail provider, enable IMAP/SMTP in the mailbox settings, generate an authorization code, and fill it in below",
         "zh": "选择邮箱服务商，在邮箱设置中开启 IMAP/SMTP 并生成授权码后填入下方"
-      }
-    },
-    {
-      "kind": "qq-music",
-      "name": {
-        "en": "QQ Music",
-        "zh": "QQ 音乐"
-      },
-      "description": {
-        "en": "Search songs, charts, playlists, and listening reports",
-        "zh": "搜歌、排行榜、歌单与听歌报告"
-      },
-      "auth_kind": "api_key",
-      "doc_url": "https://y.qq.com/n/ryqq_v2/qqmusic_skills",
-      "icon": "qq-music",
-      "color": "#31c27c",
-      "phase": "available",
-      "mcp_mode": "gateway",
-      "category": "media",
-      "quick_auth_url": "https://y.qq.com/n/ryqq_v2/qqmusic_skills",
-      "manual_url": "https://y.qq.com/n/ryqq_v2/qqmusic_skills",
-      "auth_hint": {
-        "en": "Sign in on the QQ Music Skills page, generate a qmk- API Key, and paste it below",
-        "zh": "登录 QQ 音乐 Skills 页生成 qmk- 开头的 API Key 并粘贴到下方"
       }
     },
     {
@@ -370,61 +323,6 @@
         "en": "Open the DiDi developer console, sign in, activate your personal MCP Key, and paste it below",
         "zh": "打开滴滴开发者控制台登录并激活个人 MCP Key，复制后粘贴到下方"
       },
-      "remote_transport": "streamable_http"
-    },
-    {
-      "kind": "yuandian",
-      "name": {
-        "en": "Yuandian",
-        "zh": "元典"
-      },
-      "description": {
-        "en": "Laws, case documents, company data, and legal hallucination checks",
-        "zh": "法律法规、案例文书、企业信息与法律幻觉检测"
-      },
-      "auth_kind": "api_key",
-      "doc_url": "https://open.chineselaw.com/profile",
-      "icon": "yuandian",
-      "color": "#1a56db",
-      "phase": "available",
-      "mcp_mode": "gateway",
-      "category": "professional",
-      "quick_auth_url": "https://open.chineselaw.com/profile",
-      "guide_url": "https://open.chineselaw.com/llms.txt",
-      "manual_url": "https://open.chineselaw.com/profile",
-      "auth_hint": {
-        "en": "Sign in to the Yuandian open platform, copy the sk_ API Key, and paste it below",
-        "zh": "登录元典开放平台获取 sk_ 开头的 API Key 并粘贴到下方"
-      }
-    },
-    {
-      "kind": "qcc",
-      "name": {
-        "en": "Qichacha",
-        "zh": "企查查"
-      },
-      "description": {
-        "en": "One-click OAuth or paste an API Key to query companies, risk, IP, operations, and executives",
-        "zh": "一键 OAuth 或粘贴 API Key，接入企业、风险、知识产权、经营及董监高五类数据"
-      },
-      "auth_kind": "oauth2",
-      "doc_url": "https://agent.qcc.com/",
-      "icon": "qcc",
-      "color": "#008CFF",
-      "phase": "available",
-      "mcp_mode": "internal",
-      "category": "professional",
-      "quick_auth_url": "https://agent.qcc.com/",
-      "guide_url": "https://agent.qcc.com/guide",
-      "manual_url": "https://agent.qcc.com/",
-      "auth_hint": {
-        "en": "Use one-click OAuth when Octop has public HTTPS or localhost; otherwise open the authorization page, copy the API Key, and paste it. Query scope follows your account permissions.",
-        "zh": "有公网 HTTPS 或本机 localhost 时可用一键 OAuth；否则打开授权页获取 API Key 后粘贴。查询范围以账户权限为准。"
-      },
-      "oauth_issuer": "https://agent.qcc.com",
-      "mcp_url": "https://agent.qcc.com/mcp/company/stream",
-      "oauth_resource": "https://agent.qcc.com/mcp/company/stream",
-      "oauth_scopes": "mcp:tools",
       "remote_transport": "streamable_http"
     },
     {
@@ -838,45 +736,6 @@
           }
         }
       ]
-    },
-    {
-      "kind": "dify",
-      "name": {
-        "en": "Dify",
-        "zh": "Dify"
-      },
-      "description": {
-        "en": "Connect the MCP endpoint of a published Dify app or workflow",
-        "zh": "连接 Dify 已发布应用或工作流的 MCP 服务"
-      },
-      "auth_kind": "custom_fields",
-      "doc_url": "https://docs.dify.ai/",
-      "icon": "dify",
-      "color": "#1c64f2",
-      "phase": "available",
-      "mcp_mode": "remote",
-      "category": "self_hosted",
-      "auth_hint": {
-        "en": "Enable MCP on the Dify app access point, then paste the full MCP Server URL.",
-        "zh": "在 Dify 应用的访问点中启用 MCP，然后粘贴完整的 MCP Server URL。"
-      },
-      "credential_fields": [
-        {
-          "key": "mcp_url",
-          "label": {
-            "en": "MCP Server URL",
-            "zh": "MCP Server URL"
-          },
-          "field_type": "url",
-          "placeholder": "https://dify.example.com/mcp/server/<server_code>/mcp",
-          "help": {
-            "en": "Full URL including the access id; stored encrypted",
-            "zh": "完整 URL 含访问标识，将按密钥加密保存"
-          },
-          "secret": true
-        }
-      ],
-      "remote_transport": "streamable_http"
     },
     {
       "kind": "wind-stock-data",
