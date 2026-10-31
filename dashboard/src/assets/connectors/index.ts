@@ -33,7 +33,6 @@ export const CONNECTOR_LOGOS: Record<string, string> = {
   "ctrip-wendao": ctripWendao,
   didi,
   "meituan-travel": meituanTravel,
-  yuandian,
   "tencent-ima": tencentIma,
   "agently-cli": agentlyCli,
   "feishu-cli": feishuCli,
