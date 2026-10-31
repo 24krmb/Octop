@@ -3,8 +3,6 @@ import discordIcon from "../../../../assets/channels/discord.svg";
 import dingtalkIcon from "../../../../assets/channels/dingtalk.svg";
 import feishuIcon from "../../../../assets/channels/feishu.svg";
 import dashboardIcon from "../../../../assets/channels/dashboard.svg";
-import yuanbaoIcon from "../../../../assets/channels/yuanbao.svg";
-import wecomIcon from "../../../../assets/channels/wecom.svg";
 import weixinIcon from "../../../../assets/channels/weixin.svg";
 import octopIcon from "../../../../assets/channels/octop.svg";
 import consoleIcon from "../../../../assets/channels/console.svg";
@@ -19,11 +17,9 @@ import xiaoyiIcon from "../../../../assets/channels/xiaoyi.png";
 export type ChannelKey =
   | "feishu"
   | "dingtalk"
-  | "wecom"
   | "qq"
   | "weixin"
   | "discord"
-  | "yuanbao"
   | "xiaoyi"
   | "mqtt"
   | "telegram"
@@ -38,9 +34,7 @@ export type ChannelKey =
 export const CHANNEL_KEYS: ChannelKey[] = [
   "weixin",
   "qq",
-  "wecom",
   "feishu",
-  "yuanbao",
   "dingtalk",
   "telegram",
   "discord",
