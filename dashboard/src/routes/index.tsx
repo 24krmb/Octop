@@ -94,8 +94,6 @@ export const pathToKey: Record<string, string> = {
  * Pages that should fill the entire content area without padding/scroll wrapper.
  */
 export const FULLSCREEN_PATHS = new Set([
-  "/workbench/terminal",
-  "/workbench/browser",
   "/chat",
   "/remote-desktop",
   "/remote-desktop/desktop",
@@ -112,9 +110,6 @@ export const SELF_HEADER_PATHS = new Set<string>([]);
 
 /** Mobile-only fullscreen pages (custom header + no content padding). */
 export const MOBILE_FULLSCREEN_PATHS = new Set<string>([]);
-
-  return pathname === "/workbench" || pathname.startsWith("/workbench/");
-}
 
 export function isRemoteDesktopPath(pathname: string): boolean {
   return (
