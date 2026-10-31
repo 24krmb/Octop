@@ -73,12 +73,10 @@ export function partitionChannelKeys(
 export const CHANNEL_LABEL_KEYS: Record<ChannelKey, string> = {
   feishu: "channels.label_feishu",
   dingtalk: "channels.label_dingtalk",
-  wecom: "channels.label_wecom",
-  qq: "channels.label_qq",
+ qq: "channels.label_qq",
   weixin: "channels.label_weixin",
   discord: "channels.label_discord",
-  yuanbao: "channels.label_yuanbao",
-  xiaoyi: "channels.label_xiaoyi",
+ xiaoyi: "channels.label_xiaoyi",
   mqtt: "channels.label_mqtt",
   telegram: "channels.label_telegram",
   dashboard: "channels.label_dashboard",
@@ -297,15 +295,6 @@ export const CHANNEL_FIELDS: Partial<Record<ChannelKey, ChannelField[]>> = {
       required: true,
     },
   ],
-  wecom: [
-    { name: "bot_id", label: "Bot ID", required: true },
-    { name: "secret", label: "Secret", type: "password", required: true },
-    {
-      name: "websocket_url",
-      label: "WebSocket URL",
-      placeholder: "wss://openws.work.weixin.qq.com",
-    },
-  ],
   qq: [
     { name: "app_id", label: "App ID", required: true },
     { name: "secret", label: "App Secret", type: "password", required: true },
@@ -338,25 +327,6 @@ export const CHANNEL_FIELDS: Partial<Record<ChannelKey, ChannelField[]>> = {
       label: "HTTP Proxy Auth",
       type: "password",
       placeholder: "user:password",
-    },
-  ],
-  yuanbao: [
-    { name: "app_key", label: "App Key", required: true },
-    {
-      name: "app_secret",
-      label: "App Secret",
-      type: "password",
-      required: true,
-    },
-    {
-      name: "api_domain",
-      label: "API Domain",
-      placeholder: "bot.yuanbao.tencent.com",
-    },
-    {
-      name: "ws_url",
-      label: "WebSocket URL",
-      placeholder: "wss://bot-wss.yuanbao.tencent.com/wss/connection",
     },
   ],
   weixin: [
