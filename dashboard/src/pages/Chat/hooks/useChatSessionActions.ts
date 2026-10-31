@@ -11,8 +11,7 @@ interface UseChatSessionActionsParams {
   sessions: Session[];
   isMobile: boolean;
   setActiveAgent: (id: string) => void;
-  /** Close the mobile nav drawer (no-op on desktop). */
-  closeMobileNav: () => void;
+  setSidebarOpen: (open: boolean) => void;
   setSelectedModel: (model: string | null) => void;
   setHasBrowserTool: (value: boolean) => void;
   deleteSession: (id: string, compact: boolean) => Promise<boolean>;
@@ -27,7 +26,7 @@ export function useChatSessionActions({
   sessions,
   isMobile,
   setActiveAgent,
-  closeMobileNav,
+  setSidebarOpen,
   setSelectedModel,
   setHasBrowserTool,
   deleteSession,
@@ -61,14 +60,14 @@ export function useChatSessionActions({
       markInitialNavDone(agentId);
       navigate(`/chat/${agentId}`);
       chatStore.clearMessages(EMPTY_CHAT_SESSION_KEY);
-      if (isMobile) closeMobileNav();
+      if (isMobile) setSidebarOpen(false);
     },
     [
       navigate,
       resolvedAgentId,
       isMobile,
       setActiveAgent,
-      closeMobileNav,
+      setSidebarOpen,
       setSelectedModel,
       setHasBrowserTool,
       resetNavForAgentSwitch,
@@ -84,14 +83,14 @@ export function useChatSessionActions({
       setSelectedModel(null);
       void octopThreadsApi.rebind(agent, id).catch(() => {});
       navigate(`/chat/${agent}/${id}`);
-      if (isMobile) closeMobileNav();
+      if (isMobile) setSidebarOpen(false);
     },
     [
       activeThreadId,
       navigate,
       isMobile,
       resolvedAgentId,
-      closeMobileNav,
+      setSidebarOpen,
       setSelectedModel,
     ],
   );
@@ -105,7 +104,7 @@ export function useChatSessionActions({
       // We land on the new-chat view, so only that session is stale here.
       // Clearing the thread we are leaving would drop an in-flight turn.
       chatStore.clearMessages(EMPTY_CHAT_SESSION_KEY);
-      if (isMobile) closeMobileNav();
+      if (isMobile) setSidebarOpen(false);
 
       void (async () => {
         try {
@@ -127,7 +126,7 @@ export function useChatSessionActions({
       setActiveAgent,
       navigate,
       isMobile,
-      closeMobileNav,
+      setSidebarOpen,
       resetNavForAgentSwitch,
       markInitialNavDone,
     ],

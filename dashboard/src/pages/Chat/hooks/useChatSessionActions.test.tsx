@@ -46,7 +46,7 @@ function renderActions() {
         sessions: [],
         isMobile: false,
         setActiveAgent: vi.fn(),
-        closeMobileNav: vi.fn(),
+        setSidebarOpen: vi.fn(),
         setSelectedModel: vi.fn(),
         setHasBrowserTool: vi.fn(),
         deleteSession: vi.fn().mockResolvedValue(true),
