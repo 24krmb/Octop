@@ -147,8 +147,6 @@ export const CHANNEL_URLS: Partial<Record<ChannelKey, string>> = {
   dingtalk: "https://open-dev.dingtalk.com/",
   qq: "https://q.qq.com/qqbot/openclaw/",
   discord: "https://discord.com/developers/applications",
-  yuanbao: "https://yuanbao.tencent.com/bot",
-  wecom: "https://work.weixin.qq.com/wework_admin/frame#/aiHelper/create",
   telegram: "https://t.me/BotFather",
   octopbot: "https://octop.cloud.tencent.com",
 };
