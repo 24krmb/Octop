@@ -24,6 +24,7 @@ import { useChat } from "./hooks/useChat";
 import { useSessions, fetchAndSyncSessionArtifacts } from "./hooks/useSessions";
 import * as chatStore from "./hooks/chatStore";
 import { formatRunUsage, assistantTurnsFromEnd } from "./utils/chatMessages";
+import { useChatSidebarState } from "./hooks/useChatSidebarState";
 import { useChatHistoryRail } from "./hooks/useChatHistoryRail";
 import { useChatDockPanel } from "./hooks/useChatDockPanel";
 import { useChatSend, type ChatSendOverrides } from "./hooks/useChatSend";
@@ -73,6 +74,7 @@ import {
   selectEnabledExperts,
   projectChatAgentOption,
 } from "../../context/AgentContext";
+import { useLayoutMode } from "../../context/LayoutModeContext";
 import { useBrowserSessionState } from "../../hooks/useBrowserSessionState";
 import { prefetchVoiceConfig } from "../../hooks/useVoiceConfig";
 import {
@@ -89,7 +91,6 @@ import {
   dockTabIdForToolCall,
 } from "./ChatToolDockContext";
 import ChatSidebarPanel from "./components/ChatSidebarPanel";
-import { useChatSidebarState } from "./hooks/useChatSidebarState";
 import ChatTitleBar from "./components/ChatTitleBar";
 import TeamChatBadge from "./components/TeamChatBadge";
 import RemoteExpertHint from "./components/RemoteExpertHint";
@@ -108,10 +109,7 @@ import HistoryMigrationBanner from "./components/HistoryMigrationBanner";
 import { apiErrorMessage } from "../../utils/apiError";
 import PwaInstallPrompt from "../../components/PwaInstallPrompt";
 import { promptNeedsUserInput } from "../../utils/quickInputPrefill";
-import {
-  CLOSE_NAV_EVENT,
-  OPEN_NAV_RECORDS_EVENT,
-} from "../../layouts/chatHistoryRail";
+import { OPEN_NAV_RECORDS_EVENT } from "../../layouts/chatHistoryRail";
 import {
   usePluginToolUis,
   setPluginUiDockHandlers,
@@ -137,6 +135,8 @@ function ChatPageInner() {
   });
   const isMobile = useIsMobile();
   const user = useCurrentUser();
+  const { layoutMode } = useLayoutMode();
+  const isMinimalLayout = layoutMode === "minimal";
   const canTerminal = userCan(user, "terminal");
   const canConfigureModels = navAllowed(user, "models");
   const chatHistoryRail = useChatHistoryRail();
@@ -145,12 +145,14 @@ function ChatPageInner() {
     null,
   );
   const [, setBrowserLastRecordingId] = useState<string | null>(null);
-
-  // Ask the layout to close the mobile nav drawer (records pane lives inside
-  // it now — there is no separate chat overlay to close).
-  const closeMobileNav = useCallback(() => {
-    window.dispatchEvent(new Event(CLOSE_NAV_EVENT));
-  }, []);
+  const {
+    sidebarOpen,
+    setSidebarOpen,
+    sidebarWidth,
+    isSidebarResizing,
+    sidebarElRef,
+    handleSidebarResizeStart,
+  } = useChatSidebarState(isMobile);
 
   // Pre-fill text from router state or module-level pending prefill
   // (set by cron-jobs suggestions before navigating here).
@@ -912,7 +914,7 @@ function ChatPageInner() {
     sessions,
     isMobile,
     setActiveAgent,
-    closeMobileNav,
+    setSidebarOpen,
     setSelectedModel,
     setHasBrowserTool,
     deleteSession,
@@ -1308,15 +1310,6 @@ function ChatPageInner() {
     return name;
   }, [activeSession, t]);
 
-  const {
-    sidebarOpen,
-    setSidebarOpen,
-    sidebarWidth,
-    isSidebarResizing,
-    sidebarElRef,
-    handleSidebarResizeStart,
-  } = useChatSidebarState(isMobile);
-
   const chatSidebarPanel = (
     <ChatSidebarPanel
       isMobile={isMobile}
@@ -1324,8 +1317,6 @@ function ChatPageInner() {
       sidebarWidth={sidebarWidth}
       isSidebarResizing={isSidebarResizing}
       sidebarElRef={sidebarElRef}
-      onSidebarOpenChange={setSidebarOpen}
-      onSidebarResizeStart={handleSidebarResizeStart}
       agents={sidebarAgents}
       sessions={sessions}
       activeThreadId={activeThreadId}
@@ -1339,7 +1330,7 @@ function ChatPageInner() {
         if (agentId && agentId !== resolvedAgentId) {
           void octopThreadsApi.rebind(agentId, sessionId).catch(() => {});
           navigate(`/chat/${agentId}/${sessionId}`);
-          if (isMobile) closeMobileNav();
+          if (isMobile) setSidebarOpen(false);
           return;
         }
         handleSelectSession(sessionId);
@@ -1355,6 +1346,10 @@ function ChatPageInner() {
       onForkSession={handleForkSession}
       forkDisabled={sessionForkDisabled}
       forkDisabledHint={sessionForkDisabledHint}
+      onSidebarOpenChange={setSidebarOpen}
+      onSidebarResizeStart={handleSidebarResizeStart}
+      layoutRail={!isMinimalLayout}
+      navEmbedded={isMinimalLayout}
     />
   );
 
@@ -1398,7 +1393,11 @@ function ChatPageInner() {
                 <button
                   className={styles.menuBtn}
                   onClick={() => {
-                    window.dispatchEvent(new Event(OPEN_NAV_RECORDS_EVENT));
+                    if (isMinimalLayout) {
+                      window.dispatchEvent(new Event(OPEN_NAV_RECORDS_EVENT));
+                      return;
+                    }
+                    setSidebarOpen(!sidebarOpen);
                   }}
                   title={t("nav.chatHistory") || "会话列表"}
                 >
