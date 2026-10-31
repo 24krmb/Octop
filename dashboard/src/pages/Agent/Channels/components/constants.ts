@@ -104,11 +104,9 @@ export const CHANNEL_LABELS: Record<ChannelKey, string> = {
 export const CHANNEL_ICONS: Record<ChannelKey, string> = {
   feishu: feishuIcon,
   dingtalk: dingtalkIcon,
-  wecom: wecomIcon,
   qq: qqIcon,
   weixin: weixinIcon,
   discord: discordIcon,
-  yuanbao: yuanbaoIcon,
   xiaoyi: xiaoyiIcon,
   mqtt: mqttIcon,
   telegram: telegramIcon,
