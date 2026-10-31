@@ -42,8 +42,6 @@ _BUILTIN_AVATAR_URL_TEMPLATE = "/experts/avatars/{expert_id}.svg"
 _FALLBACK_BUNDLED_AVATAR_IDS = frozenset(
     {
         "ai-coding-coach",
-        "ai-safety-guardian",
-        "business-operations",
         "clinical-learning-subscription",
         "default",
         "general-assistant",
