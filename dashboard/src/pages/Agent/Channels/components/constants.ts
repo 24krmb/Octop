@@ -121,9 +121,7 @@ export const CHANNEL_ICONS: Record<ChannelKey, string> = {
 export const CHANNEL_COLORS: Record<ChannelKey, string> = {
   weixin: "#07C160",
   qq: "#12B7F5",
-  wecom: "#0188FB",
   feishu: "#3370FF",
-  yuanbao: "#E8A317",
   dingtalk: "#0089FF",
   telegram: "#229ED9",
   xiaoyi: "#CF0A2C",
