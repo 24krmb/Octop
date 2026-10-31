@@ -15,7 +15,6 @@ import {
   FULLSCREEN_PATHS,
   MOBILE_FULLSCREEN_PATHS,
   SELF_HEADER_PATHS,
-  isWorkbenchPath,
 } from "../../routes";
 import { CHAT_HISTORY_RAIL_ID, isChatPath } from "../chatHistoryRail";
 import { useIsMobile } from "../../hooks/useIsMobile";
@@ -28,7 +27,6 @@ import { useLayoutMode } from "../../context/LayoutModeContext";
 import { useDashboardPushToast } from "../../hooks/useDashboardPushToast";
 
 const Chat = lazy(() => import("../../pages/Chat"));
-const WorkbenchPage = lazy(() => import("../../pages/Control/Workbench"));
 
 const { Content } = Layout;
 
@@ -66,7 +64,6 @@ export default function MainLayout() {
     FULLSCREEN_PATHS.has(currentPath) ||
     [...FULLSCREEN_PATHS].some((p) => currentPath.startsWith(p + "/")) ||
     (isMobile && MOBILE_FULLSCREEN_PATHS.has(currentPath));
-  const onWorkbench = isWorkbenchPath(currentPath);
 
   const [collapsed, setCollapsed] = useState(() => getSavedCollapsed());
   const [chatSidebarOpen, setChatSidebarOpen] = useChatSidebarOpen();
@@ -306,24 +303,6 @@ export default function MainLayout() {
                 <PwaUpdatePrompt />
                 <PwaAutoPrompt />
 
-                {workbenchMounted && (
-                  <div
-                    style={{
-                      flex: 1,
-                      minHeight: 0,
-                      overflow: "hidden",
-                      display: onWorkbench ? "flex" : "none",
-                      flexDirection: "column",
-                    }}
-                  >
-                    <RequirePermission>
-                      <Suspense fallback={<PageLoading />}>
-                        <WorkbenchPage isVisible={onWorkbench} />
-                      </Suspense>
-                    </RequirePermission>
-                  </div>
-                )}
-
                 {/* Keep Routes mounted when visiting Workbench so leaving/re-entering
                   does not remount every lazy page (lag + lost UI state). */}
                 <div
@@ -331,7 +310,7 @@ export default function MainLayout() {
                     flex: 1,
                     minHeight: 0,
                     overflow: "hidden",
-                    display: onWorkbench ? "none" : "flex",
+                    display: "flex",
                     flexDirection: "column",
                   }}
                 >
