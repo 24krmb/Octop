@@ -1,4 +1,105 @@
-/* Session list */
+/* Session sidebar + list */
+/* ---------- Sidebar ---------- */
+.sidebarWrapper {
+  display: flex;
+  position: relative;
+  height: 100%;
+  flex-shrink: 0;
+  background: var(--fn-bg-elevated, #fff);
+}
+
+.sidebar {
+  width: 248px;
+  min-width: 248px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: var(--fn-bg-sidebar);
+  border-right: none;
+  transition:
+    width var(--fn-transition),
+    min-width var(--fn-transition),
+    opacity var(--fn-transition);
+  overflow: hidden;
+
+  @media (max-width: 767px) {
+    position: fixed;
+    top: max(12px, env(safe-area-inset-top, 0px));
+    bottom: max(12px, env(safe-area-inset-bottom, 0px));
+    left: max(16px, env(safe-area-inset-left, 0px));
+    right: max(20px, env(safe-area-inset-right, 0px));
+    width: auto;
+    min-width: unset;
+    z-index: 200;
+    transform: translateX(calc(-100% - 16px));
+    opacity: 0;
+    height: auto;
+    box-shadow: var(--fn-shadow-xl);
+  }
+}
+
+/* Dragging: kill width transitions so the handle tracks the pointer 1:1. */
+.sidebarResizing {
+  transition: none !important;
+  will-change: width, min-width;
+}
+
+.sidebar:not(.sidebarOpen) {
+  @media (min-width: 768px) {
+    width: 0;
+    min-width: 0;
+    border-right: none;
+  }
+}
+
+.sidebarResizeHandle {
+  position: absolute;
+  top: 0;
+  right: -3px;
+  width: 6px;
+  height: 100%;
+  cursor: col-resize;
+  z-index: 3;
+  touch-action: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2px;
+    height: 28px;
+    border-radius: 2px;
+    background: var(--fn-border-secondary);
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+
+  &:hover::after,
+  &.sidebarResizeHandleActive::after {
+    opacity: 1;
+    background: #1890ff;
+  }
+}
+
+.sidebarOpen {
+  @media (max-width: 767px) {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 199;
+  background: rgba(0, 0, 0, 0.35);
+  transition: opacity var(--fn-transition-fast) ease;
+  /* overlay is now inside sidebarWrapper — pointer-events must not block sidebar */
+}
+
 /* -- Session list -- */
 .sessionList {
   display: flex;
@@ -49,11 +150,6 @@
 .sessionItems {
   flex: 1;
   overflow-y: auto;
-  /* No side padding: cards must line up with the search box above (whose
-     gutter comes from .sessionList). Global scrollbar rules (layout.css)
-     keep this an overlay scrollbar — a local `scrollbar-width: thin` would
-     make Chrome switch to a space-consuming classic bar and misalign the
-     right edge. */
   padding: 0 0 12px;
 }
 
