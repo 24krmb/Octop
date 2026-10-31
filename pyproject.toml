@@ -33,8 +33,6 @@ dependencies = [
     "acme>=5.6.0",
     "josepy>=2.2.0",
     "boto3>=1.40.61",
-    "octop-browser>=1.0.0",
-    "playwright>=1.40",
     "psycopg[binary]>=3.2",
     "langgraph-checkpoint-postgres>=2.0",
     "mcp>=1.9,<2",
@@ -63,10 +61,6 @@ dev = [
     "mypy>=1.10",
     "build>=1.0",
     "xlwt>=1.3",
-]
-# Kept for backward compatibility; playwright is now a core dependency.
-browser = [
-    "playwright>=1.40",
 ]
 # Kept for backward compatibility; pillow is now a core dependency.
 desktop = ["mss>=9.0", "pynput>=1.7"]

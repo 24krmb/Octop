@@ -139,12 +139,10 @@ def build_app(server: OctopServer) -> FastAPI:
 
     if server.app_runtime is not None and server.app_runtime.bridge_manager is not None:
         from octop.api.bridge_peer import prepare_peer_dashboard_turn
-        from octop.api.routers.browser.stream import run_browser_stream_session
 
         server.app_runtime.bridge_manager.bind_asgi_app(
             app,
             peer_turn_runner=prepare_peer_dashboard_turn,
-            peer_browser_runner=run_browser_stream_session,
         )
 
     from octop.infra.setup.tls.challenge import challenge_store
@@ -169,7 +167,6 @@ def build_app(server: OctopServer) -> FastAPI:
         auth_oidc,
         backup,
         bridge,
-        browser,
         channels,
         chat,
         connectors,
@@ -288,7 +285,6 @@ def build_app(server: OctopServer) -> FastAPI:
             _RouterMount(terminal.router, "/api", ["terminal"]),
             _RouterMount(uploads.router, "/api", ["chat"]),
             _RouterMount(update.router, "/api", ["update"]),
-            _RouterMount(browser.router, "/api", ["browser"]),
             _RouterMount(desktop.router, "/api", ["desktop"]),
             _RouterMount(ollama_models.router, "/api", ["ollama"]),
             _RouterMount(onnx_models.router, "/api", ["onnx"]),
