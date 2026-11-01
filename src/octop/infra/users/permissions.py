@@ -93,15 +93,6 @@ PERMISSIONS: dict[str, PermissionDef] = {
         page_zh="个性化",
         page_en="Personalization",
     ),
-    "mbti": _p(
-        "mbti",
-        "settings",
-        "MBTI",
-        "MBTI",
-        page="personalization",
-        page_zh="个性化",
-        page_en="Personalization",
-    ),
     "memory": _p(
         "memory",
         "settings",

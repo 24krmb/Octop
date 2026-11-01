@@ -30,7 +30,6 @@ SIDEBAR_NAV_KEYS = frozenset(
         "personalization-plugins",
         "personalization-tools",
         "personalization-memory",
-        "personalization-mbti",
         "channels",
         "connectors",
         "skill-packages",

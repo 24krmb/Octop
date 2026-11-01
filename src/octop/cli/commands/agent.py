@@ -19,13 +19,11 @@ def agent() -> None:
 
 @agent.command("create")
 @click.argument("name")
-@click.option("--persona-mbti", "persona_mbti", default=None)
 @click.option("--default-model", "default_model", default=None)
 @click.option("--template", "template_name", default=None, help="Agent template name.")
 @click.option("--user", "as_user", default=None, help="Create for another user (admin)")
 def create(
     name: str,
-    persona_mbti: str | None,
     default_model: str | None,
     template_name: str | None,
     as_user: str | None,
@@ -48,7 +46,6 @@ def create(
             spec = AgentCreateSpec(
                 name=name,
                 user_id=uid,
-                persona_mbti=persona_mbti,
                 default_model=default_model,
                 template_name=template_name,
             )

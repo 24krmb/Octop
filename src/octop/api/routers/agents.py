@@ -43,7 +43,6 @@ router = APIRouter()
 class AgentCreateBody(AgentRuntimeFields):
     name: str
     description: str | None = None
-    persona_mbti: str | None = None
     default_model: str | None = None
     system_prompt: str | None = None
     config: dict[str, Any] = {}
@@ -62,7 +61,6 @@ class AgentCreateBody(AgentRuntimeFields):
 class AgentPatchBody(AgentRuntimeFields):
     name: str | None = None
     description: str | None = None
-    persona_mbti: str | None = None
     default_model: str | None = None
     system_prompt: str | None = None
     config: dict[str, Any] | None = None
@@ -164,7 +162,6 @@ def _row_dict(
         "user_id": row.user_id,
         "name": row.name,
         "description": row.description,
-        "persona_mbti": row.persona_mbti,
         "default_model": row.default_model,
         "system_prompt": row.system_prompt,
         "state": row.last_state or "unknown",
@@ -310,7 +307,6 @@ async def create_agent(
         name=body.name,
         user_id=user.id,
         description=body.description,
-        persona_mbti=body.persona_mbti,
         default_model=body.default_model,
         system_prompt=body.system_prompt,
         config=body.config,

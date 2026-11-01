@@ -30,7 +30,6 @@ import { uploadApi } from "./modules/upload";
 import { acpApi } from "./modules/acp";
 import { embeddingApi } from "./modules/embedding";
 import { bridgeApi } from "./modules/bridge";
-import { mbtiApi } from "./modules/mbti";
 import { ssoApi } from "./modules/sso";
 import { knowledgeBasesApi } from "./modules/knowledgeBases";
 
@@ -89,8 +88,6 @@ export const api = {
     return { ok: false };
   },
 
-  // MBTI
-  ...mbtiApi,
 
   // Terminal AI
 };

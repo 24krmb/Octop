@@ -398,7 +398,6 @@ class AgentCreateSpec:
     agent_id: str | None = None
     user_id: int | None = None
     description: str | None = None
-    persona_mbti: str | None = None
     default_model: str | None = None
     system_prompt: str | None = None
     icon: str | None = None
@@ -753,8 +752,6 @@ class AgentManager:
                 spec.config,
                 spec.runtime_config,
             )
-            if spec.persona_mbti:
-                config["persona"] = spec.persona_mbti.upper()
             from octop.infra.agents.workspace.dir import (  # noqa: PLC0415
                 DEFAULT_SYSTEM_FILES_PATH,
                 seed_workspace_dir_on_create,
@@ -814,7 +811,6 @@ class AgentManager:
                 user_id=spec.user_id,
                 name=spec.name,
                 description=spec.description,
-                persona_mbti=spec.persona_mbti,
                 default_model=spec.default_model,
                 system_prompt=spec.system_prompt,
                 config_json=json.dumps(config) if config else None,
@@ -2579,36 +2575,6 @@ class AgentManager:
     # Agent config mutations — persona, skills, config_json patches
     # ------------------------------------------------------------------
 
-    async def apply_persona_mbti(self, agent_id: str, code: str) -> AgentRow:
-        """Persist MBTI persona on the agent row and reload harness runtime."""
-        norm = code.upper()
-        row = self._repos.agent_repo.get(agent_id)
-        if row is None:
-            raise OctopError(ErrorCode.AGENT_NOT_FOUND, f"agent {agent_id!r} not found")
-
-        from octop.infra.agents.persona import PersonaLoader  # noqa: PLC0415
-
-        loader = PersonaLoader()
-        persona_text = loader.render(
-            mbti=norm,
-            agent_name=row.name,
-            user_display="User",
-            custom=None,
-        )
-
-        cfg = self.get_config(agent_id)
-        cfg["persona"] = norm
-        self.persist_harness_config(
-            agent_id,
-            cfg,
-            persona_mbti=norm,
-            system_prompt=persona_text,
-        )
-        row = self._repos.agent_repo.get(agent_id)
-        if row is None:
-            raise OctopError(ErrorCode.AGENT_NOT_FOUND, f"agent {agent_id!r} not found")
-        self._schedule_reload(agent_id)
-        return row
 
     async def update_config_json(self, agent_id: str, config_json: str) -> AgentRow:
         """Patch ``config_json`` and reload the harness runtime in the background."""

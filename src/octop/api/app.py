@@ -166,7 +166,6 @@ def build_app(server: OctopServer) -> FastAPI:
         internal_mcp,
         invites,
         knowledge_bases,
-        mbti,
         media_generation,
         memory,
         memory_portable,
@@ -253,7 +252,6 @@ def build_app(server: OctopServer) -> FastAPI:
                 storage_backends_user_router, "/api/storage-backends", ["storage-backends"]
             ),
             _RouterMount(filesystem_router, "/api/filesystem", ["filesystem"]),
-            _RouterMount(mbti.router, "/api", ["mbti"]),
             _RouterMount(experts.router, "/api", ["experts"]),
             _RouterMount(teams.router, "/api", ["teams"]),
             _RouterMount(workspace.router, "/api", ["workspace"]),

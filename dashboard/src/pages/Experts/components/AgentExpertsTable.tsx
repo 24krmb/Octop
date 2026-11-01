@@ -35,8 +35,6 @@ import { request } from "../../../api/request";
 import type { OctopAgent } from "../../../context/AgentContext";
 import { useAgent } from "../../../context/AgentContext";
 import { useIsMobile } from "../../../hooks/useIsMobile";
-import MbtiPersonaTag from "../../../components/MbtiPersonaTag";
-import MbtiCatalogDrawer from "./MbtiCatalogDrawer";
 import { ExpertIcon } from "./iconForName";
 import {
   isAgentChatReady,
@@ -108,8 +106,6 @@ export default function AgentExpertsTable({
   const [installedSubagentSlugs, setInstalledSubagentSlugs] = useState<
     Set<string>
   >(() => new Set());
-  const [mbtiCatalogOpen, setMbtiCatalogOpen] = useState(false);
-  const [mbtiAgentId, setMbtiAgentId] = useState<string | null>(null);
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const tableWrapRef = useRef<HTMLDivElement>(null);
   /** Keep pagination in view: body scrolls inside remaining viewport height. */
@@ -158,10 +154,6 @@ export default function AgentExpertsTable({
     };
   }, [agents.length, isMobile]);
 
-  const openMbtiCatalog = useCallback((agentId: string) => {
-    setMbtiAgentId(agentId);
-    setMbtiCatalogOpen(true);
-  }, []);
 
   useEffect(() => {
     const next: Record<string, string> = {};
@@ -411,21 +403,6 @@ export default function AgentExpertsTable({
       render: (model: string | null | undefined) => model || "—",
     },
     {
-      title: t("experts.table.persona", "人格"),
-      dataIndex: "persona_mbti",
-      width: 120,
-      render: (value: string | null, row) => (
-        <MbtiPersonaTag
-          value={value}
-          onClick={
-            row.is_owner !== false
-              ? () => openMbtiCatalog(row.agent_id)
-              : undefined
-          }
-        />
-      ),
-    },
-    {
       title: t("experts.table.actions", "操作"),
       key: "actions",
       width: 280,
@@ -514,7 +491,6 @@ export default function AgentExpertsTable({
                   onSubagents={() => openSubagentCatalog(row.agent_id)}
                   onTools={() => setToolSettingsAgentId(row.agent_id)}
                   onPlugins={() => setPluginCatalogAgentId(row.agent_id)}
-                  onMbti={() => openMbtiCatalog(row.agent_id)}
                   onMemory={() => setMemoryCatalogAgentId(row.agent_id)}
                   onChannels={() => setChannelCatalogAgentId(row.agent_id)}
                 />
@@ -618,19 +594,6 @@ export default function AgentExpertsTable({
               )
               .catch(() => setInstalledSubagentSlugs(new Set()));
           }
-        }}
-      />
-      <MbtiCatalogDrawer
-        open={mbtiCatalogOpen}
-        agentId={mbtiAgentId}
-        onClose={() => {
-          setMbtiCatalogOpen(false);
-          setMbtiAgentId(null);
-        }}
-        onApplied={() => {
-          setMbtiCatalogOpen(false);
-          setMbtiAgentId(null);
-          void refreshAgents({ silent: true, force: true });
         }}
       />
     </>

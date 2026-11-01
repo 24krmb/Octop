@@ -261,7 +261,6 @@
     "memory": "记忆",
     "subagents": "子 Agent",
     "personalization": "Agent能力",
-    "mbti": "MBTI 人格",
     "heartbeat": "心跳",
     "user": "用户设置",
     "advancedSettings": "高级设置",
@@ -735,24 +734,6 @@
       "skipHint": "你可以跳过此步骤。在安装浏览器之前，网页浏览、截图和在线自动化功能将不可用。"
     }
   },
-  "mbti": {
-    "INTJ": "建筑师",
-    "INTP": "逻辑学家",
-    "ENTJ": "指挥官",
-    "ENTP": "辩论家",
-    "INFJ": "提倡者",
-    "INFP": "调停者",
-    "ENFJ": "主人公",
-    "ENFP": "竞选者",
-    "ISTJ": "物流师",
-    "ISFJ": "守卫者",
-    "ESTJ": "总经理",
-    "ESFJ": "执政官",
-    "ISTP": "鉴赏家",
-    "ISFP": "探险家",
-    "ESTP": "企业家",
-    "ESFP": "表演者"
-  },
   "experts": {
     "subtitle": "基于已配置的场景模板,一键创建预置身份/灵魂/心跳的智能体。每个助理自带 system prompt,新建后再绑定 provider 并启动即可。",
     "loadFailed": "加载助理失败",
@@ -827,8 +808,6 @@
     "expertMarket": "助理市场",
     "viewCard": "卡片",
     "viewTable": "表格",
-    "mbtiDefault": "默认",
-    "mbtiViewDetail": "点击查看人格说明",
     "agentId": "助理 ID",
     "copyAgentId": "点击复制助理 ID",
     "teamId": "团队 ID",
@@ -1159,7 +1138,6 @@
     "skillsBtn": "技能",
     "toolsBtn": "工具",
     "pluginsBtn": "插件",
-    "mbtiBtn": "MBTI",
     "channelsBtn": "通道",
     "memoryBtn": "记忆",
     "openChat": "对话"
@@ -4768,7 +4746,6 @@
       "plugins": "插件",
       "subagents": "子智能体",
       "channels": "通道",
-      "mbti": "MBTI",
       "memory": "记忆"
     },
     "cards": {
@@ -4791,43 +4768,7 @@
     "saveSuccess": "配置保存成功",
     "saveFailed": "配置保存失败",
     "clickToEdit": "点击卡片进行配置",
-    "clickToEditContent": "点击此处进入编辑模式",
-    "mbti": {
-      "sceneTitle": "🧬 MBTI 人格实验室",
-      "sceneDesc": "给你的智能体注入独一无二的灵魂 — 选一个 MBTI 人格，或花 3 分钟做个测试，让 TA 拥有自己的性格、说话风格和情感模式。",
-      "configure": "进入实验室",
-      "title": "MBTI 人格",
-      "subtitle": "选一个 MBTI 人格类型，或花 3 分钟做个测试，让 TA 拥有独一无二的性格！",
-      "takeTest": "测一测",
-      "listSummary": "当前有（{{total}}）个人格，已选中「{{selected}}」",
-      "listSummaryUnset": "当前有（{{total}}）个人格，尚未选择人格",
-      "dimensions": "四维光谱",
-      "behavior": "行为图鉴",
-      "applyType": "就决定是你了！",
-      "applying": "注入灵魂中...",
-      "applySuccess": "{{code}} 人格已注入！你的智能体现在有性格了 ✨",
-      "applyFailed": "人格注入失败，再试一次吧",
-      "applyResult": "就用这个人格！",
-      "loadFailed": "人格档案加载失败",
-      "testTitle": "🧠 人格测试",
-      "testIntro": "只需 28 道二选一的小题，3 分钟帮你的智能体找到最契合的人格。别纠结，选直觉告诉你的那个！",
-      "disclaimer": "这是一个轻松有趣的快速测试，结果仅供参考和娱乐，不具备任何心理学诊断意义哦~",
-      "startTest": "开始答题 →",
-      "prev": "← 上一题",
-      "next": "下一题 →",
-      "viewResult": "🎉 揭晓结果",
-      "submit": "提交",
-      "submitting": "性格分析中...",
-      "submitFailed": "提交失败了，再来一次吧",
-      "catalogTitle": "MBTI 人格选择",
-      "currentType": "当前人格",
-      "group": {
-        "analysts": "🔬 分析家 — 理性与策略",
-        "diplomats": "🕊️ 外交家 — 共情与愿景",
-        "sentinels": "🛡️ 守护者 — 秩序与责任",
-        "explorers": "🧭 探险家 — 自由与行动"
-      }
-    }
+    "clickToEditContent": "点击此处进入编辑模式"
   },
   "consoleBubble": {
     "title": "消息来了"
@@ -6488,9 +6429,6 @@
     "weknoraStep1": "打开 WeKnora 并创建 API Key",
     "weknoraStep2": "检测本机服务，或手动填写部署地址"
   },
-  "mbtiPage": {
-    "pickAgent": "从上方选择一个 Agent；如果没有显示，先创建第一个主 Agent"
-  },
   "acp": {
     "description": "连接支持 ACP 协议的外部编程助理。Runner 配置对该账号下所有助理共享；可在下方按助理单独开启 acp_runner 工具。",
     "globalRunnersHint": "以下 Runner 配置对该账号下所有助理生效。",
@@ -6712,10 +6650,6 @@
     "channels": {
       "title": "通道",
       "subtitle": "管理 IM 渠道与 Webhook 接入，让专家在外部会话中回复"
-    },
-    "mbti": {
-      "title": "MBTI 人格",
-      "subtitle": "选一个 MBTI 人格类型，或花 3 分钟做个测试，让 TA 拥有专业的人格！"
     },
     "subagents": {
       "title": "子智能体",

@@ -23,7 +23,6 @@ import { isTeamAgent } from "../../../utils/teamAgent";
 import SkillsTabs from "../Skills/components/SkillsTabs";
 import ToolsTabs from "../Tools/ToolsTabs";
 import SubagentManager from "../../Experts/components/SubagentManager";
-import MBTISelector from "./components/MBTISelector";
 import AgentPluginsPanel from "./components/AgentPluginsPanel";
 import MemoryPanel from "../Memory/MemoryPanel";
 import ChannelsPanel from "../Channels/ChannelsPanel";
@@ -34,7 +33,6 @@ export type PersonalizationTab =
   | "subagents"
   | "tools"
   | "plugins"
-  | "mbti"
   | "memory"
   | "channels";
 
@@ -43,7 +41,6 @@ const PERSONALIZATION_TABS = [
   "subagents",
   "tools",
   "plugins",
-  "mbti",
   "memory",
   "channels",
 ] as const satisfies readonly PersonalizationTab[];
@@ -53,7 +50,6 @@ const TAB_ICONS = {
   subagents: Bot,
   tools: Wrench,
   plugins: Puzzle,
-  mbti: Brain,
   memory: Notebook,
   channels: Waypoints,
 } as const;
@@ -208,30 +204,6 @@ export default function PersonalizationPage() {
           </div>
         )}
 
-        {isMounted("mbti") && (
-          <div
-            className={styles.panel}
-            style={{ display: activeTab === "mbti" ? "flex" : "none" }}
-            aria-hidden={activeTab !== "mbti"}
-          >
-            {!activeAgentId || expertOnlyBlocked ? (
-              <Empty
-                style={{ marginTop: 24 }}
-                description={
-                  expertOnlyBlocked ? teamNeedsExpert : t("mbtiPage.pickAgent")
-                }
-              />
-            ) : (
-              <div className={pageShellStyles.fillChild}>
-                <MBTISelector
-                  key={activeAgentId}
-                  showHeader={false}
-                  showTestAction
-                />
-              </div>
-            )}
-          </div>
-        )}
 
         {isMounted("memory") && (
           <div

@@ -261,7 +261,6 @@
     "memory": "Memory",
     "personalization": "Personalization",
     "subagents": "Subagents",
-    "mbti": "MBTI",
     "heartbeat": "Heartbeat",
     "user": "User Settings",
     "advancedSettings": "Advanced Settings",
@@ -735,24 +734,6 @@
       "skipHint": "You can skip this step. Web browsing, screenshots, and online automation features will not be available until a browser is installed."
     }
   },
-  "mbti": {
-    "INTJ": "Architect",
-    "INTP": "Logician",
-    "ENTJ": "Commander",
-    "ENTP": "Debater",
-    "INFJ": "Advocate",
-    "INFP": "Mediator",
-    "ENFJ": "Protagonist",
-    "ENFP": "Campaigner",
-    "ISTJ": "Logistician",
-    "ISFJ": "Defender",
-    "ESTJ": "Executive",
-    "ESFJ": "Consul",
-    "ISTP": "Virtuoso",
-    "ISFP": "Adventurer",
-    "ESTP": "Entrepreneur",
-    "ESFP": "Entertainer"
-  },
   "experts": {
     "subtitle": "Spin up a pre-configured agent (with identity / soul / heartbeat baked in) from a scenario template. Each expert ships with its own system prompt — once created, just bind a provider and start it.",
     "loadFailed": "Failed to load experts",
@@ -827,8 +808,6 @@
     "expertMarket": "Expert Market",
     "viewCard": "Cards",
     "viewTable": "Table",
-    "mbtiDefault": "Default",
-    "mbtiViewDetail": "Click to view personality details",
     "agentId": "Expert ID",
     "copyAgentId": "Click to copy expert ID",
     "teamId": "Team ID",
@@ -1159,7 +1138,6 @@
     "skillsBtn": "Skills",
     "toolsBtn": "Tools",
     "pluginsBtn": "Plugins",
-    "mbtiBtn": "MBTI",
     "channelsBtn": "Channels",
     "memoryBtn": "Memory",
     "openChat": "Chat"
@@ -4768,7 +4746,6 @@
       "plugins": "Plugins",
       "subagents": "Subagents",
       "channels": "Channels",
-      "mbti": "MBTI",
       "memory": "Memory"
     },
     "cards": {
@@ -4791,43 +4768,7 @@
     "saveSuccess": "Configuration saved successfully",
     "saveFailed": "Failed to save configuration",
     "clickToEdit": "Click card to configure",
-    "clickToEditContent": "Click here to enter edit mode",
-    "mbti": {
-      "sceneTitle": "🧬 MBTI Personality Lab",
-      "sceneDesc": "Give your agent a unique soul — pick an MBTI personality type or take a 3-minute quiz. It shapes how your agent talks, thinks, and feels.",
-      "configure": "Enter the Lab",
-      "title": "MBTI Personality",
-      "subtitle": "Pick an MBTI type or take a 3-minute test to unlock a unique personality!",
-      "takeTest": "Take the test",
-      "listSummary": "{{total}} personalities available, selected「{{selected}}」",
-      "listSummaryUnset": "{{total}} personalities available, none selected",
-      "dimensions": "Dimensions",
-      "behavior": "Behavior Profile",
-      "applyType": "I choose you!",
-      "applying": "Injecting soul...",
-      "applySuccess": "{{code}} personality injected! Your agent has a character now ✨",
-      "applyFailed": "Personality injection failed, try again",
-      "applyResult": "Use this personality!",
-      "loadFailed": "Failed to load personality profiles",
-      "testTitle": "🧠 Personality Test",
-      "testIntro": "Just 28 quick either-or questions — takes about 3 minutes. Don't overthink it, go with your gut!",
-      "disclaimer": "This is a fun, quick personality quiz for entertainment only. It has no clinical or psychological diagnostic significance.",
-      "startTest": "Start Quiz →",
-      "prev": "← Previous",
-      "next": "Next →",
-      "viewResult": "🎉 Reveal Result",
-      "submit": "Submit",
-      "submitting": "Analyzing personality...",
-      "submitFailed": "Submission failed, try again",
-      "catalogTitle": "MBTI Personality Selector",
-      "currentType": "Current personality",
-      "group": {
-        "analysts": "🔬 Analysts — Logic & Strategy",
-        "diplomats": "🕊️ Diplomats — Empathy & Vision",
-        "sentinels": "🛡️ Sentinels — Order & Duty",
-        "explorers": "🧭 Explorers — Freedom & Action"
-      }
-    }
+    "clickToEditContent": "Click here to enter edit mode"
   },
   "consoleBubble": {
     "title": "New Message"
@@ -6487,9 +6428,6 @@
     "weknoraStep1": "Open WeKnora and create an API Key",
     "weknoraStep2": "Detect the local service or enter the deployment URL manually"
   },
-  "mbtiPage": {
-    "pickAgent": "Select an Agent first"
-  },
   "acp": {
     "description": "Connect external ACP-compatible coding agents. Runner settings are shared across all your agents; enable the acp_runner tool per agent below.",
     "globalRunnersHint": "Runner configuration below applies to all agents for your account.",
@@ -6711,10 +6649,6 @@
     "channels": {
       "title": "Channels",
       "subtitle": "Manage IM channels and webhook integrations so experts can reply in external chats"
-    },
-    "mbti": {
-      "title": "MBTI Personality",
-      "subtitle": "Choose or test an MBTI personality for this expert, and set its speaking style"
     },
     "subagents": {
       "title": "Subagents",

@@ -16,7 +16,6 @@ import {
 } from "lucide-react";
 import { request } from "../../../api/request";
 import type { OctopAgent } from "../../../context/AgentContext";
-import MbtiPersonaTag from "../../../components/MbtiPersonaTag";
 import { formatAgentError } from "../../../utils/agentError";
 import { iconForName } from "../../Experts/components/iconForName";
 import styles from "./agents.module.less";
@@ -146,7 +145,6 @@ export const AdminAgentCard = memo(function AdminAgentCard({
               {agent.template_name && (
                 <Tag color="blue">{agent.template_name}</Tag>
               )}
-              <MbtiPersonaTag value={agent.persona_mbti} />
             </div>
           </div>
         </div>

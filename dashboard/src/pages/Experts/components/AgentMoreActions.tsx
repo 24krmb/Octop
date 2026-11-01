@@ -18,7 +18,6 @@ interface AgentMoreActionsProps {
   onSubagents: () => void;
   onTools: () => void;
   onPlugins: () => void;
-  onMbti: () => void;
   onMemory: () => void;
   onChannels: () => void;
 }
@@ -30,7 +29,6 @@ export default function AgentMoreActions({
   onSubagents,
   onTools,
   onPlugins,
-  onMbti,
   onMemory,
   onChannels,
 }: AgentMoreActionsProps) {
@@ -60,12 +58,6 @@ export default function AgentMoreActions({
       icon: <Puzzle size={14} />,
       label: t("experts.pluginsBtn"),
       onClick: onPlugins,
-    },
-    {
-      key: "mbti",
-      icon: <Brain size={14} />,
-      label: t("experts.mbtiBtn"),
-      onClick: onMbti,
     },
     {
       key: "memory",

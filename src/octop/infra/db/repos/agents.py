@@ -54,7 +54,6 @@ class AgentRow:
     user_id: int | None
     name: str
     description: str | None
-    persona_mbti: str | None
     default_model: str | None
     system_prompt: str | None
     enabled: int
@@ -95,7 +94,6 @@ class AgentRow:
             user_id=r["user_id"],
             name=r["name"],
             description=r["description"],
-            persona_mbti=r["persona_mbti"],
             default_model=r["default_model"],
             system_prompt=r["system_prompt"],
             enabled=r["enabled"],
@@ -130,7 +128,6 @@ class AgentRepo:
         user_id: int | None,
         name: str,
         description: str | None = None,
-        persona_mbti: str | None = None,
         default_model: str | None = None,
         system_prompt: str | None = None,
         config_json: str | None = None,
@@ -151,17 +148,16 @@ class AgentRepo:
         with self._db.transaction() as conn:
             conn.execute(
                 "INSERT INTO agents(agent_id, user_id, name, description, "
-                "persona_mbti, default_model, system_prompt, enabled, config_json, icon, "
+                "default_model, system_prompt, enabled, config_json, icon, "
                 "template_name, color, icon_name, icon_url, skill_package_ids, "
                 "published_expert_id, welcome_message, knowledge_base_ids, mcp_servers, "
                 "kind, created_at, updated_at) "
-                "VALUES (?, ?, ?, ?, ?, ?, ?, 1, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                "VALUES (?, ?, ?, ?, ?, ?, 1, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 (
                     agent_id,
                     user_id,
                     name,
                     description,
-                    persona_mbti,
                     default_model,
                     system_prompt,
                     config_json,
@@ -262,7 +258,6 @@ class AgentRepo:
         *,
         name: str | None | object = UNSET,
         description: str | None | object = UNSET,
-        persona_mbti: str | None | object = UNSET,
         default_model: str | None | object = UNSET,
         system_prompt: str | None | object = UNSET,
         config_json: str | None | object = UNSET,
@@ -281,7 +276,6 @@ class AgentRepo:
             [
                 ("name", name),
                 ("description", description),
-                ("persona_mbti", persona_mbti),
                 ("default_model", default_model),
                 ("system_prompt", system_prompt),
                 ("config_json", config_json),

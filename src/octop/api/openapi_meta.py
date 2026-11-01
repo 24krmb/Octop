@@ -137,7 +137,6 @@ OPENAPI_TAGS: list[dict[str, str]] = [
         "name": "filesystem",
         "description": "Host filesystem directory browsing for dashboard forms.",
     },
-    {"name": "mbti", "description": "MBTI persona presets applied to agent personality."},
     {"name": "experts", "description": "Bundled expert templates for creating specialized agents."},
     {
         "name": "teams",

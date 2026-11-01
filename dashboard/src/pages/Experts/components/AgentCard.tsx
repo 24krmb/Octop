@@ -21,13 +21,11 @@ import SubagentCatalogDrawer from "./SubagentCatalogDrawer";
 import SkillCatalogDrawer from "./SkillCatalogDrawer";
 import ChannelCatalogDrawer from "./ChannelCatalogDrawer";
 import MemoryCatalogDrawer from "./MemoryCatalogDrawer";
-import MbtiCatalogDrawer from "./MbtiCatalogDrawer";
 import ToolCatalogDrawer from "./ToolCatalogDrawer";
 import PluginCatalogDrawer from "./PluginCatalogDrawer";
 import { request } from "../../../api/request";
 import type { OctopAgent } from "../../../context/AgentContext";
 import { useAgent } from "../../../context/AgentContext";
-import MbtiPersonaTag from "../../../components/MbtiPersonaTag";
 import { ExpertIcon } from "./iconForName";
 import {
   formatAgentError,
@@ -101,7 +99,6 @@ export const AgentCard = memo(function AgentCard({
   const [pluginCatalogOpen, setPluginCatalogOpen] = useState(false);
   const [channelCatalogOpen, setChannelCatalogOpen] = useState(false);
   const [memoryCatalogOpen, setMemoryCatalogOpen] = useState(false);
-  const [mbtiCatalogOpen, setMbtiCatalogOpen] = useState(false);
   const [installedSubagentSlugs, setInstalledSubagentSlugs] = useState<
     Set<string>
   >(() => new Set());
@@ -355,10 +352,6 @@ export const AgentCard = memo(function AgentCard({
               {memorySlimming && (
                 <Tag color="processing">{t("experts.memorySlimming")}</Tag>
               )}
-              <MbtiPersonaTag
-                value={agent.persona_mbti}
-                onClick={isOwner ? () => setMbtiCatalogOpen(true) : undefined}
-              />
             </div>
           </div>
 
@@ -488,7 +481,6 @@ export const AgentCard = memo(function AgentCard({
                 onSubagents={openSubagentCatalog}
                 onTools={() => setToolSettingsOpen(true)}
                 onPlugins={() => setPluginCatalogOpen(true)}
-                onMbti={() => setMbtiCatalogOpen(true)}
                 onMemory={() => setMemoryCatalogOpen(true)}
                 onChannels={() => setChannelCatalogOpen(true)}
               />
@@ -562,15 +554,6 @@ export const AgentCard = memo(function AgentCard({
         agentId={agent.agent_id}
         open={memoryCatalogOpen}
         onClose={() => setMemoryCatalogOpen(false)}
-      />
-      <MbtiCatalogDrawer
-        open={mbtiCatalogOpen}
-        agentId={agent.agent_id}
-        onClose={() => setMbtiCatalogOpen(false)}
-        onApplied={() => {
-          setMbtiCatalogOpen(false);
-          void refreshAgents({ silent: true, force: true });
-        }}
       />
     </>
   );

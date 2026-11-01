@@ -19,7 +19,6 @@ import {
   type AgentSubagentSummary,
 } from "../api/modules/subagents";
 import { teamsApi, type TeamMemberSummary } from "../api/modules/teams";
-import MbtiPersonaTag from "./MbtiPersonaTag";
 import { CopyableResourceId } from "./CopyableResourceId";
 import {
   ExpertIcon,
@@ -380,7 +379,6 @@ export default function AgentProfileDrawer({
               <span style={{ fontSize: 12, color: "var(--fn-text-tertiary)" }}>
                 {t("experts.table.persona")}
               </span>
-              <MbtiPersonaTag value={agent.persona_mbti} />
             </div>
           )}
         </div>

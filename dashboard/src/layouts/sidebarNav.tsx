@@ -32,7 +32,6 @@ const PERSONALIZATION_NAV_TABS = [
   { key: "subagents", path: "/personalization/subagents" },
   { key: "tools", path: "/personalization/tools" },
   { key: "agent_plugins", path: "/personalization/plugins" },
-  { key: "mbti", path: "/personalization/mbti" },
   { key: "memory", path: "/personalization/memory" },
 ] as const;
 
