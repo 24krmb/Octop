@@ -32,6 +32,7 @@ import "./styles/theme-vars.css";
 import "./styles/layout.css";
 import "./styles/form-override.css";
 import "./styles/spin-override.css";
+import "./styles/result-override.css";
 
 const GlobalStyle = createGlobalStyle`
 * {

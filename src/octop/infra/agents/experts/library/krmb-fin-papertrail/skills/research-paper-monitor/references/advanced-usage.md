@@ -148,26 +148,9 @@ rclone sync ~/.openclaw/research-papers/ remote:research-backup/
 
 ---
 
-## 6. 与 Obsidian 集成
-
-将文献库作为 Obsidian Vault：
-
-```bash
-# 创建软链接
-ln -s ~/.openclaw/research-papers ~/Documents/ObsidianVault/文献库
-```
-
-或使用 Obsidian 的 Daily Notes 插件，将日报自动导入：
-
-```python
-# 在 monitor.py 中添加
-obsidian_dir = "~/Documents/ObsidianVault/DailyNotes"
-shutil.copy(daily_report, obsidian_dir)
-```
-
 ---
 
-## 7. 关键词效果分析
+## 6. 关键词效果分析
 
 分析哪些关键词带来了更多相关论文：
 
@@ -190,7 +173,7 @@ for kw, count in keyword_hits.most_common():
 
 ---
 
-## 8. 论文去重优化
+## 7. 论文去重优化
 
 基于 DOI 的去重：
 
@@ -225,7 +208,7 @@ def similar(a, b):
 
 ---
 
-## 9. 与 Zotero 集成
+## 8. 与 Zotero 集成
 
 将采集的论文自动导入 Zotero：
 
@@ -253,7 +236,7 @@ def add_to_zotero(paper, zotero_api_key, user_id):
 
 ---
 
-## 10. 多用户配置
+## 9. 多用户配置
 
 共享服务器上的多用户配置：
 

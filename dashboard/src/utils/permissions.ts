@@ -59,6 +59,7 @@ export const PERSONALIZATION_TAB_PERMISSIONS = {
 
 export const NAV_PERMISSIONS = {
   experts: PERM.experts,
+  subagents: PERM.subagents,
   tasks: PERM.tasks,
   "token-usage": PERM.tokenUsage,
   personalization: PERM.personalization,

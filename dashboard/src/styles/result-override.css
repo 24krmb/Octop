@@ -1,0 +1,10 @@
+/**
+ * antd Result overrides (prefixCls="octop").
+ * antd's runtime cssinjs rule `:where(.css-*).octop-result .octop-result-icon`
+ * sets `margin-bottom: 24px` on the icon; the `:where()` wrapper has zero
+ * specificity, so this plain rule (0,2,0) overrides it without !important.
+ */
+
+.octop-result .octop-result-icon {
+  margin-bottom: 0;
+}

@@ -195,60 +195,6 @@
       "oauth_scopes": "tasks:read tasks:write"
     },
     {
-      "kind": "obsidian-cli",
-      "name": {
-        "en": "Obsidian",
-        "zh": "Obsidian"
-      },
-      "description": {
-        "en": "Search, read, and write notes in a vault via the official Obsidian CLI (Obsidian must be running on this host)",
-        "zh": "通过官方 Obsidian CLI 搜索、阅读和写入指定库中的笔记（需本机运行 Obsidian）"
-      },
-      "auth_kind": "custom_fields",
-      "doc_url": "https://obsidian.md/cli",
-      "icon": "obsidian-cli",
-      "color": "#6c31e3",
-      "phase": "available",
-      "mcp_mode": "gateway",
-      "category": "knowledge",
-      "guide_url": "https://obsidian.md/zh/cli",
-      "manual_url": "https://obsidian.md/zh/cli",
-      "auth_hint": {
-        "en": "Enter the vault name shown in the Obsidian sidebar. Octop and Obsidian must run on the same host, with Command line interface enabled.",
-        "zh": "填写 Obsidian 侧边栏中的库名。Octop 与 Obsidian 需在同一台主机，并已启用 Command line interface。"
-      },
-      "credential_fields": [
-        {
-          "key": "vault",
-          "label": {
-            "en": "Vault name",
-            "zh": "库名"
-          },
-          "placeholder": {
-            "en": "e.g. Notes",
-            "zh": "例如 Notes"
-          },
-          "help": {
-            "en": "The vault name in the Obsidian sidebar, not a folder path",
-            "zh": "Obsidian 侧边栏显示的库名，不是文件夹路径"
-          }
-        },
-        {
-          "key": "binary_path",
-          "label": {
-            "en": "CLI path",
-            "zh": "CLI 路径"
-          },
-          "required": false,
-          "placeholder": "/usr/local/bin/obsidian",
-          "help": {
-            "en": "Leave empty if obsidian is already on PATH",
-            "zh": "PATH 中已有 obsidian 时可留空"
-          }
-        }
-      ]
-    },
-    {
       "kind": "yuque-mcp",
       "name": {
         "en": "Yuque (official MCP)",
