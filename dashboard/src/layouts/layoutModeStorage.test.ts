@@ -10,8 +10,8 @@ describe("layoutModeStorage", () => {
     localStorage.removeItem(MINIMAL_NAV_PANE_KEY);
   });
 
-  it("defaults to the capabilities pane", () => {
-    expect(loadMinimalNavPane()).toBe("settings");
+  it("defaults to the records pane", () => {
+    expect(loadMinimalNavPane()).toBe("records");
   });
 
   it("persists the selected pane", () => {
@@ -28,6 +28,6 @@ describe("layoutModeStorage", () => {
 
   it("ignores invalid stored values", () => {
     localStorage.setItem(MINIMAL_NAV_PANE_KEY, "other");
-    expect(loadMinimalNavPane()).toBe("settings");
+    expect(loadMinimalNavPane()).toBe("records");
   });
 });

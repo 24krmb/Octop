@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import {
-  Monitor,
   MessageSquareText,
   Timer,
   SlidersHorizontal,
@@ -72,8 +71,6 @@ export const SIDEBAR_NAV_KEYS = [
   "connectors",
   "skill-packages",
   "knowledge-bases",
-  "bridge",
-  "remote-desktop",
   "acp",
   "admin-users",
   "models",
@@ -125,8 +122,8 @@ export const SIDEBAR_GROUPED_NAV_KEYS = [
   "connectors",
   "skill-packages",
   "knowledge-bases",
+  "token-usage",
   "bridge",
-  "remote-desktop",
   "acp",
   "admin-users",
   "models",
@@ -169,14 +166,6 @@ export function buildNavSections(
       path: "/tasks",
       icon: <Timer size={iconSize} strokeWidth={iconStroke} />,
       labelKey: "nav.tasks",
-    });
-  }
-  if (navAllowed(user, "token-usage")) {
-    topItems.push({
-      key: "token-usage",
-      path: "/token-usage",
-      icon: <Activity size={iconSize} strokeWidth={iconStroke} />,
-      labelKey: "nav.tokenUsage",
     });
   }
   const sections: NavSection[] = [{ items: topItems }];
@@ -231,18 +220,6 @@ export function buildNavSections(
   }
 
   const controlItems: NavItem[] = [];
-  // Server desktop + phone share one nav entry; phone tab also needs host capability.
-  if (
-    userCan(user, "desktop") ||
-    (opts?.mobileEnabled && userCan(user, "mobile"))
-  ) {
-    controlItems.push({
-      key: "remote-desktop",
-      path: "/remote-desktop",
-      icon: <Monitor size={iconSize} strokeWidth={iconStroke} />,
-      labelKey: "nav.remoteDesktop",
-    });
-  }
   // ACP: no module key this round — admin role only.
   if (navAllowed(user, "acp")) {
     controlItems.push({
@@ -261,6 +238,14 @@ export function buildNavSections(
   }
 
   const adminItems: NavItem[] = [];
+  if (navAllowed(user, "token-usage")) {
+    adminItems.push({
+      key: "token-usage",
+      path: "/token-usage",
+      icon: <Activity size={iconSize} strokeWidth={iconStroke} />,
+      labelKey: "nav.tokenUsage",
+    });
+  }
   if (navAllowed(user, "admin-users")) {
     adminItems.push({
       key: "admin-users",
