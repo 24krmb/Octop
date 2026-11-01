@@ -11,14 +11,12 @@ import {
   Users as UsersIcon,
   Activity,
   Share2,
-  Cloudy,
   Sparkles,
   Puzzle,
   Package,
   HardDrive,
   GraduationCap,
   Shield,
-  PanelsTopLeft,
 } from "lucide-react";
 import type { OctopUser } from "../api/modules/auth";
 import { navAllowed, userCan } from "../utils/permissions";

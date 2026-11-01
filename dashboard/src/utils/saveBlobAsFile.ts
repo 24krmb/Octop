@@ -4,7 +4,6 @@ import { requestUpload } from "../api/request";
 import i18n from "../i18n";
 import { isDesktopShell } from "./desktopChrome";
 import { shareDownloadLink } from "./downloadLink";
-import { isInAppBrowser } from "./inAppBrowser";
 
 function clickDownloadAnchor(blob: Blob, filename: string): void {
   const objUrl = URL.createObjectURL(blob);
@@ -35,10 +34,6 @@ export async function saveBlobAsFile(
     body.append("file", blob, name);
     await requestUpload("/downloads/local", body);
     message.success(i18n.t("common.savedToDownloads", "已保存到下载文件夹"));
-    return;
-  }
-  if (isInAppBrowser()) {
-    await shareDownloadLink(blob, name);
     return;
   }
   clickDownloadAnchor(blob, name);

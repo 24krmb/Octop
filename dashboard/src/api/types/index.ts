@@ -7,5 +7,4 @@ export * from "./env";
 export * from "./provider";
 export * from "./skill";
 export * from "./workspace";
-export * from "./browser";
 export * from "./mbti";

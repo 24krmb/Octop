@@ -270,14 +270,11 @@ export function useChatSend({
       localStorage.removeItem("octop.pendingChatMessage");
 
       let textToSend = raw;
-      let autoRecord = false;
 
-      // Support JSON format: { text, agentId, autoRecord }
       try {
         const parsed = JSON.parse(raw);
         if (typeof parsed === "object" && parsed.text) {
           textToSend = parsed.text;
-          autoRecord = Boolean(parsed.autoRecord);
         }
       } catch {
         // Not JSON — treat as plain text (legacy format)
@@ -285,41 +282,6 @@ export function useChatSend({
 
       setTimeout(() => handleSend(textToSend), 500);
 
-      // If autoRecord flag is set, start browser recording after sending the message
-      if (autoRecord) {
-        setTimeout(async () => {
-          try {
-            const { browserApi } = await import("../../../api/modules/browser");
-            const data = await browserApi.startRecording({
-              name: activeThreadId
-                ? `chat-${activeThreadId}`
-                : "skill-recording",
-            });
-            if (data.ok) {
-              // Notify the chat page that recording has started (update UI state)
-              if (data.recordingId && onAutoRecordingStarted) {
-                onAutoRecordingStarted(data.recordingId);
-              }
-              // Push a system message into the chat about recording started
-              const { generateId } = await import(
-                "../../../utils/messageParser"
-              );
-              const pushMsg = {
-                id: generateId(),
-                role: "assistant" as const,
-                content: t("skillRecord.recordingStartedMessage"),
-                timestamp: Date.now(),
-                status: "done" as const,
-              };
-              // Append directly to chat store
-              const { appendPushMessage } = await import("./chatStore");
-              appendPushMessage(pushMsg.content);
-            }
-          } catch {
-            // Silently ignore recording start failure; the user can manually start
-          }
-        }, 1500);
-      }
     };
 
     consumePending();

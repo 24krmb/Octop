@@ -29,9 +29,8 @@ import { onnxModelApi } from "./modules/onnxModel";
 import { uploadApi } from "./modules/upload";
 import { acpApi } from "./modules/acp";
 import { embeddingApi } from "./modules/embedding";
-import { browserApi } from "./modules/browser";
+import { bridgeApi } from "./modules/bridge";
 import { mbtiApi } from "./modules/mbti";
-import { terminalAiApi } from "./modules/terminalAi";
 import { ssoApi } from "./modules/sso";
 import { knowledgeBasesApi } from "./modules/knowledgeBases";
 
@@ -80,13 +79,20 @@ export const api = {
   ...embeddingApi,
 
   // Browser (Auth Handoff)
-  ...browserApi,
+  async getSessions(_agentId?: string): Promise<{ ok: boolean; sessions: never[] }> {
+    return { ok: true, sessions: [] };
+  },
+  async getBrowserSessions(_connId?: string): Promise<{ ok: boolean; sessions: never[] }> {
+    return { ok: true, sessions: [] };
+  },
+  async handoff(_sessionId?: string, _target?: string, _source?: string): Promise<{ ok: boolean; session?: unknown }> {
+    return { ok: false };
+  },
 
   // MBTI
   ...mbtiApi,
 
   // Terminal AI
-  ...terminalAiApi,
 };
 
 export default api;

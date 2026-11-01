@@ -13,7 +13,6 @@ interface UseChatSessionActionsParams {
   setActiveAgent: (id: string) => void;
   setSidebarOpen: (open: boolean) => void;
   setSelectedModel: (model: string | null) => void;
-  setHasBrowserTool: (value: boolean) => void;
   deleteSession: (id: string, compact: boolean) => Promise<boolean>;
   clearMessages: () => void;
   resetNavForAgentSwitch: () => void;
@@ -28,7 +27,6 @@ export function useChatSessionActions({
   setActiveAgent,
   setSidebarOpen,
   setSelectedModel,
-  setHasBrowserTool,
   deleteSession,
   clearMessages,
   resetNavForAgentSwitch,
@@ -38,11 +36,10 @@ export function useChatSessionActions({
 
   const handleNewChat = useCallback(() => {
     setSelectedModel(null);
-    setHasBrowserTool(false);
     const agent = resolvedAgentId;
     if (!agent) return;
     navigate(`/chat/${agent}`);
-  }, [navigate, resolvedAgentId, setSelectedModel, setHasBrowserTool]);
+  }, [navigate, resolvedAgentId, setSelectedModel]);
 
   /**
    * New chat with an arbitrary expert. Unlike {@link navigateToAgent} this stays
@@ -52,7 +49,6 @@ export function useChatSessionActions({
     (agentId: string) => {
       if (!agentId) return;
       setSelectedModel(null);
-      setHasBrowserTool(false);
       if (agentId !== resolvedAgentId) {
         resetNavForAgentSwitch();
         setActiveAgent(agentId);
@@ -69,8 +65,7 @@ export function useChatSessionActions({
       setActiveAgent,
       setSidebarOpen,
       setSelectedModel,
-      setHasBrowserTool,
-      resetNavForAgentSwitch,
+        resetNavForAgentSwitch,
       markInitialNavDone,
     ],
   );

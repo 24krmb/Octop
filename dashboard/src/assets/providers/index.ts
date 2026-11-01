@@ -18,7 +18,6 @@ import minimaxLogo from "./minimax.png";
 import volcesLogo from "./volces.svg";
 import customProviderLogo from "./custom-provider.svg";
 import opencodeLogo from "./opencode.svg";
-import browserLogo from "./browser.svg";
 import edgeLogo from "./edge.svg";
 import tavilyLogo from "./tavily.svg";
 import braveLogo from "./brave.svg";
@@ -45,7 +44,6 @@ export const PROVIDER_LOGOS: Record<string, string> = {
   minimax: minimaxLogo,
   volces: volcesLogo,
   opencode: opencodeLogo,
-  browser: browserLogo,
   edge: edgeLogo,
   tavily: tavilyLogo,
   brave: braveLogo,

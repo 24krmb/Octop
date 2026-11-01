@@ -26,7 +26,6 @@ import * as chatStore from "./hooks/chatStore";
 import { formatRunUsage, assistantTurnsFromEnd } from "./utils/chatMessages";
 import { useChatSidebarState } from "./hooks/useChatSidebarState";
 import { useChatHistoryRail } from "./hooks/useChatHistoryRail";
-import { useChatDockPanel } from "./hooks/useChatDockPanel";
 import { useChatSend, type ChatSendOverrides } from "./hooks/useChatSend";
 import {
   useChatMessageQueue,
@@ -47,15 +46,12 @@ import {
   disableProviderStreamUsage,
   providerIdForTurn,
 } from "../../utils/disableProviderStreamUsage";
-import { useBrowserToolDetection } from "./hooks/useBrowserToolDetection";
 import { useSkillRecordingWorkflow } from "./hooks/useSkillRecordingWorkflow";
-import { listDockFilePathsForTree } from "./utils/dockFilePath";
 import {
   shouldJumpToChromeInstall,
   WORKBENCH_BROWSER_PATH,
 } from "./utils/chromeInstallGate";
 import { isFileToolName } from "./constants";
-import { browserApi } from "../../api/modules/browser";
 import { octopThreadsApi } from "../../api/modules/octopThreads";
 import type { TokenUsage } from "../../api/types";
 import type { ChatAttachment } from "./hooks/useChat";
@@ -75,21 +71,14 @@ import {
   projectChatAgentOption,
 } from "../../context/AgentContext";
 import { useLayoutMode } from "../../context/LayoutModeContext";
-import { useBrowserSessionState } from "../../hooks/useBrowserSessionState";
 import { prefetchVoiceConfig } from "../../hooks/useVoiceConfig";
 import {
   chatSkillCatalogAgentId,
   isSharedExpertViewer,
 } from "../../utils/sharedExpert";
 import { isTeamAgent } from "../../utils/teamAgent";
-import ChatDockPanels from "./components/ChatDockPanels";
-import type { ChatDockAddTabHandlers } from "./components/ChatDockPanel";
 import { ChatFilePreviewProvider } from "./ChatFilePreviewContext";
 import { ChatAgentProfileProvider } from "./ChatAgentProfileContext";
-import {
-  ChatToolDockProvider,
-  dockTabIdForToolCall,
-} from "./ChatToolDockContext";
 import ChatSidebarPanel from "./components/ChatSidebarPanel";
 import ChatTitleBar from "./components/ChatTitleBar";
 import TeamChatBadge from "./components/TeamChatBadge";
@@ -378,189 +367,12 @@ function ChatPageInner() {
   const pendingAsk = useMemo(() => findPendingAsk(messages), [messages]);
   const autoResumedApprovalRef = useRef<string | null>(null);
 
-  const refreshBrowserRef = useRef<() => void>(() => {});
 
-  const { hasBrowserTool, setHasBrowserTool } = useBrowserToolDetection(
-    activeThreadId,
-    messages,
-    () => refreshBrowserRef.current(),
-  );
-
-  const {
-    sessionId: browserSessionId,
-    state: browserSessionState,
-    controlOwner: browserControlOwner,
-    environment: browserEnvironment,
-    refresh: refreshBrowserSession,
-  } = useBrowserSessionState(
-    threadId,
-    hasBrowserTool,
-    activeAgent?.bridge ? activeAgent.bridge_connection_id : null,
-  );
-
-  refreshBrowserRef.current = refreshBrowserSession;
-
-  const {
-    dockOpen,
-    dockMode,
-    openTabs,
-    activeTabId,
-    panelSizes: dockPanelSizes,
-    isResizing: dockIsResizing,
-    handleResizeStart: dockHandleResizeStart,
-    handleClose: handleDockClose,
-    handleModeChange: handleDockModeChange,
-    openFileList,
-    openFileAt,
-    openKnowledgeCitation,
-    openWorkspaceTab,
-    openBrowserTab,
-    openTerminalTab,
-    toggleBrowserPanel,
-    toggleWorkspacePanel,
-    toggleTerminalPanel,
-    openToolUiTab,
-    focusToolUiTab,
-    closeTab: closeDockTab,
-    setActiveTab: setDockActiveTab,
-  } = useChatDockPanel(isMobile, resolvedAgentId);
-
-  const chromeCheckInFlightRef = useRef(false);
-  const bridgeConnectionId =
-    activeAgent?.bridge && activeAgent.bridge_connection_id
-      ? activeAgent.bridge_connection_id
-      : null;
-  const ensureChromeThen = useCallback(
-    async (then: () => void) => {
-      // A live session means Chrome is already running — skip the probe.
-      if (!browserSessionId) {
-        if (chromeCheckInFlightRef.current) return;
-        chromeCheckInFlightRef.current = true;
-        try {
-          const env = await browserApi.checkEnvStatus(resolvedAgentId);
-          if (shouldJumpToChromeInstall(env)) {
-            // Peer Chromium install is not tunneled — only nudge local install UX.
-            if (bridgeConnectionId) {
-              showConfirmModal(
-                {
-                  title: t("browserWorkspace.chromeMissingTitle"),
-                  content: t("chat.remoteExpert.manageToast"),
-                  okText: t("common.confirm"),
-                  cancelText: t("common.cancel"),
-                },
-                { isMobile },
-              );
-              return;
-            }
-            showConfirmModal(
-              {
-                title: t("browserWorkspace.chromeMissingTitle"),
-                content: t("browserWorkspace.chromeMissingJumpToInstall"),
-                okText: t("common.confirm"),
-                cancelText: t("common.cancel"),
-                onOk: () => {
-                  navigate(WORKBENCH_BROWSER_PATH);
-                },
-              },
-              { isMobile },
-            );
-            return;
-          }
-        } catch {
-          // Probe failed — keep the existing open-panel behavior.
-        } finally {
-          chromeCheckInFlightRef.current = false;
-        }
-      }
-      then();
-    },
-    [
-      browserSessionId,
-      bridgeConnectionId,
-      isMobile,
-      navigate,
-      resolvedAgentId,
-      t,
-    ],
-  );
-
-  const handleToggleBrowserPanel = useCallback(() => {
-    void ensureChromeThen(toggleBrowserPanel);
-  }, [ensureChromeThen, toggleBrowserPanel]);
-
-  const handleOpenBrowserTab = useCallback(() => {
-    void ensureChromeThen(openBrowserTab);
-  }, [ensureChromeThen, openBrowserTab]);
-
-  const dockAddTab = useMemo((): ChatDockAddTabHandlers => {
-    const handlers: ChatDockAddTabHandlers = {
-      onOpenBrowser: handleOpenBrowserTab,
-    };
-    if (!sharedExpertViewer) {
-      handlers.onOpenWorkspace = openWorkspaceTab;
-      handlers.workspaceDisabled = !agentChatReady;
-      handlers.workspaceDisabledHint = t("workspace.requiresRunning");
-      handlers.onOpenFiles = openFileList;
-    }
-    if (canTerminal) {
-      handlers.onOpenTerminal = openTerminalTab;
-    }
-    return handlers;
-  }, [
-    agentChatReady,
-    canTerminal,
-    handleOpenBrowserTab,
-    openFileList,
-    openTerminalTab,
-    openWorkspaceTab,
-    sharedExpertViewer,
-    t,
-  ]);
-
-  const closeToolUiPanel = useCallback(
-    (callId: string) => {
-      closeDockTab(dockTabIdForToolCall(callId));
-    },
-    [closeDockTab],
-  );
-
-  useEffect(() => {
-    setPluginUiDockHandlers({
-      openSidePanel: openToolUiTab,
-      closeSidePanel: closeToolUiPanel,
-    });
-    return () => setPluginUiDockHandlers({});
-  }, [openToolUiTab, closeToolUiPanel]);
 
   const composerSession = useMemo(
     () => sessions.find((session) => session.id === activeThreadId) ?? null,
     [sessions, activeThreadId],
   );
-
-  const panelFilePaths = useMemo(() => {
-    const fromTabs = openTabs
-      .filter((tab) => tab.kind === "file")
-      .map((tab) => ({
-        path: tab.path,
-        ...(tab.agentId ? { agentId: tab.agentId } : {}),
-      }));
-    const fromThread = (composerSession?.artifacts ?? []).map((item) => ({
-      path: item.path,
-      ...(item.agent_id ? { agentId: item.agent_id } : {}),
-    }));
-    return listDockFilePathsForTree(
-      [...fromThread, ...fromTabs],
-      resolvedAgentId,
-    );
-  }, [openTabs, resolvedAgentId, composerSession?.artifacts]);
-
-  const dockAgentNameById = useMemo(() => {
-    const map: Record<string, string> = {};
-    for (const a of agents) {
-      if (a.agent_id) map[a.agent_id] = a.name || a.agent_id;
-    }
-    return map;
-  }, [agents]);
 
   const {
     selectedModel,
@@ -916,7 +728,6 @@ function ChatPageInner() {
     setActiveAgent,
     setSidebarOpen,
     setSelectedModel,
-    setHasBrowserTool,
     deleteSession,
     clearMessages,
     resetNavForAgentSwitch,
@@ -1069,23 +880,6 @@ function ChatPageInner() {
     [resumeHitl, activeThreadId, t],
   );
 
-  useEffect(() => {
-    let cancelled = false;
-    browserApi
-      .recordReplayStatus()
-      .then((status) => {
-        if (cancelled) return;
-        setBrowserRecording(Boolean(status.active));
-        setBrowserRecordingId(status.active?.recordingId ?? null);
-        if (status.latestRecordingId) {
-          setBrowserLastRecordingId(status.latestRecordingId);
-        }
-      })
-      .catch(() => undefined);
-    return () => {
-      cancelled = true;
-    };
-  }, []);
 
   // Regenerate: re-send the last user message before this assistant message
   const handleRegenerate = useCallback(
@@ -1355,28 +1149,14 @@ function ChatPageInner() {
 
   return (
     <ChatFilePreviewProvider
-      openFilePreview={openFileAt}
-      openKnowledgeCitation={openKnowledgeCitation}
+      openFilePreview={() => {}}
+      openKnowledgeCitation={() => {}}
     >
-      <ChatToolDockProvider
-        dockOpen={dockOpen}
-        openTabs={openTabs}
-        activeTabId={activeTabId}
-        openToolUiPanel={openToolUiTab}
-        closeToolUiPanel={closeToolUiPanel}
-        focusToolUiPanel={focusToolUiTab}
-      >
         {chatHistoryRail
           ? createPortal(chatSidebarPanel, chatHistoryRail)
           : null}
         <div
-          className={`${styles.chatPage} ${
-            dockIsResizing ? styles.panelResizeActive : ""
-          } ${
-            dockOpen && dockMode === "bottom"
-              ? styles.chatPageWithBottomDock
-              : ""
-          }`}
+          className={styles.chatPage}
         >
           {/* Main chat area */}
           <div
@@ -1425,43 +1205,6 @@ function ChatPageInner() {
                     >
                       <ProfileIcon size={18} strokeWidth={1.8} />
                     </button>
-                    <button
-                      className={styles.menuBtn}
-                      onClick={toggleWorkspacePanel}
-                      disabled={!agentChatReady}
-                      title={
-                        agentChatReady
-                          ? t("chat.openWorkspace", "工作区")
-                          : t("workspace.requiresRunning")
-                      }
-                      aria-label={t("chat.openWorkspace", "工作区")}
-                    >
-                      <FolderOpen size={18} strokeWidth={1.8} />
-                    </button>
-                    <button
-                      className={styles.menuBtn}
-                      onClick={() => void handleToggleBrowserPanel()}
-                      title={t("chat.openBrowser")}
-                      aria-label={t("chat.openBrowser")}
-                    >
-                      <Globe size={18} strokeWidth={1.8} />
-                    </button>
-                    {!sharedExpertViewer && panelFilePaths.length > 0 && (
-                      <button
-                        className={styles.menuBtn}
-                        onClick={() => openFileList()}
-                        title={t("chat.modifiedFiles", {
-                          count: panelFilePaths.length,
-                          defaultValue: "已修改文件（{{count}}）",
-                        })}
-                        aria-label={t("chat.modifiedFiles", {
-                          count: panelFilePaths.length,
-                          defaultValue: "已修改文件（{{count}}）",
-                        })}
-                      >
-                        <FilePen size={18} strokeWidth={1.8} />
-                      </button>
-                    )}
                   </div>
                 )}
               </div>
@@ -1570,19 +1313,12 @@ function ChatPageInner() {
                     onAcpPermissionSelect={handleAcpPermissionSelect}
                     onHitlDecision={handleHitlDecision}
                     onTurnRailVisibilityChange={setTurnRailVisible}
-                    onOpenBrowser={hasBrowserTool ? openBrowserTab : undefined}
-                    onEditFile={
-                      !sharedExpertViewer && panelFilePaths.length > 0
-                        ? openFileList
-                        : undefined
-                    }
                   />
                 </ChatAgentProfileProvider>
               )}
             </div>
 
             {!isMobile &&
-              !dockOpen &&
               !agentProfileOpen &&
               !trajectoryDrawerOpen && (
                 <div className={styles.chatFloatActions}>
@@ -1606,77 +1342,7 @@ function ChatPageInner() {
                           </button>
                         </span>
                       </Tooltip>
-                      <Tooltip
-                        title={
-                          agentChatReady
-                            ? t("chat.openWorkspace", "工作区")
-                            : t("workspace.requiresRunning")
-                        }
-                        mouseEnterDelay={0.35}
-                        placement="left"
-                      >
-                        <span className={styles.chatFloatBtnWrap}>
-                          <button
-                            type="button"
-                            className={styles.chatFloatBtn}
-                            disabled={!agentChatReady}
-                            onClick={toggleWorkspacePanel}
-                            aria-label={t("chat.openWorkspace", "工作区")}
-                          >
-                            <FolderOpen size={20} strokeWidth={2.1} />
-                          </button>
-                        </span>
-                      </Tooltip>
                     </>
-                  )}
-                  {!sharedExpertViewer && panelFilePaths.length > 0 && (
-                    <Tooltip
-                      title={t("chat.modifiedFiles", {
-                        count: panelFilePaths.length,
-                        defaultValue: "已修改文件（{{count}}）",
-                      })}
-                      mouseEnterDelay={0.35}
-                      placement="left"
-                    >
-                      <span className={styles.chatFloatBtnWrap}>
-                        <button
-                          type="button"
-                          className={styles.chatFloatBtn}
-                          onClick={() => openFileList()}
-                          aria-label={t("chat.modifiedFiles", {
-                            count: panelFilePaths.length,
-                            defaultValue: "已修改文件（{{count}}）",
-                          })}
-                        >
-                          <FilePen size={20} strokeWidth={2.1} />
-                        </button>
-                        {panelFilePaths.length > 1 && (
-                          <span className={styles.chatFloatBadge}>
-                            {panelFilePaths.length > 99
-                              ? "99+"
-                              : panelFilePaths.length}
-                          </span>
-                        )}
-                      </span>
-                    </Tooltip>
-                  )}
-                  {canTerminal && (
-                    <Tooltip
-                      title={t("chat.openTerminal", "打开终端")}
-                      mouseEnterDelay={0.35}
-                      placement="left"
-                    >
-                      <span className={styles.chatFloatBtnWrap}>
-                        <button
-                          type="button"
-                          className={styles.terminalFloatBtn}
-                          onClick={toggleTerminalPanel}
-                          aria-label={t("chat.openTerminal", "打开终端")}
-                        >
-                          <Terminal size={20} strokeWidth={2.1} />
-                        </button>
-                      </span>
-                    </Tooltip>
                   )}
                   {trajectoryEnabled && (
                     <Tooltip
@@ -1706,51 +1372,6 @@ function ChatPageInner() {
                       </span>
                     </Tooltip>
                   )}
-                  <Tooltip
-                    title={
-                      browserSessionId
-                        ? t("browserWorkspace.browserStatusActive", {
-                            owner:
-                              browserControlOwner === "agent"
-                                ? t("browserWorkspace.agentControl")
-                                : t("browserWorkspace.userTakeover"),
-                          })
-                        : t("browserWorkspace.browserStatusIdle")
-                    }
-                    mouseEnterDelay={0.35}
-                    placement="left"
-                  >
-                    <span className={styles.chatFloatBtnWrap}>
-                      <button
-                        type="button"
-                        className={[
-                          styles.browserStatusBtn,
-                          browserSessionId ? styles.browserStatusActive : "",
-                          browserSessionId &&
-                          (browserSessionState === "awaiting_user_auth" ||
-                            browserSessionState === "authenticating")
-                            ? styles.browserStatusAuth
-                            : "",
-                          browserSessionId && browserControlOwner === "user"
-                            ? styles.browserStatusTakeover
-                            : "",
-                        ]
-                          .filter(Boolean)
-                          .join(" ")}
-                        onClick={() => void handleToggleBrowserPanel()}
-                        aria-label={t("chat.openBrowser")}
-                      >
-                        <Globe size={20} strokeWidth={2.1} />
-                        {browserSessionId && (
-                          <span
-                            className={`${styles.browserStatusDot} ${
-                              styles[`browserStatus_${browserControlOwner}`]
-                            }`}
-                          />
-                        )}
-                      </button>
-                    </span>
-                  </Tooltip>
                 </div>
               )}
 
@@ -1883,29 +1504,6 @@ function ChatPageInner() {
             />
           </div>
 
-          <ChatDockPanels
-            isMobile={isMobile}
-            dockOpen={dockOpen}
-            dockMode={dockMode}
-            isResizing={dockIsResizing}
-            panelSizes={dockPanelSizes}
-            agentId={resolvedAgentId ?? ""}
-            filePaths={sharedExpertViewer ? [] : panelFilePaths}
-            agentNameById={dockAgentNameById}
-            openTabs={openTabs}
-            activeTabId={activeTabId}
-            onSelectTab={setDockActiveTab}
-            onCloseTab={closeDockTab}
-            onOpenFile={openFileAt}
-            browserEnvironment={browserEnvironment}
-            bridgeConnectionId={bridgeConnectionId}
-            threadId={activeThreadId}
-            isStreamingTurn={isStreaming}
-            onModeChange={handleDockModeChange}
-            onClose={handleDockClose}
-            onResizeStart={dockHandleResizeStart}
-            addTab={dockAddTab}
-          />
 
           {!sharedExpertViewer && (
             <AgentProfileDrawer
@@ -1927,7 +1525,6 @@ function ChatPageInner() {
             />
           )}
         </div>
-      </ChatToolDockProvider>
     </ChatFilePreviewProvider>
   );
 }

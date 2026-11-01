@@ -280,31 +280,7 @@ async function fetchBridgeShadowAgents(): Promise<{
     remote: [] as OctopAgent[],
     liveConnectionIds: new Set<string>(),
   };
-  try {
-    const { bridgeApi } = await import("../api/modules/bridge");
-    const connections = await bridgeApi.list();
-    const liveConnectionIds = new Set(
-      connections.map((c) => c.connection_id).filter(Boolean),
-    );
-    const connected = connections.filter((c) => c.status === "connected");
-    if (connected.length === 0) {
-      return { remote: [], liveConnectionIds };
-    }
-    const batches = await Promise.all(
-      connected.map(async (conn) => {
-        try {
-          const agents = await bridgeApi.listAgents(conn.connection_id);
-          return agents.map((agent) => mapBridgeAgent(agent, conn));
-        } catch {
-          return [] as OctopAgent[];
-        }
-      }),
-    );
-    return { remote: batches.flat(), liveConnectionIds };
-  } catch {
-    // Non-admin users or cloud-collab-unavailable installs — ignore.
-    return empty;
-  }
+  return empty;
 }
 
 function stringIdList(value: unknown): string[] | undefined {

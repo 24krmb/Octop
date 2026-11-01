@@ -14,7 +14,6 @@ const ACPPage = lazy(() => import("../pages/Agent/ACP"));
 const TokenUsagePage = lazy(() => import("../pages/Control/TokenUsage"));
 
 // Lazy-loaded pages — Control
-const RemoteDesktopPage = lazy(() => import("../pages/Control/RemoteDesktop"));
 
 // Lazy-loaded pages — Settings
 const ModelsPage = lazy(() => import("../pages/Settings/Models"));
@@ -68,15 +67,6 @@ export const pathToKey: Record<string, string> = {
   // Control
   "/acp": "acp",
   "/channels": "channels",
-  "/terminal": "workbench",
-  "/remote-browser": "workbench",
-  "/remote-desktop": "remote-desktop",
-  "/remote-desktop/desktop": "remote-desktop",
-  "/remote-desktop/phone": "remote-desktop",
-  "/remote-desktop/phone/screen": "remote-desktop",
-  "/remote-desktop/phone/shell": "remote-desktop",
-  "/remote-phone": "remote-desktop",
-  "/remote-android": "remote-desktop",
   "/subagents": "personalization",
   "/mbti": "personalization",
   "/memory": "personalization",
@@ -95,12 +85,6 @@ export const pathToKey: Record<string, string> = {
  */
 export const FULLSCREEN_PATHS = new Set([
   "/chat",
-  "/remote-desktop",
-  "/remote-desktop/desktop",
-  "/remote-desktop/phone",
-  "/remote-desktop/phone/screen",
-  "/remote-desktop/phone/shell",
-  "/remote-phone",
 ]);
 
 /**
@@ -111,11 +95,6 @@ export const SELF_HEADER_PATHS = new Set<string>([]);
 /** Mobile-only fullscreen pages (custom header + no content padding). */
 export const MOBILE_FULLSCREEN_PATHS = new Set<string>([]);
 
-export function isRemoteDesktopPath(pathname: string): boolean {
-  return (
-    pathname === "/remote-desktop" || pathname.startsWith("/remote-desktop/")
-  );
-}
 
 export function isPersonalizationPath(pathname: string): boolean {
   return (
@@ -126,8 +105,6 @@ export function isPersonalizationPath(pathname: string): boolean {
 export function resolveSelectedKey(pathname: string): string {
   if (pathToKey[pathname]) return pathToKey[pathname];
   if (pathname.startsWith("/chat/")) return "chat";
-  if (pathname.startsWith("/workbench/")) return "workbench";
-  if (pathname.startsWith("/remote-desktop/")) return "remote-desktop";
   if (pathname.startsWith("/personalization/")) return "personalization";
   return "";
 }
@@ -160,30 +137,6 @@ export const routeConfigs: RouteConfig[] = [
   {
     path: "/channels",
     element: <RedirectPreserveSearch to="/personalization/channels" />,
-  },
-  { path: "/workbench", element: null },
-  { path: "/workbench/terminal", element: null },
-  { path: "/workbench/browser", element: null },
-  {
-    path: "/terminal",
-    element: <RedirectPreserveSearch to="/workbench/terminal" />,
-  },
-  {
-    path: "/remote-browser",
-    element: <RedirectPreserveSearch to="/workbench/browser" />,
-  },
-  { path: "/remote-desktop", element: <RemoteDesktopPage /> },
-  { path: "/remote-desktop/desktop", element: <RemoteDesktopPage /> },
-  { path: "/remote-desktop/phone", element: <RemoteDesktopPage /> },
-  { path: "/remote-desktop/phone/screen", element: <RemoteDesktopPage /> },
-  { path: "/remote-desktop/phone/shell", element: <RemoteDesktopPage /> },
-  {
-    path: "/remote-phone",
-    element: <RedirectPreserveSearch to="/remote-desktop/phone" />,
-  },
-  {
-    path: "/remote-android",
-    element: <Navigate to="/remote-desktop/phone" replace />,
   },
   {
     path: "/subagents",

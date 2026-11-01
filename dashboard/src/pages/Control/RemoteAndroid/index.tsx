@@ -56,20 +56,17 @@ import { useIsMobile } from "../../../hooks/useIsMobile";
 import { useAgent } from "../../../context/AgentContext";
 import { userCan } from "../../../utils/permissions";
 import { showApiError } from "../../../utils/showApiToast";
-import AdbShellPanel from "./AdbShellPanel";
 import RemotePhoneIdleGuide from "./RemotePhoneIdleGuide";
 import styles from "./index.module.less";
 
-export type RemotePhoneViewTab = "screen" | "shell";
+export type RemotePhoneViewTab = "screen";
 
 const REMOTE_PHONE_VIEW_TABS = [
   "screen",
-  "shell",
 ] as const satisfies readonly RemotePhoneViewTab[];
 
 const PHONE_TAB_ICONS = {
   screen: Smartphone,
-  shell: TerminalSquare,
 } as const;
 
 const MOBILE_AI_PANEL_KEY = "octop:remote-phone:ai-panel-open";
@@ -79,11 +76,6 @@ const MOBILE_AI_PANEL_MIN_WIDTH = 260;
 const MOBILE_AI_PANEL_MAX_WIDTH = 620;
 const MOBILE_AI_PANEL_MIN_HEIGHT = 200;
 const MOBILE_AI_PANEL_MAX_HEIGHT = 520;
-const SHELL_SPLIT_WIDTH_KEY = "octop:remote-phone:shell-split-width";
-const SHELL_SPLIT_MIN_WIDTH = 280;
-const SHELL_SPLIT_MAX_WIDTH = 720;
-const SHELL_SPLIT_DEFAULT_WIDTH = 420;
-const SHELL_PANEL_OPEN_KEY = "octop:remote-phone:shell-panel-open";
 const STREAM_QUALITY_KEY = "octop:remote-phone:stream-quality";
 
 type StreamQualityPreset = "low" | "balanced" | "high" | "max";
@@ -205,35 +197,9 @@ export default function RemoteAndroidPage({
     }
     return 320;
   });
-  const [shellSplitWidth, setShellSplitWidth] = useState(() => {
-    try {
-      const saved = localStorage.getItem(SHELL_SPLIT_WIDTH_KEY);
-      const n = saved ? Number(saved) : SHELL_SPLIT_DEFAULT_WIDTH;
-      if (Number.isFinite(n)) {
-        return Math.min(
-          Math.max(n, SHELL_SPLIT_MIN_WIDTH),
-          SHELL_SPLIT_MAX_WIDTH,
-        );
-      }
-    } catch {
-      /* ignore */
-    }
-    return SHELL_SPLIT_DEFAULT_WIDTH;
-  });
-  const [isShellPanelOpen, setIsShellPanelOpen] = useState(() => {
-    try {
-      return localStorage.getItem(SHELL_PANEL_OPEN_KEY) === "true";
-    } catch {
-      return false;
-    }
-  });
   const aiDragRef = useRef<{
     startX: number;
     startY: number;
-    startSize: number;
-  } | null>(null);
-  const shellSplitDragRef = useRef<{
-    startX: number;
     startSize: number;
   } | null>(null);
   const screenSizeRef = useRef({ width: 1080, height: 1920 });
@@ -345,60 +311,6 @@ export default function RemoteAndroidPage({
       window.addEventListener("mouseup", onUp);
     },
     [aiPanelHeight, aiPanelWidth, isMobile],
-  );
-
-  const handleShellPanelToggle = useCallback(() => {
-    setIsShellPanelOpen((prev) => {
-      const next = !prev;
-      try {
-        localStorage.setItem(SHELL_PANEL_OPEN_KEY, String(next));
-      } catch {
-        /* ignore */
-      }
-      return next;
-    });
-  }, []);
-
-  const handleShellSplitResizeMouseDown = useCallback(
-    (e: ReactMouseEvent<HTMLDivElement>) => {
-      e.preventDefault();
-      e.stopPropagation();
-      const startX = e.clientX;
-      const startSize = shellSplitWidth;
-      let latest = startSize;
-      shellSplitDragRef.current = { startX, startSize };
-      document.body.style.cursor = "col-resize";
-      document.body.style.userSelect = "none";
-
-      const onMove = (mv: MouseEvent) => {
-        if (!shellSplitDragRef.current) return;
-        mv.preventDefault();
-        const delta = shellSplitDragRef.current.startX - mv.clientX;
-        latest = Math.min(
-          Math.max(
-            shellSplitDragRef.current.startSize + delta,
-            SHELL_SPLIT_MIN_WIDTH,
-          ),
-          SHELL_SPLIT_MAX_WIDTH,
-        );
-        setShellSplitWidth(latest);
-      };
-      const onUp = () => {
-        shellSplitDragRef.current = null;
-        document.body.style.cursor = "";
-        document.body.style.userSelect = "";
-        window.removeEventListener("mousemove", onMove);
-        window.removeEventListener("mouseup", onUp);
-        try {
-          localStorage.setItem(SHELL_SPLIT_WIDTH_KEY, String(latest));
-        } catch {
-          /* ignore */
-        }
-      };
-      window.addEventListener("mousemove", onMove);
-      window.addEventListener("mouseup", onUp);
-    },
-    [shellSplitWidth],
   );
 
   const refreshStatus = useCallback(async () => {
@@ -924,31 +836,6 @@ export default function RemoteAndroidPage({
     </>
   );
 
-  const remotePhoneShellIdleGuide = (
-    <>
-      {loading && !statusData ? (
-        <Spin size="large" />
-      ) : (
-        <RemotePhoneIdleGuide
-          variant="shell"
-          loading={loading}
-          statusData={statusData}
-          installPhase={installPhase}
-          installLogs={installLogs}
-          installLogRef={installLogRef}
-          ready={ready}
-          needsInstall={needsInstall}
-          needsDevice={needsDevice}
-          device={device}
-          onConnect={handleConnect}
-          onInstall={handleInstall}
-          onRefresh={() => void refreshStatus()}
-          onCancelInstall={cancelInstall}
-        />
-      )}
-    </>
-  );
-
   const showTopBar = Boolean(ready || hasDevice || statusData);
 
   const aiToggleButton = (
@@ -962,17 +849,6 @@ export default function RemoteAndroidPage({
         className={styles.commandIconBtn}
       />
     </Tooltip>
-  );
-
-  const shellToggleButton = (
-    <Button
-      type={isShellPanelOpen ? "primary" : "default"}
-      icon={<TerminalSquare size={14} />}
-      onClick={handleShellPanelToggle}
-      aria-pressed={isShellPanelOpen}
-    >
-      {t("remoteAndroid.toggleShell", "打开 ADB 调试")}
-    </Button>
   );
 
   const viewSwitcher = (
@@ -1055,7 +931,6 @@ export default function RemoteAndroidPage({
           {t("remoteAndroid.install", "安装容器")}
         </Button>
       ) : null}
-      {!isMobile ? shellToggleButton : null}
       <Button
         icon={<RefreshCw size={14} />}
         onClick={() => void refreshStatus()}
@@ -1081,17 +956,9 @@ export default function RemoteAndroidPage({
   );
 
   const useDesktopSplit = !isMobile;
-  const desktopShellOpen = useDesktopSplit && isShellPanelOpen;
   const mountScreenPanel = useDesktopSplit || isPhoneTabMounted("screen");
-  const mountShellPanel =
-    desktopShellOpen || (!useDesktopSplit && isPhoneTabMounted("shell"));
   const showScreenPanel = useDesktopSplit || activePhoneTab === "screen";
-  const showShellPanel =
-    desktopShellOpen || (!useDesktopSplit && activePhoneTab === "shell");
-  const shellPanelVisible = desktopShellOpen
-    ? isVisible
-    : !useDesktopSplit && activePhoneTab === "shell" && isVisible;
-  const showSidePanel = !desktopShellOpen;
+  const showSidePanel = true;
 
   const pageBody = (
     <div className={styles.remotePhonePage}>
@@ -1188,9 +1055,7 @@ export default function RemoteAndroidPage({
               </div>
             </div>
             <div
-              className={
-                desktopShellOpen ? styles.splitPanels : styles.phoneTabPanels
-              }
+              className={styles.phoneTabPanels}
             >
               {mountScreenPanel ? (
                 <div
@@ -1473,42 +1338,6 @@ export default function RemoteAndroidPage({
                       </>
                     )}
                   </div>
-                </div>
-              ) : null}
-              {desktopShellOpen ? (
-                <div
-                  className={styles.splitHandle}
-                  onMouseDown={handleShellSplitResizeMouseDown}
-                  role="separator"
-                  aria-orientation="vertical"
-                  aria-label={t(
-                    "remoteAndroid.shellSplitHandle",
-                    "Resize shell panel",
-                  )}
-                />
-              ) : null}
-              {mountShellPanel ? (
-                <div
-                  className={`${styles.phoneTabPanel}${
-                    desktopShellOpen ? ` ${styles.splitShellPane}` : ""
-                  }`}
-                  style={{
-                    display: showShellPanel ? "flex" : "none",
-                    ...(desktopShellOpen
-                      ? {
-                          flex: `0 0 ${shellSplitWidth}px`,
-                          width: shellSplitWidth,
-                        }
-                      : null),
-                  }}
-                  aria-hidden={!showShellPanel}
-                >
-                  <AdbShellPanel
-                    device={device}
-                    streamActive={showStream}
-                    visible={shellPanelVisible}
-                    idleGuide={remotePhoneShellIdleGuide}
-                  />
                 </div>
               ) : null}
             </div>

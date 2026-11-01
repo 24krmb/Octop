@@ -344,14 +344,10 @@ export default function ChannelsPanel({ agentId }: ChannelsPanelProps) {
           // Prefer bind-success copy when the channel was just QR-auto-enabled.
           const toastKey = !enabled
             ? "channels.configSaved"
-            : kind === "wecom"
-            ? "channels.qrBindSuccess"
             : kind === "weixin"
             ? "channels.weixinQrBindSuccess"
             : kind === "feishu"
             ? "channels.feishuBindSuccess"
-            : kind === "yuanbao"
-            ? "channels.yuanbaoBindSuccess"
             : "channels.channelEnabled";
           message.success(t(toastKey));
           setDrawerOpen(false);

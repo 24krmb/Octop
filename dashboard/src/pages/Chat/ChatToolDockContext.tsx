@@ -1,6 +1,13 @@
 import { createContext, useContext, useMemo, type ReactNode } from "react";
 import { dockToolUiTabId } from "./utils/dockToolUiTabId";
-import type { DockTab, DockTabId } from "./hooks/useChatDockPanel";
+type DockTabId = string;
+
+interface DockTab {
+  id: DockTabId;
+  kind: string;
+  title: string;
+  [key: string]: unknown;
+}
 
 export interface OpenToolUiPanelOptions {
   callId: string;

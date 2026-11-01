@@ -67,14 +67,6 @@ export default function MainLayout() {
 
   const [collapsed, setCollapsed] = useState(() => getSavedCollapsed());
   const [chatSidebarOpen, setChatSidebarOpen] = useChatSidebarOpen();
-  const [workbenchMounted, setWorkbenchMounted] = useState(() => onWorkbench);
-
-  useEffect(() => {
-    if (onWorkbench) {
-      setWorkbenchMounted(true);
-    }
-  }, [onWorkbench]);
-
   const persistNavCollapsed = useCallback((next: boolean) => {
     setCollapsed(next);
     try {
