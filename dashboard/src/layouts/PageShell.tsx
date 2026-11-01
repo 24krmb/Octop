@@ -204,13 +204,10 @@ function PageShell({
         className={DESKTOP_NO_DRAG_CLASS}
         style={{
           flex: 1,
-          // FillTabs (fill) mode: transparent — tabs sit directly on the page.
-          background: fill || flat ? "transparent" : "var(--fn-bg-primary)",
-          borderRadius: fill || flat ? 0 : 8,
-          // FillTabs (fill) mode: no padding at all — the tab bar sits right
-          // below the page title row, flush with the container edges.
-          // flat mode: card chrome removed, bottom keeps the safe-area pad.
-          padding: fill || flat ? 0 : contentPad,
+          background: "transparent",
+          // Card chrome (bg / radius / side+top padding) removed; only the
+          // bottom padding (safe-area aware) is kept.
+          padding: 0,
           paddingBottom: fill
             ? 0
             : pinBody
