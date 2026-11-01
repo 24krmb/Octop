@@ -34,9 +34,14 @@ describe("sidebarNavLayout", () => {
     const sections = catalog();
     expect(sectionsFromLayout(sections, null)).toBe(sections);
     const editor = editorFromCatalog(sections, null);
-    expect(editor.ungrouped).toEqual(["chat", "experts", "tasks"]);
+    expect(editor.ungrouped).toEqual([
+      "chat",
+      "experts",
+      "personalization-subagents",
+      "tasks",
+    ]);
     expect(editor.groups.map((group) => group.id)).toEqual([
-      "settings",
+      "personalization",
       "control",
       "admin",
     ]);
@@ -59,25 +64,30 @@ describe("sidebarNavLayout", () => {
       ],
     });
     // Missing built-in groups are spliced back ahead of the first saved
-    // built-in group; ungrouped catalog keys (experts/tasks/token-usage)
-    // without a default group land in hidden, and the saved "settings" group
-    // keeps its item while workbench (no longer in the catalog) is dropped.
+    // built-in group, subagents relocates to the front block because its
+    // default group became ungrouped, and the saved "settings" group ends up
+    // empty (channels now defaults to control) so it is omitted.
     expect(applied.map((section) => section.id ?? "front")).toEqual([
       "front",
+      "personalization",
       "admin",
-      "settings",
       "control",
     ]);
-    expect(applied[0]?.items.map((item) => item.key)).toEqual(["chat"]);
-    expect(applied[1]?.groupKey).toBe("nav.admin");
-    expect(applied[2]?.title).toBe("配置");
-    expect(applied[2]?.items.map((item) => item.key)).toEqual([
-      "personalization",
-      "skill-packages",
-      "knowledge-bases",
+    expect(applied[0]?.items.map((item) => item.key)).toEqual([
+      "chat",
+      "personalization-subagents",
     ]);
+    expect(applied[1]?.groupKey).toBe("nav.personalization");
+    expect(applied[2]?.groupKey).toBe("nav.admin");
     expect(applied[3]?.groupKey).toBe("nav.control");
-    expect(applied[3]?.items.map((item) => item.key)).toEqual(["acp"]);
+    // workbench keeps its saved placement; channels (new default member of
+    // control) is appended by the migration pass right after it.
+    expect(applied[3]?.items.map((item) => item.key)).toEqual([
+      "workbench",
+      "channels",
+      "remote-desktop",
+      "acp",
+    ]);
   });
 
   it("sends keys missing from a saved layout to hidden", () => {
@@ -87,10 +97,11 @@ describe("sidebarNavLayout", () => {
     });
     expect(editor.ungrouped).toEqual(["chat"]);
     expect(editor.hidden).toContain("experts");
-    expect(editor.hidden).toContain("tasks");
+    expect(editor.hidden).toContain("personalization-subagents");
     expect(
       sectionsFromLayout(catalog(), {
-    expect(editor.hidden).toContain("experts");
+        groups: [{ id: "settings" }],
+        items: [{ key: "chat" }],
       })
         .flatMap((section) => section.items.map((item) => item.key))
         .includes("experts"),
@@ -98,13 +109,18 @@ describe("sidebarNavLayout", () => {
   });
 
   it("moves a deleted group's items to the front of the ungrouped list", () => {
-        .includes("experts"),
+    const editor = editorFromCatalog(catalog(), null);
     const next = deleteGroup(editor, "control");
     expect(next.groups.map((group) => group.id)).toEqual([
-      "settings",
+      "personalization",
       "admin",
     ]);
-    expect(next.ungrouped[0]).toBe("acp");
+    expect(next.ungrouped.slice(0, 4)).toEqual([
+      "channels",
+      "workbench",
+      "remote-desktop",
+      "acp",
+    ]);
     expect(next.ungrouped).toContain("chat");
   });
 
@@ -147,7 +163,7 @@ describe("sidebarNavLayout", () => {
     expect(shown).not.toContain("personalization");
     expect(
       visibleEditorGroups(editor, sections).map((group) => group.id),
-    ).toEqual(["c_aabbccdd"]);
+    ).toEqual(["personalization", "admin", "c_aabbccdd"]);
   });
 
   it("keeps a new empty group only in the editor", () => {

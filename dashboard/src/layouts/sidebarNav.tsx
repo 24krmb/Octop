@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import {
+  Monitor,
   MessageSquareText,
   Timer,
   SlidersHorizontal,
@@ -15,6 +16,7 @@ import {
   Package,
   HardDrive,
   GraduationCap,
+  Shield,
 } from "lucide-react";
 import type { OctopUser } from "../api/modules/auth";
 import { navAllowed, userCan } from "../utils/permissions";
@@ -67,8 +69,11 @@ export const SIDEBAR_NAV_KEYS = [
   "token-usage",
   "personalization",
   "channels",
+  "connectors",
   "skill-packages",
   "knowledge-bases",
+  "bridge",
+  "remote-desktop",
   "acp",
   "admin-users",
   "models",
@@ -117,9 +122,11 @@ export function navSectionLabel(
 export const SIDEBAR_GROUPED_NAV_KEYS = [
   "personalization",
   "channels",
+  "connectors",
   "skill-packages",
-  "token-usage",
+  "knowledge-bases",
   "bridge",
+  "remote-desktop",
   "acp",
   "admin-users",
   "models",
@@ -152,14 +159,6 @@ export function buildNavSections(
     topItems.push({
       key: "experts",
       path: "/experts",
-  if (navAllowed(user, "experts")) {
-    topItems.push({
-      key: "experts",
-      path: "/experts",
-      icon: <GraduationCap size={iconSize} strokeWidth={iconStroke} />,
-      labelKey: "nav.experts",
-    });
-  }
       icon: <GraduationCap size={iconSize} strokeWidth={iconStroke} />,
       labelKey: "nav.experts",
     });
@@ -172,6 +171,14 @@ export function buildNavSections(
       labelKey: "nav.tasks",
     });
   }
+  if (navAllowed(user, "token-usage")) {
+    topItems.push({
+      key: "token-usage",
+      path: "/token-usage",
+      icon: <Activity size={iconSize} strokeWidth={iconStroke} />,
+      labelKey: "nav.tokenUsage",
+    });
+  }
   const sections: NavSection[] = [{ items: topItems }];
 
   const settingsItems: NavItem[] = [];
@@ -179,6 +186,22 @@ export function buildNavSections(
     settingsItems.push({
       key: "personalization",
       path: personalizationNavPath(user),
+      icon: <Sparkles size={iconSize} strokeWidth={iconStroke} />,
+      labelKey: "nav.personalization",
+    });
+  }
+  if (navAllowed(user, "channels")) {
+    settingsItems.push({
+      key: "channels",
+      path: "/personalization/channels",
+      icon: <Waypoints size={iconSize} strokeWidth={iconStroke} />,
+      labelKey: "nav.channels",
+    });
+  }
+  if (navAllowed(user, "connectors")) {
+    settingsItems.push({
+      key: "connectors",
+      path: "/connectors",
       icon: <Link2 size={iconSize} strokeWidth={iconStroke} />,
       labelKey: "nav.connectors",
     });
@@ -208,6 +231,18 @@ export function buildNavSections(
   }
 
   const controlItems: NavItem[] = [];
+  // Server desktop + phone share one nav entry; phone tab also needs host capability.
+  if (
+    userCan(user, "desktop") ||
+    (opts?.mobileEnabled && userCan(user, "mobile"))
+  ) {
+    controlItems.push({
+      key: "remote-desktop",
+      path: "/remote-desktop",
+      icon: <Monitor size={iconSize} strokeWidth={iconStroke} />,
+      labelKey: "nav.remoteDesktop",
+    });
+  }
   // ACP: no module key this round — admin role only.
   if (navAllowed(user, "acp")) {
     controlItems.push({
@@ -226,14 +261,6 @@ export function buildNavSections(
   }
 
   const adminItems: NavItem[] = [];
-  if (navAllowed(user, "token-usage")) {
-    adminItems.push({
-      key: "token-usage",
-      path: "/token-usage",
-      icon: <Activity size={iconSize} strokeWidth={iconStroke} />,
-      labelKey: "nav.tokenUsage",
-    });
-  }
   if (navAllowed(user, "admin-users")) {
     adminItems.push({
       key: "admin-users",
@@ -246,14 +273,6 @@ export function buildNavSections(
     adminItems.push({
       key: "models",
       path: "/admin/models",
-  if (navAllowed(user, "token-usage")) {
-    adminItems.push({
-      key: "token-usage",
-      path: "/token-usage",
-      icon: <Activity size={iconSize} strokeWidth={iconStroke} />,
-      labelKey: "nav.tokenUsage",
-    });
-  }
       icon: <Cpu size={iconSize} strokeWidth={iconStroke} />,
       labelKey: "nav.models",
     });
@@ -275,6 +294,14 @@ export function buildNavSections(
     });
   }
   if (navAllowed(user, "admin-security")) {
+    adminItems.push({
+      key: "admin-security",
+      path: "/admin/security",
+      icon: <Shield size={iconSize} strokeWidth={iconStroke} />,
+      labelKey: "nav.security",
+    });
+  }
+  if (navAllowed(user, "admin-advanced")) {
     adminItems.push({
       key: "admin-advanced",
       path: "/admin/advanced",

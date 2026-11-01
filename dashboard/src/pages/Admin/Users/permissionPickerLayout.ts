@@ -113,6 +113,7 @@ const DEFAULT_GROUPS: readonly { id: string; items: readonly string[] }[] = [
     id: "settings",
     items: [
       "personalization",
+      "channels",
       "connectors",
       "skill-packages",
       "knowledge-bases",

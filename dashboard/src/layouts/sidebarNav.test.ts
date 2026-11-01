@@ -21,6 +21,8 @@ describe("sidebarNav", () => {
     }
     expect(isGroupedNavKey("chat")).toBe(false);
     expect(isGroupedNavKey("experts")).toBe(false);
+  });
+
   it("places grouped keys only under sections with groupKey", () => {
     const sections = buildNavSections(adminUser, { mobileEnabled: true });
     const flatKeys = new Set(
@@ -51,7 +53,7 @@ describe("sidebarNav", () => {
       (section) => section.id,
     );
     expect(grouped.map((section) => section.id)).toEqual([
-      "settings",
+      "personalization",
       "control",
       "admin",
     ]);

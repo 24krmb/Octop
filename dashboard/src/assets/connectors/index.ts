@@ -1,22 +1,11 @@
-import tencentArdot from "./tencent-ardot.png";
-import baiduMap from "./baidu-map.png";
-import ctripWendao from "./ctrip-wendao.png";
-import didi from "./didi.svg";
 import dida365 from "./dida365.png";
 import agentlyCli from "./agently-cli.png";
-import feishuCli from "./feishu-cli.png";
-import fliggy from "./fliggy.png";
-import meituanTravel from "./meituan-travel.png";
 import notion from "./notion.png";
 import openalex from "./openalex.svg";
 import qqMail from "./qq-mail.png";
 import tencentDocs from "./tencent-docs.png";
 import tencentIma from "./tencent-ima.png";
-import tencentMeeting from "./tencent-meeting.png";
-import tencentNews from "./tencent-news.png";
 import tencentLexiang from "./tencent-lexiang.png";
-import tencentWeiyun from "./tencent-weiyun.png";
-import wecomCli from "./wecom-cli.png";
 import weknora from "./weknora.svg";
 import youdaoNote from "./youdao-note.png";
 import windStockData from "./wind-stock-data.png";
@@ -25,26 +14,15 @@ import fiona from "./fiona.png";
 import yuqueMcp from "./yuque-mcp.png";
 
 export const CONNECTOR_LOGOS: Record<string, string> = {
-  "tencent-ardot": tencentArdot,
   "tencent-docs": tencentDocs,
-  "baidu-map": baiduMap,
   "qq-mail": qqMail,
-  fliggy,
-  "ctrip-wendao": ctripWendao,
-  didi,
-  "meituan-travel": meituanTravel,
   "tencent-ima": tencentIma,
   "agently-cli": agentlyCli,
-  "feishu-cli": feishuCli,
-  "wecom-cli": wecomCli,
   "tencent-lexiang": tencentLexiang,
-  "tencent-meeting": tencentMeeting,
   notion,
   openalex,
   dida365: dida365,
-  "tencent-news": tencentNews,
   "youdao-note": youdaoNote,
-  "tencent-weiyun": tencentWeiyun,
   weknora,
   "wind-stock-data": windStockData,
   "wind-index-data": windStockData,
