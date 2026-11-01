@@ -88,29 +88,6 @@
       }
     },
     {
-      "kind": "qq-mail",
-      "name": {
-        "en": "Personal Mail",
-        "zh": "个人邮箱"
-      },
-      "description": {
-        "en": "Connect QQ Mail, NetEase Mail, Gmail, and others over IMAP/SMTP",
-        "zh": "通过 IMAP/SMTP 连接 QQ 邮箱、网易邮箱、Gmail 等"
-      },
-      "auth_kind": "imap_app_password",
-      "doc_url": "https://mail.qq.com/",
-      "icon": "qq-mail",
-      "color": "#12b7f5",
-      "phase": "available",
-      "mcp_mode": "gateway",
-      "category": "productivity",
-      "manual_url": "https://mail.qq.com/",
-      "auth_hint": {
-        "en": "Pick your mail provider, enable IMAP/SMTP in the mailbox settings, generate an authorization code, and fill it in below",
-        "zh": "选择邮箱服务商，在邮箱设置中开启 IMAP/SMTP 并生成授权码后填入下方"
-      }
-    },
-    {
       "kind": "youdao-note",
       "name": {
         "en": "Youdao Note",
@@ -216,78 +193,6 @@
       "mcp_url": "https://mcp.dida365.com",
       "oauth_resource": "https://mcp.dida365.com/",
       "oauth_scopes": "tasks:read tasks:write"
-    },
-    {
-      "kind": "dingtalk-cli",
-      "name": {
-        "en": "DingTalk CLI",
-        "zh": "钉钉 CLI"
-      },
-      "description": {
-        "en": "Use the official DingTalk Workspace CLI (dws) for contacts, chat, calendar, docs and more (host CLI required)",
-        "zh": "通过官方钉钉 Workspace CLI（dws）操作通讯录、聊天、日程、文档等（需主机安装 CLI）"
-      },
-      "auth_kind": "custom_fields",
-      "doc_url": "https://github.com/DingTalk-Real-AI/dingtalk-workspace-cli",
-      "icon": "dingtalk-cli",
-      "color": "#3296fa",
-      "phase": "available",
-      "mcp_mode": "gateway",
-      "category": "office",
-      "guide_url": "https://github.com/DingTalk-Real-AI/dingtalk-workspace-cli#getting-started",
-      "manual_url": "https://open-dev.dingtalk.com/fe/app#/corp/app",
-      "auth_hint": {
-        "en": "Save, then authorize your DingTalk account. AppKey and AppSecret are optional: leave both empty to use DingTalk's official app. The host must have dws installed",
-        "zh": "保存后登录授权钉钉账号。AppKey 与 AppSecret 可选：都留空则使用钉钉官方应用。主机需已安装 dws"
-      },
-      "credential_fields": [
-        {
-          "key": "client_id",
-          "label": {
-            "en": "AppKey (Client ID)",
-            "zh": "AppKey（Client ID）"
-          },
-          "required": false,
-          "help": {
-            "en": "Only for a custom DingTalk app; fill both or leave both empty",
-            "zh": "仅自建钉钉应用需要；与 AppSecret 同时填写或同时留空"
-          }
-        },
-        {
-          "key": "client_secret",
-          "label": {
-            "en": "AppSecret (Client Secret)",
-            "zh": "AppSecret（Client Secret）"
-          },
-          "field_type": "password",
-          "required": false,
-          "secret": true
-        }
-      ]
-    },
-    {
-      "kind": "agently-cli",
-      "name": {
-        "en": "Agent Mail",
-        "zh": "Agent Mail"
-      },
-      "description": {
-        "en": "Use an independent Agent mailbox through the official CLI, with mail, attachments, device authorization and two-phase confirmation.",
-        "zh": "通过官方 CLI 使用独立的 Agent 邮箱，支持邮件与附件、设备码授权和两阶段确认。"
-      },
-      "auth_kind": "custom_fields",
-      "doc_url": "https://github.com/Tencent/AgentlyMail",
-      "icon": "agently-cli",
-      "color": "#0052d9",
-      "phase": "available",
-      "mcp_mode": "gateway",
-      "category": "office",
-      "guide_url": "https://help.agent.qq.com/detail/0/1092",
-      "manual_url": "https://agent.qq.com/",
-      "auth_hint": {
-        "en": "Save the connector, then authorize it. Each instance binds an independent mailbox.",
-        "zh": "先保存连接器，再完成设备码授权；每个实例独立绑定邮箱"
-      }
     },
     {
       "kind": "obsidian-cli",

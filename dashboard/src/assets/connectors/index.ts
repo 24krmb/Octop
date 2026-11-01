@@ -1,8 +1,6 @@
 import dida365 from "./dida365.png";
-import agentlyCli from "./agently-cli.png";
 import notion from "./notion.png";
 import openalex from "./openalex.svg";
-import qqMail from "./qq-mail.png";
 import tencentDocs from "./tencent-docs.png";
 import tencentIma from "./tencent-ima.png";
 import tencentLexiang from "./tencent-lexiang.png";
@@ -15,9 +13,7 @@ import yuqueMcp from "./yuque-mcp.png";
 
 export const CONNECTOR_LOGOS: Record<string, string> = {
   "tencent-docs": tencentDocs,
-  "qq-mail": qqMail,
   "tencent-ima": tencentIma,
-  "agently-cli": agentlyCli,
   "tencent-lexiang": tencentLexiang,
   notion,
   openalex,
