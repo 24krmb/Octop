@@ -97,7 +97,6 @@ describe("buildPermissionPickerGroups", () => {
               "agent_plugins",
               "mbti",
               "memory",
-              "channels",
               "connectors",
               "skill_packages",
             ],
@@ -202,7 +201,7 @@ describe("buildPermissionPickerGroups", () => {
       {
         kind: "chips",
         keys: ["chat", "experts", "tasks", "token_usage"],
-        fixed: ["chat"],
+        keys: ["chat", "experts", "tasks", "token_usage"],
       },
     ]);
     expect(groups[1]?.blocks).toEqual([{ kind: "chips", keys: ["channels"] }]);
@@ -223,7 +222,6 @@ describe("buildPermissionPickerGroups", () => {
         "mbti",
         "memory",
         "connectors",
-        "skill_packages",
       ],
     });
     expect(

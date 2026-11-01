@@ -14,7 +14,7 @@ from octop.infra.db.repos.settings import SettingsRepo
 logger = logging.getLogger(__name__)
 
 _SETTINGS_PREFIX = "acp_runners:user:"
-_HIDDEN_RUNNERS = frozenset({"qwen_code"})
+_HIDDEN_RUNNERS = frozenset({"qwen_code", "claude_code", "codebuddy"})
 # Until octop-harness ships these builtins, merge Octop-side defaults.
 _OCTOP_BUILTIN_RUNNERS: dict[str, dict[str, Any]] = {
     "kimi_code": {

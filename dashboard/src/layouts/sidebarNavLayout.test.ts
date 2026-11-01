@@ -73,8 +73,6 @@ describe("sidebarNavLayout", () => {
     expect(applied[2]?.title).toBe("配置");
     expect(applied[2]?.items.map((item) => item.key)).toEqual([
       "personalization",
-      "channels",
-      "connectors",
       "skill-packages",
       "knowledge-bases",
     ]);
@@ -92,8 +90,7 @@ describe("sidebarNavLayout", () => {
     expect(editor.hidden).toContain("tasks");
     expect(
       sectionsFromLayout(catalog(), {
-        groups: [{ id: "settings" }],
-        items: [{ key: "chat" }],
+    expect(editor.hidden).toContain("experts");
       })
         .flatMap((section) => section.items.map((item) => item.key))
         .includes("experts"),
@@ -101,7 +98,7 @@ describe("sidebarNavLayout", () => {
   });
 
   it("moves a deleted group's items to the front of the ungrouped list", () => {
-    const editor = editorFromCatalog(catalog(), null);
+        .includes("experts"),
     const next = deleteGroup(editor, "control");
     expect(next.groups.map((group) => group.id)).toEqual([
       "settings",

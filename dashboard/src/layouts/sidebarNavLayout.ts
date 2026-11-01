@@ -140,8 +140,6 @@ export function editorFromCatalog(
   // New built-in nav keys that ship after the user saved a layout would
   // otherwise be hidden forever. Append them to their default built-in
   // group (when that group still exists) instead of the hidden list.
-  const defaultGroupIdByKey = new Map<string, string>();
-  for (const group of base.groups) {
     for (const key of base.itemsByGroup[group.id] ?? []) {
       defaultGroupIdByKey.set(key, group.id);
     }
@@ -157,19 +155,7 @@ export function editorFromCatalog(
       seen.add(key);
       itemsByGroup[defaultGroup].push(key);
       continue;
-    }
-    hidden.push(key);
-  }
-  // Keys whose default built-in group changed (e.g. knowledge-bases moved
-  // from "settings" to "personalization"): relocate saved-layout placements
-  // into the new default group, keeping the base ordering inside it.
-  // Keys the user manually hidden stay hidden. Keys that became ungrouped
-  // (e.g. personalization-subagents moved to the top block) relocate into
-  // the ungrouped list the same way.
-  const layoutGroupByKey = new Map<string, string | null | undefined>();
-  for (const item of layout.items) layoutGroupByKey.set(item.key, item.group);
-  for (const key of defaultKeyOrder(base)) {
-    if (!seen.has(key) || hidden.includes(key)) continue;
+      itemsByGroup[defaultGroup].push(key);
     // Keys the layout never listed were just auto-appended to their current
     // default group by the pass above — relocating them again here would
     // duplicate them (e.g. a group that shipped after the layout was saved).
