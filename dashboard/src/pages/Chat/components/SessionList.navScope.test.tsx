@@ -73,7 +73,7 @@ describe("MinimalAgentSessionNav nav scopes", () => {
     vi.spyOn(octopThreadsApi, "list").mockResolvedValue([]);
   });
 
-  it("filters the same expert, team, and cloud tabs", async () => {
+  it("filters the same expert and team tabs", async () => {
     const user = userEvent.setup();
     render(
       <MemoryRouter>
@@ -94,13 +94,6 @@ describe("MinimalAgentSessionNav nav scopes", () => {
     );
 
     expect(screen.getByText("本地专家")).toBeInTheDocument();
-    expect(screen.getByText("云端专家")).toBeInTheDocument();
-    expect(screen.queryByText("本地团队")).not.toBeInTheDocument();
-
-    await user.click(screen.getByRole("tab", { name: "云端" }));
-    expect(screen.getByText("云端专家")).toBeInTheDocument();
-    expect(screen.getByText("云端团队")).toBeInTheDocument();
-    expect(screen.queryByText("本地专家")).not.toBeInTheDocument();
     expect(screen.queryByText("本地团队")).not.toBeInTheDocument();
   });
 });
@@ -116,7 +109,7 @@ function LocationProbe() {
 }
 
 describe("SessionList nav scopes", () => {
-  it("filters experts, teams, and cloud under the search box", async () => {
+  it("filters experts and teams under the search box", async () => {
     const user = userEvent.setup();
     renderList();
 
@@ -125,24 +118,14 @@ describe("SessionList nav scopes", () => {
       "true",
     );
     expect(screen.getByText("本地专家")).toBeInTheDocument();
-    expect(screen.getByText("云端专家")).toBeInTheDocument();
     expect(screen.queryByText("本地团队")).not.toBeInTheDocument();
-    expect(screen.queryByText("云端团队")).not.toBeInTheDocument();
 
     await user.click(screen.getByRole("tab", { name: "团队" }));
     expect(screen.getByText("本地团队")).toBeInTheDocument();
-    expect(screen.getByText("云端团队")).toBeInTheDocument();
     expect(screen.queryByText("本地专家")).not.toBeInTheDocument();
-    expect(screen.queryByText("云端专家")).not.toBeInTheDocument();
-
-    await user.click(screen.getByRole("tab", { name: "云端" }));
-    expect(screen.getByText("云端专家")).toBeInTheDocument();
-    expect(screen.getByText("云端团队")).toBeInTheDocument();
-    expect(screen.queryByText("本地专家")).not.toBeInTheDocument();
-    expect(screen.queryByText("本地团队")).not.toBeInTheDocument();
   });
 
-  it("links an empty team or cloud tab to the create page", async () => {
+  it("links an empty team tab to the create page", async () => {
     const user = userEvent.setup();
     render(
       <MemoryRouter initialEntries={["/chat"]}>
@@ -170,7 +153,6 @@ describe("SessionList nav scopes", () => {
             }
           />
           <Route path="/experts" element={<LocationProbe />} />
-          <Route path="/bridge" element={<LocationProbe />} />
         </Routes>
       </MemoryRouter>,
     );

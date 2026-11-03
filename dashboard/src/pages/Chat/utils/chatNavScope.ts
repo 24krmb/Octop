@@ -1,18 +1,15 @@
-import { isRemoteShadowAgent } from "../../../utils/remoteExpert";
 import { isTeamAgent } from "../../../utils/teamAgent";
 
 /** Classic chat-nav filter under the search box. */
-export type ChatNavScope = "experts" | "teams" | "cloud";
+export type ChatNavScope = "experts" | "teams";
 
 export const CHAT_NAV_SCOPES: readonly ChatNavScope[] = [
   "experts",
   "teams",
-  "cloud",
 ];
 
 type NavAgent = {
   kind?: string | null;
-  bridge?: boolean | null;
   agent_id?: string | null;
 };
 
@@ -23,15 +20,11 @@ export function initialChatNavScope(
   return agent && isTeamAgent(agent) ? "teams" : "experts";
 }
 
-/**
- * Experts include cloud experts. Teams include cloud teams.
- * Cloud is every remote shadow, expert or team.
- */
+/** Teams include team agents; experts is everything else. */
 export function matchesChatNavScope(
   agent: NavAgent,
   scope: ChatNavScope,
 ): boolean {
-  if (scope === "cloud") return isRemoteShadowAgent(agent);
   if (scope === "teams") return isTeamAgent(agent);
   return !isTeamAgent(agent);
 }

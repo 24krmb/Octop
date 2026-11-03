@@ -19,12 +19,6 @@ const NAV_SCOPE_LABELS: Record<
     emptyKey: "chat.navScopeEmptyTeams",
     emptyFallback: "还没有团队",
   },
-  cloud: {
-    key: "chat.navScopeCloud",
-    fallback: "云端",
-    emptyKey: "chat.navScopeEmptyCloud",
-    emptyFallback: "还没有云端协同",
-  },
 };
 
 export function chatNavScopeEmptyCopy(scope: ChatNavScope): {
@@ -43,14 +37,9 @@ const NAV_SCOPE_CREATE: Partial<
     fallback: "创建第一个团队",
     to: "/experts?tab=teams",
   },
-  cloud: {
-    key: "chat.navScopeCreateCloud",
-    fallback: "添加云端协同",
-    to: "/bridge",
-  },
 };
 
-/** Empty team / cloud list, with a link to create the first one. */
+/** Empty team list, with a link to create the first one. */
 export function ChatNavScopeEmpty({ scope }: { scope: ChatNavScope }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -74,7 +63,7 @@ export function ChatNavScopeEmpty({ scope }: { scope: ChatNavScope }) {
   );
 }
 
-/** Expert / team / cloud switch under the chat nav search box. */
+/** Expert / team switch under the chat nav search box. */
 export default function ChatNavScopeTabs({
   value,
   onChange,
