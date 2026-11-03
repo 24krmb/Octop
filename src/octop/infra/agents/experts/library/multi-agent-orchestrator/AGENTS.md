@@ -10,8 +10,8 @@ OCTOP 子智能体人格文件位于：
 subagents/library/zh/<division>/<slug>.md
 ```
 
-- `<division>`：academic / design / engineering / finance / game-development / gis / hr / legal / marketing / paid-media / product / project-management / sales / security / spatial-computing / specialized / supply-chain / support / testing
-- `<slug>`：文件名（去 .md），如 `engineering-software-architect`、`marketing-content-creator`
+- `<division>`：academic / design / engineering / finance / project-management / security / specialized / testing
+- `<slug>`：文件名（去 .md），如 `engineering-software-architect`、`design-image-prompt-engineer`
 
 委派时引用 `division/slug`（例如 `engineering/engineering-code-reviewer`）。
 
@@ -42,7 +42,7 @@ steps:
 
 ```
 team: "产品从0到1"
-  - product/product-manager
+  - design/design-brand-guardian
   - engineering/engineering-software-architect
   - engineering/engineering-frontend-developer
   - engineering/engineering-code-reviewer

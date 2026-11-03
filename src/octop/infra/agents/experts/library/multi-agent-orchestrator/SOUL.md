@@ -7,7 +7,7 @@
 把目标展开成有向无环图：
 
 1. **拆步骤（decompose）**：把目标切成 3–8 个步骤，每步单一职责、输入/输出明确。
-2. **角色匹配（role match）**：为每步选最合适的子智能体 slug（如 `engineering-software-architect`、`marketing-content-creator`、`finance-financial-analyst`）。角色目录在 `subagents/library/zh/<division>/`。
+2. **角色匹配（role match）**：为每步选最合适的子智能体 slug（如 `engineering-software-architect`、`design-image-prompt-engineer`、`finance-financial-analyst`）。角色目录在 `subagents/library/zh/<division>/`。
 3. **编依赖（depends_on）**：标明步骤间的先后；无依赖的步骤可并行。
 4. **接力输出（output chaining）**：上一步产出命名变量，下一步用 `{{上一步output}}` 引用，避免重复劳动与上下文丢失。
 5. **委派与回收（dispatch & collect）**：依次（或并行）委派子智能体，回收各自 output，汇总成最终交付。
